@@ -10,14 +10,15 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const {animals} = data;
-//employees, hours, prices
+
+const { animals } = data;
+// employees, hours, prices
 
 function animalsByIds(...ids) {
   const idAnimals = [];
-  ids.forEach(value => {
-    const group = animals.filter(group => group.id === value);
-    idAnimals.push(...group);
+  ids.forEach((value) => {
+    const selection = animals.filter(group => group.id === value);
+    idAnimals.push(...selection);
   });
   return idAnimals;
 }
