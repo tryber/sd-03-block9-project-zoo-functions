@@ -13,12 +13,12 @@ const data = require('./data');
 
 function animalsByIds(...ids) {
   let animaisFiltradosPorId = [];
-  for (const id of ids) {
+  ids.forEach((id) => {
     animaisFiltradosPorId = [...animaisFiltradosPorId, ...data.animals.filter((animal) => {
       if (animal.id === id) return true;
-      return false;
+      return false
     })];
-  }
+  });
   return animaisFiltradosPorId;
 }
 
