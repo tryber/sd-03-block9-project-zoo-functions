@@ -27,7 +27,7 @@ const animalsOlderThan = (animal, age) => {
 };
 
 const employeeByName = (employeeName) => {
-const test = data.employees.find(  teste => teste.firstName === employeeName
+  const test = data.employees.find(teste => teste.firstName === employeeName
   || teste.lastName === employeeName)
   || {};
   return test;
