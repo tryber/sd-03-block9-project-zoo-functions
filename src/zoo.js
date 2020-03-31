@@ -15,7 +15,7 @@ const { animals, employees } = data;
 
 // hours, prices
 
-function animalsByIds(...ids) {
+const animalsByIds = (...ids) => {
   const idAnimals = [];
   ids.forEach((value) => {
     const selection = animals.filter(group => group.id === value);
@@ -24,7 +24,7 @@ function animalsByIds(...ids) {
   return idAnimals;
 }
 
-function animalsOlderThan(animal, age) {
+const animalsOlderThan = (animal, age) => {
   return animals.filter(group => group.name === animal)
                 .every(obj => obj.residents.every(animal2 => animal2.age >= age));
 }
@@ -33,8 +33,9 @@ const employeeByName = employeeName =>
   employees.find(person => person.firstName === employeeName || person.lastName === employeeName,
 ) || {};
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+const createEmployee = (personalInfo, associatedWith) => {
+  const newEmployee = {...personalInfo, ...associatedWith};
+  return newEmployee;
 }
 
 function isManager(id) {
