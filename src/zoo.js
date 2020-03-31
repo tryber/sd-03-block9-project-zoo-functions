@@ -38,9 +38,10 @@ const employeeByName = (employeeName) => {
   return employees.find(el => el.firstName === employeeName || el.lastName === employeeName);
 };
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => {
+  const newEmployee = Object.assign({}, personalInfo, associatedWith);
+  return newEmployee;
+};
 
 function isManager(id) {
   // seu código aqui
