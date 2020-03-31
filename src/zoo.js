@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(...ids) { //rest parameter
+function animalsByIds(...ids) { // rest parameter
   return data.animals.filter(animal => ids.find(id => id === animal.id));
 }
 
