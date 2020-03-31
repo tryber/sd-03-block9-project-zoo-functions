@@ -34,16 +34,16 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
 
-const animalCount = species => {
+const animalCount = (species) => {
   if (species) {
     return data.animals.find(el => el.name === species).residents.length;
   }
 
   const animalslength = {};
-  data.animals.forEach((el) => {animalslength[el.name] = el.residents.length})
+  data.animals.forEach((el) => { animalslength[el.name] = el.residents.length });
   return animalslength;
 
-}
+};
 
 function entryCalculator(entrants) {
   // seu código aqui
