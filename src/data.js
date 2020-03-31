@@ -121,7 +121,7 @@ module.exports = {
         {
           name: 'Margherita',
           sex: 'female',
-          age: 10
+          age: 10,
         },
       ]
     },
@@ -134,7 +134,7 @@ module.exports = {
         {
           name: 'Cathey',
           sex: 'female',
-          age: 3
+          age: 3,
         },
         {
           name: 'Annice',
@@ -236,7 +236,7 @@ module.exports = {
       managers: ['0e7b460e-acf4-4e17-bcb3-ee472265db83',
         'fdb2543b-5662-46a7-badc-93d960fdc0a8'],
       responsibleFor: ['0938aa23-f153-4937-9f88-4858b24d6bce',
-        'e8481c1d-42ea-4610-8e11-1752cfc05a46']
+        'e8481c1d-42ea-4610-8e11-1752cfc05a46'],
     },
     {
       id: '0e7b460e-acf4-4e17-bcb3-ee472265db83',
@@ -246,7 +246,7 @@ module.exports = {
       responsibleFor: ['0938aa23-f153-4937-9f88-4858b24d6bce',
         'e8481c1d-42ea-4610-8e11-1752cfc05a46',
         'baa6e93a-f295-44e7-8f70-2bcdc6f6948d',
-        'ef3778eb-2844-4c7c-b66c-f432073e1c6b']
+        'ef3778eb-2844-4c7c-b66c-f432073e1c6b'],
     },
     {
       id: 'fdb2543b-5662-46a7-badc-93d960fdc0a8',
