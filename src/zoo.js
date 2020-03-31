@@ -15,12 +15,13 @@ const [...animals] = data.animals;
 const animalsByIds = (...ids) => {
   if (ids.length === 0) {
     return ids;
-  } else if (ids.length === 1) {
-    const localiza1 = animals.filter(element => element.id === ids[0]);
-    return localiza1;
   }
-  const localiza2ouMais = animals.filter(element => element.id === ids[0] || element.id === ids[1]);
-  return localiza2ouMais;
+  const filtro = [];
+  for (let i = 0; i < ids.length; i += 1) {
+    const resposta = animals.find(element => element.id === ids[i]);
+    filtro.push(resposta);
+  }
+  return filtro;
 };
 
 function animalsOlderThan(animal, age) {
