@@ -13,7 +13,7 @@ const data = require('./data');
 
 const animalsByIds = (ids) => {
   data.animals.filter(idAnimal => ids.find(id => id === idAnimal.id));
-}
+};
 
 const animalsOlderThan = (animal, age) => {
   const { animals } = data;
@@ -23,8 +23,8 @@ const animalsOlderThan = (animal, age) => {
 
 const employeeByName = (employeeName) => {
   const test = data.employees.find(teste => teste.firstName === employeeName
-  || teste.lastName === employeeName)
-  || {};
+    || teste.lastName === employeeName)
+    || {};
   return test;
 };
 
@@ -37,13 +37,16 @@ const isManager = (id) => {
   data.employees.some(e => e.managers.find(i => i === id));
 };
 
-const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => employees.push({
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
+  let trabalho = employees;
+  return trabalho.push({
     id,
     firstName,
     lastName,
     managers,
     responsibleFor,
-});
+  });
+};
 
 function animalCount(species) {
   // seu código aqui
