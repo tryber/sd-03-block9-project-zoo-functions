@@ -16,7 +16,7 @@ const animalsByIds = (ids) => {
   const semArray = [];
   for (let i = 0; i < filtro.length; i += 1) {
     semArray.push(filtro[i][0]);
-  };
+  }
   return semArray;
 };
 
@@ -27,7 +27,7 @@ const animalsOlderThan = (animal, age) => {
 };
 
 const employeeByName = (employeeName) => {
-const test = data.employees.find(teste =>  teste.firstName === employeeName
+const test = data.employees.find(  teste => teste.firstName === employeeName
   || teste.lastName === employeeName)
   || {};
   return test;
