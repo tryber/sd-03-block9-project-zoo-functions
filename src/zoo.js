@@ -11,7 +11,9 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const animalsByIds = (ids) => (...ids) => data.animals.filter(animId => ids.find(id => id === animId.id));
+const animalsByIds = (ids) => {
+  data.animals.filter(idAnimal => ids.find(id => id === idAnimal.id));
+}
 
 const animalsOlderThan = (animal, age) => {
   const { animals } = data;
@@ -35,15 +37,13 @@ const isManager = (id) => {
   data.employees.some(e => e.managers.find(i => i === id));
 };
 
-const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
-  return employees.push({
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => employees.push({
     id,
     firstName,
     lastName,
     managers,
     responsibleFor,
-  });
-}
+  };
 
 function animalCount(species) {
   // seu código aqui
