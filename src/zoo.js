@@ -49,7 +49,7 @@ const createEmployee = (personalInfo, associatedWith) => ({
 
 const isManager = id =>
   data.employees.some(allManagers =>
-    allManagers.managers.find(isManager => isManager === id),
+    allManagers.managers.find(is => is === id),
   );
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
