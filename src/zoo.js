@@ -12,8 +12,15 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 function animalsByIds(ids) {
-  console.log('teste');
-  
+  const arr = [];
+  ids.forEach((id) => {
+    arr.push(...data.animals
+      .filter(({ id: animalId }) => {
+        if (animalId === id) return true;
+        return false;
+      }));
+  });
+  return arr;
 }
 
 function animalsOlderThan(animal, age) {
@@ -77,5 +84,5 @@ module.exports = {
   animalsOlderThan,
   oldestFromFirstSpecies,
   increasePrices,
-  createEmployee,
+  createEmployee
 };
