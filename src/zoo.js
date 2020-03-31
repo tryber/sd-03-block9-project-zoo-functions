@@ -48,13 +48,19 @@ const createEmployee = (personalInfo, associatedWith) => ({
 // Testa se o id passado é de um gerente
 
 const isManager = id =>
-  data.employees.some(allManagers =>
-    allManagers.managers.find(is => is === id),
-  );
+  data.employees.some(allManagers => allManagers.managers.find(is => is === id));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+//   Implemente a função addEmployee:
+// Adiciona um funcionário no fim da lista
+
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>
+  data.employees.push({
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  });
 
 function animalCount(species) {
   // seu código aqui
