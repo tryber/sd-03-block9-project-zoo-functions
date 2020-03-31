@@ -31,9 +31,9 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  const especies = animals.filter(bicho => (bicho.name === animal));
-  const idade = especies.map(especie => especie.residents);
-  const idades = idade[0].every(ida => ida.age >= age);
+  const especies = animals.filter(bicho => (bicho.name === animal)
+  ).map(especie => especie.residents);
+  const idades = especies[0].every(ida => ida.age >= age);
   return idades;
 }
 
@@ -50,6 +50,8 @@ function employeeByName(employeeName) {
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
+  const newEmployee = Object.assign({}, personalInfo, associatedWith); 
+  return newEmployee;
 }
 
 function isManager(id) {
