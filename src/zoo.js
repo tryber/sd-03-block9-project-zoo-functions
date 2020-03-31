@@ -16,7 +16,7 @@ function animalsByIds(...ids) {
   ids.forEach((id) => {
     animaisFiltradosPorId = [...animaisFiltradosPorId, ...data.animals.filter((animal) => {
       if (animal.id === id) return true;
-      return false
+      return false;
     })];
   });
   return animaisFiltradosPorId;
