@@ -22,7 +22,7 @@ function animalsByIds(...ids) {
       { name: 'Maxwell', sex: 'male', age: 15 },
       { name: 'Faustino', sex: 'male', age: 7 },
       { name: 'Dee', sex: 'female', age: 14 }
-    ]
+    ],
   }, {
     id: 'e8481c1d-42ea-4610-8e11-1752cfc05a46',
     name: 'tigers',
@@ -31,14 +31,13 @@ function animalsByIds(...ids) {
     residents: [
       { name: 'Shu', sex: 'female', age: 19 },
       { name: 'Esther', sex: 'female', age: 17 }
-    ]
-  }]
+    ],
+  }];
 
-  if (ids[0] === undefined){
-    return [];
-  }
+  if (ids[0] === undefined) return [];
 
-  const localiza2ouMais = animais.filter((element) => element.id === ids[0] || element.id === ids[1]);
+  const localiza2ouMais = animais.filter((element) => 
+    element.id === ids[0] || element.id === ids[1]);
 
   return localiza2ouMais;
 }
