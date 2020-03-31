@@ -44,9 +44,13 @@ const createEmployee = (personalInfo, associatedWith) => ({
   ...associatedWith,
 });
 
-function isManager(id) {
-  // seu código aqui
-}
+// Implemente a função isManager:
+// Testa se o id passado é de um gerente
+
+const isManager = id =>
+  data.employees.some(allManagers =>
+    allManagers.managers.find(isManager => isManager === id),
+  );
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
