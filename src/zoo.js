@@ -16,27 +16,26 @@ const data = require('./data');
 // Ao receber como parâmetro um único id, retorna os animais com este id
 // Ao receber mais de um id, retorna os animais que têm um desses ids
 
-const animalsByIds = (...ids) =>
-  data.animals.filter((animal) => ids.find((id) => id === animal.id));
+const animalsByIds = (...ids) => data.animals.filter(animal => ids.find(id => id === animal.id));
 
 // 2 -Implemente a função animalsOlderThan:
 // Ao passar o nome de uma espécie e uma idade, testa se
 // todos os animais desta espécie possuem a idade mínima especificada
 
 const animalsOlderThan = (animal, age) =>
-  data.animals.find((animals) => animals.name === animal).residents.every((res) => res.age >= age);
+  data.animals.find(animals => animals.name === animal).residents.every(res => res.age >= age);
 
 // 3- Implemente a função employeeByName:
 // Sem parâmetros, retorna um objeto vazio
 // Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
 // Quando provido o último nome do funcionário, retorna o objeto do funcionário
 
-const employeeByName = (employeeName) => {
-  if (employeeName === undefined) return {};
-  return data.employees.find(
-    (person) => person.firstName === employeeName || person.lastName === employeeName,
-  );
-};
+const employeeByName = employeeName =>
+  employeeName === undefined
+    ? {}
+    : data.employees.find(
+        person => person.firstName === employeeName || person.lastName === employeeName,
+      );
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
