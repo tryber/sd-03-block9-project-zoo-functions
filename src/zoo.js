@@ -15,11 +15,12 @@ function animalsByIds(...ids) {
   let result = [];
   const animals = data.animals;
   if (ids) {
-    ids.forEach(index => result = result.concat(animals.filter(element => element.id === index)));
+    ids.forEach(index => result.push(...animals.filter(element => element.id === index)));
     return result;
   }
   return ids;
 }
+console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce'));
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
