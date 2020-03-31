@@ -18,15 +18,16 @@ function animalsByIds(ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  const especie = animals.find(element => element.name === animal);
-  return especie.residents.every(element => element.age >= age);
+  const especie = animals.find(({ name }) => name === animal);
+  return especie.residents.every(({ age: animalAge }) => animalAge >= age);
 }
 
 function employeeByName(employeeName) {
   if (employeeName) {
-    return employees.find((employee) => {
-      return employee.firstName === employeeName || employee.lastName === employeeName;
-    });
+    return employees.find(
+      ({ firstName, lastName }) =>
+        firstName === employeeName || lastName === employeeName
+    );
   }
   return {};
 }
