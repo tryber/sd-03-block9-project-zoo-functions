@@ -44,13 +44,13 @@ const createEmployee = (personalInfo, associatedWith) => ({
   ...associatedWith,
 });
 
-// Implemente a função isManager:
+// 5- Implemente a função isManager:
 // Testa se o id passado é de um gerente
 
 const isManager = id =>
   data.employees.some(allManagers => allManagers.managers.find(is => is === id));
 
-//   Implemente a função addEmployee:
+// 6- Implemente a função addEmployee:
 // Adiciona um funcionário no fim da lista
 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>
@@ -62,8 +62,19 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
     responsibleFor,
   });
 
+// 7- Implemente a função animalCount:
+// Sem parâmetros, returna animais e suas quantidades
+// Com o nome de uma espécie de animal, retorna somente a quantidade
+
 function animalCount(species) {
-  // seu código aqui
+  if (species != undefined) {
+    return data.animals.find(element => element.name === species).residents.length;
+  }
+  const allAnimals = {};
+  data.animals.map(animal => {
+    allAnimals[animal.name] = animal.residents.length;
+  });
+  return allAnimals;
 }
 
 function entryCalculator(entrants) {
