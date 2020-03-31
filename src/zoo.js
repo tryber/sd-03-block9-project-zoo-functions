@@ -10,7 +10,6 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const assert = require('assert')
 
 const [...animals] = data.animals;
 
@@ -43,27 +42,25 @@ function employeeByName(employeeName) {
     return {};
   }
   
-  const primeiroNome = employees.find(element => element.firstName === employeeName)
-    ||employees.find(element => element.lastName === employeeName);
+  const primeiroNome = employees.find (element => element.firstName === employeeName)
+    ||employees.find (element => element.lastName === employeeName);
   
   return primeiroNome;
 }
 
-
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
 
-  const newFuncionario = Object.assign({},personalInfo,associatedWith);
+  const newFuncionario = Object.assign({}, personalInfo, associatedWith);
   return newFuncionario;
 }
 
 function isManager(id) {
   // seu código aqui
-  const gerents = employees.map(gerente => gerente.managers)
-    .some(gerente => gerente[0]=== id);
+  const gerents = employees.map (gerente => gerente.managers)
+    .some (gerente => gerente[0] === id);
   return gerents;
 }
-
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
