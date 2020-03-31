@@ -36,8 +36,7 @@ function animalsByIds(...ids) {
 
   if (ids[0] === undefined) return [];
 
-  const buscaById = animais.filter((element) =>
-    element.id === ids[0] || element.id === ids[1]);
+  const buscaById = animais.filter(element => element.id === ids[0] || element.id === ids[1]);
 
   return buscaById;
 }
