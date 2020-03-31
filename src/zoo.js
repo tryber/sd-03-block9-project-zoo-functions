@@ -67,13 +67,11 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
 // Com o nome de uma espécie de animal, retorna somente a quantidade
 
 function animalCount(species) {
-  if (species != undefined) {
+  if (species !== undefined) {
     return data.animals.find(element => element.name === species).residents.length;
   }
   const allAnimals = {};
-  data.animals.map(animal => {
-    allAnimals[animal.name] = animal.residents.length;
-  });
+  data.animals.map(animal => (allAnimals[animal.name] = animal.residents.length));
   return allAnimals;
 }
 
