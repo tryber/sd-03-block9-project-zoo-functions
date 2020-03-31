@@ -9,9 +9,7 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
-
-//console.log(data)
+const data = require('./data');
 
 // 1- Implemente a função animalsByIds:
 // Caso receba nenhum parâmetro, necessário retornar um array vazio
