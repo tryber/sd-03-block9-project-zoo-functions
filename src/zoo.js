@@ -14,13 +14,13 @@ const data = require('./data');
 function animalsByIds(...ids) {
   // seu código
   const a = [];
-  if (ids.length === 0) {return a};
   if (ids.length >= 1) {
     for (let i = 0; i < ids.length; i += 1) {
-     a.push(data.animals.find((item) => item.id === `${ids[i]}`));
+      a.push(data.animals.find(item => item.id === `${ids[i]}`));
     }
-  return a;
+    return a;
   }
+  return [];
 }
 
 function animalsOlderThan(animal, age) {
