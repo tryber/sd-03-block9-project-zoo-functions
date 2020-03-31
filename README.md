@@ -52,7 +52,9 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ### Correção automatizada
 
-Você irá perceber que, ao realizar novos `commits` no seu _Pull Request_, eles serão automaticamente analisados pelo _CodeClimate_ e pelo TravisCI_. Se atente para os comentários do _CodeClimate_ que irão conter dicas valiosas de como deixar seu código melhor! Você pode também explorar o _TravisCI_ para obter informações sobre quais _assertions_ ainda precisa adereçar em seu projeto.
+Você irá perceber que, ao realizar novos `commits` no seu _Pull Request_, eles serão automaticamente analisados pelo _CodeClimate_ e pelo _TravisCI_.
+
+Se atente para os comentários do _CodeClimate_ que irão conter **dicas valiosas** de como deixar seu código melhor! Você pode também explorar o _TravisCI_ para obter informações sobre quais _assertions_ ainda precisa adereçar em seu projeto.
 
 ---
 
@@ -148,7 +150,7 @@ Antes de começar analise o arquivo `src/data.js`, para ver os dados que serão 
 
 ### DEPOIS DE TERMINAR O DESENVOLVIMENTO (OPCIONAL)
 
-Para **"entregar"** seu projeto, siga os passos a seguir:
+Para disponibilizar seu projeto para [**Code Review**](https://course.betrybe.com/real-life-engineer/code-review/), siga os passos a seguir:
 
 * Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
   * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
