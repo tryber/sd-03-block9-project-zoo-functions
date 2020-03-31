@@ -51,15 +51,11 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  const gerentes = funcionarios.map((funcionario) => funcionario.managers); 
-  return gerentes.some((managers) => {
-    return managers.find((manager) => {
-      if (manager === id) {
-        return true;
-      }
-      return false;
-    });
-  });
+  const gerentes = funcionarios.map(funcionario => funcionario.managers);
+  return gerentes.some(managers => managers.find((manager) => {
+    if (manager === id) return true;
+    return false;
+  }));
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
