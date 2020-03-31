@@ -41,10 +41,10 @@ function employeeByName(employeeName) {
   if (!employeeName) {
     return {};
   }
-  
-  const primeiroNome = employees.find (element => element.firstName === employeeName)
-    ||employees.find (element => element.lastName === employeeName);
-  
+
+  const primeiroNome = employees.find(element => element.firstName === employeeName)
+    || employees.find(element => element.lastName === employeeName);
+
   return primeiroNome;
 }
 
@@ -57,8 +57,8 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const gerents = employees.map (gerente => gerente.managers)
-    .some (gerente => gerente[0] === id);
+  const gerents = employees.map(gerente => gerente.managers)
+    .some(gerente => gerente[0] === id);
   return gerents;
 }
 
