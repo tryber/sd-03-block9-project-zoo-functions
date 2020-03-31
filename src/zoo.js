@@ -30,12 +30,16 @@ const animalsOlderThan = (animal, age) =>
 // Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
 // Quando provido o último nome do funcionário, retorna o objeto do funcionário
 
-const employeeByName = employeeName =>
-  employeeName === undefined
-    ? {}
-    : data.employees.find(
-        person => person.firstName === employeeName || person.lastName === employeeName,
-      );
+function employeeByName(employeeName) {
+  if (employeeName === undefined) {
+    return {};
+  }
+  return data.employees.find(
+    person => person.firstName === employeeName || person.lastName === employeeName,
+  );
+}
+
+console.log(employeeByName('Emery'));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
