@@ -59,9 +59,20 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
   data.employees.push(novoFunc);
 };
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount = (species) => {
+  if (!species) {
+    const nomes = animals.map(el => `${el.name}`);
+    const qtds = animals.map(el => el.residents.length);
+    const result = {};
+    for (let i = 0; i < nomes.length; i += 1) {
+      result[nomes[i]] = qtds[i];
+    }
+    return result;
+  }
+  const filtro = animals.filter(el => el.name === species);
+  const resultado = filtro.map(el => el.residents.length);
+  return resultado[0];
+};
 
 function entryCalculator(entrants) {
   // seu código aqui
