@@ -29,7 +29,7 @@ function animalsOlderThan(animal, age) {
   // seu código aqui
   const animaiS = animals.filter(animalNome => animalNome.name === animal);
   const idadeAnimal = animaiS.map(idadE => idadE.residents);
-  const animalsIdade = idadeAnimal[0].every((animalsIdade) => animalsIdade.age >= age);
+  const animalsIdade = idadeAnimal[0].every((ageAnimal) => ageAnimal.age >= age);
   return animalsIdade;
 };
 function employeeByName(employeeName) {
