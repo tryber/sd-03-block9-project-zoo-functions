@@ -32,7 +32,8 @@ function animalsOlderThan(animal, age) {
   const idadeAnimal = animaiS.map(idadE => idadE.residents);
   const animalsIdade = idadeAnimal[0].every(ageAnimal => ageAnimal.age >= age);
   return animalsIdade;
-};
+}
+
 function employeeByName(employeeName) {
   // seu código aqui
 }
