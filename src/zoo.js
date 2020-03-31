@@ -10,17 +10,18 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+
 const [...animals] = data.animals;
 
 function animalsByIds(...ids) {
   // seu código aqui
   if (ids.length === 0) {
-    return ids
+    return ids;
   }
 
   const arr = [];
   for (let indice = 0; indice < ids.length; indice += 1) {
-    const res = animals.find((elemento) => elemento.id === ids[indice]);
+    const res = animals.find(elemento => elemento.id === ids[indice]);
     arr.push(res);
   }
   return arr;
