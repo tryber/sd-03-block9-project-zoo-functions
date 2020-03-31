@@ -22,21 +22,20 @@ const animalsByIds = (...ids) => {
     idAnimals.push(...selection);
   });
   return idAnimals;
-}
+};
 
-const animalsOlderThan = (animal, age) => {
-  return animals.filter(group => group.name === animal)
-                .every(obj => obj.residents.every(animal2 => animal2.age >= age));
-}
+const animalsOlderThan = (animal, age) =>
+ animals.filter(group => group.name === animal)
+        .every(obj => obj.residents.every(animal2 => animal2.age >= age));
 
 const employeeByName = employeeName =>
   employees.find(person => person.firstName === employeeName || person.lastName === employeeName,
 ) || {};
 
 const createEmployee = (personalInfo, associatedWith) => {
-  const newEmployee = {...personalInfo, ...associatedWith};
+  const newEmployee = { ...personalInfo, ...associatedWith };
   return newEmployee;
-}
+};
 
 function isManager(id) {
   // seu código aqui
