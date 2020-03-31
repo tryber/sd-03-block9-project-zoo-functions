@@ -24,9 +24,11 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   if (employeeName) {
-    return employees.find(employee => {
-      employee.firstName === employeeName || employee.lastName === employeeName;
-    });
+    return employees.find(
+      employee =>
+        employee.firstName === employeeName ||
+        employee.lastName === employeeName
+    );
   }
   return {};
 }
@@ -84,5 +86,5 @@ module.exports = {
   animalsOlderThan,
   oldestFromFirstSpecies,
   increasePrices,
-  createEmployee
+  createEmployee,
 };
