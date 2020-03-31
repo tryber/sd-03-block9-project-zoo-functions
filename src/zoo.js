@@ -23,6 +23,7 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
+  // sim
 }
 
 function employeeByName(employeeName) {
