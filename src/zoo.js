@@ -16,8 +16,10 @@ function animalsByIds(...ids) {
   const arr = [];
   ids.forEach((id) => {
     arr.push(...data.animals
-        .filter(({ id: animalId }) =>
-          (animalId === id) ? true : false));
+      .filter(({ id: animalId }) => {
+        if (animalId === id) return true;
+        return false;
+      }));
   });
   return arr;
 }
