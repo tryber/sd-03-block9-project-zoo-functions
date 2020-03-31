@@ -38,7 +38,9 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   if (employeeName === undefined) return {};
   const funcionarioFiltrado = funcionarios.filter((funcionario) => {
-    if (funcionario.firstName === employeeName || funcionario.lastName === employeeName) return true;
+    if (funcionario.firstName === employeeName || funcionario.lastName === employeeName) {
+      return true;
+    } 
     return false;
   });
   return funcionarioFiltrado[0];
