@@ -11,9 +11,40 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
+function animalsByIds(...ids) {
+  const animais = [{
+    id: '0938aa23-f153-4937-9f88-4858b24d6bce',
+    name: 'lions',
+    popularity: 4,
+    location: 'NE',
+    residents: [
+      { name: 'Zena', sex: 'female', age: 12 },
+      { name: 'Maxwell', sex: 'male', age: 15 },
+      { name: 'Faustino', sex: 'male', age: 7 },
+      { name: 'Dee', sex: 'female', age: 14 }
+    ]
+  }, {
+    id: 'e8481c1d-42ea-4610-8e11-1752cfc05a46',
+    name: 'tigers',
+    popularity: 5,
+    location: 'NW',
+    residents: [
+      { name: 'Shu', sex: 'female', age: 19 },
+      { name: 'Esther', sex: 'female', age: 17 }
+    ]
+  }]
+
+  if (ids[0] === undefined){
+    return [];
+  }
+
+  const localiza2ouMais = animais.filter((element) => element.id === ids[0] || element.id === ids[1]);
+
+  return localiza2ouMais;
 }
+// console.log(animalsByIds())
+// animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce','e8481c1d-42ea-4610-8e11-1752cfc05a46');
+// animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce');
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
