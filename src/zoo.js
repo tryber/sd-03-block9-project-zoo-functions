@@ -13,7 +13,6 @@ const data = require('./data');
 
 const [...animals] = data.animals;
 const animalsByIds = (...ids) => {
-  
   if (ids.length === 0) {
     return ids;
   }
@@ -29,7 +28,7 @@ const animalsOlderThan = (especie, idade) => {
   const filtra = animals.filter(element => element.name === especie);
   const mapFiltra = filtra.map(element => element.residents);
   return mapFiltra[0].every(element => element.age >= idade);
-}
+};
 
 function employeeByName(employeeName) {
   // seu código aqui
