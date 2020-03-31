@@ -38,7 +38,7 @@ const isManager = (id) => {
 };
 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
-  let trabalho = employees;
+  const trabalho = 'employees';
   return trabalho.push({
     id,
     firstName,
