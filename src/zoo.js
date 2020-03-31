@@ -16,13 +16,15 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  return data.animals.find(grupo => grupo.name === animal).residents.every(bicho => bicho.age >= age);
+  return data.animals.find(grp => grp.name === animal).residents.every(res => res.age >= age);
 }
-console.log(animalsOlderThan('tigers', 10));
+//  console.log(animalsOlderThan('tigers', 10));
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  return data.employees.find(emp => 
+    emp.firstName === employeeName || emp.lastName === employeeName) || {};
 }
+console.log(employeeByName('Ola'));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
