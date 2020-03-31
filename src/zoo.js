@@ -50,6 +50,13 @@ function createEmployee({ id, firstName, lastName }, { managers, responsibleFor 
 
 function isManager(id) {
   // seu código aqui
+  const managersMap = data.employees.map(item => item.managers);
+  let arrTest = [];
+  for (let i = 0; i < managersMap.length; i += 1) {
+    managersMap[i].forEach(element => arrTest.push(element));
+  }
+  let isManagerYn = arrTest.some(item => item === id);
+  return isManagerYn;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
