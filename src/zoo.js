@@ -12,26 +12,26 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 const animalsByIds = (ids) => {
-  const filtro = ids.map
-    (id => data.animals.filter
-      (animal => animal.id === id
-      ));
+  const filtro = ids.map(id => data.animals.filter(animal => animal.id === id,));
   const semArray = [];
   for (let i = 0; i < filtro.length; i += 1) {
     semArray.push(filtro[i][0]);
   }
   return semArray;
-}
+};
 
 const animalsOlderThan = (animal, age) => {
   const { animals } = data;
   const especie = animals.find(element => element.name === animal);
   return especie.residents.every(element => element.age >= age);
-}
+};
 
 const employeeByName = (employeeName) => {
-data.employees.find(teste => teste.firstName === employeeName || teste.lastName === employeeName) || {};
-}
+const test = data.employees.find(teste => teste.firstName === employeeName 
+  || teste.lastName === employeeName) 
+  || {};
+  return test;
+};
 
 const createEmployee = (personalInfo, associatedWith) => ({
   ...personalInfo,
