@@ -37,8 +37,8 @@ const createEmployee = (personalInfo, associatedWith) => {
   return newEmployee;
 };
 
-function isManager(id) {
-  // seu código aqui
+const isManager = (id) => {
+  return employees.some(member => (member.managers).includes(id));
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
