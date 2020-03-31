@@ -45,9 +45,9 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
     firstName,
     lastName,
     managers,
-    responsibleFor
+    responsibleFor,
   };
-  console.log(newPerson)
+  console.log(newPerson);
   employees.push(newPerson);
 };
 
