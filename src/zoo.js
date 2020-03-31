@@ -26,7 +26,7 @@ function employeeByName(employeeName) {
   if (employeeName) {
     return employees.find(
       ({ firstName, lastName }) =>
-        firstName === employeeName || lastName === employeeName
+        firstName === employeeName || lastName === employeeName,
     );
   }
   return {};
