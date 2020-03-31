@@ -13,12 +13,12 @@ const data = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
-  const filterId = ids.map((id) => data.animals.filter((animal) => animal.id === id));
-  const filterId0 = [];
+  const filterId = ids.map(id => data.animals.filter(animal => animal.id === id));
+  const filterIdSemArrayEmCadaObjeto = [];
   for (let i = 0; i < filterId.length; i += 1) {
-    filterId0.push(filterId[i][0]);
+    filterIdSemArrayEmCadaObjeto.push(filterId[i][0]);
   }
-  return filterId0;
+  return filterIdSemArrayEmCadaObjeto;
 }
 
 function animalsOlderThan(animal, age) {
