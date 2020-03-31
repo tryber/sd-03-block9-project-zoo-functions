@@ -32,6 +32,7 @@ function isManager(id) {
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+  Object.assign(addEmployee, createEmployee);
   // seu código aqui
 }
 
