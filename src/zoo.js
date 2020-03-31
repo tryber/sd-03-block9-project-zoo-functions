@@ -32,7 +32,7 @@ function employeeByName(employeeName) {
   // seu código aqui
   if (employeeName === undefined) return {};
   const funcD = data.employees;
-  const funcR = funcD.filter((fc) => fc.firstName === employeeName || fc.lastName === employeeName);
+  const funcR = funcD.filter(fc => fc.firstName === employeeName || fc.lastName === employeeName);
   return funcR[0];
 }
 
