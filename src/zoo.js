@@ -73,8 +73,14 @@ function animalCount(species) {
   return (species !== undefined) ? animalsQntd[species] : animalsQntd;
 }
 
-function entryCalculator(entrants) {
+function entryCalculator(entrants = {}) {
   // seu código aqui
+  let total = 0;
+  const { Adult = 0, Child = 0, Senior = 0} = entrants;
+  total += Adult * data.prices.Adult;
+  total += Child * data.prices.Child;
+  total += Senior * data.prices.Senior;
+  return total;
 }
 
 function animalMap(options) {
