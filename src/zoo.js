@@ -50,30 +50,29 @@ const animalCount = (species) => {
   return asw;
 };
 
-const entryCalculator = (entrants) => (entrants && Object.keys(entrants).length > 0
-  ? Object.keys(entrants).reduce(a, e => (a + (data.prices[e] * entrants[e])), 0)
+const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
+  ? Object.keys(entrants).reduce((a, e) => (a + (data.prices[e] * entrants[e])), 0)
   : 0
 );
 
-// const animalMap = (options) => {
+const animalMap = (options) => {
+};
 
-// }
-
-function schedule(dayName) {
+const schedule = (dayName) => {
   // seu código aqui
-}
+};
 
-function oldestFromFirstSpecies(id) {
+const oldestFromFirstSpecies = (id) => {
   // seu código aqui
-}
+};
 
-function increasePrices(percentage) {
+const increasePrices = (percentage) => {
   // seu código aqui
-}
+};
 
-function employeeCoverage(idOrName) {
+const employeeCoverage = (idOrName) => {
   // seu código aqui
-}
+};
 
 module.exports = {
   entryCalculator,
