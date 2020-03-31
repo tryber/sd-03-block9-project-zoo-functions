@@ -87,6 +87,17 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  const arrTest = [];
+  for (key in data.prices) {
+    arrTest.push({ [key]: data.prices[key] });
+  }
+  let filterKey;
+  let somaPreço = 0;
+  for (key in entrants) {
+    filterKey = arrTest.filter(item => item[key]);
+    somaPreço += filterKey[0][key] * entrants[key];
+  }
+  return somaPreço;
 }
 
 function animalMap(options) {
