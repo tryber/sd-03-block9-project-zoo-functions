@@ -18,11 +18,17 @@ const data = require("./data");
 // Ao receber como parâmetro um único id, retorna os animais com este id
 // Ao receber mais de um id, retorna os animais que têm um desses ids
 
-const animalsByIds = (...ids) => 
+const animalsByIds = (...ids) =>
   data.animals.filter(animal => ids.find(id => id === animal.id));
 
+// 2 -Implemente a função animalsOlderThan:
+// Ao passar o nome de uma espécie e uma idade, testa se
+// todos os animais desta espécie possuem a idade mínima especificada
+
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  return data.animals
+    .find(animals => animals.name === animal)
+    .residents.every(res => res.age >= age);
 }
 
 function employeeByName(employeeName) {
