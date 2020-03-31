@@ -21,14 +21,18 @@ function animalsOlderThan(animal, age) {
 //  console.log(animalsOlderThan('tigers', 10));
 
 function employeeByName(employeeName) {
-  return data.employees.find(emp => 
+  return data.employees.find(emp =>
     emp.firstName === employeeName || emp.lastName === employeeName) || {};
 }
-console.log(employeeByName('Ola'));
+//  console.log(employeeByName('Ola'));
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  const {id, firstName, lastName} = personalInfo;
+  const {managers, responsibleFor} = associatedWith;
+  return {id, firstName, lastName, managers, responsibleFor};
 }
+
+// console.log(createEmployee(personalInfo, associatedWith));
 
 function isManager(id) {
   // seu código aqui
