@@ -29,7 +29,16 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
+  const especies = animals.filter(bicho => (bicho.name === animal)).map(animals => animals.residents);
+  const idades = especies[0].every(idade => idade.age >= age);
+  // const idade = especies.map(animals => animals.residents);
+  console.log(especies)
+  return idades;
 }
+console.log(animalsOlderThan('otters', 7));
+/* console.log(animalsOlderThan('otters', 7)); */
+
+
 
 function employeeByName(employeeName) {
   // seu código aqui
