@@ -60,7 +60,7 @@ function isManager(id) {
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   let arrayManagers = [];
-  let  arrayResponsibleFor = [];
+  let arrayResponsibleFor = [];
   if (managers && managers.length > 0) {
     arrayManagers = [...managers];
   }
@@ -68,9 +68,9 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
     arrayResponsibleFor = [...responsibleFor];
   }
   return funcionarios.push({
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
+    id,
+    firstName,
+    lastName,
     managers: arrayManagers,
     responsibleFor: arrayResponsibleFor,
   });
