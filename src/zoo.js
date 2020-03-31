@@ -50,9 +50,10 @@ const animalCount = (species) => {
   return asw;
 };
 
-function entryCalculator(entrants) {
-  // seu código aqui
-}
+const entryCalculator = (entrants) => (entrants && Object.keys(entrants).length > 0
+  ? Object.keys(entrants).reduce((a, e) => (a + (data.prices[e] * entrants[e])), 0)
+  : 0
+);
 
 function animalMap(options) {
   // seu código aqui
