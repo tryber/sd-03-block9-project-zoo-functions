@@ -31,21 +31,20 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   // seu código aqui
   if (employeeName === undefined) return {};
-  const funcionarioNameFilter = data.employees.filter((funcionario) => {
-    return funcionario.firstName === employeeName || funcionario.lastName === employeeName;
-  });
-  return funcionarioNameFilter[0];
+  const funcD = data.employees;
+  const funcR = funcD.filter((fc) => fc.firstName === employeeName || fc.lastName === employeeName);
+  return funcR[0];
 }
 
-function createEmployee({id, firstName, lastName}, {managers, responsibleFor}) {
+function createEmployee({ id, firstName, lastName }, { managers, responsibleFor }) {
   // seu código aqui
   const result = {
     id,
     firstName,
     lastName,
     managers,
-    responsibleFor
-  }
+    responsibleFor,
+  };
   return result;
 }
 
