@@ -37,8 +37,16 @@ function employeeByName(employeeName) {
   return funcionarioNameFilter[0];
 }
 
-function createEmployee(personalInfo, associatedWith) {
+function createEmployee({id, firstName, lastName}, {managers, responsibleFor}) {
   // seu código aqui
+  const result = {
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor
+  }
+  return result;
 }
 
 function isManager(id) {
