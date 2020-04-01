@@ -56,10 +56,27 @@ const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 
 );
 
 const animalMap = (options) => {
+  // const asw = {};
+  // data.animals.forEach(animal => {
+  //   asw[animal.location] = data.animals.filter(e => e.location ===
+  // animal.location).map(e => e.name);
+  //   // asw[animal.location] = animal.residents.map(e => e.name);
+  // });
+  // console.log(asw);
 };
 
+const legibleSchedule = (day) => ((day === 'Monday')
+  ? 'CLOSED'
+  : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
+
 const schedule = (dayName) => {
-  // seu código aqui
+  const sch = {};
+  if (dayName) {
+    sch[dayName] = legibleSchedule(dayName);
+    return sch;
+  }
+  Object.keys(data.hours).forEach(e => { sch[e] = legibleSchedule(e); });
+  return sch;
 };
 
 const oldestFromFirstSpecies = (id) => {
