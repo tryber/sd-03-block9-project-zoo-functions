@@ -81,10 +81,25 @@ function entryCalculator(entrants) {
   return 0;
 }
 
-const getLocations = () => {}
+const getLocations = () => {
+  return animals.map(({ location }) => location).reduce((acc, location) => {
+    if (acc[location] === undefined) {
+      acc[location] = [];
+    }
+    return acc;
+  }, {});
+}
 
-function animalMap(...options) {
+const addAnimals = (animalsLocation) => {
+  return animals.forEach(({ name, location }) => animalsLocation[location].push(name));
+};
+
+function animalMap(options) {
   const animalsLocation = getLocations();
+  if (options && options[includeNames] !== undefined) {
+    return true;
+  }
+  return addAnimals(animalsLocation);
 }
 
 function schedule(dayName) {
