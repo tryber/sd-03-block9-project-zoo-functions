@@ -44,13 +44,13 @@ const animalCount = (species) => {
   return animalslength;
 };
 
-const entryCalculator = entrants => {
+const entryCalculator = (entrants) => {
   if (entrants && Object.keys(entrants).length > 0) {
     return Object.keys(entrants).reduce((acc, el) => (acc + (data.prices[el] * entrants[el])), 0);
   }
 
   return 0;
-}
+};
 
 function animalMap(options) {
   // seu código aqui
