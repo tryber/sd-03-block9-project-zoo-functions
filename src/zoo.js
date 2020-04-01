@@ -97,8 +97,8 @@ function entryCalculator(entrants) {
 }
 
 /* function animalMap(options) {
-  // seu código 
-  
+  // seu código
+
   const locais = {
     NE: [],
     NW: [],
@@ -132,7 +132,6 @@ function entryCalculator(entrants) {
   }
 
   if (options.includeNames === true) {
-    
     return allNames;
   }
 
@@ -155,7 +154,7 @@ function oldestFromFirstSpecies(id) {
 function increasePrices(percentage) {
   // seu código aqui
   const { Adult, Child, Senior } = data.prices;
-  const mult = (percentage/100) + 1;
+  const mult = (percentage / 100) + 1;
 
   const AdultM = Math.round(100 * Adult * mult) / 100;
   const ChildM = Math.round(100 * Child * mult) / 100;
@@ -165,7 +164,7 @@ function increasePrices(percentage) {
     'Adult': AdultM,
     'Senior': SeniorM,
     'Child': ChildM,
-  }
+  };
   data.prices = total;
   console.log(total);
   return data.prices;
