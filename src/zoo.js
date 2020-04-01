@@ -99,9 +99,9 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
-  prices.Adult = Math.round(adultPrice * (1 + percentage / 100) * 100) / 100;
-  prices.Senior = Math.round(seniorPrice * (1 + percentage / 100) * 100) / 100;
-  prices.Child = Math.round(childPrice * (1 + percentage / 100) * 100) / 100;
+  prices.Adult = Math.round(adultPrice * (1 + (percentage / 100)) * 100) / 100;
+  prices.Senior = Math.round(seniorPrice * (1 + (percentage / 100)) * 100) / 100;
+  prices.Child = Math.round(childPrice * (1 + (percentage / 100)) * 100) / 100;
   return prices;
 }
 
