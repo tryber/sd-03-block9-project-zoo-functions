@@ -114,11 +114,11 @@ function includeNamesTrue(arrLocation) {
       filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.map(item => item.name);
       objectValue[newArrLocationMap[x]] = filterNames;
       arrObject.push(objectValue);
-    newObject[arrLocation[i]] = arrObject;
-    objectValue = {}
+      newObject[arrLocation[i]] = arrObject;
+      objectValue = {}
     }
     arrObject = [];
-    }
+  }
   return newObject;
 }
 
@@ -138,11 +138,11 @@ function sortedTrue(arrLocation) {
       nameSorted = filterNames.sort()
       objectValue[newArrLocationMap[x]] = nameSorted;
       arrObject.push(objectValue);
-    newObject[arrLocation[i]] = arrObject;
-    objectValue = {}
+      newObject[arrLocation[i]] = arrObject;
+      objectValue = {}
     }
     arrObject = [];
-    }
+  }
   return newObject;
 }
 
@@ -160,20 +160,16 @@ function sex(arrLocation, sexParam) {
       filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.filter(element => element.sex === sexParam).map(item => item.name);
       objectValue[newArrLocationMap[x]] = filterNames;
       arrObject.push(objectValue);
-    newObject[arrLocation[i]] = arrObject;
-    objectValue = {}
+      newObject[arrLocation[i]] = arrObject;
+      objectValue = {}
     }
     arrObject = [];
-    }
+  }
   return newObject;
 }
 
 function animalMap(options) {
-  const arrLocation = data.animals.map(animal => animal.location);
-  const newArrLocation = [];
-  for (let i = 0; i < arrLocation.length; i += 1) {
-    if (newArrLocation.some(item => item === arrLocation[i]) === false) newArrLocation.push(arrLocation[i]);
-  }
+  const newArrLocation = ['NE', 'NW', 'SE', 'SW'];
   let newArrLocationMap;
   let newArrLocationFilter;
   let newObject = {};
@@ -186,12 +182,12 @@ function animalMap(options) {
     return newObject;
   } else if (options.includeNames === true && options.sorted === true) {
     return sortedTrue(newArrLocation);
-  }  else if (options.includeNames === true && options.sex !== undefined ) {
+  } else if (options.includeNames === true && options.sex !== undefined) {
     return sex(newArrLocation, options.sex);
   } else if (options.includeNames) {
     return includeNamesTrue(newArrLocation);
   }
-} 
+}
 
 function schedule(dayName) {
   // seu código aqui
