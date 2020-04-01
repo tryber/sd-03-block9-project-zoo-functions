@@ -88,7 +88,7 @@ const getLocations = () => animals.map(({ location }) => location).reduce((acc, 
   return acc;
 }, {});
 
-const addAnimals = animalsLocation => {
+const addAnimals = (animalsLocation) => {
   animals.forEach(({ name, location }) => animalsLocation[location].push(name));
   return animalsLocation;
 };
