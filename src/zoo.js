@@ -98,7 +98,7 @@ function entryCalculator(entrants = {}) {
   return valorTotal;
 }
 
-function animalMap(options) {
+/* function animalMap(options) {
   // seu código aqui
   /* const nEast = animals.filter(local => (local.location === 'NE'));
   const nWest = animals.filter(local => (local.location === 'NW'));
@@ -119,7 +119,6 @@ function animalMap(options) {
 
 
   } */
-}
 
 function schedule(dayName) {
   // seu código aqui
@@ -145,7 +144,7 @@ function increasePrices(percentage) {
     'Adult': adultM,
     'Senior': seniorM,
     'Child': childM,
-  }
+  };
   data.prices = obje;
   return data.prices;
 }
