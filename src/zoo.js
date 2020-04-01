@@ -77,7 +77,7 @@ function fillAnimals(locations, sex, animalsNames) {
   });
 }
 
-function sortAnimals(locations){
+function sortAnimals(locations) {
   Object.keys(locations).forEach((location) => {
     locations[location].forEach((animal) => {
       animal[Object.keys(animal)[0]] = Object.values(animal)[0].sort();
@@ -85,19 +85,16 @@ function sortAnimals(locations){
   });
 }
 
-
-
 const animalsNames = (desireAnimal, desireSex) => {
   const animals = data.animals.find(({ name }) => name === desireAnimal)
     .residents;
-    if (desireSex) {
-      return animals
-        .filter(({ sex }) => sex === desireSex)
-        .reduce((acc, { name }) => acc.concat(name), []);
-    }
-    return animals.reduce((acc, { name }) => acc.concat(name), []);
-  };
-
+  if (desireSex) {
+    return animals
+      .filter(({ sex }) => sex === desireSex)
+      .reduce((acc, { name }) => acc.concat(name), []);
+  }
+  return animals.reduce((acc, { name }) => acc.concat(name), []);
+};
 
 function animalMap(options) {
   const locations = {
@@ -114,11 +111,9 @@ function animalMap(options) {
   Object.keys(locations).forEach(findAnimals);
 
   if (options && options.includeNames) {
-
     fillAnimals(locations, options.sex, animalsNames);
 
     if (options.sorted) {
-
       sortAnimals(locations);
     }
   }
