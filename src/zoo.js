@@ -40,17 +40,15 @@ function isManager(id) {
   return employees.some(element =>
     element.managers.find(managerId => managerId === id),
   );
-};
-
-const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = [],) => {
-  return employees.push({
-    id,
-    firstName,
-    lastName,
-    managers,
-    responsibleFor,
-  });
 }
+
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>  employees.push({
+  id,
+  firstName,
+  lastName,
+  managers,
+  responsibleFor,
+});
 
 const animalCount = (species) => {
   if (species) {
@@ -61,7 +59,7 @@ const animalCount = (species) => {
     todosAnimais[animal.name] = animal.residents.length;
   });
   return todosAnimais;
-}
+};
 
 const entryCalculator = (entrants) => {
   const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
@@ -70,7 +68,7 @@ const entryCalculator = (entrants) => {
     return (Adult * adultPrice) + (Child * childPrice) + (Senior * seniorPrice);
   }
   return 0;
-}
+};
 
 function animalMap(options) {
   // seu código aqui
@@ -92,7 +90,7 @@ const oldestFromFirstSpecies = (id) => {
     .find(animal => animal.id === funcionario.responsibleFor[0])
     .residents.sort((a, b) => b.age - a.age);
   return [responsible[0].name, responsible[0].sex, responsible[0].age];
-}
+};
 
 function increasePrices(percentage) {
   // seu código aqui
