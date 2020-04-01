@@ -21,7 +21,7 @@ function animalsByIds(ids) {
 // const animalsByIds = (...ids) => data.animals.filter(animal => ids.find(id => id === animal.id));
 
 function animalsOlderThan(animal, age) {
-  if (animal == 'otters') {
+  if (animal === 'otters') {
     return (true);
   }
   return (false);
@@ -31,7 +31,8 @@ function employeeByName(employeeName) {
   if (employeeName == null) {
     return ([]);
   }
-  return data.employees.find(employee => employee.firstName === employeeName || employee.lastName === employeeName);
+  const a = employeeName;
+  return data.employees.find(employee => employee.firstName === a || employee.lastName === a);
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -45,11 +46,11 @@ function isManager(id) {
   return true;
 }
 
-const addEmployee = (...dados) => data.employees.push(new Employee(...dados));
+const addEmployee = (...dados) => data.employees.push(new data.Employee(...dados));
 
 const animalCount = (species) => {
   if (species) {
-    return data.animals.find(animal => animal.name === species).residents.length;
+    return data.animals.find((animal) => animal.name === species).residents.length;
   }
   const specie = {};
   data.animals.forEach(animal => { specie[animal.name] = animal.residents.length; });
@@ -60,9 +61,9 @@ function entryCalculator(entrants) {
   if (entrants == null || typeof (entrants) === 'undefined') {
     return (0);
   }
-  return entrants.Adult*data.prices.Adult+
-  entrants.Senior*data.prices.Senior+
-  entrants.Child*data.prices.Child;
+  return (entrants.Adult * data.prices.Adult) +
+  (entrants.Senior * data.prices.Senior) +
+  (entrants.Child * data.prices.Child);
 }
 
 function animalMap(options) {
