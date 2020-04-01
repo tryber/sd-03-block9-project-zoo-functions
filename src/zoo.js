@@ -11,8 +11,11 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const animalsByIds = (ids) => {
-  data.animals.filter(idAnimal => ids.find(id => id === idAnimal.id));
+const animalsByIds = (...ids) => {
+  if (ids) {
+    return animals.filter(animal => ids.find(id => id === animal.id));
+  }
+  return [];
 };
 
 const animalsOlderThan = (animal, age) => {
@@ -33,39 +36,62 @@ const createEmployee = (personalInfo, associatedWith) => ({
   ...associatedWith,
 });
 
-const isManager = (id) => {
-  data.employees.some(e => e.managers.find(i => i === id));
+function isManager(id) {
+  return employees.some(element =>
+    element.managers.find(managerId => managerId === id),
+  );
 };
 
-const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
-  const trabalho = 'employees';
-  return trabalho.push({
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = [],) => {
+  return employees.push({
     id,
     firstName,
     lastName,
     managers,
     responsibleFor,
   });
-};
-
-function animalCount(species) {
-  // seu código aqui
 }
 
-function entryCalculator(entrants) {
-  // seu código aqui
+const animalCount = (species) => {
+  if (species) {
+    return animals.find(animal => animal.name === species).residents.length;
+  }
+  const todosAnimais = {};
+  animals.forEach((animal) => {
+    todosAnimais[animal.name] = animal.residents.length;
+  });
+  return todosAnimais;
+}
+
+const entryCalculator = (entrants) => {
+  const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
+  if (entrants && Object.keys(entrants).length > 0) {
+    const { Adult, Child, Senior } = entrants;
+    return (Adult * adultPrice) + (Child * childPrice) + (Senior * seniorPrice);
+  }
+  return 0;
 }
 
 function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
-}
+const schedule = (dayName) => {
+  const sch = {};
+  if (dayName) {
+    sch[dayName] = legibleSchedule(dayName);
+    return sch;
+  }
+  Object.keys(data.hours).forEach((e) => { sch[e] = legibleSchedule(e); });
+  return sch;
+};
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
+const oldestFromFirstSpecies = (id) => {
+  const funcionario = employees.find(employee => employee.id === id);
+  const responsible = animals
+    .find(animal => animal.id === funcionario.responsibleFor[0])
+    .residents.sort((a, b) => b.age - a.age);
+  return [responsible[0].name, responsible[0].sex, responsible[0].age];
 }
 
 function increasePrices(percentage) {
