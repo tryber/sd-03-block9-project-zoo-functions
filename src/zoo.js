@@ -13,7 +13,8 @@ const data = require('./data');
 
 function animalsByIds(...ids) {
   if (ids) {
-    return animalsByIds.filter(animal => ids.find(id => id === animal.id));
+    const animals = data.animals;
+    return animals.filter(animal => ids.find(id => id === animal.id));
   }
   return [];
 }
