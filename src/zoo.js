@@ -75,9 +75,19 @@ function animalCount(species) {
   return allAnimals;
 }
 
-function entryCalculator(entrants) {
-  // seu código aqui
-}
+// Returna 0 se nenhum argumento for passado
+// Retorna 0 se um objeto vazio for passado
+// Retorna o preço total a ser cobrado dado o número de adultos, crianças e idosos
+
+const assert = require('assert');
+
+const entryCalculator = entrants => {
+  if (!entrants || Object.keys(entrants).length === 0) return 0;
+  return Object.entries(entrants).reduce(
+    (valor, entrant) => valor + entrant[1] * data.prices[entrant[0]],
+    0,
+  );
+};
 
 function animalMap(options) {
   // seu código aqui
