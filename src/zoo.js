@@ -54,9 +54,9 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
 const animalCount = (species) => {
   let answer = {};
   if (species) {
-    answer = animals.find(group1 => species == group1.name).residents.length;
+    answer = animals.find(group1 => species === group1.name).residents.length;
   } else {
-    animals.map(group2 => answer[group2.name] = group2.residents.length);
+    animals.map((group2) => {answer[group2.name] = group2.residents.length});
   }
   return answer;
 };
