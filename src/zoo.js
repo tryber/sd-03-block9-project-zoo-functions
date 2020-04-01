@@ -110,9 +110,9 @@ function animalMap(options = {}) {
   return addAnimals(animalsLocation);
 }
 
-const pickDay = day => {
+const pickDay = (day) => {
   return day === 'Monday' ? 'CLOSED' : `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
-}
+};
 
 function schedule(dayName) {
   const dayObject = {};
@@ -120,8 +120,8 @@ function schedule(dayName) {
     dayObject[dayName] = pickDay(dayName);
     return dayObject;
   }
-  Object.keys(hours).forEach(day => {
-    dayObject[day] = pickDay(day)
+  Object.keys(hours).forEach((day) => {
+    dayObject[day] = pickDay(day);
   });
   return dayObject;
 }
