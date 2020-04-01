@@ -75,21 +75,25 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
     responsibleFor: arrayResponsibleFor,
   });
 }
-
+const listarNomes = () => {
+  const nomes = {};
+  let nome;
+  for (let i = 0; i < animals.length; i += 1) {
+    nome = animals[i].name;
+    nomes[nome] = animals[i].residents.length;
+  }
+  return nomes;
+}
 function animalCount(species) {
-  let nomes = {};
   if (!species) {
-    for (let i = 0; i < animals.length; i += 1) {
-      nome = animals[i].name; 
-      nomes[nome] = animals[i].residents.length;
-    }
-    return nomes;
+    return listarNomes();
   }
   for (let i = 0; i < animals.length; i += 1) {
     if (animals[i].name === species) {
       return animals[i].residents.length;
     }
   }
+  return;
 }
 /*
 function animalCount(species) {
