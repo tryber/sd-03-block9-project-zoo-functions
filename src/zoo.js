@@ -1,12 +1,13 @@
-//eslint no-unused-vars: [
-//   "error",
-//   {
-//     "args": "none",
-//     "vars": "local",
-//     "varsIgnorePattern": "data"
-//   }
-// ]
-
+/*
+eslint no-unused-vars: [
+  "error",
+  {
+    "args": "none",
+    "vars": "local",
+    "varsIgnorePattern": "data"
+  }
+]
+*/
 
 const data = require('./data');
 
