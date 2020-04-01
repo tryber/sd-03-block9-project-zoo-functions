@@ -26,6 +26,10 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   // seu código aqui
+  if (arguments.length === 0) return {};
+  const findfirst = dado => data.employees.find(ani => ani.firstName === dado);
+  const findlast = dado => data.employees.find(ani => ani.lastName === dado);
+  return findfirst(employeeName) || findlast(employeeName);
 }
 
 function createEmployee(personalInfo, associatedWith) {
