@@ -26,7 +26,8 @@ const animalsOlderThan = (animal, age) => {
 };
 
 const employeeByName = (employeeName) => {
-  const test = data.employees.find(teste => teste.firstName === employeeName
+  const employees = data.employees;
+  const test = employees.find(teste => teste.firstName === employeeName
     || teste.lastName === employeeName)
     || {};
   return test;
@@ -43,7 +44,8 @@ function isManager(id) {
   );
 }
 
-const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>  employees.push({
+const addEmployee =
+ (id,firstName,lastName,managers = [], responsibleFor = []) => employees.push({
   id,
   firstName,
   lastName,
