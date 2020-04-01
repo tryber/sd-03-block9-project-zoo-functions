@@ -161,9 +161,9 @@ function increasePrices(percentage) {
   const SeniorM = Math.round(100 * Senior * mult) / 100;
 
   const total = {
-    'Adult': AdultM,
-    'Senior': SeniorM,
-    'Child': ChildM,
+    Adult: AdultM,
+    Senior: SeniorM,
+    Child: ChildM,
   };
   data.prices = total;
   console.log(total);
