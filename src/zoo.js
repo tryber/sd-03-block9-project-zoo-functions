@@ -83,7 +83,7 @@ const listarNomes = () => {
     nomes[nome] = animals[i].residents.length;
   }
   return nomes;
-}
+};
 function animalCount(species) {
   if (!species) {
     return listarNomes();
@@ -93,7 +93,7 @@ function animalCount(species) {
       return animals[i].residents.length;
     }
   }
-  return;
+  return undefined;
 }
 /*
 function animalCount(species) {
