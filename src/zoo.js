@@ -16,14 +16,18 @@ function animalsByIds(...ids) {
   if (ids === undefined) return [];
   const identifiedAnimals = [];
   // {id} é um object destructing;
-  const animalsData = animalsIds => data.animals.find(({ id }) => animalsIds === id);
+  const animalsData = animalsIds =>
+    data.animals.find(({ id }) => animalsIds === id);
   ids.forEach(id => identifiedAnimals.push(animalsData(id)));
 
   return identifiedAnimals;
 }
 
-function animalsOlderThan(animal, age) {
+function animalsOlderThan(animal, animalAge) {
   // seu código aqui
+  return data.animals
+    .find(({ name }) => animal === name)
+    .residents.every(({ age }) => age >= animalAge);
 }
 
 function employeeByName(employeeName) {
