@@ -104,8 +104,8 @@ function animalMap(options) {
     });
 
     if (options.sorted) {
-      Object.keys(locations).forEach((location) =>{
-        locations[location].forEach(animal => {
+      Object.keys(locations).forEach((location) => {
+        locations[location].forEach((animal) => {
           animal[Object.keys(animal)[0]] = Object.values(animal)[0].sort();
         });
       });
@@ -137,7 +137,7 @@ function oldestFromFirstSpecies(idf) {
     .responsibleFor[0];
   const oldestAnimal = data.animals
     .find(({ id }) => id === animalId)
-    .residents.reduce((oldest, animal) => oldest.age > animal.age ? oldest : animal);
+    .residents.reduce((oldest, animal) => {return oldest.age > animal.age ? oldest : animal});
   return Object.values(oldestAnimal);
 }
 
@@ -145,20 +145,20 @@ function increasePrices(percentage) {
   data.prices = Object.entries(data.prices).reduce(
     (acc, e) => Object.assign(acc, {
       [e[0]]:
-          Math.round(data.prices[e[0]] * (1 + percentage / 100) * 100) / 100,
+          Math.round(data.prices[e[0]] * (1 + (percentage / 100)) * 100) / 100,
     }),
     {},
   );
 }
 
 function employeeCoverage(par) {
-  const employeer = (idOrName) => data.employees.find(
-    (employee) => employee.id === idOrName
+  const employeer = idOrName => data.employees.find(
+    employee => employee.id === idOrName
         || employee.firstName === idOrName
         || employee.lastName === idOrName,
   );
-  const animals = (id) => animalsByIds(...id).reduce((acc, animal) => acc.concat(animal.name), []);
-  const returned = (idName) => ({
+  const animals = id => animalsByIds(...id).reduce((acc, animal) => acc.concat(animal.name), []);
+  const returned = idName => ({
     [`${employeer(idName).firstName} ${employeer(idName).lastName}`]: animals(
       employeer(idName).responsibleFor,
     ),
