@@ -67,15 +67,37 @@ function entryCalculator(entrants) {
   );
 }
 
-function fillAnimals(locations,sex,animalsNames) {
+function fillAnimals(locations, sex, animalsNames) {
   Object.entries(locations).forEach((element) => {
     const object = element[1].reduce((acc, animal) => {
-      const animalNamesObject = { [animal]: animalsNames(animal,sex) };
+      const animalNamesObject = { [animal]: animalsNames(animal, sex) };
       return acc.concat(animalNamesObject);
     }, []);
     locations[element[0]] = object;
   });
 }
+
+function sortAnimals(locations){
+  Object.keys(locations).forEach((location) => {
+    locations[location].forEach((animal) => {
+      animal[Object.keys(animal)[0]] = Object.values(animal)[0].sort();
+    });
+  });
+}
+
+
+
+const animalsNames = (desireAnimal, desireSex) => {
+  const animals = data.animals.find(({ name }) => name === desireAnimal)
+    .residents;
+    if (desireSex) {
+      return animals
+        .filter(({ sex }) => sex === desireSex)
+        .reduce((acc, { name }) => acc.concat(name), []);
+    }
+    return animals.reduce((acc, { name }) => acc.concat(name), []);
+  };
+
 
 function animalMap(options) {
   const locations = {
@@ -92,29 +114,12 @@ function animalMap(options) {
   Object.keys(locations).forEach(findAnimals);
 
   if (options && options.includeNames) {
-    const animalsNames = (desireAnimal, desireSex) => {
-      const animals = data.animals.find(({ name }) => name === desireAnimal)
-        .residents;
 
-      if (desireSex) {
-        return animals
-          .filter(({ sex }) => sex === desireSex)
-          .reduce((acc, { name }) => acc.concat(name), []);
-      }
-      return animals.reduce((acc, { name }) => acc.concat(name), []);
-    };
-
-    fillAnimals(locations,options.sex,animalsNames);
+    fillAnimals(locations, options.sex, animalsNames);
 
     if (options.sorted) {
-      function sortAnimals(){
-        Object.keys(locations).forEach((location) => {
-          locations[location].forEach((animal) => {
-            animal[Object.keys(animal)[0]] = Object.values(animal)[0].sort();
-          });
-        });
-      }
-      sortAnimals();
+
+      sortAnimals(locations);
     }
   }
   return locations;
