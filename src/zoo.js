@@ -23,17 +23,17 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  const animalSelecionado = (name) =>
+  const animalSelecionado = name =>
     data.animals.filter(element => element.name === name);
 
   const animalSelecionadoLista = animalSelecionado(animal);
-    
+
   const idadeAnimalLista = animalSelecionadoLista[0].residents.reduce(
-    (accumulator,element) => {
+    (accumulator, element) => {
       accumulator.push(element.age);
       return accumulator;
-    },[]);
-  
+    }, []);
+
   return idadeAnimalLista.every(element => element >= age);
 }
 
