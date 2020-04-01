@@ -26,8 +26,8 @@ function animalsByIds(...ids) {
   return identifiedAnimals;
 }
 
-/* Ao passar o nome de uma espécie e uma idade, testa se todos os 
- animais desta espécie possuem a idade mínima especificada. */
+/*Ao passar o nome de uma espécie e uma idade, testa se todos os 
+ animais desta espécie possuem a idade mínima especificada.*/
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
