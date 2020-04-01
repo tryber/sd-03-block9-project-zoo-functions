@@ -81,11 +81,10 @@ function animalMap(options) {
   // seu código aqui
 }
 
-const legibleSchedule = day => ((day === 'Monday')
+const legibleSchedule = (dia) => ((dia === 'Monday')
   ? 'CLOSED'
-  : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
+  : `Open from ${data.hours[dia].open}am until ${data.hours[dia].close - 12}pm`);
 const schedule = (dayName) => {
-  const legibleSchedule = data.legibleSchedule;
   const sch = {};
   if (dayName) {
     sch[dayName] = legibleSchedule(dayName);
