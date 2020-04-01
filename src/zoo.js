@@ -49,13 +49,13 @@ const schedule = (dayName) => {
   const o = {};
   if (dayName === undefined) {
     Object.keys(data.hours)
-    .forEach(e => {
+    .forEach((e) => {
       o[e] = ((e) === 'Monday') ? 'CLOSED' :
-      `Open from ${data.hours[e].open}am until ${data.hours[e].close - 12}pm`
-      });
+      `Open from ${data.hours[e].open}am until ${data.hours[e].close - 12}pm`;
+    });
   return o;
   }
-  Object.keys(data.hours).find(el => el === dayName) === 'Monday' ? o[dayName] = `CLOSED`:
+  Object.keys(data.hours).find(el => el === dayName) === 'Monday' ? o[dayName] = 'CLOSED' :
   o[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
   return o;
 };
