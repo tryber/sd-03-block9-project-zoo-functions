@@ -27,7 +27,7 @@ const animalsByIds = (...ids) => {
 // usar se for testar a chamada da função com Run Code
 // const data = require('./data');
 const animalsOlderThan = (specie, age) => {
-  return data.animals.find(e => e.name === specie).residents.every(e => e.age >= age);
+  data.animals.find(e => e.name === specie).residents.every(e => e.age >= age);
 };
 // usar se for testar a chamada da função com Run Code
 // console.log(animalsOlderThan('penguins', 10));
