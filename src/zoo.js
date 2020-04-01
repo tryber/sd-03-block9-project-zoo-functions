@@ -68,9 +68,9 @@ const getResidentsName = (animal, sorted, sex) => {
 const animalMap = (options = {}) => {
   const { includeNames, sex, sorted } = options;
   const asw = {};
-  data.animals.forEach(animal => {
+  data.animals.forEach((animal) => {
     asw[animal.location] = data.animals.filter(e => e.location
-    === animal.location).map(e => {
+    === animal.location).map((e) => {
       if (!includeNames) return e.name;
       return getResidentsName(e.name, sorted, sex);
     });
