@@ -21,7 +21,6 @@ const employeeByName = employeeName => (employeeName === undefined ? {} : data.e
 
 const createEmployee = (personalInfo, asso) => Object.assign({}, personalInfo, asso);
 
-createEmployee(personalInfo,associatedWith)
 const isManager = id => data.employees.some(ele => ele.managers.find(al => al === id));
 
 const addEmployee = (id, firstName = [], lastName = [], managers = [], responsibleFor = []) => {
@@ -47,19 +46,18 @@ function animalMap(options) {
 }
 
 const schedule = (dayName) => {
-  let o = {};
-  if (dayName === undefined){
+  const o = {};
+  if (dayName === undefined) {
     Object.keys(data.hours)
     .forEach(e => {
-      o[e] = (e === 'Monday') ? 'CLOSED' :
+      o[e] = ((e) === 'Monday') ? 'CLOSED' :
       `Open from ${data.hours[e].open}am until ${data.hours[e].close - 12}pm`
       });
-    return o;
-  }else{
-    Object.keys(data.hours).find(el=>el === dayName) === 'Monday' ? o[dayName]=`CLOSED`:
-    o[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`
-    return o;
-  };
+  return o;
+  }
+  Object.keys(data.hours).find(el => el === dayName) === 'Monday' ? o[dayName] = `CLOSED`:
+  o[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
+  return o;
 };
 
 function oldestFromFirstSpecies(id) {
