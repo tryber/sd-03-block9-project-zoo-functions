@@ -15,19 +15,19 @@ const animalsByIds = (...ids) => {
   if (ids.length === 0) {
     return ids;
   } if (ids.length === 1) {
-    const loc1 = data.animals.filter((elemento) => elemento.id === ids[0]);
+    const loc1 = data.animals.filter(elemento => elemento.id === ids[0]);
     return loc1;
   }
-  const loc2 = data.animals.filter((elemento) => elemento.id === ids[0] || elemento.id === ids[1]);
+  const loc2 = data.animals.filter(elemento => elemento.id === ids[0] || elemento.id === ids[1]);
   return loc2;
 };
 // usar se for testar a chamada da função com Run Code
-// console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce')); // spread operator então posso chamar a função com n parâmetros
+// console.log(animalsByIds(''))
 
 // usar se for testar a chamada da função com Run Code
 // const data = require('./data');
 const animalsOlderThan = (specie, age) => {
-  return data.animals.find((e) => e.name === specie).residents.every((e) => e.age >= age);
+  return data.animals.find(e => e.name === specie).residents.every(e => e.age >= age);
 };
 // usar se for testar a chamada da função com Run Code
 // console.log(animalsOlderThan('penguins', 10));
