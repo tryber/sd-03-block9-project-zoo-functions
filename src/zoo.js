@@ -46,7 +46,7 @@ function isManager(id) {
   return true;
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor){
+function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 
 }
 // const addEmployee = (...dados) => data.employees.push(new Employee(...dados));
@@ -73,7 +73,7 @@ function animalMap(options) {
   // seu código aqui
 }
 
-const schedule = (dayName) => `${dayName}: Open from ${data.hours.dayName.open}am until ${data.hours.dayName.close - 12}pm`;
+const schedule = dayName => `${dayName}: Open from ${data.hours.dayName.open}am until ${data.hours.dayName.close - 12}pm`;
 
 function oldestFromFirstSpecies(id) {
   if (id === '9e7d4524-363c-416a-8759-8aa7e50c0992') {
@@ -83,7 +83,7 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  return data.prices.forEach((valor) => (valor *= 1 + (percentage / 100)));
+  return data.prices.forEach(valor => (valor *= 1 + (percentage / 100)));
 }
 
 function employeeCoverage(idOrName) {
