@@ -83,8 +83,36 @@ function entryCalculator(entrants = {}) {
   return total;
 }
 
-function animalMap(options) {
+function animalMap(options = {}) {
   // seu código aqui
+  const { includeNames = false, sex = '', sorted = false } = options;
+  function transformObj(name, sex, residents) {
+      const specieNames = residents.reduce((obj, { name: animalName, sex: animalSex }) => {
+      if (obj[name] === undefined) obj[name] = [];
+
+      if (sex !== 'male' && animalSex !== 'male') {
+        obj[name].push(animalName);
+      } else if (sex !== 'female' && animalSex !== 'female') {
+        obj[name].push(animalName);
+      }
+
+      return obj;
+    }, {});
+
+    if (sorted === true) specieNames[name].sort();
+
+    return specieNames;
+  }
+
+  const info = { NE:[], NW:[], SE:[], SW:[], };
+  data.animals.forEach(({ name, location, residents }) => {
+    if (includeNames) {
+      name = transformObj(name, sex, residents);
+    }
+    info[location].push(name);
+  });
+
+  return info;
 }
 
 function schedule(dayName) {
