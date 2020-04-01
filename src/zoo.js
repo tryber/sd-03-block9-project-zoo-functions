@@ -30,11 +30,8 @@ const animalsOlderThan = (animal, age) => data.animals.find(
     element => element.age >= age
   );
 
-console.log(animalsOlderThan('otters', 7));
-
-function employeeByName(employeeName) {
-  // seu código aqui
-}
+const employeeByName = employeeName => data.employees.find(
+  element => element.firstName === employeeName || element.lastName === employeeName) || {};
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
