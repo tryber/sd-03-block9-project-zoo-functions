@@ -91,14 +91,33 @@ function entryCalculator(entrants) {
   if (!entrants || Object.entries(entrants).length === 0) {
     return 0;
   }
-  const {Adult : precoA, Child : precoC, Senior : precoS} = entrants;
+  const { Adult: precoA, Child: precoC, Senior: precoS } = entrants;
 
   const total = (Adult * precoA) + (Child * precoC) + (Senior * precoS);
-  return total
+  return total;
 }
 
 function animalMap(options) {
   // seu código aqui
+  if (!options) {
+    const localNE = animals.filter(local => (local.location === 'NE')
+    ).map(animal => animal.name);
+    const localNW = animals.filter(local => (local.location === 'NW')
+    ).map(animal => animal.name);
+    const localSE = animals.filter(local => (local.location === 'SE')
+    ).map(animal => animal.name);
+    const localSW = animals.filter(local => (local.location === 'SW')
+    ).map(animal => animal.name);
+
+    const allLocal = {
+      NE: localNE,
+      NW: localNW,
+      SE: localSE,
+      SW: localSW,
+    };
+    return allLocal
+  }
+
 }
 
 function schedule(dayName) {
