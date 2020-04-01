@@ -26,7 +26,7 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return {...personalInfo, ...associatedWith};
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
@@ -35,16 +35,16 @@ function isManager(id) {
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  return data.employees.push({id, firstName, lastName, managers, responsibleFor});
+  return data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
-  return 
-  const reduceAnimals = (acc, species) => {
-    if (species) return ` ${species.name} ${acc}`;
-      return data.animals.every(
-        animal => animal.find(animal => animal.name === species).residents.lenght);
-  };
+  // return 
+  // const reduceAnimals = (acc, species) => {
+  //   if (species) return ` ${species.name} ${acc}`;
+  //     return data.animals.every(
+  //       animal => animal.find(animal => animal.name === species).residents.lenght);
+  // };
 }
 
 function entryCalculator(entrants) {
@@ -65,7 +65,7 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   Object.keys(data.prices).forEach((value) => {
-    (data.prices[value] = Math.round(data.prices[value] * (1 + percentage / 100) * 100) / 100); // https://metring.com.br/arredondar-numero-em-javascript
+    (data.prices[value] = Math.round(data.prices[value] * (1 + (percentage / 100)) * 100) / 100); // https://metring.com.br/arredondar-numero-em-javascript
   });
 }
 
