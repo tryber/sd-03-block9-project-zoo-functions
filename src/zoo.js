@@ -22,9 +22,24 @@ function animalsByIds(...ids) {
 // animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce','e8481c1d-42ea-4610-8e11-1752cfc05a46');
 // animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce');
 
-function animalsOlderThan(animal, age) {
-  // testes
+
+
+function animalsOlderThan(especie, age) {
+  const animals = data.animals;
+  let bool = true;
+
+  animals.forEach(element => {
+    if (element.name === especie) {
+      element.residents.forEach(arr => {
+        if (arr.age < age) {
+          bool = false;
+        }
+      });       
+    }        
+  }); 
+  return bool; 
 }
+// console.log(animalsOlderThan('penguins', 10));
 
 function employeeByName(employeeName) {
   // seu código aqui
