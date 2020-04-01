@@ -26,7 +26,7 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  return {...personalInfo, ...associatedWith};
 }
 
 function isManager(id) {
@@ -34,12 +34,17 @@ function isManager(id) {
     occupation => occupation.managers.find(manager => manager === id));
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  return data.employees.push({id, firstName, lastName, managers, responsibleFor});
 }
 
 function animalCount(species) {
-  // seu código aqui
+  return 
+  const reduceAnimals = (acc, species) => {
+    if (species) return ` ${species.name} ${acc}`;
+      return data.animals.every(
+        animal => animal.find(animal => animal.name === species).residents.lenght);
+  };
 }
 
 function entryCalculator(entrants) {
@@ -59,7 +64,9 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  Object.keys(data.prices).forEach((value) => {
+    (data.prices[value] = Math.round(data.prices[value] * (1 + percentage / 100) * 100) / 100); // https://metring.com.br/arredondar-numero-em-javascript
+  });
 }
 
 function employeeCoverage(idOrName) {
