@@ -114,7 +114,7 @@ const pickDay = (day) => {
   if (day === 'Monday') {
     return 'CLOSED';
   }
-  return  `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`; 
+  return `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
 };
 
 function schedule(dayName) {
