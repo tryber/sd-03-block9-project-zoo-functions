@@ -100,7 +100,7 @@ function entryCalculator(entrants) {
   return somaPreço;
 }
 
-function includeNamesTrue(arrLocation) {
+/* function includeNamesTrue(arrLocation) {
   let newArrLocationMap;
   let newArrLocationFilter;
   let newObject = {};
@@ -187,7 +187,7 @@ function animalMap(options) {
   } else if (options.includeNames) {
     return includeNamesTrue(newArrLocation);
   }
-}
+} */
 
 function schedule(dayName) {
   // seu código aqui
