@@ -10,10 +10,11 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const dA = data.animals
 
-const animalsByIds = (...ids) => data.animals.filter(animId => ids.find(id => id === animId.id));
+const animalsByIds = (...ids) => dA.filter(animId => ids.find(id => id === animId.id));
 
-const animalsOlderThan = (animal, age) => data.animals.find(anim => anim.name === animal).residents
+const animalsOlderThan = (animal, age) => dA.find(anim => anim.name === animal).residents
   .every(animIdade => animIdade.age > age);
 
 const employeeByName = employeeName => (employeeName === undefined ? {} : data.employees
@@ -30,9 +31,15 @@ const addEmployee = (id, firstName = [], lastName = [], managers = [], responsib
       { responsibleFor }));
 };
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount = (species) => {
+  if(species!==undefined){
+    return dA.find(el=>el.name===species).residents.length;
+  }else{
+    const result = {};
+    data.animals.forEach((e) => { result[e.name] = e.residents.length; });
+    return result;
+  };
+};
 
 function entryCalculator(entrants) {
   // seu código aqui
