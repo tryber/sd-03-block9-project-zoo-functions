@@ -110,7 +110,12 @@ function animalMap(options = {}) {
   return addAnimals(animalsLocation);
 }
 
-const pickDay = (day) => { return day === 'Monday' ? 'CLOSED' : `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`; };
+const pickDay = (day) => {
+  if (day === 'Monday') {
+    return 'CLOSED';
+  }
+  return  `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`; 
+};
 
 function schedule(dayName) {
   const dayObject = {};
