@@ -81,8 +81,10 @@ function entryCalculator(entrants) {
   return 0;
 }
 
+const getLocations = () => {}
+
 function animalMap(...options) {
-  
+  const animalsLocation = getLocations();
 }
 
 function schedule(dayName) {
