@@ -25,10 +25,9 @@ const createEmployee = (personalInfo, associatedWith) => {
 
 const isManager = id => data.employees.some(ele => ele.managers.find(al => al === id));
 
-const addEmployee = (id = [], firstName = [], lastName = [], managers = [], responsibleFor = []) => 
-{
+const addEmployee = (id = [], firstName = [], lastName = [], managers = [], responsibleFor = []) =>{
   data.employees.push(Object.assign({}, { id }, { firstName }, { lastName }, { managers },
-     { responsibleFor }));
+      { responsibleFor }));
 };
 
 function animalCount(species) {
