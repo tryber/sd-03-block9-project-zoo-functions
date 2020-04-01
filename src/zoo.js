@@ -103,7 +103,28 @@ const increasePrices = (percentage) => {
   });
 };
 
+const findResponsibleForAnimals = (e) => {
+  const asw = {};
+  asw[`${e.firstName} ${e.lastName}`] = e.responsibleFor
+    .map(id => data.animals
+      .find(animal => animal.id === id).name);
+  return asw;
+};
+
 const employeeCoverage = (idOrName) => {
+  const asw = {};
+  if (idOrName) {
+    Object.assign(asw, findResponsibleForAnimals(data.employees
+      .find(e => ((
+        e.id === idOrName)
+        || (e.firstName === idOrName)
+        || (e.lastName === idOrName)))));
+    return asw;
+  }
+  data.employees.forEach((e) => {
+    Object.assign(asw, findResponsibleForAnimals(e));
+  });
+  return asw;
 };
 
 module.exports = {
