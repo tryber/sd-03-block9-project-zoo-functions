@@ -81,6 +81,9 @@ function animalMap(options) {
   // seu código aqui
 }
 
+const legibleSchedule = day => ((day === 'Monday')
+  ? 'CLOSED'
+  : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
 const schedule = (dayName) => {
   const legibleSchedule = data.legibleSchedule;
   const sch = {};
@@ -101,9 +104,11 @@ const oldestFromFirstSpecies = (id) => {
   return [responsible[0].name, responsible[0].sex, responsible[0].age];
 };
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((e) => {
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
