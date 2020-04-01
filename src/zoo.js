@@ -61,19 +61,18 @@ const animalCount = (species) => {
   return answer;
 };
 
-function entryCalculator(entrants) {
+const entryCalculator = (entrants) => {
   if (entrants) {
-    if (Object.keys(entrants).length == 0) return 0;
+    if (Object.keys(entrants).length === 0) return 0;
     let answer = 0;
     Object.keys(entrants).forEach((v, i) => {
       Object.keys(prices).forEach((v2, i2) => {
-        if (v == v2) answer += Object.values(entrants)[i]*Object.values(prices)[i2];
+        if (v === v2) answer += Object.values(entrants)[i] * Object.values(prices)[i2];
       });
     });
     return answer;
-  } else {
-    return 0;
-  };
+  }
+  return 0;
 };
 
 function animalMap(options) {
