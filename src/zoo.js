@@ -82,15 +82,13 @@ function entryCalculator(entrants) {
 }
 
 const getLocations = () => animals.map(({ location }) => location).reduce((acc, location) => {
-    if (acc[location] === undefined) {
-      acc[location] = [];
+  if (acc[location] === undefined) {
+    acc[location] = [];
     }
-    return acc;
-  }, {});
+  return acc;
+}, {});
 
-const addAnimals = animalsLocation => {
-  return animals.forEach(({ name, location }) => animalsLocation[location].push(name));
-};
+const addAnimals = animalsLocation => animals.forEach(({ name, location }) => animalsLocation[location].push(name));
 
 function animalMap(options) {
   const animalsLocation = getLocations();
