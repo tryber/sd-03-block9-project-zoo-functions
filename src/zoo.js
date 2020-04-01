@@ -85,7 +85,7 @@ const oldestFromFirstSpecies = id => Object.values(data.animals
   .sort((a, b) => b.age - a.age)[0]);
 
 const increasePrices = (percentage) => {
-  Object.keys(data.prices).forEach(e => {
+  Object.keys(data.prices).forEach((e) => {
     (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
   });
 };
