@@ -23,7 +23,18 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  // sim
+  const animalSelecionado = (name) =>
+    data.animals.filter(element => element.name === name);
+
+  const animalSelecionadoLista = animalSelecionado(animal);
+    
+  const idadeAnimalLista = animalSelecionadoLista[0].residents.reduce(
+    (accumulator,element) => {
+      accumulator.push(element.age);
+      return accumulator;
+    },[]);
+  
+  return idadeAnimalLista.every(element => element >= age);
 }
 
 function employeeByName(employeeName) {
