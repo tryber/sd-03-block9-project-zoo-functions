@@ -103,7 +103,7 @@ function entryCalculator(entrants) {
 }
 
 function includeNamesTrue(arrLocation) {
-  let newArrLocationMap;
+  let nAlMic;
   let newArrLocationFilter;
   let newObject = {};
   let objectValue = {};
@@ -111,10 +111,10 @@ function includeNamesTrue(arrLocation) {
   let arrObject = []
   for (let i = 0; i < arrLocation.length; i += 1) {
     newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
-    newArrLocationMap = newArrLocationFilter.map(item => item.name);
-    for (let x = 0; x < newArrLocationMap.length; x += 1) {
-      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.map(item => item.name);
-      objectValue[newArrLocationMap[x]] = filterNames;
+    nAlMic = newArrLocationFilter.map(item => item.name);
+    for (let x = 0; x < nAlMic.length; x += 1) {
+      filterNames = newArrLocationFilter.filter(item => item.name === nAlMic[x])[0].residents.map(item => item.name);
+      objectValue[nAlMic[x]] = filterNames;
       arrObject.push(objectValue);
       newObject[arrLocation[i]] = arrObject;
       objectValue = {}
@@ -125,7 +125,7 @@ function includeNamesTrue(arrLocation) {
 }
 
 function sortedTrue(arrLocation) {
-  let newArrLocationMap;
+  let nAlMsor;
   let newArrLocationFilter;
   let newObject = {};
   let objectValue = {};
@@ -134,11 +134,11 @@ function sortedTrue(arrLocation) {
   let nameSorted;
   for (let i = 0; i < arrLocation.length; i += 1) {
     newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
-    newArrLocationMap = newArrLocationFilter.map(item => item.name);
-    for (let x = 0; x < newArrLocationMap.length; x += 1) {
-      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.map(item => item.name);
+    nAlMsor = newArrLocationFilter.map(item => item.name);
+    for (let x = 0; x < nAlMsor.length; x += 1) {
+      filterNames = newArrLocationFilter.filter(item => item.name === nAlMsor[x])[0].residents.map(item => item.name);
       nameSorted = filterNames.sort()
-      objectValue[newArrLocationMap[x]] = nameSorted;
+      objectValue[nAlMsor[x]] = nameSorted;
       arrObject.push(objectValue);
       newObject[arrLocation[i]] = arrObject;
       objectValue = {}
