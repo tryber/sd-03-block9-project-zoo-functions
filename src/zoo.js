@@ -32,12 +32,8 @@ const animalsOlderThan = (animal, age) => data.animals.find(
 const employeeByName = employeeName => data.employees.find(
   element => element.firstName === employeeName || element.lastName === employeeName) || {};
 
-const createEmployee = (personalInfo, associatedWith) => (
-  {
-    ...personalInfo, 
-    ...associatedWith,
-  }
-);
+const createEmployee = (personalInfo, associatedWith) => ({
+  ...personalInfo, ...associatedWith, });
 
 function isManager(id) {
   // seu código aqui
