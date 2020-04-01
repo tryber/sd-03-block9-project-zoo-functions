@@ -18,16 +18,14 @@ const animalsOlderThan = (animal, age) =>
 
 const employeeByName = employeeName =>
   data.employees.find(
-  emp => emp.firstName === employeeName || emp.lastName === employeeName,
-  ) || {};
+  emp => emp.firstName === employeeName || emp.lastName === employeeName, ) || {};
 
 const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
 
 const isManager = id => data.employees.some(m => m.managers.find(mId => mId === id));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>
+  data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 
 function animalCount(species) {
   // seu código aqui
