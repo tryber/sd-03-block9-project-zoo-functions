@@ -100,9 +100,98 @@ function entryCalculator(entrants) {
   return somaPreço;
 }
 
-function animalMap(options) {
-  // seu código aqui
+function includeNamesTrue(arrLocation) {
+  let newArrLocationMap;
+  let newArrLocationFilter;
+  let newObject = {};
+  let objectValue = {};
+  let filterNames;
+  let arrObject = []
+  for (let i = 0; i < arrLocation.length; i += 1) {
+    newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
+    newArrLocationMap = newArrLocationFilter.map(item => item.name);
+    for (let x = 0; x < newArrLocationMap.length; x += 1) {
+      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.map(item => item.name);
+      objectValue[newArrLocationMap[x]] = filterNames;
+      arrObject.push(objectValue);
+    newObject[arrLocation[i]] = arrObject;
+    objectValue = {}
+    }
+    arrObject = [];
+    }
+  return newObject;
 }
+
+function sortedTrue(arrLocation) {
+  let newArrLocationMap;
+  let newArrLocationFilter;
+  let newObject = {};
+  let objectValue = {};
+  let filterNames;
+  let arrObject = []
+  let nameSorted;
+  for (let i = 0; i < arrLocation.length; i += 1) {
+    newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
+    newArrLocationMap = newArrLocationFilter.map(item => item.name);
+    for (let x = 0; x < newArrLocationMap.length; x += 1) {
+      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.map(item => item.name);
+      nameSorted = filterNames.sort()
+      objectValue[newArrLocationMap[x]] = nameSorted;
+      arrObject.push(objectValue);
+    newObject[arrLocation[i]] = arrObject;
+    objectValue = {}
+    }
+    arrObject = [];
+    }
+  return newObject;
+}
+
+function sex(arrLocation, sexParam) {
+  let newArrLocationMap;
+  let newArrLocationFilter;
+  let newObject = {};
+  let objectValue = {};
+  let filterNames;
+  let arrObject = []
+  for (let i = 0; i < arrLocation.length; i += 1) {
+    newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
+    newArrLocationMap = newArrLocationFilter.map(item => item.name);
+    for (let x = 0; x < newArrLocationMap.length; x += 1) {
+      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.filter(element => element.sex === sexParam).map(item => item.name);
+      objectValue[newArrLocationMap[x]] = filterNames;
+      arrObject.push(objectValue);
+    newObject[arrLocation[i]] = arrObject;
+    objectValue = {}
+    }
+    arrObject = [];
+    }
+  return newObject;
+}
+
+function animalMap(options) {
+  const arrLocation = data.animals.map(animal => animal.location);
+  const newArrLocation = [];
+  for (let i = 0; i < arrLocation.length; i += 1) {
+    if (newArrLocation.some(item => item === arrLocation[i]) === false) newArrLocation.push(arrLocation[i]);
+  }
+  let newArrLocationMap;
+  let newArrLocationFilter;
+  let newObject = {};
+  for (let i = 0; i < newArrLocation.length; i += 1) {
+    newArrLocationFilter = data.animals.filter(animal => animal.location === newArrLocation[i]);
+    newArrLocationMap = newArrLocationFilter.map(item => item.name);
+    newObject[newArrLocation[i]] = newArrLocationMap;
+  }
+  if (options === undefined || options.includeNames === undefined) {
+    return newObject;
+  } else if (options.includeNames === true && options.sorted === true) {
+    return sortedTrue(newArrLocation);
+  }  else if (options.includeNames === true && options.sex !== undefined ) {
+    return sex(newArrLocation, options.sex);
+  } else if (options.includeNames) {
+    return includeNamesTrue(newArrLocation);
+  }
+} 
 
 function schedule(dayName) {
   // seu código aqui
