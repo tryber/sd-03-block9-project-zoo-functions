@@ -66,7 +66,7 @@ function entryCalculator(entrants) {
     0,
   );
 }
-
+//  Auxiliar Funcitons for animalMap Start
 function fillAnimals(locations, sex, animalsNames) {
   Object.entries(locations).forEach((element) => {
     const object = element[1].reduce((acc, animal) => {
@@ -95,7 +95,7 @@ const animalsNames = (desireAnimal, desireSex) => {
   }
   return animals.reduce((acc, { name }) => acc.concat(name), []);
 };
-
+//  Auxiliar Funcitons for animalMap End
 function animalMap(options) {
   const locations = {
     NE: [],
@@ -119,20 +119,19 @@ function animalMap(options) {
   }
   return locations;
 }
+function makeDay(day) {
+  function legibleHour(hour) {
+    if (hour < 12) return `${hour}am`;
+    if (hour === 12) return '12pm';
+    return `${hour - 12}pm`;
+  }
+  if (data.hours[day].open === data.hours[day].close) return 'CLOSED';
+  return `Open from ${legibleHour(data.hours[day].open)} until ${legibleHour(
+    data.hours[day].close,
+  )}`;
+}
 
 function schedule(dayName) {
-  function makeDay(day) {
-    function legibleHour(hour) {
-      if (hour < 12) return `${hour}am`;
-      if (hour === 12) return '12pm';
-      return `${hour - 12}pm`;
-    }
-    if (data.hours[day].open === data.hours[day].close) return 'CLOSED';
-    return `Open from ${legibleHour(data.hours[day].open)} until ${legibleHour(
-      data.hours[day].close,
-    )}`;
-  }
-
   if (dayName) return { [dayName]: makeDay(dayName) };
   return Object.keys(data.hours)
     .reduce((scheduleObject, day) => ({ ...scheduleObject, ...{ [day]: makeDay(day) } }), {});
