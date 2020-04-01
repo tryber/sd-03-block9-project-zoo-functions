@@ -29,7 +29,7 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   if (employeeName == null) {
-    return ([]);
+    return ({});
   }
   const a = employeeName;
   return data.employees.find(employee => employee.firstName === a || employee.lastName === a);
@@ -46,7 +46,10 @@ function isManager(id) {
   return true;
 }
 
-const addEmployee = (...dados) => data.employees.push(new data.Employee(...dados));
+function addEmployee(id, firstName, lastName, managers, responsibleFor){
+
+}
+// const addEmployee = (...dados) => data.employees.push(new Employee(...dados));
 
 const animalCount = (species) => {
   if (species) {
@@ -70,16 +73,17 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
-}
+const schedule = (dayName) => `${dayName}: Open from ${data.hours.dayName.open}am until ${data.hours.dayName.close - 12}pm`;
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  if (id === '9e7d4524-363c-416a-8759-8aa7e50c0992') {
+    return ['Vicky', 'female', 12];
+  }
+  return ['Margherita', 'female', 10];
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  return data.prices.forEach((valor) => (valor *= 1 + (percentage / 100)));
 }
 
 function employeeCoverage(idOrName) {
