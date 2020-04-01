@@ -24,16 +24,17 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return {...personalInfo, ...associatedWith}
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
   // seu código aqui
 }
 
-const addEmployee = () => { Object.assign(data.employees, addEmployee);
+const addEmployee = () => 
+  { Object.assign(data.employees, addEmployee)
   // seu código aqui
-}
+};
 
 function animalCount(species) {
   // seu código aqui
