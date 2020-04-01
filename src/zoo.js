@@ -65,7 +65,7 @@ const animalMap = (options) => {
   // console.log(asw);
 };
 
-const legibleSchedule = (day) => ((day === 'Monday')
+const legibleSchedule = day => ((day === 'Monday')
   ? 'CLOSED'
   : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
 
@@ -75,7 +75,7 @@ const schedule = (dayName) => {
     sch[dayName] = legibleSchedule(dayName);
     return sch;
   }
-  Object.keys(data.hours).forEach(e => { sch[e] = legibleSchedule(e); });
+  Object.keys(data.hours).forEach((e) => { sch[e] = legibleSchedule(e); });
   return sch;
 };
 
