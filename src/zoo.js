@@ -8,7 +8,7 @@ eslint no-unused-vars: [
   }
 ]
 */
-const data = require('./data');
+const data = require("./data");
 
 function animalsByIds(...ids) {
   if (ids) {
@@ -22,8 +22,18 @@ function animalsOlderThan(animal, age) {
   return findSpecie.residents.every(({ age: aAge }) => aAge >= age);
 }
 
+// Sem parâmetros, retorna um objeto vazio
+// Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
+// Quando provido o último nome do funcionário, retorna o objeto do funcionário
+
 function employeeByName(employeeName) {
-  // seu código aqui
+  if (employeeName) {
+    return data.employees.find(
+      ({ firstName, lastName }) =>
+       firstName === employeeName || lastName === employeeName
+    );
+  }
+  return {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -88,5 +98,5 @@ module.exports = {
   animalsOlderThan,
   oldestFromFirstSpecies,
   increasePrices,
-  createEmployee,
+  createEmployee
 };
