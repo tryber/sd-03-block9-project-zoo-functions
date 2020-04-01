@@ -67,17 +67,16 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   data.employees.push(novoFun);
 }
 
-const assert = require('assert');
 function animalCount(species) {
   // seu código aqui
-  if(!species) {
+  if (!species) {
     const obj = {};
     const ani = animals.map(animal => `${animal.name}`);
     const popula = animals.map(animal => animal.residents.length);
-    for (let i = 0; i < ani.length; i += 1){
+    for (let i = 0; i < ani.length; i += 1) {
       obj[ani[i]] = popula[i];
     }
-    return  obj;
+    return obj;
   }
 
   const anima = animals.filter(bicho => bicho.name === species);
