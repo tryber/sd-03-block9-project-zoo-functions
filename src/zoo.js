@@ -15,8 +15,6 @@ const [...animals] = data.animals;
 
 const [...employees] = data.employees;
 
-const { Adult, Child, Senior } = data.prices;
-
 function animalsByIds(...ids) {
   // seu código aqui
   if (ids.length === 0) {
@@ -88,6 +86,7 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  const { Adult, Child, Senior } = data.prices;
   if (!entrants || Object.entries(entrants).length === 0) {
     return 0;
   }
@@ -155,8 +154,22 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   // seu código aqui
-}
+  const { Adult, Child, Senior } = data.prices;
+  const mult = (percentage/100) + 1;
 
+  const AdultM = Math.round(100 * Adult * mult) / 100;
+  const ChildM = Math.round(100 * Child * mult) / 100;
+  const SeniorM = Math.round(100 * Senior * mult) / 100;
+
+  const total = {
+    'Adult': AdultM,
+    'Senior': SeniorM,
+    'Child': ChildM,
+  }
+  data.prices = total;
+  console.log(total);
+  return data.prices;
+}
 function employeeCoverage(idOrName) {
   // seu código aqui
 }
