@@ -50,7 +50,7 @@ function employeeByName(employeeName) {
     if (employeeName === element.firstName || employeeName === element.lastName) {
       return element;
     }
-  })
+  });
   return employee;
 }
 
@@ -59,7 +59,18 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  // seu código aqui
+  const employees = data.employees;
+  let idManager = false;
+
+  employees.find(element => {
+    return element.managers.find(item => {
+      if (item === id){
+        idManager = true;
+      }
+    });
+  });
+
+  return idManager;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
