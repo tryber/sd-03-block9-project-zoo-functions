@@ -63,10 +63,10 @@ function addEmployee(
 
 function animalCount(species) {
   if (species) {
-    return animals.find((animal) => animal.name === species).residents.length;
+    return animals.find(animal => animal.name === species).residents.length;
   }
   const allAnimals = {};
-  animals.forEach(animal => {
+  animals.forEach((animal) => {
     allAnimals[animal.name] = animal.residents.length;
   });
   return allAnimals;
@@ -81,8 +81,8 @@ function entryCalculator(entrants) {
   return 0;
 }
 
-function animalMap(options) {
-  // seu código aqui
+function animalMap(...options) {
+  
 }
 
 function schedule(dayName) {
