@@ -67,9 +67,9 @@ const schedule = (dayName) => {
     return myobj;
   }
 
-  Object.keys(data.hours).forEach((e) => {
-    myobj[e] = `Open from ${data.hours[e].open}am until ${data.hours[e].close - 12}pm`;
-    if (e === 'Monday') myobj[e] = 'CLOSED';
+  Object.keys(data.hours).forEach((el) => {
+    myobj[el] = `Open from ${data.hours[el].open}am until ${data.hours[el].close - 12}pm`;
+    if (el === 'Monday') myobj[el] = 'CLOSED';
   });
 
   return myobj;
@@ -79,9 +79,11 @@ function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((el) => {
+    (data.prices[el] = Math.round(data.prices[el] * ((percentage / 100) + 1) * 100) / 100);
+  });
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
