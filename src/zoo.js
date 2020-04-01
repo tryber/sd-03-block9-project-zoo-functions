@@ -21,13 +21,11 @@ const employeeByName = employeeName => (employeeName === undefined ? {} : data.e
 
 const createEmployee = (personalInfo, associatedWith) => {
   Object.assign({}, personalInfo, associatedWith);
-}
+};
 
 const isManager = id => data.employees.some(ele => ele.managers.find(al => al === id));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+const addEmployee = (id, firstName, lastName, managers, responsibleFor) =>
 
 function animalCount(species) {
   // seu código aqui
