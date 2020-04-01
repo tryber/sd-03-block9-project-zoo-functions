@@ -117,6 +117,31 @@ function animalMap(options = {}) {
 
 function schedule(dayName) {
   // seu código aqui
+  const legible = (obj, [ day, { open, close } ]) => {
+    let frase;
+
+    if (open === 0 && close === 0) frase = `CLOSED`;
+    else frase = `Open from ${newHour(open)} until ${newHour(close)}`;
+
+    return Object.assign(obj, { [day]: frase });
+  };
+  
+  const hours = data.hours;
+  if (dayName === undefined) {
+    return Object.entries(hours).reduce(legible, {});
+  } else {
+    const { open, close } = hours[dayName];
+    return legible({}, [ dayName, { open, close } ]);
+  }
+
+}
+
+function newHour(num) {
+  if (num <= 12 && num > 0) {
+    return `${num}am`;
+   } else if (num <= 24 && num > 12) {
+    return `${num - 12}pm`;
+   }
 }
 
 function oldestFromFirstSpecies(id) {
