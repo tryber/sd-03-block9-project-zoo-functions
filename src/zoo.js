@@ -20,11 +20,13 @@ function animalsByIds(...ids) {
   if (ids === undefined) return [];
   const identifiedAnimals = [];
   // {id} é um object destructing;
-  const animalsData = (ids) => data.animals.find(({ id }) => ids === id);
-  ids.forEach((id) => identifiedAnimals.push(animalsData(id)));
+  const animalsData = animalsIds => data.animals.find(({ id }) => animalsIds === id);
+  ids.forEach(id => identifiedAnimals.push(animalsData(id)));
 
   return identifiedAnimals;
 }
+
+// Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta espécie possuem a idade mínima especificada
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
