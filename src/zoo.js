@@ -81,15 +81,16 @@ const schedule = (dayName) => {
 
 const oldestFromFirstSpecies = id => Object.values(data.animals
   .find(e => e.id === data.employees
-    .find(el => el.id === id).responsibleFor[0]).residents
+    .find(animal => animal.id === id).responsibleFor[0]).residents
   .sort((a, b) => b.age - a.age)[0]);
 
 const increasePrices = (percentage) => {
-  // seu código aqui
+  Object.keys(data.prices).forEach(e => {
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
 };
 
 const employeeCoverage = (idOrName) => {
-  // seu código aqui
 };
 
 module.exports = {
