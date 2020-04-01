@@ -85,7 +85,7 @@ function legibleSchedule(dia) {
   return ((dia === 'Monday')
   ? 'CLOSED'
   : `Open from ${data.hours[dia].open}am until ${data.hours[dia].close - 12}pm`);
-};
+}
 const schedule = (dayName) => {
   const sch = {};
   if (dayName) {
