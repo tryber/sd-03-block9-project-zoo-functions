@@ -11,7 +11,7 @@ describe('animalMap', () => {
       NE: ['lions', 'giraffes'],
       NW: ['tigers', 'bears', 'elephants'],
       SE: ['penguins', 'otters'],
-      SW: ['frogs', 'snakes']
+      SW: ['frogs', 'snakes', 'bla']
     };
 
     assert.deepEqual(actual, expected);
