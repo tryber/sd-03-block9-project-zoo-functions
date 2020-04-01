@@ -22,8 +22,6 @@ function animalsByIds(...ids) {
 // animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce','e8481c1d-42ea-4610-8e11-1752cfc05a46');
 // animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce');
 
-
-
 function animalsOlderThan(especie, age) {
   const animals = data.animals;
   let bool = true;
@@ -42,7 +40,20 @@ function animalsOlderThan(especie, age) {
 // console.log(animalsOlderThan('penguins', 10));
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  const employees = data.employees;
+  let employee = {};
+  // const {firstName, lastName} = employees;
+
+  if (employeeName === undefined) {
+    return {};
+  }
+  employees.forEach(element => {
+    if (employeeName === element.firstName || employeeName === element.lastName) {
+      employee = element;
+    }
+  });
+
+  return employee;
 }
 
 function createEmployee(personalInfo, associatedWith) {
