@@ -27,20 +27,24 @@ function employeeByName(employeeName) {
 //  console.log(employeeByName('Ola'));
 
 function createEmployee(personalInfo, associatedWith) {
-  const {id, firstName, lastName} = personalInfo;
-  const {managers, responsibleFor} = associatedWith;
-  return {id, firstName, lastName, managers, responsibleFor};
+  const { id, firstName, lastName } = personalInfo;
+  const { managers, responsibleFor } = associatedWith;
+  return { id, firstName, lastName, managers, responsibleFor };
 }
 
 // console.log(createEmployee(personalInfo, associatedWith));
 
 function isManager(id) {
-  // seu código aqui
+  if (data.employees.find(emp => emp.id === id).managers.length === 0)
+    return true;
+  return false;
 }
+console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
+
 
 function animalCount(species) {
   // seu código aqui
