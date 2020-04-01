@@ -15,6 +15,8 @@ const [...animals] = data.animals;
 
 const [...employees] = data.employees;
 
+const { Adult, Child, Senior } = data.prices;
+
 function animalsByIds(...ids) {
   // seu código aqui
   if (ids.length === 0) {
@@ -86,6 +88,13 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if (!entrants || Object.entries(entrants).length === 0) {
+    return 0;
+  }
+  const {Adult : precoA, Child : precoC, Senior : precoS} = entrants;
+
+  const total = (Adult * precoA) + (Child * precoC) + (Senior * precoS);
+  return total
 }
 
 function animalMap(options) {
