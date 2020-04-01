@@ -39,21 +39,24 @@ const createEmployee = (personalInfo, associatedWith) => ({
 });
 
 function isManager(id) {
+  const employees = data.employees;
   return employees.some(element =>
     element.managers.find(managerId => managerId === id),
   );
 }
 
+const employees = data.employees;
 const addEmployee =
- (id,firstName,lastName,managers = [], responsibleFor = []) => employees.push({
-  id,
-  firstName,
-  lastName,
-  managers,
-  responsibleFor,
-});
+  (id, firstName, lastName, managers = [], responsibleFor = []) => employees.push({
+   id,
+   firstName,
+   lastName,
+   managers,
+   responsibleFor,
+ });
 
 const animalCount = (species) => {
+  const prices = data.animals;
   if (species) {
     return animals.find(animal => animal.name === species).residents.length;
   }
@@ -65,6 +68,7 @@ const animalCount = (species) => {
 };
 
 const entryCalculator = (entrants) => {
+  const prices = data.prices;
   const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
   if (entrants && Object.keys(entrants).length > 0) {
     const { Adult, Child, Senior } = entrants;
@@ -78,6 +82,7 @@ function animalMap(options) {
 }
 
 const schedule = (dayName) => {
+  const legibleSchedule = data.legibleSchedule;
   const sch = {};
   if (dayName) {
     sch[dayName] = legibleSchedule(dayName);
@@ -88,6 +93,7 @@ const schedule = (dayName) => {
 };
 
 const oldestFromFirstSpecies = (id) => {
+  const employees = data.employees;
   const funcionario = employees.find(employee => employee.id === id);
   const responsible = animals
     .find(animal => animal.id === funcionario.responsibleFor[0])
