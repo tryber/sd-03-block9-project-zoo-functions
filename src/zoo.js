@@ -8,20 +8,19 @@ eslint no-unused-vars: [
   }
 ]
 */
-
-const data = require("./data");
-
-const { animals, employees, prices } = data;
+const data = require('./data');
 
 function animalsByIds(...ids) {
   if (ids) {
-    return animals.filter((animal) => ids.find((id) => id === animal.id));
+    return data.animals.filter(animal => ids.find(id => id === animal.id));
   }
   return [];
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  const findSpecie = data.animals.find(({ name }) => name === animal);
+  return findSpecie.residents.every(({ age: aAge }) => aAge >= age);
+
 }
 
 function employeeByName(employeeName) {
@@ -49,7 +48,15 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-  // seu código aqui
+  const animalsByLocation = getLocation();
+}
+function getLocation() {
+  const location = data.animals.map(({ location }) => location);
+  const animalsByLocation = location.reduce((acummulator, location) => {
+    if (acummulator[location] === undefined) acummulator[location] = [];
+    return acummulator;
+  }, {});
+  return animalsByLocation;
 }
 
 function schedule(dayName) {
