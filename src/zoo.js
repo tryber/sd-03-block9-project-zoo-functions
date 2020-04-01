@@ -50,10 +50,10 @@ const addEmployee = (...dados) => data.employees.push(new data.Employee(...dados
 
 const animalCount = (species) => {
   if (species) {
-    return data.animals.find((animal) => animal.name === species).residents.length;
+    return data.animals.find(animal => animal.name === species).residents.length;
   }
   const specie = {};
-  data.animals.forEach(animal => { specie[animal.name] = animal.residents.length; });
+  data.animals.forEach(animal => { (specie[animal.name]) = animal.residents.length; });
   return specie;
 };
 
