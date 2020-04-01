@@ -16,9 +16,9 @@ const animalsByIds = (...ids) => data.animals.filter(aniId => ids.find(id => id 
 const animalsOlderThan = (animal, age) =>
   data.animals.find(anim => anim.name === animal).residents.every(r => r.age > age);
 
-const employeeByName = employeeName => 
+const employeeByName = employeeName =>
   data.employees.find(
-  emp => emp.firstName === employeeName || emp.lastName === employeeName
+  emp => emp.firstName === employeeName || emp.lastName === employeeName,
   ) || {};
 
 const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
