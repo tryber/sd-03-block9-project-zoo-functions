@@ -33,7 +33,7 @@ const animalCount = (species) => {
     return data.animals.find(a => a.name === species).residents.length;
   }
   const all = {};
-  data.animals.map((a) => { return all[a.name] = a.residents.length; });
+  data.animals.map(a =>  all[a.name] = a.residents.length );
   return all;
 };
 
