@@ -30,11 +30,11 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
 
 const animalCount = (species) => {
   if (species) {
-    return data.animals.find(a => a.name === species).residents.length;
+    return data.animals.find(ani => ani.name === species).residents.length;
   }
-  const all = {};
-  data.animals.map(a =>  all[a.name] = a.residents.length );
-  return all;
+  const anim = {};
+  data.animals.forEach((ani) => { anim[ani.name] = ani.residents.length; });
+  return anim;
 };
 
 const entryCalculator = (entrants) => {
