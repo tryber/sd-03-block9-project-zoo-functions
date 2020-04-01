@@ -99,24 +99,24 @@ function entryCalculator(entrants) {
 
 function animalMap(options) {
   // seu código aqui
-  if (!options) {
-    const localNE = animals.filter(local => (local.location === 'NE')
-    ).map(animal => animal.name);
-    const localNW = animals.filter(local => (local.location === 'NW')
-    ).map(animal => animal.name);
-    const localSE = animals.filter(local => (local.location === 'SE')
-    ).map(animal => animal.name);
-    const localSW = animals.filter(local => (local.location === 'SW')
-    ).map(animal => animal.name);
+  //if (!options) {
+    //const localNE = animals.filter(local => (local.location === 'NE')
+    //).map(animal => animal.name);
+   // const localNW = animals.filter(local => (local.location === 'NW')
+    //).map(animal => animal.name);
+    //const localSE = animals.filter(local => (local.location === 'SE')
+    //).map(animal => animal.name);
+    //const localSW = animals.filter(local => (local.location === 'SW')
+    //).map(animal => animal.name);
 
-    const allLocal = {
-      NE: localNE,
-      NW: localNW,
-      SE: localSE,
-      SW: localSW,
-    };
-    return allLocal
-  }
+    //const allLocal = {
+      //NE: localNE,
+      //NW: localNW,
+      //SE: localSE,
+      //SW: localSW,
+    //};
+    //return allLocal;
+  //}
 
 }
 
