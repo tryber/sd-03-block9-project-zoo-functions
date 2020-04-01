@@ -88,15 +88,24 @@ const getLocations = () => animals.map(({ location }) => location).reduce((acc, 
   return acc;
 }, {});
 
-const addAnimals = (animalsLocation) => {
+const addAnimals = (animalsLocation, isObject) => {
+  if (isObject) {
+    animals.forEach(({ name, location, residents }) => {
+      const animalObj = {};
+      animalObj[name] = residents.map(resident => resident.name);
+      animalsLocation[location].push(animalObj);
+    });
+    return animalsLocation;
+  }
   animals.forEach(({ name, location }) => animalsLocation[location].push(name));
   return animalsLocation;
 };
 
-function animalMap(options) {
+function animalMap(options = {}) {
+  const { includeNames } = options;
   const animalsLocation = getLocations();
-  if (options) {
-    return true;
+  if (includeNames) {
+    return addAnimals(animalsLocation, true);
   }
   return addAnimals(animalsLocation);
 }
