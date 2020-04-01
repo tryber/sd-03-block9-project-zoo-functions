@@ -19,13 +19,9 @@ const animalsOlderThan = (animal, age) => data.animals.find(anim => anim.name ==
 const employeeByName = employeeName => (employeeName === undefined ? {} : data.employees
 .find(e => e.firstName === employeeName || e.lastName === employeeName));
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => Object.assign({}, personalInfo, associatedWith);
 
-function isManager(id) {
-  // seu código aqui
-}
+const isManager = (id) => data.employees.some(ele => ele.managers.find(al => al === id));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
