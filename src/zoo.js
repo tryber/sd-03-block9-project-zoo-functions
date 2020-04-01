@@ -81,22 +81,20 @@ function entryCalculator(entrants) {
   return 0;
 }
 
-const getLocations = () => {
-  return animals.map(({ location }) => location).reduce((acc, location) => {
+const getLocations = () => animals.map(({ location }) => location).reduce((acc, location) => {
     if (acc[location] === undefined) {
       acc[location] = [];
     }
     return acc;
   }, {});
-}
 
-const addAnimals = (animalsLocation) => {
+const addAnimals = animalsLocation => {
   return animals.forEach(({ name, location }) => animalsLocation[location].push(name));
 };
 
 function animalMap(options) {
   const animalsLocation = getLocations();
-  if (options && options[includeNames] !== undefined) {
+  if (options) {
     return true;
   }
   return addAnimals(animalsLocation);
