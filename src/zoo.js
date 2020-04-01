@@ -20,7 +20,6 @@ function animalsByIds(...ids) {
 function animalsOlderThan(animal, age) {
   const findSpecie = data.animals.find(({ name }) => name === animal);
   return findSpecie.residents.every(({ age: aAge }) => aAge >= age);
-
 }
 
 function employeeByName(employeeName) {
@@ -48,16 +47,17 @@ function entryCalculator(entrants) {
 }
 
 function animalMap(options) {
-  const animalsByLocation = getLocation();
+  // const animalsByLocation = getLocation();
 }
-function getLocation() {
+
+/* function getLocation() {
   const location = data.animals.map(({ location }) => location);
   const animalsByLocation = location.reduce((acummulator, location) => {
     if (acummulator[location] === undefined) acummulator[location] = [];
     return acummulator;
   }, {});
   return animalsByLocation;
-}
+} */
 
 function schedule(dayName) {
   // seu código aqui
@@ -88,5 +88,5 @@ module.exports = {
   animalsOlderThan,
   oldestFromFirstSpecies,
   increasePrices,
-  createEmployee
+  createEmployee,
 };
