@@ -33,33 +33,33 @@ const animalCount = (species) => {
     return data.animals.find(a => a.name === species).residents.length;
   }
   const all = {};
-  data.animals.map((a) => { all[a.name] = a.residents.length; });
+  data.animals.map((a) => { return all[a.name] = a.residents.length; });
   return all;
-}
+};
 
 const entryCalculator = (entrants) => {
   // seu código aqui
-}
+};
 
 const animalMap = (options) => {
   // seu código aqui
-}
+};
 
 const schedule = (dayName) => {
   // seu código aqui
-}
+};
 
 const oldestFromFirstSpecies = (id) => {
   // seu código aqui
-}
+};
 
 const increasePrices = (percentage) => {
   // seu código aqui
-}
+};
 
 const employeeCoverage = (idOrName) => {
   // seu código aqui
-}
+};
 
 module.exports = {
   entryCalculator,
