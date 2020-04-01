@@ -97,28 +97,47 @@ function entryCalculator(entrants) {
   return total;
 }
 
-function animalMap(options) {
-  // seu código aqui
-  // if (!options) {
-    // const localNE = animals.filter(local => (local.location === 'NE')
-    // ).map(animal => animal.name);
-    // const localNW = animals.filter(local => (local.location === 'NW')
-    // ).map(animal => animal.name);
-    // const localSE = animals.filter(local => (local.location === 'SE')
-    // ).map(animal => animal.name);
-    // const localSW = animals.filter(local => (local.location === 'SW')
-    // ).map(animal => animal.name);
+/* function animalMap(options) {
+  // seu código 
+  
+  const locais = {
+    NE: [],
+    NW: [],
+    SE: [],
+    SW: [],
+  };
 
-    // const allLocal = {
-    // NE: localNE,
-    // NW: localNW,
-    // SE: localSE,
-    // SW: localSW,
-    // };
-    // return allLocal;
-  // }
+  const animaisLoc = animals.filter(local => local.location === locais)
+  .reduce((cont, elemento) => cont.concat(elemento.name),[]);
 
-}
+  Object.keys(locais).forEach(animaisLoc);
+
+  return animals.map(
+    ({ location }) => location
+  ).reduce((accumulator, location) => {
+    if (acumulador[location] === undefined) acumulador[location] = []
+    return acumulador;
+  }, { });
+  const localNE = animals.filter(local => (local.location === 'NE'));
+  const localNW = animals.filter(local => (local.location === 'NW'));
+  const localSE = animals.filter(local => (local.location === 'SE'));
+  const localSW = animals.filter(local => (local.location === 'SW'));
+  if (!options) {
+    const allLocal = {
+      NE: localNE.map(animal => animal.name),
+      NW: localNW.map(animal => animal.name),
+      SE: localSE.map(animal => animal.name),
+      SW: localSW.map(animal => animal.name),
+    };
+    return allLocal;
+  }
+
+  if (options.includeNames === true) {
+    
+    return allNames;
+  }
+
+} */
 
 function schedule(dayName) {
   // seu código aqui
@@ -126,6 +145,12 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
+  const idFunc = employees.find(func => func.id === id);
+  const especie = animals.find(animal => animal.id === idFunc.responsibleFor[0]);
+  const animaVelho = especie.residents.sort((a, b) => b.age - a.age);
+  const objAnima = Object.values(animaVelho[0]);
+
+  return objAnima;
 }
 
 function increasePrices(percentage) {
@@ -140,7 +165,7 @@ module.exports = {
   entryCalculator,
   schedule,
   animalCount,
-  animalMap,
+  /* animalMap, */
   animalsByIds,
   employeeByName,
   employeeCoverage,
