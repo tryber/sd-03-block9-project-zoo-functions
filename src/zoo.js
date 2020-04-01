@@ -55,14 +55,27 @@ const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 
   : 0
 );
 
-const animalMap = (options) => {
-  // const asw = {};
-  // data.animals.forEach(animal => {
-  //   asw[animal.location] = data.animals.filter(e => e.location ===
-  // animal.location).map(e => e.name);
-  //   // asw[animal.location] = animal.residents.map(e => e.name);
-  // });
-  // console.log(asw);
+const getResidentsName = (animal, sorted, sex) => {
+  const obj = {};
+  obj[animal] = data.animals
+    .find(e => e.name === animal).residents;
+  if (sex) obj[animal] = obj[animal].filter(bichos => bichos.sex === sex);
+  obj[animal] = obj[animal].map(e => e.name);
+  if (sorted) obj[animal].sort();
+  return obj;
+};
+
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  const asw = {};
+  data.animals.forEach(animal => {
+    asw[animal.location] = data.animals.filter(e => e.location
+    === animal.location).map(e => {
+      if (!includeNames) return e.name;
+      return getResidentsName(e.name, sorted, sex);
+    });
+  });
+  return asw;
 };
 
 const legibleSchedule = day => ((day === 'Monday')
