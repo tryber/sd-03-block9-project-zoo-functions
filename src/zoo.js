@@ -56,8 +56,8 @@ const animalCount = (species) => {
   if (species) {
     answer = animals.find(group1 => species === group1.name).residents.length;
   } else {
-    animals.map((group2) => {answer[group2.name] = group2.residents.length});
-  }
+    animals.forEach((group2) => { answer[group2.name] = group2.residents.length });
+  };
   return answer;
 };
 
