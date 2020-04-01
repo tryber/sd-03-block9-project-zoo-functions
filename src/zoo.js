@@ -67,6 +67,16 @@ function entryCalculator(entrants) {
   );
 }
 
+function fillAnimals(locations,sex,animalsNames) {
+  Object.entries(locations).forEach((element) => {
+    const object = element[1].reduce((acc, animal) => {
+      const animalNamesObject = { [animal]: animalsNames(animal,sex) };
+      return acc.concat(animalNamesObject);
+    }, []);
+    locations[element[0]] = object;
+  });
+}
+
 function animalMap(options) {
   const locations = {
     NE: [],
@@ -93,16 +103,8 @@ function animalMap(options) {
       }
       return animals.reduce((acc, { name }) => acc.concat(name), []);
     };
-    function fillAnimals(){
-      Object.entries(locations).forEach((element) => {
-        const object = element[1].reduce((acc, animal) => {
-          const animalNamesObject = { [animal]: animalsNames(animal, options.sex) };
-          return acc.concat(animalNamesObject);
-        }, []);
-        locations[element[0]] = object;
-      });
-    }
-    fillAnimals()
+
+    fillAnimals(locations,options.sex,animalsNames);
 
     if (options.sorted) {
       function sortAnimals(){
