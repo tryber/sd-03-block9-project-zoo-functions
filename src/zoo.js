@@ -35,11 +35,10 @@ const addEmployee = (id, firstName = [], lastName = [], managers = [], responsib
 const animalCount = (species) => {
   if (species !== undefined) {
     return dA.find(el => el.name === species).residents.length;
-  } else {
-    const result = {};
-    data.animals.forEach((e) => { result[e.name] = e.residents.length; });
-    return result;
-  };
+  }
+  const result = {};
+  data.animals.forEach((e) => { result[e.name] = e.residents.length; });
+  return result;
 };
 
 function entryCalculator(entrants) {
