@@ -118,6 +118,19 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
+  const employee = data.employees.find(e => e.id === id);
+  const animal = employee.responsibleFor[0];
+  const animalIf = data.animals.find(e => e.id === animal);
+  const cadaAnimal = animalIf.residents;
+  const age = cadaAnimal.reduce((old, e) => {
+    if (old < e.age) {
+      old = e.age;
+      return old;
+    } return old;
+  }, 0);
+  const maisvelho = cadaAnimal.find(e => e.age === age);
+  const arr = [maisvelho.name, maisvelho.sex, maisvelho.age];
+  return arr;
 }
 
 function increasePrices(percentage) {
