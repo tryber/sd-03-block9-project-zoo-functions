@@ -88,13 +88,13 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   // seu código aqui
   const arrayKeys = Object.keys(data.prices);
-  let arrayPrices = [];
+  const arrayPrices = [];
   for (let i = 0; i < arrayKeys.length; i += 1) {
     arrayPrices.push({ [arrayKeys[i]]: data.prices[arrayKeys[i]] });
   }
   let filterKey;
   let somaPreço = 0;
-  let arrayKeysEntrants = Object.keys(entrants);
+  const arrayKeysEntrants = Object.keys(entrants);
   for (let i = 0; i < arrayKeysEntrants.length; i += 1) {
     filterKey = arrayPrices.filter(item => item[arrayKeysEntrants[i]]);
     somaPreço += filterKey[0][arrayKeysEntrants[i]] * entrants[arrayKeysEntrants[i]];
