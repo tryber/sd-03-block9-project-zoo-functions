@@ -77,9 +77,33 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 }
 
 function animalCount(species) {
-  // seu código aqui
+  let nomes = {};
+  if (!species) {
+    for (let i = 0; i < animals.length; i += 1) {
+      nome = animals[i].name; 
+      nomes[nome] = animals[i].residents.length;
+    }
+    return nomes;
+  }
+  for (let i = 0; i < animals.length; i += 1) {
+    if (animals[i].name === species) {
+      return animals[i].residents.length;
+    }
+  }
 }
-
+/*
+function animalCount(species) {
+  if (!species) {
+    let {nomes} = animals.forEach((elemento) => elemento);
+    return nomes;
+  }
+  const animalEspecie = animals.filter((animal) => {
+    if (animal.name === species) return true;
+    return false;
+  });
+  return animalEspecie.map((especie) => especie.residents.length)[0];
+}
+}*/
 function entryCalculator(entrants) {
   // seu código aqui
 }
