@@ -33,7 +33,7 @@ const employeeByName = employeeName => data.employees.find(
   element => element.firstName === employeeName || element.lastName === employeeName) || {};
 
 const createEmployee = (personalInfo, associatedWith) => ({
-  ...personalInfo, ...associatedWith,
+  
 });
 
 function isManager(id) {
