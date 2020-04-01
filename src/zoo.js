@@ -16,13 +16,13 @@ const animalsByIds = (...ids) => data.animals.filter(aniId => ids.find(id => id 
 const animalsOlderThan = (animal, age) =>
   data.animals.find(anim => anim.name === animal).residents.every(r => r.age > age);
 
-function employeeByName(employeeName) {
-  // seu código aqui
-}
+const employeeByName = employeeName => {
+ return data.employees.find(
+  emp => emp.firstName === employeeName || emp.lastName === employeeName,) 
+  || {};
+};
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => ({...personalInfo, ...associatedWith,})
 
 function isManager(id) {
   // seu código aqui
