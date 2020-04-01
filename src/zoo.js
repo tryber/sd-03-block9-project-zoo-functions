@@ -129,23 +129,22 @@ function oldestFromFirstSpecies(id) {
   // seu código aqui
   const funcId = employees.find(funcionario => funcionario.id === id);
   const especie = animals.find(animal => animal.id === funcId.responsibleFor[0]);
-  const animaisSorted = especie.residents.sort((a,b) => b.age - a.age);
+  const animaisSorted = especie.residents.sort((a, b) => b.age - a.age);
   const object = Object.values(animaisSorted[0]);
-
   return object;
 }
 
 function increasePrices(percentage) {
   // seu código aqui
-  const {Adult, Child, Senior} = data.prices;
-  const mult = (percentage/100)+1;
-  const adultM = Math.round(100*Adult*mult)/100;
-  const childM = Math.round(100*Child*mult)/100;
-  const seniorM = Math.round(100*Senior*mult)/100;
+  const { Adult, Child, Senior } = data.prices;
+  const mult = (percentage / 100) + 1;
+  const adultM = Math.round(100 * Adult * mult) / 100;
+  const childM = Math.round(100 * Child * mult) / 100;
+  const seniorM = Math.round(100 * Senior * mult) / 100;
   const obje = {
-    'Adult' : adultM,
-    'Senior' : seniorM,
-    'Child' : childM,
+    'Adult': adultM,
+    'Senior': seniorM,
+    'Child': childM,
   }
   data.prices = obje;
   return data.prices;
