@@ -48,15 +48,15 @@ function isManager(id) {
 const employees = data.employees;
 const addEmployee =
   (id, firstName, lastName, managers = [], responsibleFor = []) => employees.push({
-   id,
-   firstName,
-   lastName,
-   managers,
-   responsibleFor,
- });
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  });
 
 const animalCount = (species) => {
-  const prices = data.animals;
+  const animals = data.animals;
   if (species) {
     return animals.find(animal => animal.name === species).residents.length;
   }
@@ -93,7 +93,7 @@ const schedule = (dayName) => {
 };
 
 const oldestFromFirstSpecies = (id) => {
-  const employees = data.employees;
+  const animals = data.animals;
   const funcionario = employees.find(employee => employee.id === id);
   const responsible = animals
     .find(animal => animal.id === funcionario.responsibleFor[0])
