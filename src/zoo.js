@@ -15,7 +15,7 @@ function animalsByIds(...ids) {
   // seu código aqui
   const finder = dado => data.animals.find(animal => animal.id === dado);
   if (arguments.length === 0) return [];
-  return (arguments.length === 1)? Array.of(finder(...ids)) : [...ids].map(finder);
+  return (arguments.length === 1) ? Array.of(finder(...ids)) : [...ids].map(finder);
 }
 
 function animalsOlderThan(animal, age) {
