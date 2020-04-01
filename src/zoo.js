@@ -18,7 +18,8 @@ const animalsOlderThan = (animal, age) =>
 
 const employeeByName = employeeName =>
   data.employees.find(
-  emp => emp.firstName === employeeName || emp.lastName === employeeName, ) || {};
+  emp => emp.firstName === employeeName || emp.lastName === employeeName,
+  ) || {};
 
 const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
 
