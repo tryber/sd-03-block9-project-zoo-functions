@@ -15,8 +15,6 @@ const [...animals] = data.animals;
 
 const [...employees] = data.employees;
 
-const { Adult, Child, Senior } = data.prices;
-
 function animalsByIds(...ids) {
   // seu código aqui
   if (ids.length === 0) {
@@ -100,7 +98,7 @@ function entryCalculator(entrants = {}) {
   return valorTotal;
 }
 
-function animalMap(options) {
+/* function animalMap(options) {
   // seu código aqui
   if (!options) {
     const nEast = animals.filter(local => (local.location === 'NE')
@@ -119,8 +117,7 @@ function animalMap(options) {
     }
     return obj;
   }
-
-}
+} */
 
 function schedule(dayName) {
   // seu código aqui
