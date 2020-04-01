@@ -112,7 +112,7 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   let total = 0;
   let soma = 0;
-  if(!entrants) return 0;
+  if (!entrants) return 0;
   if (Object.keys(entrants).length === 0) return 0;
   total = Object.values(entrants);
   soma = (total[0] * precos.Adult) + (total[1] * precos.Child) + (total[2] * precos.Senior);
