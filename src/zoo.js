@@ -28,31 +28,36 @@ const isManager = id => data.employees.some(m => m.managers.find(mId => mId === 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>
   data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 
-function animalCount(species) {
+const animalCount = (species) => {
+  if (species) {
+    return data.animals.find(a => a.name === species).residents.length;
+  }
+  const all = {};
+  data.animals.map((a) => { all[a.name] = a.residents.length; });
+  return all;
+}
+
+const entryCalculator = (entrants) => {
   // seu código aqui
 }
 
-function entryCalculator(entrants) {
+const animalMap = (options) => {
   // seu código aqui
 }
 
-function animalMap(options) {
+const schedule = (dayName) => {
   // seu código aqui
 }
 
-function schedule(dayName) {
+const oldestFromFirstSpecies = (id) => {
   // seu código aqui
 }
 
-function oldestFromFirstSpecies(id) {
+const increasePrices = (percentage) => {
   // seu código aqui
 }
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
-
-function employeeCoverage(idOrName) {
+const employeeCoverage = (idOrName) => {
   // seu código aqui
 }
 
