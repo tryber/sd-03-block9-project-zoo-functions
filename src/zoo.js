@@ -72,6 +72,17 @@ function animalCount(especies) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  const arr = ['Adult', 'Child', 'Senior'];
+  const { Adult, Child, Senior } = entrants;
+  const payers = [Adult, Child, Senior];
+  const total = payers.reduce((sum, e, i) => {
+    sum += e * data.prices[arr[i]];
+    return sum;
+  }, 0);
+  return total;
 }
 
 function animalMap(options) {
