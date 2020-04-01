@@ -93,22 +93,26 @@ function animalMap(options) {
       }
       return animals.reduce((acc, { name }) => acc.concat(name), []);
     };
-
-
-    Object.entries(locations).forEach((element) => {
-      const object = element[1].reduce((acc, animal) => {
-        const animalNamesObject = { [animal]: animalsNames(animal, options.sex) };
-        return acc.concat(animalNamesObject);
-      }, []);
-      locations[element[0]] = object;
-    });
+    function fillAnimals(){
+      Object.entries(locations).forEach((element) => {
+        const object = element[1].reduce((acc, animal) => {
+          const animalNamesObject = { [animal]: animalsNames(animal, options.sex) };
+          return acc.concat(animalNamesObject);
+        }, []);
+        locations[element[0]] = object;
+      });
+    }
+    fillAnimals()
 
     if (options.sorted) {
-      Object.keys(locations).forEach((location) => {
-        locations[location].forEach((animal) => {
-          animal[Object.keys(animal)[0]] = Object.values(animal)[0].sort();
+      function sortAnimals(){
+        Object.keys(locations).forEach((location) => {
+          locations[location].forEach((animal) => {
+            animal[Object.keys(animal)[0]] = Object.values(animal)[0].sort();
+          });
         });
-      });
+      }
+      sortAnimals();
     }
   }
   return locations;
