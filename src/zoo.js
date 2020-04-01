@@ -41,18 +41,16 @@ function animalsOlderThan(especie, age) {
 
 function employeeByName(employeeName) {
   const employees = data.employees;
-  let employee = {};
-  // const {firstName, lastName} = employees;
 
   if (employeeName === undefined) {
     return {};
   }
-  employees.forEach(element => {
-    if (employeeName === element.firstName || employeeName === element.lastName) {
-      employee = element;
-    }
-  });
 
+  const employee = employees.find((element) => {
+    if (employeeName === element.firstName || employeeName === element.lastName) {
+      return element;
+    }
+  })
   return employee;
 }
 
