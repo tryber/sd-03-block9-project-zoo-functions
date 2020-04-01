@@ -10,7 +10,8 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
-const dA = data.animals
+
+const dA = data.animals;
 
 const animalsByIds = (...ids) => dA.filter(animId => ids.find(id => id === animId.id));
 
@@ -32,9 +33,9 @@ const addEmployee = (id, firstName = [], lastName = [], managers = [], responsib
 };
 
 const animalCount = (species) => {
-  if(species!==undefined){
-    return dA.find(el=>el.name===species).residents.length;
-  }else{
+  if (species !== undefined) {
+    return dA.find(el => el.name === species).residents.length;
+  } else {
     const result = {};
     data.animals.forEach((e) => { result[e.name] = e.residents.length; });
     return result;
