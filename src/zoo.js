@@ -137,7 +137,7 @@ function oldestFromFirstSpecies(idf) {
     .responsibleFor[0];
   const oldestAnimal = data.animals
     .find(({ id }) => id === animalId)
-    .residents.reduce((oldest, animal) => {return oldest.age > animal.age ? oldest : animal});
+    .residents.reduce((oldest, animal) => (oldest.age > animal.age ? oldest : animal));
   return Object.values(oldestAnimal);
 }
 
