@@ -41,7 +41,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   return employees.some(element =>
-    element.managers.find(managerId => managerId === id),
+    element.managers.find(managerId => managerId === id)
   );
 }
 
@@ -66,7 +66,7 @@ function animalCount(species) {
     return animals.find(animal => animal.name === species).residents.length;
   }
   const allAnimals = {};
-  animals.forEach((animal) => {
+  animals.forEach(animal => {
     allAnimals[animal.name] = animal.residents.length;
   });
   return allAnimals;
@@ -99,14 +99,43 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
-  prices.Adult = Math.round(adultPrice * (1 + (percentage / 100)) * 100) / 100;
-  prices.Senior = Math.round(seniorPrice * (1 + (percentage / 100)) * 100) / 100;
-  prices.Child = Math.round(childPrice * (1 + (percentage / 100)) * 100) / 100;
+  prices.Adult = Math.round(adultPrice * (1 + percentage / 100) * 100) / 100;
+  prices.Senior = Math.round(seniorPrice * (1 + percentage / 100) * 100) / 100;
+  prices.Child = Math.round(childPrice * (1 + percentage / 100) * 100) / 100;
   return prices;
 }
 
+const findResponsible = responsible => {
+  const arrAnimals = [];
+  responsible.forEach(id =>
+    animals.forEach(animal => {
+      if (animal.id === id) {
+        arrAnimals.push(animal.name);
+      }
+    })
+  );
+  return arrAnimals;
+};
+
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  if (idOrName) {
+    const employee = employees.find(
+      employee =>
+        employee.id === idOrName ||
+        employee.firstName === idOrName ||
+        employee.lastName === idOrName,
+    );
+    const objRetorno = {};
+    const employeeName = `${employee.firstName} ${employee.lastName}`;
+    objRetorno[employeeName] = findResponsible(employee.responsibleFor);
+    return objRetorno;
+  }
+  return employees.reduce((acc, employee) => {
+    acc[`${employee.firstName} ${employee.lastName}`] = findResponsible(
+      employee.responsibleFor
+    );
+    return acc;
+  }, {});
 }
 
 module.exports = {
