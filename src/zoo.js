@@ -55,16 +55,20 @@ function animalCount(species) {
   if (species) {
     return data.animals.find(anim => anim.name === species).residents.length;
   }
-  let objAnimais = {};
-  data.animals.forEach((animal) => objAnimais[animal.name] = animal.residents.length);
+  const objAnimais = {};
+  data.animals.forEach((animal) => { objAnimais[animal.name] = animal.residents.length; });
   return objAnimais;
 }
 
-console.log(animalCount());
+// console.log(animalCount());
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (entrants) {
+  const {Adult = 0, Child = 0, Senior = 0} = entrants;
+  return Adult * 49.99 + Child * 20.99 + Senior * 24.99; }
+  return 0;
 }
+// console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 
 function animalMap(options) {
   // seu código aqui
