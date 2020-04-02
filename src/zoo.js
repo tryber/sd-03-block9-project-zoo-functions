@@ -86,8 +86,30 @@ const increasePrices = (percentage) => {
   });
 };
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
+const employeeresponsible = (el) => {
+  const obj = {};
+  obj[`${el.firstName} ${el.lastName}`] = el.responsibleFor
+    .map(id => data.animals
+      .find(animal => animal.id === id).name);
+  return obj;
+}
+
+const employeeCoverage = (idOrName) => {
+  const myobj = {};
+  if (idOrName) {
+    Object.assign(myobj, employeeresponsible(data.employees
+      .find(el => (
+        (el.id === idOrName)
+        || (el.firstName === idOrName)
+        || (el.lastName === idOrName)
+        ))));
+    return myobj;
+  }
+  data.employees.forEach((e) => {
+    Object.assign(myobj, employeeresponsible(e));
+  });
+
+  return myobj;
 }
 
 module.exports = {
