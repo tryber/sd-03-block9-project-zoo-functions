@@ -102,19 +102,22 @@ function entryCalculator(entrants) {
   return somaPreço;
 }
 
-function includeNamesTrue(arrLocation) {
-  let nAlMic;
+function test(arrLocation, sorted) {
+  let newArrLocationMap;
   let newArrLocationFilter;
   let newObject = {};
   let objectValue = {};
   let filterNames;
   let arrObject = []
+  let nameSorted;
   for (let i = 0; i < arrLocation.length; i += 1) {
     newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
-    nAlMic = newArrLocationFilter.map(item => item.name);
-    for (let x = 0; x < nAlMic.length; x += 1) {
-      filterNames = newArrLocationFilter.filter(item => item.name === nAlMic[x])[0].residents.map(item => item.name);
-      objectValue[nAlMic[x]] = filterNames;
+    newArrLocationMap = newArrLocationFilter.map(item => item.name);
+    for (let x = 0; x < newArrLocationMap.length; x += 1) {
+      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.map(item => item.name);
+      nameSorted = filterNames;
+      if (sorted === true) nameSorted = filterNames.sort();
+      objectValue[newArrLocationMap[x]] = nameSorted;
       arrObject.push(objectValue);
       newObject[arrLocation[i]] = arrObject;
       objectValue = {}
@@ -124,28 +127,12 @@ function includeNamesTrue(arrLocation) {
   return newObject;
 }
 
+function includeNamesTrue(arrLocation) {
+  return test(arrLocation, false);
+}
+
 function sortedTrue(arrLocation) {
-  let nAlMsor;
-  let newArrLocationFilter;
-  let newObject = {};
-  let objectValue = {};
-  let filterNames;
-  let arrObject = []
-  let nameSorted;
-  for (let i = 0; i < arrLocation.length; i += 1) {
-    newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
-    nAlMsor = newArrLocationFilter.map(item => item.name);
-    for (let x = 0; x < nAlMsor.length; x += 1) {
-      filterNames = newArrLocationFilter.filter(item => item.name === nAlMsor[x])[0].residents.map(item => item.name);
-      nameSorted = filterNames.sort()
-      objectValue[nAlMsor[x]] = nameSorted;
-      arrObject.push(objectValue);
-      newObject[arrLocation[i]] = arrObject;
-      objectValue = {}
-    }
-    arrObject = [];
-  }
-  return newObject;
+  return test(arrLocation, true);
 }
 
 function sex(arrLocation, sexParam) {
