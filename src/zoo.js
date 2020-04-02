@@ -85,17 +85,18 @@ const entryCalculator = (entrants) => {
   return total;
 };
 
-function animalMap(options) {
-  // seu código aqui
-}
+const animalMap = (options) => {};
 
 function schedule(dayName) {
   // seu código aqui
 }
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+const oldestFromFirstSpecies = (idFunc) => {
+  const pegaIdPrimeiroAnimal = employees.find(el => el.id === idFunc).responsibleFor[0];
+  const residentsEspecie = animals.find(el => el.id === pegaIdPrimeiroAnimal)
+  .residents.sort((a, b) => b.age - a.age)[0];
+  return [residentsEspecie.name, residentsEspecie.sex, residentsEspecie.age];
+};
 
 function increasePrices(percentage) {
   // seu código aqui
