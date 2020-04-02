@@ -31,9 +31,12 @@ const animalsOlderThan = (specie, age) =>
 // usar se for testar a chamada da função com Run Code
 // console.log(animalsOlderThan('penguins', 10));
 
-function employeeByName(employeeName) {
-  // seu código aqui
-}
+// usar se for testar a chamada da função com Run Code
+// const data = require('./data');
+const employeeByName = employee =>
+  data.employees.find(e => e.firstName === employee || e.lastName === employee) || {};
+// usar se for testar a chamada da função com Run Code
+// console.log(employeeByName('Ola'));
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
