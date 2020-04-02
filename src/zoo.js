@@ -76,19 +76,19 @@ const increasePrices = percentage => Object.keys(data.prices)
 
 const employeeCoverage = (idOrName) => {
   let obj = {};
-  if (data.employees.find(el=> el.id === idOrName)) {
-    let objTrab = data.employees.find(el=> el.id === idOrName);
+  if (data.employees.find(el => el.id === idOrName)) {
+    let objTrab = data.employees.find(el => el.id === idOrName);
     obj[`${objTrab.firstName} ${objTrab.lastName}`] = objTrab.responsibleFor
-    .map(els=> data.animals.find(aly=>aly.id===els).name);
+    .map(els => data.animals.find(aly => aly.id===els).name);
     return obj;
-  } else if (data.employees.find(el=> el.firstName === idOrName || el.lastName === idOrName)) {
-    let objNomes = data.employees.find(el=> el.firstName === idOrName || el.lastName === idOrName);
+  } else if (data.employees.find(el => el.firstName === idOrName || el.lastName === idOrName)) {
+    let objNomes = data.employees.find(el => el.firstName === idOrName || el.lastName === idOrName);
     obj[`${objNomes.firstName} ${objNomes.lastName}`] = objNomes.responsibleFor
-    .map(els=> data.animals.find(aly=>aly.id===els).name);
+    .map(els => data.animals.find(aly => aly.id===els).name);
     return obj;
   }
-  data.employees.map((acc)=> obj[`${acc.firstName} ${acc.lastName}`] = acc.responsibleFor
-  .map(el=> data.animals.find(ely=>ely.id==el).name));
+  data.employees.map((acc) => obj[`${acc.firstName} ${acc.lastName}`] = acc.responsibleFor
+  .map(el => data.animals.find(ely => ely.id==el).name));
   return obj;
 };
 
