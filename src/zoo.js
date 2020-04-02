@@ -7,21 +7,36 @@ eslint no-unused-vars: [
     "varsIgnorePattern": "data"
   }
 ]
+When to use map?
+.map() when you want to transform elements in an array.
+When to use filter?
+.filter() when you want to select a subset of multiple elements from an array.
+When to use find?
+.find() When you want to select a single element from an array.
+When to use reduce?
+.reduce() when you want derive a single value from multiple elements in an array.
 */
 
-const data = require('./data');
-
-function animalsByIds(ids) {
-
-}
+const data = require("./data");
+function animalsByIds(...ids) {
+  return data.animals.filter(bicho => ids.find(id => id === bicho.id));
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  return data.animal
+    .find(nome => nome.name === animal)
+    .residents.every(idade => idade.age > age);
 }
 
-function employeeByName(employeeName) {
-  // seu código aqui
+function employeeByName(...employeeName) {
+  return (
+    data.employees.filter(pessoa =>
+      employeeName.find(name => name === pessoa.firstName)
+    ) ||
+    data.employees.filter(pessoa =>
+      employeeName.find(name => name === pessoa.lastName)
+    )
+  );
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -77,5 +92,5 @@ module.exports = {
   animalsOlderThan,
   oldestFromFirstSpecies,
   increasePrices,
-  createEmployee,
+  createEmployee
 };
