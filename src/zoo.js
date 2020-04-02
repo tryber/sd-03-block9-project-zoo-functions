@@ -98,9 +98,17 @@ const oldestFromFirstSpecies = (idFunc) => {
   return [residentsEspecie.name, residentsEspecie.sex, residentsEspecie.age];
 };
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const increasePrices = (percentage) => {
+  const { Adult, Senior, Child } = data.prices;
+  const percent = (percentage / 100) + 1;
+  const newObj = {
+    Adult: Math.round(100 * Adult * percent) / 100,
+    Senior: Math.round(100 * Senior * percent) / 100,
+    Child: Math.round(100 * Child * percent) / 100,
+  };
+  data.prices = newObj;
+  return data.prices;
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
