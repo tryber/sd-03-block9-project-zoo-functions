@@ -92,7 +92,7 @@ const employeeresponsible = (el) => {
     .map(id => data.animals
       .find(animal => animal.id === id).name);
   return obj;
-}
+};
 
 const employeeCoverage = (idOrName) => {
   const myobj = {};
@@ -110,7 +110,7 @@ const employeeCoverage = (idOrName) => {
   });
 
   return myobj;
-}
+};
 
 module.exports = {
   entryCalculator,
