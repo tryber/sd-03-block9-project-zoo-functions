@@ -64,9 +64,9 @@ const schedule = (dayName) => {
 };
 
 const oldestFromFirstSpecies = (id) => {
-  const empregado = data.employees.find(e => e.id==id).responsibleFor[0]
+  const empregado = data.employees.find(e => e.id === id).responsibleFor[0];
   return Object.values(data.animals.find(ele => ele.id === empregado).residents
-  .sort((a,b) => b.age-a.age)[0]);
+  .sort((a, b) => b.age - a.age)[0]);
 };
 
 
