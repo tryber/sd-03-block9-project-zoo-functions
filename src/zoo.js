@@ -55,14 +55,14 @@ const schedule = (dayName) => {
     });
     return o;
   }
-  if(Object.keys(data.hours).find(el => (el === dayName)) === 'Monday'){
+  if (Object.keys(data.hours).find(el => (el === dayName)) === 'Monday') {
     o[dayName] = 'CLOSED';
     return o;
   }
   o[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
-  return  o;
+  return o;
 };
-console.log(schedule('Monday'))
+
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
