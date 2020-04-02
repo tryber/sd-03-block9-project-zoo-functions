@@ -23,11 +23,11 @@ function animalsByIds(...ids) {
   return [];
 }
 
-function animalsOlderThan(animal, ageIn) {
+function animalsOlderThan(animal, age) {
   // seu código aqui
   return data.animals
     .find(({ name }) => animal === name)
-    .residents.every(({ age }) => age >= ageIn);
+    .residents.every((a) => a.age >= age);
 }
 
 function employeeByName(employeeName) {
@@ -43,9 +43,9 @@ function isManager(id) {
   // seu código aqui
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
-  data.employees.push(id, firstName, lastName, managers, responsibleFor);
+  data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
