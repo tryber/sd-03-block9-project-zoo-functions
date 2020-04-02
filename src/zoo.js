@@ -55,11 +55,11 @@ const schedule = (dayName) => {
     });
     return o;
   }
-  const obj = Object.keys(data.hours).find(el => el = dayName);
+  const obj = Object.keys(data.hours).find(el => (el = dayName));
   if (obj === 'Monday') {
     return (o[dayName] = 'CLOSED');
   }
-  return o[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
+  return (o[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`);
 };
 
 function oldestFromFirstSpecies(id) {
