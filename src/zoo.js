@@ -69,12 +69,9 @@ const animalMap = (options = {}) => {
   const { includeNames, sex, sorted } = options;
   const obj = {};
   data.animals.forEach((animal) => {
-    obj[animal.location] = data.animals.filter(el => el.location
-    === animal.location).map((el) => {
-
+    obj[animal.location] = data.animals.filter(el => el.location === animal.location).map((el) => {
       if (!includeNames) return el.name;
       return residName(el.name, sorted, sex);
-
     });
   });
   return obj;
