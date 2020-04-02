@@ -44,7 +44,7 @@ function employeeByName(employeeName) {
       element => element.firstName === employeeName
       || element.lastName === employeeName);
   }
-  return {};  
+  return {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
