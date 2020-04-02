@@ -44,7 +44,7 @@ const createEmployee = (personalInfo, associatedWith) => ({
   ...personalInfo,
   ...associatedWith,
 });
-// console.log(createEmployee()); passar o objeto com chaves e valores
+// console.log(createEmployee()); passar o objeto com chaves e valores ok
 
 function isManager(id) {
   // seu código aqui
