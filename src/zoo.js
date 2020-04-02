@@ -35,12 +35,10 @@ function createEmployee(personalInfo, associatedWith) {
 //  console.log(createEmployee(personalInfo, associatedWith));
 
 function isManager(id) {
-  if (data.employees.find(emp => emp.id === id).managers.length === 0) {
-    return true;
-  }
-  return false;
+  return data.employees.some(emp => emp.managers.find(superiores => superiores === id));
 }
-//  console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'));
+// O some é necessário, pois se usar só o find ele retorna undefined se o ID não existir.
+// console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   const emp = {
@@ -48,16 +46,19 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     firstName,
     lastName,
     managers,
-    responsibleFor
+    responsibleFor,
   };
   data.employees.push(emp);
 }
 
 function animalCount(species) {
-  if (species)
+  if (species) {
     return data.animals.find(anim => anim.name === species).residents.length;
-  return data.animals.map(animal => `${animal.name}: ${animal.residents.length}`);
- }
+  }
+  let objAnimais = {};
+  data.animals.forEach((animal) => objAnimais[animal.name] = animal.residents.length);
+  return objAnimais;
+}
 
 console.log(animalCount());
 
