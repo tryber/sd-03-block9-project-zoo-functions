@@ -38,9 +38,13 @@ const employeeByName = employee =>
 // usar se for testar a chamada da função com Run Code
 // console.log(employeeByName('Ola'));
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+// usar se for testar a chamada da função com Run Code
+// const data = require('./data');
+const createEmployee = (personalInfo, associatedWith) => ({
+  ...personalInfo,
+  ...associatedWith,
+});
+// console.log(createEmployee()); passar o objeto com chaves e valores
 
 function isManager(id) {
   // seu código aqui
