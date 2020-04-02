@@ -79,49 +79,36 @@ function entryCalculator(entrants = {}) {
   return total;
 }
 
-// function getLocation(animals) {
-//   return animals.map(({ location }) => location)
-//   .reduce((obj, elem) => {
-//     obj[elem] = [];
-//     return obj;
-//   }, {});
-// }
+function getLocation(animals) {
+  return animals.map(({ location }) => location)
+  .reduce((obj, elem) => {
+    obj[elem] = [];
+    return obj;
+  }, {});
+}
 
-// function takeNames(obj, { name: animalName, sex: animalSex }) {
-//   if (obj[name] === undefined) obj[name] = [];
+function putNames(name, residents, { sex = '', sorted = false }) {
+  const specieNames = {};
+  if (specieNames[name] === undefined) specieNames[name] = [];
+  specieNames[name] = residents
+  .filter(({ sex: animalSex }) => (sex === '' || sex === animalSex))
+  .map(({ name: animalName }) => animalName);
 
-//   if (sex === '') obj[name].push(animalName);
-//   else if (sex === animalSex) obj[name].push(animalName);
+  if (sorted === true) specieNames[name].sort();
 
-//   return obj;
-// }
-
-// function putNames(name, residents, { sex = '', sorted = false }) {
-//   const specieNames = residents.reduce(takeNames, {});
-
-//   if (sorted === true) specieNames[name].sort();
-
-//   return specieNames;
-// }
+  return specieNames;
+}
 
 function animalMap(options = {}) {
-//   const { includeNames = false, ...restOptions } = options;
-//   const info = getLocation(data.animals);
+  const { includeNames = false, ...restOptions } = options;
+  const info = getLocation(data.animals);
 
-//   data.animals.forEach(({ name, location, residents }) => {
-//     if (includeNames) {
-//       name = ((name, residents, { sex = '', sorted = false }) => {
-//         const specieNames = residents.reduce(takeNames, {});
+  data.animals.forEach(({ name, location, residents }) => {
+    if (includeNames === true) name = putNames(name, residents, restOptions);
+    info[location].push(name);
+  });
 
-//         if (sorted === true) specieNames[name].sort();
-
-//         return specieNames;
-//       })();
-//     }
-//     info[location].push(name);
-//   });
-
-//   return info;
+  return info;
 }
 
 function newHour(num) {
