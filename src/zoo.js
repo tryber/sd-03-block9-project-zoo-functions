@@ -87,7 +87,7 @@ const employeeCoverage = (idOrName) => {
     obj[`${objNomes.firstName} ${objNomes.lastName}`] = objNomes.responsibleFor.map(map);
     return obj;
   }
-  data.employees.map((acc) => (obj[`${acc.firstName} ${acc.lastName}`] = acc.responsibleFor
+  data.employees.map(acc => (obj[`${acc.firstName} ${acc.lastName}`] = acc.responsibleFor
   .map(el => data.animals.find(ely => ely.id === el).name)));
   return obj;
 };
