@@ -56,8 +56,8 @@ const schedule = (dayName) => {
     return o;
   }
   const codeC = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
-  Object.keys(data.hours).find( el => el === dayName) === 'Monday' ? o[dayName] = 'CLOSED' :
-  o[dayName] = codeC;
+  Object.keys(data.hours).find(el => el === dayName) === ('Monday' ? o[dayName] = 'CLOSED' :
+  o[dayName] = codeC)
   return o;
 };
 
