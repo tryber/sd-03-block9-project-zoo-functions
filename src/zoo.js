@@ -7,14 +7,6 @@ eslint no-unused-vars: [
     "varsIgnorePattern": "data"
   }
 ]
-When to use map?
-.map() when you want to transform elements in an array.
-When to use filter?
-.filter() when you want to select a subset of multiple elements from an array.
-When to use find?
-.find() When you want to select a single element from an array.
-When to use reduce?
-.reduce() when you want derive a single value from multiple elements in an array.
 */
 
 const data = require("./data");
