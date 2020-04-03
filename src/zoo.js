@@ -13,11 +13,11 @@ const data = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
-  if ( ids.length === 0){
+  if (ids.length === 0) {
     return [];
   }
   const result = [];
-  ids.forEach(idt => result.push(data.animals.find( element => element.id === idt)));
+  ids.forEach(idt => result.push(data.animals.find(element => element.id === idt)));
     // ids.forEach(idt => result.push(data.animals.find(({ element }) => element === idt)));
   return result;
 }
