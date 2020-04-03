@@ -53,7 +53,18 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  let managersList = [];
+  const managersList = [];
+
+  // Funcao Separa Gerentes
+  const splitManagers = (managers) => {
+    managers.forEach(elm => {
+      if(managersList.includes(elm)){
+        // Do nothing
+      }
+      else managersList.push(elm);
+    })
+  };
+
   // Funcao Gera Lista de Gerentes
   const getManagers = () => {
     data.employees.forEach(
@@ -62,14 +73,7 @@ function isManager(id) {
           if (managersList.includes(element.managers[0])) {
             // Do nothing
           } else managersList.push(element.managers[0]);
-        } else {
-          element.managers.forEach(elm => {
-           if(managersList.includes(elm)){
-             // Do nothing
-           }
-           else managersList.push(elm);
-          });
-        }
+        } else splitManagers (element.managers);
       })
   };
 
