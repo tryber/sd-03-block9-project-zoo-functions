@@ -12,10 +12,11 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 const animalsByIds = (...ids) => data.animals.filter(animal => ids.find(id => id === animal.id));
-console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce', 'e8481c1d-42ea-4610-8e11-1752cfc05a46'));
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  const findAnimal = data.animals.find(element => element.name === animal);
+  const searchAge = findAnimal.residents.every(element => element.age >= age);
+  return searchAge;
 }
 
 function employeeByName(employeeName) {
@@ -42,7 +43,11 @@ function entryCalculator(entrants) {
   // seu código aqui
 }
 
-function animalMap(options) {
+function oldestFromFirstSpecies(id) {
+  // seu código aqui
+}
+
+function increasePrices(percentage) {
   // seu código aqui
 }
 
@@ -50,11 +55,7 @@ function schedule(dayName) {
   // seu código aqui
 }
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
-
-function increasePrices(percentage) {
+function animalMap(options) {
   // seu código aqui
 }
 
