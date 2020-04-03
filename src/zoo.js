@@ -13,7 +13,7 @@ const data = require('./data');
 
 const animalsByIds = (...ids) => {
   const compare = (item, toCompare) => toCompare.includes(item);
-  return data.animals.filter((element) => compare(element, ids));
+  return data.animals.filter(({ id }) => compare(id, ids));
 };
 
 function animalsOlderThan(animal, age) {
@@ -80,5 +80,10 @@ module.exports = {
   createEmployee,
 };
 
-console.log(animalsByIds('e8481c1d-42ea-4610-8e11-1752cfc05a46'));
+console.log(
+  animalsByIds(
+    'e8481c1d-42ea-4610-8e11-1752cfc05a46',
+    '0938aa23-f153-4937-9f88-4858b24d6bce',
+  ),
+);
 console.log(animalsByIds());
