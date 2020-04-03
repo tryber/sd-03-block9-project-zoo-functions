@@ -64,11 +64,9 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
     responsibleFor = [];
     const employee = {id, firstName, lastName, managers, responsibleFor}
     data.employees.push(employee);
-    console.log(data.employees);
   } else {
     const employee = {id, firstName, lastName, managers, responsibleFor}
     data.employees.push(employee);
-    console.log(data.employees);
   }
 }
 
