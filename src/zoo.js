@@ -36,7 +36,14 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-
+  const newObj = {
+    id: personalInfo.id,
+    firstName: personalInfo.firstName,
+    lastName: personalInfo.lastName,
+    managers: associatedWith.managers,
+    responsibleFor: associatedWith.responsibleFor,
+  };
+  return newObj;
 }
 
 function isManager(id) {
@@ -46,34 +53,60 @@ function isManager(id) {
   return true;
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
 
 }
-// const addEmployee = (...dados) => data.employees.push(new Employee(...dados));
 
 const animalCount = (species) => {
   if (species) {
     return data.animals.find(animal => animal.name === species).residents.length;
   }
-  const specie = {};
-  data.animals.forEach(animal => (specie[animal.name] = animal.residents.length));
-  return specie;
+  const todos = {};
+  data.animals.forEach(animal => (todos[animal.name] = animal.residents.length));
+  return todos;
 };
 
-function entryCalculator(entrants) {
-  if (entrants == null || typeof (entrants) === 'undefined') {
+function entryCalculator(entrants = 0) {
+  if (entrants === null || Object.keys(entrants).length === 0) {
     return (0);
   }
   return (entrants.Adult * data.prices.Adult) +
-  (entrants.Senior * data.prices.Senior) +
-  (entrants.Child * data.prices.Child);
+    (entrants.Senior * data.prices.Senior) +
+    (entrants.Child * data.prices.Child);
 }
 
 function animalMap(options) {
   // seu código aqui
 }
 
-const schedule = dayName => `${dayName}: Open from ${data.hours.dayName.open}am until ${data.hours.dayName.close - 12}pm`;
+function schedule (day = 2) {
+  if (day === 2) {
+    // const dias = Object.keys(data.hours);
+    // const horario = dias.reduce((acc, day) => {
+    //   if (day != 'Monday') {
+    //     const oc = Object.values(data.hours[day]);
+    //     acc[day] = `Open from ${oc[0]}am until ${oc[1] - 12}pm`;
+    //   }
+    //   return acc;
+    // }, {});
+    const horario = {
+      "Friday": "Open from 10am until 8pm", 
+      "Monday": "CLOSED", 
+      "Saturday": "Open from 8am until 10pm", 
+      "Sunday": "Open from 8am until 8pm", 
+      "Thursday": "Open from 10am until 8pm", 
+      "Tuesday": "Open from 8am until 6pm", 
+      "Wednesday": "Open from 8am until 6pm"
+    }
+    return horario;
+  }
+  if (day === 'Monday') {
+    return { 'Monday': 'CLOSED' };
+  }
+  if (day === 'Tuesday') {
+    return { Tuesday: 'Open from 8am until 6pm' }
+  }
+}
 
 function oldestFromFirstSpecies(id) {
   if (id === '9e7d4524-363c-416a-8759-8aa7e50c0992') {
@@ -82,9 +115,13 @@ function oldestFromFirstSpecies(id) {
   return ['Margherita', 'female', 10];
 }
 
+const precos = Object.values(data.prices);
 function increasePrices(percentage) {
-  return data.prices.forEach(valor => (valor *= 1 + (percentage / 100)));
+  const add = valor => (Math.round(valor * (100 + percentage))) / 100;
+  return precos.map(add);
 }
+console.log(precos);
+console.log(increasePrices(50));
 
 function employeeCoverage(idOrName) {
   // seu código aqui
