@@ -86,7 +86,7 @@ function schedule(dayName) {
   if (dayName) {
     horarios[dayName] = geraChave(dayName);
   } else {
-    Object.keys(data.hours).forEach(dia => {horarios[dia] = geraChave(dia)});
+    Object.keys(data.hours).forEach((dia) => { horarios[dia] = geraChave(dia); });
   }
   return horarios;
 }
@@ -95,31 +95,32 @@ function schedule(dayName) {
 function oldestFromFirstSpecies(id) {
   const idFunc = data.employees.find(emp => emp.id === id);
   const grpAnimais = data.animals.find(especie => especie.id === idFunc.responsibleFor[0]);
-  const maisVelho = grpAnimais.residents.sort(function(a, b) { return b.age - a.age; })[0];
+  const maisVelho = grpAnimais.residents.sort( function(a, b) { return b.age - a.age; })[0];
   return [maisVelho.name, maisVelho.sex, maisVelho.age];
 }
 
 // console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
-const novoPreco = (antigo, porcent) => { return (antigo*(1+(porcent/100))).toFixed(2) }
+const novoPreco = (antigo, porcent) => { return (antigo * (1 + (porcent/100))).toFixed(2); };
 
 function increasePrices(percentage) {
   const { Adult, Child, Senior } = data.prices;
-  let newPrices = {};
-  newPrices['Adult'] = novoPreco(Adult,percentage);
-  newPrices['Senior'] = novoPreco(Senior,percentage);
-  newPrices['Child'] = novoPreco(Child,percentage);
+  const newPrices = {};
+  newPrices.Adult = novoPreco(Adult, percentage);
+  newPrices.Senior = novoPreco(Senior, percentage);
+  newPrices.Child = novoPreco(Child, percentage);
   return newPrices;
 }
-//  console.log(increasePrices(30));
+  console.log(increasePrices(30));
 
 function employeeCoverage(idOrName) {
   switch (idOrName) {
     case 1: {
       return data.employees.map(emp => `${emp.firstName} ${emp.lastName}`);
     }
+    default: return 'erro'
   }
 }
-console.log(employeeCoverage(1));
+// console.log(employeeCoverage(1));
 
 module.exports = {
   entryCalculator,
