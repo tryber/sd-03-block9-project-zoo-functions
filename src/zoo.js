@@ -51,8 +51,6 @@ function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
 }
 
-
-
 function isManager(id) {
   // seu código aqui
 }
@@ -62,10 +60,10 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   if (!managers && !responsibleFor) {
     managers = [];
     responsibleFor = [];
-    const employee = {id, firstName, lastName, managers, responsibleFor}
+    const employee = { id, firstName, lastName, managers, responsibleFor };
     data.employees.push(employee);
   } else {
-    const employee = {id, firstName, lastName, managers, responsibleFor}
+    const employee = { id, firstName, lastName, managers, responsibleFor };
     data.employees.push(employee);
   }
 }
