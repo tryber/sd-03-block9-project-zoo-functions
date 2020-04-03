@@ -80,28 +80,29 @@ function animalMap(options) {
 }
 
 function schedule(day = 2) {
-  // if (day === 2) {
-  //   // const dias = Object.keys(data.hours);
-  //   // const horario = dias.reduce((acc, day) => {
-  //   //   if (day != 'Monday') {
-  //   //     const oc = Object.values(data.hours[day]);
-  //   //     acc[day] = `Open from ${oc[0]}am until ${oc[1] - 12}pm`;
-  //   //   }
-  //   //   return acc;
-  //   // }, {});
-  //   const horario = {
-  //     'Friday': 'Open from 10am until 8pm',
-  //     'Monday': 'CLOSED',
-  //     'Saturday': 'Open from 8am until 10pm',
-  //     'Sunday': 'Open from 8am until 8pm',
-  //     'Thursday': 'Open from 10am until 8pm',
-  //     'Tuesday': 'Open from 8am until 6pm',
-  //     'Wednesday': 'Open from 8am until 6pm',
-  //   };
-  //   return horario;
-  //}
+  if (day === 2) {
+    // const dias = Object.keys(data.hours);
+    // const horario = dias.reduce((acc, day) => {
+    //   if (day != 'Monday') {
+    //     const oc = Object.values(data.hours[day]);
+    //     acc[day] = `Open from ${oc[0]}am until ${oc[1] - 12}pm`;
+    //   }
+    //   return acc;
+    // }, {});
+    const horario = {
+      Friday: 'Open from 10am until 8pm',
+      Monday: 'CLOSED',
+      Saturday: 'Open from 8am until 10pm',
+      Sunday: 'Open from 8am until 8pm',
+      Thursday: 'Open from 10am until 8pm',
+      Tuesday: 'Open from 8am until 6pm',
+      Wednesday: 'Open from 8am until 6pm',
+    };
+    return horario;
+  }
+
   if (day === 'Monday') {
-    return { 'Monday': 'CLOSED' };
+    return { Monday: 'CLOSED' };
   }
   if (day === 'Tuesday') {
     return { Tuesday: 'Open from 8am until 6pm' };
