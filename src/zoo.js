@@ -105,7 +105,8 @@ function schedule(day = 2) {
   }
   if (day === 'Tuesday') {
     return { Tuesday: 'Open from 8am until 6pm' };
-  return true;
+  }
+    return true;
 }
 
 function oldestFromFirstSpecies(id) {
