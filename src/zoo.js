@@ -11,14 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(ids) {
-  if (ids == null) {
-    return ([]);
-  }
-  return [data.animals.find(animal => animal.id === ids)];
-}
-
-// const animalsByIds = (...ids) => data.animals.filter(animal => ids.find(id => id === animal.id));
+const animalsByIds = (...ids) => data.animals.filter(animal => ids.find(id => id === animal.id));
 
 function animalsOlderThan(animal, age) {
   if (animal === 'otters') {
@@ -54,7 +47,7 @@ function isManager(id) {
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-
+  data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 const animalCount = (species) => {
@@ -117,13 +110,12 @@ function oldestFromFirstSpecies(id) {
   return ['Margherita', 'female', 10];
 }
 
-const precos = Object.values(data.prices);
-function increasePrices(percentage) {
-  const add = valor => (Math.round(valor * (100 + percentage))) / 100;
-  return precos.map(add);
-}
-console.log(precos);
-console.log(increasePrices(50));
+precos = Object.keys(data.prices);
+const increasePrices = (percentage) => {
+  precos.forEach((valor) => {
+    data.prices[valor] = Math.round(data.prices[valor] * ((percentage / 100) + 1) * 100) / 100;
+  });
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
