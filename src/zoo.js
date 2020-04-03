@@ -51,12 +51,25 @@ function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
 }
 
+
+
 function isManager(id) {
   // seu código aqui
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
+  if (!managers && !responsibleFor) {
+    managers = [];
+    responsibleFor = [];
+    const employee = {id, firstName, lastName, managers, responsibleFor}
+    data.employees.push(employee);
+    console.log(data.employees);
+  } else {
+    const employee = {id, firstName, lastName, managers, responsibleFor}
+    data.employees.push(employee);
+    console.log(data.employees);
+  }
 }
 
 function animalCount(species) {
