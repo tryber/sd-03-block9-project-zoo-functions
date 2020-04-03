@@ -53,6 +53,31 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
+  let managersList = [];
+  // Funcao Gera Lista de Gerentes
+  const getManagers = () => {
+    data.employees.forEach(
+      (element) =>  {
+        if (element.managers.length === 1) {
+          if (managersList.includes(element.managers[0])) {
+            // Do nothing
+          } else managersList.push(element.managers[0]);
+        } else {
+          element.managers.forEach(elm => {
+           if(managersList.includes(elm)){
+             // Do nothing
+           }
+           else managersList.push(elm);
+          });
+        }
+      })
+  };
+
+  getManagers();
+
+  if ( managersList.find(element => element === id) ) {
+    return true;
+  } else return false;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
