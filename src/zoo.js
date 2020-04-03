@@ -110,9 +110,8 @@ function oldestFromFirstSpecies(id) {
   return ['Margherita', 'female', 10];
 }
 
-precos = Object.keys(data.prices);
 const increasePrices = (percentage) => {
-  precos.forEach((valor) => {
+  Object.keys(data.prices).forEach((valor) => {
     data.prices[valor] = Math.round(data.prices[valor] * ((percentage / 100) + 1) * 100) / 100;
   });
 };
