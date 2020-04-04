@@ -70,12 +70,12 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
       firstName,
       lastName,
       managers: [],
-      responsibleFor: []
+      responsibleFor: [],
     };
     return data.employees.push(newObject);
   }
 
-  let newObject = {
+  const newObject = {
     id,
     firstName,
     lastName,
