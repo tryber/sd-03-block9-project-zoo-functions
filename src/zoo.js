@@ -75,21 +75,20 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 
 function animalCount(species) {
   // seu código aqui
-  const count = data.animals.reduce((accumulator,element) => {
-  accumulator[element.name] = element.residents.length;
-  return accumulator;
-  },{});
+  const count = data.animals.reduce((accumulator, element) => {
+    accumulator[element.name] = element.residents.length;
+    return accumulator;
+  }, {});
 
   if (!species) return count;
-  else {
-    let countIndividual = 0;
-    Object.keys(count).forEach(element => {
-      if (element === species) {
-        countIndividual = count[element];
-      }
-    });
+
+  let countIndividual = 0;
+  Object.keys(count).forEach((element) => {
+    if (element === species) {
+      countIndividual = count[element];
+    }
+  });
   return countIndividual;
-  }
 }
 
 console.log(animalCount('lions'));
