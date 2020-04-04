@@ -25,9 +25,12 @@ const animalsOlderThan = (animal, age) => {
 };
 // console.log(animalsOlderThan('penguins', 10));
 
-const employeeByName = employeeName => employeesArr.find(element =>
-  element.firstName === employeeName || element.lastName === employeeName);
-// console.log(employeeByName('Elser'));
+const employeeByName = employeeName => {
+  if (!employeeName) return {};
+  return employeesArr.find(element => element.firstName === employeeName
+    || element.lastName === employeeName);
+};
+// console.log(employeeByName());
 
 const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
 
@@ -36,7 +39,7 @@ const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...
 const isManager = id => employeesArr.some(element => element.managers.includes(id));
 // console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
-const addEmployee = (id, firstName, lastName, managers = '[]', responsibleFor = '[]') => employeesArr.push({
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => employeesArr.push({
   id, firstName, lastName, managers, responsibleFor,
 });
 // console.log(addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe'));
@@ -54,7 +57,10 @@ const animalCount = (species) => {
 // console.log(animalCount('snakes'));
 
 const entryCalculator = (entrants) => {
-  if (entrants === 0 || Object.keys(entrants).length === 0) {
+  if (entrants === 0
+    || entrants === null
+    || entrants === undefined
+    || Object.keys(entrants).length === 0) {
     return 0;
   }
   const { Child, Adult, Senior } = entrants;
@@ -80,7 +86,7 @@ const schedule = (dayName) => {
     if (element[0] === 'Monday') {
       sched[element[0]] = 'CLOSED';
     } else {
-      sched[element[0]] = `Open from ${element[1].open}am until ${element[1].close}pm`;
+      sched[element[0]] = `Open from ${element[1].open}am until ${element[1].close - 12}pm`;
     }
   });
   if (dayName != null) {
@@ -124,7 +130,7 @@ const employeeCoverage = (idOrName) => {
   });
   return obj;
 };
-console.log(employeeCoverage());
+console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
 module.exports = {
   entryCalculator,
