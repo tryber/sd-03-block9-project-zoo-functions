@@ -29,15 +29,16 @@ const employeeByName = (employeeName) => employeesArr.find(element => element.fi
   || element.lastName === employeeName);
 // console.log(employeeByName('Elser'));
 
-const createEmployee = (personalInfo, associatedWith) => { ...personalInfo, ...associatedWith };
+const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
+
 // console.log(createEmployee({ kkk: 'heheh', llll: 'zzz' }, { hulu: 'Tom Brady', Team: 'Bucs' }));
 
 const isManager = id => employeesArr.some(element => element.managers.includes(id));
 // console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
 const addEmployee = (id, firstName, lastName, managers = '[]', responsibleFor = '[]') => employeesArr.push({
-    id, firstName, lastName, managers, responsibleFor,
-  });
+  id, firstName, lastName, managers, responsibleFor,
+});
 // console.log(addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe'));
 
 const animalCount = (species) => {
