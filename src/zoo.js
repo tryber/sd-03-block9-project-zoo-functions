@@ -39,10 +39,8 @@ const employeeByName = (employeeName) => {
   return employees.find(el => el.firstName === employeeName || el.lastName === employeeName);
 };
 
-const createEmployee = (personalInfo, associatedWith) => {
-  const newEmployee = Object.assign({}, personalInfo, associatedWith);
-  return newEmployee;
-};
+const createEmployee = (personalInfo, associatedWith) =>
+Object.assign({}, personalInfo, associatedWith);
 
 function isManager(id) {
   const managers = employees.map(el => el.managers);
@@ -85,7 +83,66 @@ const entryCalculator = (entrants) => {
   return total;
 };
 
-const animalMap = (options) => {};
+const construcAnimalObj = (objeto, arrReg, funcao, options) => {
+  arrReg.forEach((region) => {
+    objeto[region] = funcao(region, options);
+  });
+  return objeto;
+};
+
+const getLocations = () => data.animals.map(({ location }) => location)
+.reduce((accumulator, location) => {
+  if (accumulator[location] === undefined) accumulator[location] = [];
+  return accumulator;
+}, {});
+
+const filterByRegion = region => animals.filter(el => el.location === region)
+.map(el => el.name);
+
+const filterByRegionAndSex = (region, sexo) => {
+  const arr = animals.filter(el => el.location === region);
+  const novoObj = arr.reduce((newArr, cur) => {
+    const newObj = {};
+    const residents = cur.residents.filter(el => el.sex === sexo).map(el => el.name);
+    newObj[cur.name] = residents;
+    newArr.push(newObj);
+    return newArr;
+  }, []);
+  return novoObj;
+};
+
+const filterByRegionAndNames = (region, sorted) => {
+  const arr = animals.filter(el => el.location === region);
+  const novoObj = arr.reduce((newArr, cur) => {
+    const newObj = {};
+    const residents = cur.residents.map(el => el.name);
+    if (sorted === true) {
+      residents.sort();
+    }
+    newObj[cur.name] = residents;
+    newArr.push(newObj);
+    return newArr;
+  }, []);
+  return novoObj;
+};
+
+const animalMap = (options = false) => {
+  const obj = getLocations();
+  const arrReg = Object.keys(obj);
+
+  if (options.includeNames && options.sex) {
+    return construcAnimalObj(obj, arrReg, filterByRegionAndSex, options.sex);
+  }
+
+  if (options.includeNames || options.sorted) {
+    return construcAnimalObj(obj, arrReg, filterByRegionAndNames, options.sorted);
+  }
+
+  arrReg.forEach((region) => {
+    obj[region] = filterByRegion(region);
+  });
+  return obj;
+};
 
 function schedule(dayName) {
   // seu código aqui
