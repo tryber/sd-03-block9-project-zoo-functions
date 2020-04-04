@@ -112,11 +112,11 @@ const oldestFromFirstSpecies = (id) => {
 // console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 const increasePrices = (percentage) => {
-  Object.keys(pricesObj).forEach(e => {
+  Object.keys(pricesObj).forEach((e) => {
     (pricesObj[e] = Math.round(pricesObj[e] * ((percentage / 100) + 1) * 100) / 100);
   });
 };
-//console.log(increasePrices(30));
+// console.log(increasePrices(30));
 
 const employeeCoverage = (idOrName) => {
   const obj = {};
