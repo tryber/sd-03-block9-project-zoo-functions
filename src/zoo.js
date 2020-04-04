@@ -43,7 +43,7 @@ function createEmployee(personalInfo, associatedWith) {
 function isManager(id) {
   if (
     data.employees.find((employe) =>
-      employe.managers.find((managers) => managers == id)
+      employe.managers.find((managers) => managers === id)
     )
   )
     return true;
@@ -61,21 +61,22 @@ function addEmployee(
 }
 
 function animalCount(species) {
-  if (species == undefined)
+  if (species === undefined)
     return data.animals.reduce((accumulator, currentValue) => {
       accumulator[currentValue.name] = currentValue.residents.length;
       return accumulator;
     }, {});
-  return data.animals.find((animal) => animal.name == species).residents.length;
+  return data.animals.find((animal) => animal.name === species).residents
+    .length;
 }
 
 function entryCalculator(entrants) {
-  if (entrants == undefined || Object.keys(entrants) == 0) return 0;
+  if (entrants === undefined || Object.keys(entrants) === 0) return 0;
   return Object.entries(entrants)
     .map((entry) => {
-      if (entry[0] == "Adult") return entry[1] * 49.99;
-      if (entry[0] == "Child") return entry[1] * 20.99;
-      if (entry[0] == "Senior") return entry[1] * 24.99;
+      if (entry[0] === "Adult") return entry[1] * 49.99;
+      if (entry[0] === "Child") return entry[1] * 20.99;
+      if (entry[0] === "Senior") return entry[1] * 24.99;
     })
     .reduce((accumulator, currentValue) => accumulator + currentValue);
 }
