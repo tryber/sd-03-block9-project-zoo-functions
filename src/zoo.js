@@ -102,84 +102,31 @@ function entryCalculator(entrants) {
   return somaPreço;
 }
 
-function test(arrLocation, sorted) {
-  let newArrLocationMap;
-  let newArrLocationFilter;
-  let newObject = {};
-  let objectValue = {};
-  let filterNames;
-  let arrObject = []
-  let nameSorted;
-  for (let i = 0; i < arrLocation.length; i += 1) {
-    newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
-    newArrLocationMap = newArrLocationFilter.map(item => item.name);
-    for (let x = 0; x < newArrLocationMap.length; x += 1) {
-      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.map(item => item.name);
-      nameSorted = filterNames;
-      if (sorted === true) nameSorted = filterNames.sort();
-      objectValue[newArrLocationMap[x]] = nameSorted;
-      arrObject.push(objectValue);
-      newObject[arrLocation[i]] = arrObject;
-      objectValue = {}
-    }
-    arrObject = [];
-  }
-  return newObject;
-}
 
-function includeNamesTrue(arrLocation) {
-  return test(arrLocation, false);
-}
-
-function sortedTrue(arrLocation) {
-  return test(arrLocation, true);
-}
-
-function sex(arrLocation, sexParam) {
-  let newArrLocationMap;
-  let newArrLocationFilter;
-  let newObject = {};
-  let objectValue = {};
-  let filterNames;
-  let arrObject = []
-  for (let i = 0; i < arrLocation.length; i += 1) {
-    newArrLocationFilter = data.animals.filter(animal => animal.location === arrLocation[i]);
-    newArrLocationMap = newArrLocationFilter.map(item => item.name);
-    for (let x = 0; x < newArrLocationMap.length; x += 1) {
-      filterNames = newArrLocationFilter.filter(item => item.name === newArrLocationMap[x])[0].residents.filter(element => element.sex === sexParam).map(item => item.name);
-      objectValue[newArrLocationMap[x]] = filterNames;
-      arrObject.push(objectValue);
-      newObject[arrLocation[i]] = arrObject;
-      objectValue = {}
-    }
-    arrObject = [];
-  }
-  return newObject;
-}
 
 function animalMap(options) {
-  const newArrLocation = ['NE', 'NW', 'SE', 'SW'];
-  let newArrLocationMap;
-  let newArrLocationFilter;
-  let newObject = {};
-  for (let i = 0; i < newArrLocation.length; i += 1) {
-    newArrLocationFilter = data.animals.filter(animal => animal.location === newArrLocation[i]);
-    newArrLocationMap = newArrLocationFilter.map(item => item.name);
-    newObject[newArrLocation[i]] = newArrLocationMap;
-  }
-  if (options === undefined || options.includeNames === undefined) {
-    return newObject;
-  } else if (options.includeNames === true && options.sorted === true) {
-    return sortedTrue(newArrLocation);
-  } else if (options.includeNames === true && options.sex !== undefined) {
-    return sex(newArrLocation, options.sex);
-  } else if (options.includeNames) {
-    return includeNamesTrue(newArrLocation);
-  }
+  // seu código aqui
 }
 
 function schedule(dayName) {
   // seu código aqui
+  const days = Object.keys(data.hours);
+  let objectHours = {};
+  const objectHoursDayName = {};
+  for (let i = 0; i < days.length; i += 1) {
+    if (days[i] === 'Monday') {
+      objectHours[days[i]] = 'CLOSED';
+    } else {
+      objectHours[days[i]] = `Open from ${data.hours[days[i]].open}am until ${data.hours[days[i]].close - 12}pm`;
+    }
+    if (dayName === 'Monday') {
+      objectHoursDayName[dayName] = 'CLOSED';
+    } else if (days[i] === dayName) {
+      objectHoursDayName[days[i]] = `Open from ${data.hours[days[i]].open}am until ${data.hours[days[i]].close - 12}pm`;
+    }
+  }
+  if (dayName === undefined) return objectHours;
+  return objectHoursDayName;
 }
 
 function oldestFromFirstSpecies(id) {
