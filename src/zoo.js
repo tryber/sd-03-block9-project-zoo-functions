@@ -120,12 +120,12 @@ const increasePrices = (percentage) => {
 const filteredEmployee = (e) => {
   const obj = {};
   obj[`${e.firstName} ${e.lastName}`] = e
-    .responsibleFor.map(e => animalsArr.find(animal => animal.id === e).name);
+    .responsibleFor.map(element => animalsArr.find(animal => animal.id === element).name);
   return obj;
 };
 // console.log(filteredEmployee('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 const employeeCoverage = (idOrName) => {
-  let obj1 = {};
+  const obj1 = {};
   if (idOrName) {
     const findEmployee = employeesArr.find(e => e.id === idOrName
       || e.firstName === idOrName || e.lastName === idOrName);
