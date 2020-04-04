@@ -11,12 +11,21 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
-}
+const animalsByIds = (...ids) => ids ? ids.map(id => (
+  data.animals.reduce((acc, animal) => (
+    animal.id === id ? animal : acc
+  ), null)
+)) : [];
+
+  // retorna um array vazio se não receber parâmetro
+  // com um único id, retorna os animais com este id
+  // com mais de um id, retorna os animais que têm um desses ids
+
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+
+  // Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta
+  // espécie possuem a idade mínima especificada
 }
 
 function employeeByName(employeeName) {
