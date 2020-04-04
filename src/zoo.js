@@ -25,7 +25,7 @@ const animalsOlderThan = (animal, age) => {
 };
 // console.log(animalsOlderThan('penguins', 10));
 
-const employeeByName = employeeName => {
+const employeeByName = (employeeName) => {
   if (!employeeName) return {};
   return employeesArr.find(element => element.firstName === employeeName
     || element.lastName === employeeName);
@@ -39,9 +39,10 @@ const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...
 const isManager = id => employeesArr.some(element => element.managers.includes(id));
 // console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
-const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => employeesArr.push({
-  id, firstName, lastName, managers, responsibleFor,
-});
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) =>
+  employeesArr.push({
+    id, firstName, lastName, managers, responsibleFor,
+  });
 // console.log(addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe'));
 
 const animalCount = (species) => {
