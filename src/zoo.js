@@ -102,8 +102,6 @@ function entryCalculator(entrants) {
   return somaPreço;
 }
 
-
-
 function animalMap(options) {
   // seu código aqui
 }
@@ -123,7 +121,7 @@ function objectHoursFunction() {
 
 function schedule(dayName) {
   if (dayName === undefined) return objectHoursFunction();
-  const objectDayHours = {}
+  const objectDayHours = {};
   if (dayName === 'Monday') {
     objectDayHours[dayName] = 'CLOSED';
   } else {
