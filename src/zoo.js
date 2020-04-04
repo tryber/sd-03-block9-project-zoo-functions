@@ -55,8 +55,8 @@ function isManager(id) {
   // seu código aqui
   let gerentes = [];
   gerentes = data.employees.reduce((accumulator, element) =>
-  accumulator = `${accumulator},${element.managers}`,['0']);
-  if (gerentes.split(",").find(element => element === id)) return true;
+  `${accumulator},${element.managers}`, ['0']);
+  if (gerentes.split(',').find(element => element === id)) return true;
   return false;
 }
 
