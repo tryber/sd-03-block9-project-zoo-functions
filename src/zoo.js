@@ -61,9 +61,30 @@ function isManager(id) {
   }
   return 0;
 }
-console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
+
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
+  if(!managers && !responsibleFor) {
+    let newObject = {
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
+      managers: [],
+      responsibleFor: []
+    };
+    return data.employees.push(newObject);
+  }
+
+  let newObject = {
+    id: id,
+    firstName: firstName,
+    lastName: lastName,
+    managers: managers,
+    responsibleFor: responsibleFor
+  };
+  data.employees.push(newObject);
+
+ return data.employees;
 }
 
 function animalCount(species) {
