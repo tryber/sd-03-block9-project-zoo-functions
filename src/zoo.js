@@ -117,32 +117,26 @@ const increasePrices = (percentage) => {
   });
 };
 // console.log(increasePrices(30));
-// const filteredEmployee = (nameOrId) => {
-//   const singleEmployee = {};
-//   const findEmployee = employeesArr.find(e => e.id === nameOrId
-//     || e.firstName === nameOrId || e.lastName === nameOrId);
-//   singleEmployee[`${findEmployee.firstName} ${findEmployee.lastName}`] = findEmployee
-//     .responsibleFor.map(e => animalsArr.find(animal => animal.id === e).name);
-//   return singleEmployee;
-// };
+const filteredEmployee = (e) => {
+  const obj = {};
+  obj[`${e.firstName} ${e.lastName}`] = e
+    .responsibleFor.map(e => animalsArr.find(animal => animal.id === e).name);
+  return obj;
+};
 // console.log(filteredEmployee('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 const employeeCoverage = (idOrName) => {
-  const obj = {};
+  let obj1 = {};
   if (idOrName) {
     const findEmployee = employeesArr.find(e => e.id === idOrName
       || e.firstName === idOrName || e.lastName === idOrName);
-    obj[`${findEmployee.firstName} ${findEmployee.lastName}`] = findEmployee
-      .responsibleFor.map(e => animalsArr.find(animal => animal.id === e).name);
-  } else {
-    employeesArr.forEach((element) => {
-      obj[`${element.firstName} ${element.lastName}`] = element.responsibleFor
-        .map(id => animalsArr
-          .find(animal => animal.id === id).name);
-    });
+    return filteredEmployee(findEmployee);
   }
-  return obj;
+  employeesArr.forEach((employee) => {
+    Object.assign(obj1, filteredEmployee(employee));
+  });
+  return obj1;
 };
-console.log(employeeCoverage('Sharonda'));
+console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
