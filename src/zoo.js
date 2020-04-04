@@ -53,35 +53,11 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  const managersList = [];
-
-  // Funcao Separa Gerentes
-  const splitManagers = (managers) => {
-    managers.forEach(elm => {
-      if(managersList.includes(elm)){
-        // Do nothing
-      }
-      else managersList.push(elm);
-    })
-  };
-
-  // Funcao Gera Lista de Gerentes
-  const getManagers = () => {
-    data.employees.forEach(
-      (element) =>  {
-        if (element.managers.length === 1) {
-          if (managersList.includes(element.managers[0])) {
-            // Do nothing
-          } else managersList.push(element.managers[0]);
-        } else splitManagers (element.managers);
-      })
-  };
-
-  getManagers();
-
-  if ( managersList.find(element => element === id) ) {
-    return true;
-  } else return false;
+  let gerentes = [];
+  gerentes = data.employees.reduce((accumulator, element) =>
+  accumulator = `${accumulator},${element.managers}`,['0']);
+  if (gerentes.split(",").find(element => element === id)) return true;
+  return false;
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
