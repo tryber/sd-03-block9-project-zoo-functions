@@ -91,10 +91,17 @@ function animalCount(species) {
   return countIndividual;
 }
 
-console.log(animalCount('lions'));
-
 function entryCalculator(entrants) {
   // seu código aqui
+  let result = 0;
+  if(!entrants) return result;
+  if(typeof entrants === 'object'
+    && Object.keys(entrants).length === 0) return result;
+
+  const { Adult, Child, Senior } = entrants;
+  const { Adult:pAdult, Child:pChild, Senior:pSenior } = data.prices;
+  result = Adult * pAdult + Child * pChild + Senior * pSenior;
+  return result;
 }
 
 function animalMap(options) {
