@@ -30,9 +30,9 @@ function animalsOlderThan(animal, age) {
     maisVelhos = false;
   } else if (especiesSelected2.length === especiesSelected[0].residents.length) {
       maisVelhos = true;
-    }
+  }
 
-  return maisVelhos;
+    return maisVelhos;
 }
 
 function employeeByName(employeeName) {
