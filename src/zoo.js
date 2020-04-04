@@ -64,11 +64,11 @@ function isManager(id) {
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
-  if(!managers && !responsibleFor) {
-    let newObject = {
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
+  if (!managers && !responsibleFor) {
+    const newObject = {
+      id,
+      firstName,
+      lastName,
       managers: [],
       responsibleFor: []
     };
@@ -76,15 +76,15 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   }
 
   let newObject = {
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
-    managers: managers,
-    responsibleFor: responsibleFor
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
   };
   data.employees.push(newObject);
 
- return data.employees;
+  return data.employees;
 }
 
 function animalCount(species) {
