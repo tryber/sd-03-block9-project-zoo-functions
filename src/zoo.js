@@ -85,8 +85,71 @@ function entryCalculator(entrants) {
   return total;
 }
 
+function createLocationAndSpecies(listOfLocations, animalsByLocation) {
+  listOfLocations.forEach(e => data.animals.reduce((arrayOfAnimals, el) => {
+    if (el.location === e) {
+      arrayOfAnimals.push(el.name);
+    }
+    animalsByLocation[e] = arrayOfAnimals;
+    return arrayOfAnimals;
+  }, []));
+  return animalsByLocation;
+}
+
+function createListOfNames(options) {
+  const listOfNames = {};
+  data.animals.forEach((e) => {
+    const arrOfNames = [];
+    e.residents.forEach((el) => {
+      if (options.sex === 'female') {
+        if (el.sex === 'female') {
+          arrOfNames.push(el.name);
+        }
+      } else {
+        arrOfNames.push(el.name);
+      }
+      if (options.sorted === true) {
+        arrOfNames.sort();
+      }
+      listOfNames[e.name] = arrOfNames;
+    });
+  });
+  return listOfNames;
+}
+
+const listOfNamesandLocations = (listOfLocations, animalsByLocation, listOfNames) => {
+  listOfLocations.forEach((el) => {
+    const arrayWithNames = animalsByLocation[el].map(e => ({ [e]: listOfNames[e] }));
+    animalsByLocation[el] = arrayWithNames;
+  });
+  return animalsByLocation;
+};
+
+
 function animalMap(options) {
-  // seu código aqui
+  let animalsByLocation = {};
+  data.animals.forEach((e) => {
+    animalsByLocation[e.location] = ' ';
+  });
+  const listOfLocations = Object.keys(animalsByLocation);
+
+  animalsByLocation = createLocationAndSpecies(listOfLocations, animalsByLocation);
+
+  if (options === undefined) {
+    return animalsByLocation;
+  }
+  const listOfNames = createListOfNames(options);
+
+  if (options.includeNames === undefined && options.sex === 'female') {
+    return createLocationAndSpecies(listOfLocations, animalsByLocation);
+  }
+
+  animalsByLocation = listOfNamesandLocations(listOfLocations, animalsByLocation, listOfNames);
+
+  if (options.includeNames === true) {
+    return animalsByLocation;
+  }
+  return animalsByLocation;
 }
 
 function schedule(dayName) {
@@ -157,16 +220,13 @@ function employeeCoverage(idOrName) {
   const dictionary = newDictionary();
   const employees = data.employees.map(e => `${e.firstName} ${e.lastName}`);
   let obj = {};
-  employees.forEach((e) => {
-    obj[e] = ' ';
-  });
   const animalsId = data.employees.map(e => e.responsibleFor);
   const translatedAnimals = animalsId.map(e => e.reduce((arr, i) => {
     i = dictionary[i];
     arr.push(i);
     return arr;
   },
-  []));
+    []));
   employees.forEach((e, i) => {
     obj[e] = translatedAnimals[i];
   });
