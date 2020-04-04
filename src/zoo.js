@@ -37,11 +37,12 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   // seu código aqui
-  let employeeSelected = {};  
+  let employeeSelected = {};
   if (!employeeName) {
     return {};
   }
-  employeeSelected = data.employees.filter(element => element.firstName === employeeName || element.lastName === employeeName);
+  employeeSelected = data.employees.filter(
+  element => element.firstName === employeeName || element.lastName === employeeName);
   return employeeSelected[0];
 }
 
