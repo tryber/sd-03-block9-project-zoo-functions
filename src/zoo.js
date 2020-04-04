@@ -11,11 +11,13 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const animalsByIds = (...ids) => ids ? ids.map(id => (
-  data.animals.reduce((acc, animal) => (
-    animal.id === id ? animal : acc
-  ), null)
-)) : [];
+const animalsByIds = (...ids) => (
+  ids ? ids.map(id => (
+    data.animals.reduce((acc, animal) => (
+      animal.id === id ? animal : acc
+    ), null)
+  )) : []
+);
 
   // retorna um array vazio se não receber parâmetro
   // com um único id, retorna os animais com este id
