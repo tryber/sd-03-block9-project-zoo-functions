@@ -145,10 +145,14 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   // seu código aqui
-  const porcFracao = percentage / 100;
-  const ks = Object.keys(data.prices);
-  for (let i = 0; i < ks.length; i += 1) {
-    data.prices[ks[i]] = Math.round((data.prices[ks[i]] + data.prices[ks[i]] * porcFracao) * 100) / 100;
+  const porcentagemFracao = percentage / 100;
+  const keys = Object.keys(data.prices);
+  let value = 0;
+  for (let i = 0; i < keys.length; i += 1) {
+    value =  data.prices[keys[i]];
+    value += value * porcentagemFracao;
+    value = Math.round(value * 100) / 100;
+    data.prices[keys[i]] = value;
   }
 }
 
