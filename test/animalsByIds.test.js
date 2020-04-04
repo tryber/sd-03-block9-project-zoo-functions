@@ -3,7 +3,8 @@ const zoo = require('../src/zoo');
 
 describe('animalsByIds', () => {
   it('test', () => {
-    let actual, expected;
+    let actual;
+    let expected;
 
     // sem parâmetros, retorna um array vazio
     actual = zoo.animalsByIds();
@@ -22,8 +23,8 @@ describe('animalsByIds', () => {
         { name: 'Zena', sex: 'female', age: 12 },
         { name: 'Maxwell', sex: 'male', age: 15 },
         { name: 'Faustino', sex: 'male', age: 7 },
-        { name: 'Dee', sex: 'female', age: 14 }
-      ]
+        { name: 'Dee', sex: 'female', age: 14 },
+      ],
     }];
 
     assert.deepEqual(actual, expected);
@@ -40,8 +41,8 @@ describe('animalsByIds', () => {
         { name: 'Zena', sex: 'female', age: 12 },
         { name: 'Maxwell', sex: 'male', age: 15 },
         { name: 'Faustino', sex: 'male', age: 7 },
-        { name: 'Dee', sex: 'female', age: 14 }
-      ]
+        { name: 'Dee', sex: 'female', age: 14 },
+      ],
     }, {
       id: 'e8481c1d-42ea-4610-8e11-1752cfc05a46',
       name: 'tigers',
@@ -49,8 +50,8 @@ describe('animalsByIds', () => {
       location: 'NW',
       residents: [
         { name: 'Shu', sex: 'female', age: 19 },
-        { name: 'Esther', sex: 'female', age: 17 }
-      ]
+        { name: 'Esther', sex: 'female', age: 17 },
+      ],
     }];
 
     assert.deepEqual(actual, expected);
