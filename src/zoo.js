@@ -23,8 +23,8 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   if (employeeName) {
-    return employees.find(element =>
-      element.firstName === employeeName || element.lastName === employeeName);
+    return employees.find(element => element.firstName === employeeName
+      || element.lastName === employeeName);
   }
   return {};
 }
@@ -36,15 +36,7 @@ function createEmployee(personalInfo, associatedWith) {
   };
 }
 
-const isManager= (id) => {
-  if (employees.filter(element => element.id === id)){
-    return true
-  };
-};
-
-
-console.log(isManager('0e7b46acf4-4e17-bcb3-ee472265db83'));
-
+const isManager = (id) => employees.some(el => el.managers.find(a => a === id));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
