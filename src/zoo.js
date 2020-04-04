@@ -46,9 +46,10 @@ const createEmployee = (personalInfo, associatedWith) => ({
 });
 // console.log(createEmployee()); passar o objeto com chaves e valores ok
 
-function isManager(id) {
-  // seu código aqui
-}
+// usar se for testar a chamada da função com Run Code
+// const data = require('./data');
+const isManager = id => data.employees.some(({ managers }) => managers.find(e => e === id));
+// console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
