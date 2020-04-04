@@ -112,15 +112,11 @@ const oldestFromFirstSpecies = (id) => {
 // console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 const increasePrices = (percentage) => {
-  const { Adult, Senior, Child } = pricesObj;
-  const percent = 1 + (percentage / 100);
-  return {
-    Adult: `${Math.ceil((Adult * percent) * 100) / 100}`,
-    Senior: `${Math.ceil((Senior * percent) * 100) / 100}`,
-    Child: `${Math.ceil((Child * percent) * 100) / 100}`,
-  };
+  Object.keys(pricesObj).forEach(e => {
+    (pricesObj[e] = Math.round(pricesObj[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
 };
-// console.log(increasePrices(30));
+//console.log(increasePrices(30));
 
 const employeeCoverage = (idOrName) => {
   const obj = {};
@@ -131,7 +127,7 @@ const employeeCoverage = (idOrName) => {
   });
   return obj;
 };
-console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
+// console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
 module.exports = {
   entryCalculator,
