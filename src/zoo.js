@@ -149,7 +149,7 @@ function increasePrices(percentage) {
   const keys = Object.keys(data.prices);
   let value = 0;
   for (let i = 0; i < keys.length; i += 1) {
-    value =  data.prices[keys[i]];
+    value = data.prices[keys[i]];
     value += value * porcentagemFracao;
     value = Math.round(value * 100) / 100;
     data.prices[keys[i]] = value;
