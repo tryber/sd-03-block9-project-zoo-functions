@@ -13,6 +13,7 @@ const data = require('./data');
 
 const [...animals] = data.animals;
 const [...employees] = data.employees;
+const { ...hours } = data.hours;
 
 const animalsByIds = (...ids) => {
   if (ids.length === 0) {
@@ -145,7 +146,25 @@ const animalMap = (options = false) => {
 };
 
 function schedule(dayName) {
-  // seu código aqui
+  const weekDay = Object.keys(hours);
+  const obj = {};
+  weekDay.forEach((day) => {
+    if (day === 'Monday') {
+      obj[day] = 'CLOSED';
+    } else {
+      obj[day] = `Open from ${hours[day].open}am until ${hours[day].close % 12}pm`;
+    }
+  });
+  if (!dayName) {
+    return obj;
+  }
+
+  return weekDay.reduce((acc, cur) => {
+    if (cur === dayName) {
+      acc[cur] = obj[cur];
+    }
+    return acc;
+  }, {});
 }
 
 const oldestFromFirstSpecies = (idFunc) => {
