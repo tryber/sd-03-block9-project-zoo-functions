@@ -25,8 +25,8 @@ const animalsOlderThan = (animal, age) => {
 };
 // console.log(animalsOlderThan('penguins', 10));
 
-const employeeByName = (employeeName) => employeesArr.find(element => element.firstName === employeeName
-  || element.lastName === employeeName);
+const employeeByName = employeeName => employeesArr.find(element =>
+  element.firstName === employeeName || element.lastName === employeeName);
 // console.log(employeeByName('Elser'));
 
 const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
