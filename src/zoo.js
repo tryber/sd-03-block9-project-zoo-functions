@@ -16,9 +16,7 @@ const employeesArr = data.employees;
 const pricesObj = data.prices;
 // console.log(data.animals[0]);
 
-const animalsByIds = ...ids => {
-  return animalsArr.filter(element => ids.find(id => id === element.id));
-};
+const animalsByIds = (...ids) => animalsArr.filter(element => ids.find(id => id === element.id));
 // console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce'));
 
 const animalsOlderThan = (animal, age) => {
