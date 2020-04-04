@@ -27,7 +27,7 @@ const animalsOlderThan = (animal, age) => {
     }
   });
   return maxAge;
-}
+};
 
 function employeeByName(employeeName) {
   // seu código aqui
