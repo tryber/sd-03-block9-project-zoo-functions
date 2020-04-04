@@ -106,10 +106,11 @@ const oldestFromFirstSpecies = (id) => {
 
 const increasePrices = (percentage) => {
   const { Adult, Senior, Child } = pricesObj;
+  const percent = 1 + (percentage / 100);
   return {
-    Adult: `${Math.ceil((Adult * (percentage / 100) + Adult) * 100) / 100}`,
-    Senior: `${Math.ceil((Senior * (percentage / 100) + Senior) * 100) / 100}`,
-    Child: `${Math.ceil((Child * (percentage / 100) + Child) * 100) / 100}`,
+    Adult: `${Math.ceil((Adult * percent) * 100) / 100}`,
+    Senior: `${Math.ceil((Senior * percent) * 100) / 100}`,
+    Child: `${Math.ceil((Child * percent) * 100) / 100}`,
   };
 };
 // console.log(increasePrices(30));
