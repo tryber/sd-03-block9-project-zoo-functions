@@ -10,15 +10,16 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+
 const animalsArr = data.animals;
 const employeesArr = data.employees;
 const pricesObj = data.prices;
 // console.log(data.animals[0]);
 
-const animalsByIds = (...ids) => {
+const animalsByIds = ...ids => {
   return animalsArr.filter(element => ids.find(id => id === element.id));
 };
-// console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce', 'bb2a76d8-5fe3-4d03-84b7-dba9cfc048b5', '533bebf3-6bbe-41d8-9cdf-46f7d13b62ae'));
+// console.log(animalsByIds('0938aa23-f153-4937-9f88-4858b24d6bce'));
 
 const animalsOlderThan = (animal, age) => {
   const specificAnimal = animalsArr.filter(element => element.name === animal)[0].residents;
@@ -26,7 +27,7 @@ const animalsOlderThan = (animal, age) => {
 };
 // console.log(animalsOlderThan('penguins', 10));
 
-const employeeByName = (employeeName) => {
+const employeeByName = employeeName => {
   return employeesArr.find(element => element.firstName === employeeName
     || element.lastName === employeeName);
 };
@@ -37,7 +38,7 @@ const createEmployee = (personalInfo, associatedWith) => {
 };
 // console.log(createEmployee({ kkk: 'heheh', llll: 'zzz' }, { hulu: 'Tom Brady', Team: 'Bucs' }));
 
-const isManager = (id) => {
+const isManager = id => {
   return employeesArr.some(element => element.managers.includes(id));
 };
 // console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
@@ -49,9 +50,9 @@ const addEmployee = (id, firstName, lastName, managers = '[]', responsibleFor = 
 };
 // console.log(addEmployee('39800c14-4b76-454a-858d-2f8d168146a7', 'John', 'Doe'));
 
-const animalCount = (species) => {
+const animalCount = species => {
   const animals = {};
-  animalsArr.forEach(element => {
+  animalsArr.forEach((element) => {
     animals[element.name] = element.residents.length;
   });
   if (species != null) {
@@ -84,7 +85,7 @@ const animalMap = (options) => {
 
 const schedule = (dayName) => {
   const sched = {};
-  Object.entries(data.hours).forEach(element => {
+  Object.entries(data.hours).forEach((element) => {
     if (element[0] === 'Monday') {
       sched[element[0]] = 'CLOSED';
     } else {
@@ -124,7 +125,7 @@ const increasePrices = (percentage) => {
 
 const employeeCoverage = (idOrName) => {
   const obj = {};
-  employeesArr.forEach(element => {
+  employeesArr.forEach((element) => {
     obj[`${element.firstName} ${element.lastName}`] = element.responsibleFor
       .map(id => animalsArr
         .find(animal => animal.id === id).name);
