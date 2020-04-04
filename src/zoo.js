@@ -117,7 +117,15 @@ const increasePrices = (percentage) => {
   });
 };
 // console.log(increasePrices(30));
-
+const filteredEmployee = (nameOrId) => {
+  const singleEmployee = {};
+  const findEmployee = employeesArr.find(e => e.id === nameOrId
+    || e.firstName === nameOrId || e.lastName === nameOrId);
+  singleEmployee[`${findEmployee.firstName} ${findEmployee.lastName}`] = findEmployee
+    .responsibleFor.map(e => animalsArr.find(animal => animal.id === e).name);
+  return singleEmployee;
+};
+// console.log(filteredEmployee('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 const employeeCoverage = (idOrName) => {
   const obj = {};
   employeesArr.forEach((element) => {
@@ -125,9 +133,10 @@ const employeeCoverage = (idOrName) => {
       .map(id => animalsArr
         .find(animal => animal.id === id).name);
   });
+  if (idOrName) return filteredEmployee(idOrName);
   return obj;
 };
-// console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
+console.log(employeeCoverage('Sharonda'));
 
 module.exports = {
   entryCalculator,
