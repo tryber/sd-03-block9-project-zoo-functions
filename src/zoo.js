@@ -37,8 +37,15 @@ function animalsOlderThan(animal, age) {
 
 function employeeByName(employeeName) {
   // seu código aqui
+  let employeeSelected = {};  
+  if (!employeeName) {
+    return {};
+  }
+  employeeSelected = data.employees.filter(element => element.firstName === employeeName || element.lastName === employeeName);
+  return employeeSelected[0];
 }
 
+console.log(employeeByName('Elser'));
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
 }
