@@ -112,6 +112,22 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+  let week = {};
+  const hours = data.hours;
+  week = Object.keys(hours).reduce((accumulator, element) => {
+    if (hours[element].open === 0 && hours[element].close === 0) {
+      accumulator[element] = 'CLOSED';
+    } else accumulator[element] = `Open from ${hours[element].open}am until ${hours[element].close-12}pm`;
+    return accumulator;
+    }, {});
+
+  if (!dayName) return week;
+  
+  let dayHours = {};
+  if (week.hasOwnProperty(`${dayName}`)) {
+    dayHours[dayName] = week[dayName]  
+    return dayHours;
+  }
 }
 
 function oldestFromFirstSpecies(id) {
