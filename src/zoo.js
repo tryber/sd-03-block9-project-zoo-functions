@@ -46,9 +46,9 @@ function employeeByName(employeeName) {
   return employeeSelected[0];
 }
 
-console.log(employeeByName('Elser'));
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
+  return {...personalInfo,...associatedWith};
 }
 
 function isManager(id) {
