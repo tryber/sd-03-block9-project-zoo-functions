@@ -23,15 +23,14 @@ function animalsByIds(...ids) {
 }
 function animalsOlderThan(animal, age) {
   // seu código aqui
-  let maisVelhos = false ;
-  let especiesSelected = data.animals.filter(element =>  element.name == animal);
-  let especiesSelected2 = especiesSelected[0].residents.filter(element => element.age >= age);
-    if(especiesSelected2.length == 0) {
-      maisVelhos = false;
-   }   
-    else if (especiesSelected2.length == especiesSelected[0].residents.length) {
-      maisVelhos = true;       
-   } 
+  let maisVelhos = false;
+  const especiesSelected = data.animals.filter(element => element.name === animal);
+  const especiesSelected2 = especiesSelected[0].residents.filter(element => element.age >= age);
+  if (especiesSelected2.length === 0) {
+    maisVelhos = false;
+  } else if (especiesSelected2.length === especiesSelected[0].residents.length) {
+      maisVelhos = true;
+    }
 
   return maisVelhos;
 }
