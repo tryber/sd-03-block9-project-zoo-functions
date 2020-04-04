@@ -24,10 +24,17 @@ const animalsByIds = (...ids) => (
   // com mais de um id, retorna os animais que têm um desses ids
 
 
-function animalsOlderThan(animal, age) {
+const animalsOlderThan = (animal, age) => {
+  let maxAge = false;
+  data.animals.forEach((especie) => {
+    if (especie.name === animal) {
+      maxAge = especie.residents.every(animais => animais.age >= age)
+    }
 
-  // Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta
-  // espécie possuem a idade mínima especificada
+  })
+  return maxAge;
+  // Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta espécie possuem a(essa) idade mínima especificada
+  // Todos os animais devem ter a idade mínima passada por parâmetro
 }
 
 function employeeByName(employeeName) {
