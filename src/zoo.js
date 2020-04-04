@@ -136,10 +136,10 @@ function oldestFromFirstSpecies(id) {
   const especieResponsavelId = funcionario[0].responsibleFor[0];
   const especieResponsavelObject = data.animals.filter(item => item.id === especieResponsavelId);
   const animalMaisVelho = especieResponsavelObject[0].residents.reduce((acc, item) => {
-    if (acc.age > item.age) return acc
-    return item
+    if (acc.age > item.age) return acc;
+    return item;
   });
-  const arrayResult = [animalMaisVelho.name, animalMaisVelho.sex, animalMaisVelho.age]
+  const arrayResult = [animalMaisVelho.name, animalMaisVelho.sex, animalMaisVelho.age];
   return arrayResult;
 }
 
