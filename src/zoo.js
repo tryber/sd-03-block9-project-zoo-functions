@@ -27,7 +27,9 @@ const employeeByName = (employeeName) => {
 };
 
 const createEmployee = (personalInfo, associatedWith) => {
-  return { ...personalInfo, ...associatedWith };
+  const { id, firstName, lastName } = personalInfo;
+  const { managers, responsibleFor } = associatedWith;
+  return { id, firstName, lastName, managers, responsibleFor };
 };
 
 const isManager = id => Boolean(data.employees.find(({ managers }) => managers.includes(id)));
