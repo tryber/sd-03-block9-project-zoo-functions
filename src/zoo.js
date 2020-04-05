@@ -84,17 +84,40 @@ function entryCalculator(entrants) {
     return undefined;
   }).reduce((accumulator, currentValue) => accumulator + currentValue);
 }
+function animalLocation() {
+  return data.animals.reduce((accumulator, currentValue) => {
+    accumulator[currentValue.location] = data.animals.filter(
+      animal => animal.location === currentValue.location
+    );
+  }, {});
+}
+function animalEspecifc(object){
 
+}
 function animalMap(options) {
-  // seu código aqui
+
 }
 
 function schedule(dayName) {
   // seu código aqui
 }
 
+function firstAnimalEmploye(id) {
+  return data.animals.find(
+    animal =>
+      animal.id ===
+      data.employees.find(employe => employe.id === id).responsibleFor[0]
+  ).residents;
+}
+function characteristicsAnimalEmploye(firstAnimal) {
+  const olde = Math.max.apply(
+    null,
+    firstAnimal.map(animal => animal.age)
+  );
+  return Object.values(firstAnimal.find(animal => animal.age === olde));
+}
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  return characteristicsAnimalEmploye(firstAnimalEmploye(id));
 }
 
 function increasePrices(percentage) {
