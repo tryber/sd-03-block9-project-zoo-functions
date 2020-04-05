@@ -173,10 +173,11 @@ const returnById = (id) => {
   } else {
     idAnimals = localizaSobrenome.responsibleFor;
     nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
-  };
+  }
+
   const resposta = { [`${nomeFunc}`]: forFunctions(idAnimals) };
   return resposta;
-};
+}
 
 const returnResumo = () => {
   const resumo = employees.reduce((acc, cur) => {
@@ -186,7 +187,7 @@ const returnResumo = () => {
     return acc;
   }, {});
   return resumo;
-};
+}
 
 function employeeCoverage(idOrName) {
   // seu código aqui
