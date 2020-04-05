@@ -102,17 +102,17 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
-  if(!entrants){
+  if (!entrants) {
     return 0;
-  } else if (Object.keys(entrants).length === 0 ){
-    return 0;    
+  } else if (Object.keys(entrants).length === 0) {
+    return 0;
   }
-  total = (data.prices.Adult * entrants.Adult)
-   + (data.prices.Senior * entrants.Senior) +
-   (data.prices.Child * entrants.Child);
-   return total;
+  const total = (data.prices.Adult * entrants.Adult)
+    + (data.prices.Senior * entrants.Senior) +
+    (data.prices.Child * entrants.Child);
+  return total;
 }
-console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
+console.log(entryCalculator({ Adult: 2, Child: 3, Senior: 1 }));
 function animalMap(options) {
   // seu código aqui
 }
