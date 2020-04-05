@@ -16,11 +16,10 @@ const animalsByIds = (...ids) => {
   return data.animals.filter(({ id }) => compare(id, ids));
 };
 
-const animalsOlderThan = (animal, agep) => {
-  return data.animals
+const animalsOlderThan = (animal, agep) =>
+  data.animals
     .find(({ name }) => name === animal)
     .residents.every(({ age }) => age > agep);
-};
 
 function employeeByName(employeeName) {
   if (!employeeName) return {};
