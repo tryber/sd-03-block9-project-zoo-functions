@@ -11,52 +11,76 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees } = data;
+const { animals, employees, hours, prices, } = data;
 
 const animalsByIds = (...ids) => animals.filter(animal => ids.find(id => id === animal.id));
 
-function animalsOlderThan(animal, age) {
+const animalsOlderThan = (animal, age) => {
   const findAnimal = animals.find(element => element.name === animal);
   const searchAge = findAnimal.residents.every(element => element.age >= age);
   return searchAge;
-}
+};
 
-function employeeByName(employeeName) {
+const employeeByName = employeeName => {
   if (employeeName) {
     return employees.find(element => element.firstName === employeeName
       || element.lastName === employeeName);
   }
   return {};
-}
+};
 
-function createEmployee(personalInfo, associatedWith) {
+const createEmployee = (personalInfo, associatedWith) => {
   return {
     ...personalInfo,
     ...associatedWith,
   };
-}
+};
 
-const isManager = id => employees.some(el => el.managers.find(a => a === id));
+const isManager = id => employees.some(element => element.managers.find(a => a === id));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount = species => {
+  if (species) {
+    return animals.find(element => element.name === species).residents.length;
+  }
+};
 
-function entryCalculator(entrants) {
-  // seu código aqui
-}
+// console.log(animalCount('lions'));
 
-function oldestFromFirstSpecies(id) {
+const entryCalculator = entrants => {
+  if (entrants === null || {}) {
+    return 0;
+  }
   // seu código aqui
-}
+};
 
-function increasePrices(percentage) {
+// console.log(entryCalculator());
+
+const oldestFromFirstSpecies = id => {
+  const funcionario = employees.find( fun => fun.id === id).responsibleFor[0];
+  const animaL = animals.find( codigo => codigo.id === funcionario).residents;
+  const animaisOrdem = animaL.sort( (a, b) =>{
+    if (a.age < b.age) return 1;
+    if (a.age > b.age) return -1;
+    else return 0;
+  });
+  return Object.values(animaisOrdem[0]);
+  //const arrayAnimalOlder = animaL.filter( older => older.age > 10);
+  //return funcionario;
+  //return animaL;
+  //return arrayAnimalOlder;
+  //return animaisOrdem
   // seu código aqui
-}
+};
+
+//console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
+
+const increasePrices = percentage => {
+  // seu código aqui
+};
 
 function schedule(dayName) {
   // seu código aqui
