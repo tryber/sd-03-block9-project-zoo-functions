@@ -21,10 +21,10 @@ const animalsOlderThan = (animal, agep) =>
     .find(({ name }) => name === animal)
     .residents.every(({ age }) => age > agep);
 
-const employeeByName = employeeName => {
+const employeeByName = (employeeName) => {
   if (!employeeName) return {};
   return data.employees.find(
-    employee =>
+    (employee) =>
       employee.firstName === employeeName || employee.lastName === employeeName,
   );
 };
