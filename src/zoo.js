@@ -17,25 +17,38 @@ const animalsByIds = (...ids) =>
 const animalsOlderThan = (pAnimal, pAge) =>
   data.animals.find(animal => animal.name === pAnimal).residents.every(a => a.age > pAge);
 
-function employeeByName(employeeName) {
-  // seu código aqui
-}
+const employeeByName = employeeByName =>
+  data.employees.find(el => el.firstName === employeeByName || el.lastName === employeeByName) || {};
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
 
-function isManager(id) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => ({
+  ...personalInfo,
+  ...associatedWith,
+});
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
 
-function animalCount(species) {
-  // seu código aqui
-}
+const isManager = (id) => data.employees.some(el => el.managers[0] === id);
+
+
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
+  const detalhes = { id, firstName, lastName, managers, responsibleFor };
+  data.employees.push(detalhes);
+};
+
+const animalCount = (species) => {
+  const [...animal] = data.animals;
+  if (!species) {
+    const acumulador = animal.reduce((acc, animal) => {
+      acc[animal.name] = animal.residents.length;
+      return acc;
+    }, {});
+    return acumulador;
+  }
+  const qtdAnimal = animal.filter(animal => animal.name === species);
+  const totalQtd = qtdAnimal.map(animal => animal.residents.length);
+  return totalQtd[0];
+};
+
 
 function entryCalculator(entrants) {
   // seu código aqui
