@@ -196,18 +196,18 @@ function employeeCoverage(idOrName) {
     const nomeFunc = null;
 
     if (localizaId !== undefined) {
-      AnimalsId = localizaId.responsibleFor;
+      animalsId = localizaId.responsibleFor;
       nomeFunc = `${localizaId.firstName} ${localizaId.lastName}`;
     } else if (localizaNome !== undefined) {
-      AnimalsId = localizaNome.responsibleFor;
+      animalsId = localizaNome.responsibleFor;
       nomeFunc = `${localizaNome.firstName} ${localizaNome.lastName}`;
     } else {
-      AnimalsId = localizaSobrenome.responsibleFor;
+      animalsId = localizaSobrenome.responsibleFor;
       nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
     }
 
     const filtr = [];
-    AnimalsId.forEach(element => {
+    animalsId.forEach(element => {
       const animal = animals.find(el => el.id === element);
       filtr.push(animal);
     });
