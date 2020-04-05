@@ -53,20 +53,21 @@ const addEmployee = (id, firstName, lastName, managers, responsibleFor) =>
   });
 
 const animalCount = species => (
-  species ?
-    data.animals.reduce(
+  species
+    ? data.animals.reduce(
       (acc, animal) => (
         animal.name === species
           ? animal.residents.length
           : acc
       ),
-      0
-    ) : data.animals.reduce(
+      0,
+    )
+    : data.animals.reduce(
       (acc, qtdanimal) => {
         acc[qtdanimal.name] = qtdanimal.residents.length;
         return acc;
       },
-      {}
+      {},
     )
 );
 
