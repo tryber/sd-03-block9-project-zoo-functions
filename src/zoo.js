@@ -43,13 +43,13 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return { ...personalInfo, ...associatedWith };
+  return { ...personalInfo, ...associatedWith, };
 }
 
 function isManager(id) {
   return data.employees.some(element => {
     element.managers.find(manId => manId === id,)
-  )};
+  });
 }
 
 
