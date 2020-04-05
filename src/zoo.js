@@ -21,18 +21,18 @@ function animalsOlderThan(animal, age) {
     data.animals.find(
       anima =>
         anima.name === animal &&
-        anima.residents.find(resident => resident.age === age)
+        anima.residents.find(resident => resident.age === age),
     )
-  )
+  ){
     return true;
-  return false;
+    }  return false;
 }
 
 function employeeByName(employeeName) {
   if (employeeName === undefined) return {};
   return data.employees.find(
     employe =>
-      employe.firstName === employeeName || employe.lastName === employeeName
+      employe.firstName === employeeName || employe.lastName === employeeName,
   );
 }
 
@@ -46,7 +46,7 @@ function isManager(id) {
       employe.managers.find(managers => managers === id)
     )
   )
-    return true;
+    {return true;}
   return false;
 }
 
@@ -55,17 +55,17 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) {
   data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
-  if (species === undefined)
+  if (species === undefined){
     return data.animals.reduce((accumulator, currentValue) => {
       accumulator[currentValue.name] = currentValue.residents.length;
       return accumulator;
-    }, {});
+    }, {});}
   return data.animals.find(animal => animal.name === species).residents.length;
 }
 
