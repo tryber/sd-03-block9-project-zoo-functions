@@ -29,13 +29,15 @@ const animalsOlderThan = (animal, age) => {
   return maxAge;
 };
 
-function employeeByName(employeeName) {
-  // seu código aqui
-}
+const employeeByName = (employeeName) => (
+  employeeName ? data.employees.reduce((acc, cuidador) => (
+    employeeName === cuidador.firstName || employeeName === cuidador.lastName ? cuidador : acc
+  ), null) : {}
+);
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => 
+  Object.assign(personalInfo, associatedWith);
+
 
 function isManager(id) {
   // seu código aqui
