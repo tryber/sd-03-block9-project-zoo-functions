@@ -119,33 +119,8 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
-  let obj = {};     
-    const daysOfWeek = Object.keys(data.hours);
-    let i = 0;
-    let open_hour;
-    let close_hour;
-      Object.values(data.hours).forEach(element => {      
-      if(element.open == 0 && element.close == 0){
-       obj[daysOfWeek[i]] = 'CLOSED';
-        i++;
-        
-     }  if(element.open < 12) {
-          open_hour = `${element.open}am`;
-     } else if(element.open > 12) {
-        open_hour = `${element.open - 12}pm`; 
-     } 
-      if(element.close < 12) {
-        close_hour = `${element.close}am`;
-       } else if(element.close > 12) {        
-        close_hour = `${element.close - 12}pm`;
-       }  
-       if(daysOfWeek[i] === undefined) {
-
-       }
-       else { 
-       obj[daysOfWeek[i]] = `Open from ${open_hour} until ${close_hour}`
-        i++;}
-  })
+  let obj = {};   
+  percoreObjeto(data.hours,obj);
   if(!dayName){ 
     return obj;
   } else {
@@ -155,6 +130,44 @@ function schedule(dayName) {
   }  
 }
 
+function percoreObjeto(object,objaux){
+  const daysOfWeek = Object.keys(data.hours);
+  let i = 0;
+  let open_hour;
+  let close_hour;
+  Object.values(object).forEach(element => {      
+    if(element.open == 0 && element.close == 0){
+      objaux[daysOfWeek[i]] = 'CLOSED';
+      i++;      
+   } 
+     open_hour = from24to12HoursOpen(open_hour, element);
+     close_hour = from24to12HoursClose(close_hour,element);    
+     if(daysOfWeek[i] === undefined) {
+     }
+     else { 
+      objaux[daysOfWeek[i]] = `Open from ${open_hour} until ${close_hour}`
+      i++;}
+})
+return objaux;
+}
+
+function from24to12HoursOpen(open_hour,element){
+  if(element.open < 12) {
+    open_hour = `${element.open}am`;
+} else if(element.open > 12) {
+  open_hour = `${element.open - 12}pm`; 
+}
+  return open_hour;
+}
+
+function from24to12HoursClose(close_hour,element){
+  if(element.close < 12) {
+    close_hour = `${element.close}am`;
+   } else if(element.close > 12) {        
+    close_hour = `${element.close - 12}pm`;
+   }
+   return close_hour
+}
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
