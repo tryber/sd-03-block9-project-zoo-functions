@@ -63,8 +63,6 @@ function isManager(id) {
 }
 console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
 
-
-
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
   const novoFunc = { id, firstName, lastName, managers, responsibleFor };
@@ -184,15 +182,15 @@ const returnById = (id) => {
   } else {
     animalsByis = localizaSobrenome.responsibleFor;
     nfuncionario = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
-  }
+  };
 
   const filtro = [];
   idAnimals.forEach(element => {
-  const animal = animals.find(el => el.id === element);
-  filtro.push(animal);
+    const animal = animals.find(el => el.id === element);
+    filtro.push(animal);
   });
   const resultado = filtro.map(el => el.name);
-  const resposta = {[`${nomeFunc}`]: resultado};
+  const resposta = { [`${nomeFunc}`]: resultado };
   return resposta;
 }
 
@@ -200,35 +198,23 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   if (!idOrName) {
     return total();
-  }
-    return returnById(idOrName);
-  }
-  console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'))
-
-  /* expected = {
-    'Nigel Nelson': ['lions', 'tigers'],
-    'Burl Bethea': ['lions', 'tigers', 'bears', 'penguins'],
-    'Ola Orloff': ['otters', 'frogs', 'snakes', 'elephants'],
-    'Wilburn Wishart': ['snakes', 'elephants'],
-    'Stephanie Strauss': ['giraffes', 'otters'],
-    'Sharonda Spry': ['otters', 'frogs'],
-    'Ardith Azevado': ['tigers', 'bears'],
-    'Emery Elser': ['elephants', 'bears', 'lions']
-  }; */
-
-
-  module.exports = {
-    entryCalculator,
-    schedule,
-    animalCount,
-    /* animalMap, */
-    animalsByIds,
-    employeeByName,
-    employeeCoverage,
-    addEmployee,
-    isManager,
-    animalsOlderThan,
-    oldestFromFirstSpecies,
-    increasePrices,
-    createEmployee,
   };
+  return returnById(idOrName);
+}
+console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'))
+
+module.exports = {
+  entryCalculator,
+  schedule,
+  animalCount,
+  /* animalMap, */
+  animalsByIds,
+  employeeByName,
+  employeeCoverage,
+  addEmployee,
+  isManager,
+  animalsOlderThan,
+  oldestFromFirstSpecies,
+  increasePrices,
+  createEmployee,
+};
