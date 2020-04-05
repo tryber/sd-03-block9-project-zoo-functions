@@ -158,6 +158,7 @@ const forFunctions = (idAnimals) => {
   });
   return filtro.map(el => el.name);
 };
+
 const returnById = (id) => {
   const localizaId = employees.find(el => el.id === id);
   const localizaNome = employees.find(el => el.firstName === id);
@@ -173,7 +174,7 @@ const returnById = (id) => {
   } else {
     idAnimals = localizaSobrenome.responsibleFor;
     nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
-  };
+  }
 
   const resposta = { [`${nomeFunc}`]: forFunctions(idAnimals) };
   return resposta;
