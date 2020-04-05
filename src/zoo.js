@@ -177,9 +177,9 @@ function employeeCoverage(idOrName) {
     objectResult[key] = responsavelPorAnimalFunction(responsavelPorAnimal);
   }
   if (idOrName === undefined) return objectResult;
-  const F = fc.filter(i => i.id === idOrName 
-    || i.firstName === idOrName 
-    || i.lastName === idOrName);
+  const F = fc.filter(i => i.id === idOrName
+  || i.firstName === idOrName
+  || i.lastName === idOrName);
   const FName = {};
   FName[`${F[0].firstName} ${F[0].lastName}`] = responsavelPorAnimalFunction(F[0].responsibleFor);
   return FName;
