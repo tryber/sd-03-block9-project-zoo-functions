@@ -61,6 +61,9 @@ function isManager(id) {
     .some(gerente => gerente[0] === id);
   return gerents;
 }
+console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
+
+
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   // seu código aqui
@@ -149,22 +152,83 @@ function increasePrices(percentage) {
   return data.prices;
 }
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
+const total = () => {
+  const nome = employees.reduce((acc, cur) => {
+    const idAnimais = cur.responsibleFor;
+    const vazio = [];
+    idAnimais.forEach(element => {
+      const addanimal = animals.find(el => el.id === element);
+      vazio.push(addanimal);
+    });
+    const result = vazio.map(el => el.name);
+    const nomeFunc = `${cur.firstName} ${cur.lastName}`;
+    acc[nomeFunc] = result;
+    return acc;
+  }, {});
+  return nome;
 }
 
-module.exports = {
-  entryCalculator,
-  schedule,
-  animalCount,
-  /* animalMap, */
-  animalsByIds,
-  employeeByName,
-  employeeCoverage,
-  addEmployee,
-  isManager,
-  animalsOlderThan,
-  oldestFromFirstSpecies,
-  increasePrices,
-  createEmployee,
-};
+const returnById = (id) => {
+  const localizaId = employees.find(elemento => elemento.id === id);
+  const localizaNome = employees.find(elemento => elemento.firstName === id);
+  const localizaSobrenome = employees.find(elemento => elemento.lastName === id);
+  let animalsByis = null;
+  let nfuncionario = null;
+
+  if (localizaId !== undefined) {
+    animalsByis = localizaId.responsibleFor;
+    nfuncionario = `${localizaId.firstName} ${localizaId.lastName}`;
+  } else if (localizaNome !== undefined) {
+    animalsByis = localizaNome.responsibleFor;
+    nfuncionario = `${localizaNome.firstName} ${localizaNome.lastName}`;
+  } else {
+    animalsByis = localizaSobrenome.responsibleFor;
+    nfuncionario = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
+  }
+
+  const filtro = [];
+  idAnimals.forEach(element => {
+  const animal = animals.find(el => el.id === element);
+  filtro.push(animal);
+  });
+  const resultado = filtro.map(el => el.name);
+  const resposta = {[`${nomeFunc}`]: resultado};
+  return resposta;
+}
+
+function employeeCoverage(idOrName) {
+  // seu código aqui
+  if (!idOrName) {
+    return total();
+  }
+    return returnById(idOrName);
+  }
+  console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'))
+
+  /* expected = {
+    'Nigel Nelson': ['lions', 'tigers'],
+    'Burl Bethea': ['lions', 'tigers', 'bears', 'penguins'],
+    'Ola Orloff': ['otters', 'frogs', 'snakes', 'elephants'],
+    'Wilburn Wishart': ['snakes', 'elephants'],
+    'Stephanie Strauss': ['giraffes', 'otters'],
+    'Sharonda Spry': ['otters', 'frogs'],
+    'Ardith Azevado': ['tigers', 'bears'],
+    'Emery Elser': ['elephants', 'bears', 'lions']
+  }; */
+
+
+  module.exports = {
+    entryCalculator,
+    schedule,
+    animalCount,
+    /* animalMap, */
+    animalsByIds,
+    employeeByName,
+    employeeCoverage,
+    addEmployee,
+    isManager,
+    animalsOlderThan,
+    oldestFromFirstSpecies,
+    increasePrices,
+    createEmployee,
+  };
