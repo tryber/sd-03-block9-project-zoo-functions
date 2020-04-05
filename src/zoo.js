@@ -11,57 +11,110 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
-}
+const animalsByIds = (...ids) => {
+  const compare = (item, toCompare) => toCompare.includes(item);
+  return data.animals.filter(({ id }) => compare(id, ids));
+};
 
-function animalsOlderThan(animal, age) {
-  // seu código aqui
-}
+const animalsOlderThan = (animal, agep) =>
+  data.animals.find(({ name }) => name === animal).residents.every(({ age }) => age > agep);
 
-function employeeByName(employeeName) {
-  // seu código aqui
-}
+const employeeByName = (employeeName) => {
+  if (!employeeName) return {};
+  return data.employees.find(
+    employee => employee.firstName === employeeName || employee.lastName === employeeName,
+  );
+};
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => {
+  const { id, firstName, lastName } = personalInfo;
+  const { managers, responsibleFor } = associatedWith;
+  return { id, firstName, lastName, managers, responsibleFor };
+};
 
-function isManager(id) {
-  // seu código aqui
-}
+const isManager = id => Boolean(data.employees.find(({ managers }) => managers.includes(id)));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+const addEmployee = (id, firstName, lastName, managers, responsibleFor) => {
+  data.employees.push({
+    id, firstName, lastName, managers, responsibleFor,
+  });
+};
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount = (species) => {
+  if (species) {
+    return data.animals.find(({ name }) => name === species).residents.length;
+  }
+  return data.animals.reduce((counter, animal) => {
+    counter[animal.name] = animal.residents.length;
+    return counter;
+  }, {});
+};
 
-function entryCalculator(entrants) {
-  // seu código aqui
-}
+const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
+    ? Object.keys(entrants)
+    .reduce((accumulator, entrant) => (accumulator + (data.prices[entrant] * entrants[entrant])), 0)
+    : 0
+);
 
 function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
-}
+const makeDay = (day) => {
+  function legibleHour(hour) {
+    if (hour < 12) return `${hour}am`;
+    if (hour === 12) return '12pm';
+    return `${hour - 12}pm`;
+  }
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+  if (data.hours[day].open === data.hours[day].close) return 'CLOSED';
+  return `Open from ${legibleHour(data.hours[day].open)} until ${legibleHour(
+    data.hours[day].close,
+  )}`;
+};
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const schedule = (dayName) => {
+  if (dayName) return { [dayName]: makeDay(dayName) };
+  return Object.keys(data.hours)
+  .reduce((scheduleObject, day) => ({ ...scheduleObject, ...{ [day]: makeDay(day) } }), {});
+};
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
-}
+const oldestFromFirstSpecies = id => Object.values(data.animals
+.find(e => e.id === data.employees
+.find(animal => animal.id === id).responsibleFor[0]).residents
+.sort((a, b) => b.age - a.age)[0]);
+
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((e) => {
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
+};
+
+const employeeCoverage = (idOrName) => {
+  const obj = {};
+
+  const findResponsibleForAnimals = (e) => {
+    const asw = {};
+    asw[`${e.firstName} ${e.lastName}`] = e.responsibleFor
+    .map(id => data.animals
+    .find(animal => animal.id === id).name);
+    return asw;
+  };
+
+  if (idOrName) {
+    Object.assign(obj, findResponsibleForAnimals(data.employees
+    .find(e => ((
+      e.id === idOrName)
+      || (e.firstName === idOrName)
+      || (e.lastName === idOrName)))));
+    return obj;
+  }
+  data.employees.forEach((e) => {
+    Object.assign(obj, findResponsibleForAnimals(e));
+  });
+  return obj;
+};
+
 
 module.exports = {
   entryCalculator,
