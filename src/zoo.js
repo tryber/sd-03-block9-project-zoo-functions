@@ -25,7 +25,7 @@ function animalsOlderThan(animal, age) {
     )
   ) {
     return true;
-  }return false;
+  }  return false;
 }
 
 function employeeByName(employeeName) {
@@ -46,7 +46,8 @@ function isManager(id) {
       employe.managers.find(managers => managers === id),
     )
   )
-    { return true; }
+    {
+      return true; }
   return false;
 }
 
@@ -61,7 +62,7 @@ function addEmployee(
 }
 
 function animalCount(species) {
-  if (species === undefined){
+  if (species === undefined) {
     return data.animals.reduce((accumulator, currentValue) => {
       accumulator[currentValue.name] = currentValue.residents.length;
       return accumulator;
