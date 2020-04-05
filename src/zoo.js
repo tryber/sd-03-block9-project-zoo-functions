@@ -29,18 +29,18 @@ const animalsOlderThan = (animal, age) => {
   return maxAge;
 };
 
-const employeeByName = (employeeName) => (
+const employeeByName = employeeName => (
   employeeName ? data.employees.reduce((acc, cuidador) => (
     employeeName === cuidador.firstName || employeeName === cuidador.lastName ? cuidador : acc
   ), null) : {}
 );
 
-const createEmployee = (personalInfo, associatedWith) => 
+const createEmployee = (personalInfo, associatedWith) =>
   Object.assign(personalInfo, associatedWith);
 
-const isManager = (id) =>
-  data.employees.some((cuidador) => 
-  cuidador.managers.includes(id) === true
+const isManager = id =>
+  data.employees.some(cuidador =>
+  cuidador.managers.includes(id) === true,
   );
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
