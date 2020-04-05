@@ -29,12 +29,10 @@ const employeeByName = (employeeName) => {
   return {};
 };
 
-const createEmployee = (personalInfo, associatedWith) => {
-  return {
-    ...personalInfo,
-    ...associatedWith,
-  };
-};
+const createEmployee = (personalInfo, associatedWith) => ({
+  ...personalInfo,
+  ...associatedWith,
+});
 
 const isManager = id => employees.some(element => element.managers.find(a => a === id));
 
