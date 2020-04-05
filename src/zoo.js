@@ -9,19 +9,19 @@ eslint no-unused-vars: [
 ]
 */
 
-const data = require("./data");
+const data = require('./data');
 
 function animalsByIds(...ids) {
   if (ids.length === 0) return ids;
-  return ids.map((id) => data.animals.find((animal) => animal.id === id));
+  return ids.map(id => data.animals.find(animal => animal.id === id));
 }
 
 function animalsOlderThan(animal, age) {
   if (
     data.animals.find(
-      (anima) =>
+      anima =>
         anima.name === animal &&
-        anima.residents.find((resident) => resident.age === age)
+        anima.residents.find(resident => resident.age === age)
     )
   )
     return true;
@@ -31,7 +31,7 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   if (employeeName === undefined) return {};
   return data.employees.find(
-    (employe) =>
+    employe =>
       employe.firstName === employeeName || employe.lastName === employeeName
   );
 }
@@ -42,8 +42,8 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   if (
-    data.employees.find((employe) =>
-      employe.managers.find((managers) => managers === id)
+    data.employees.find(employe =>
+      employe.managers.find(managers => managers === id)
     )
   )
     return true;
@@ -66,17 +66,16 @@ function animalCount(species) {
       accumulator[currentValue.name] = currentValue.residents.length;
       return accumulator;
     }, {});
-  return data.animals.find((animal) => animal.name === species).residents
-    .length;
+  return data.animals.find(animal => animal.name === species).residents.length;
 }
 
 function entryCalculator(entrants) {
   if (entrants === undefined || Object.keys(entrants) === 0) return 0;
   return Object.entries(entrants)
-    .map((entry) => {
-      if (entry[0] === "Adult") return entry[1] * 49.99;
-      if (entry[0] === "Child") return entry[1] * 20.99;
-      if (entry[0] === "Senior") return entry[1] * 24.99;
+    .map(entry => {
+      if (entry[0] === 'Adult') return entry[1] * 49.99;
+      if (entry[0] === 'Child') return entry[1] * 20.99;
+      if (entry[0] === 'Senior') return entry[1] * 24.99;
     })
     .reduce((accumulator, currentValue) => accumulator + currentValue);
 }
