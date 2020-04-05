@@ -154,7 +154,7 @@ return objaux;
 function from24to12HoursOpen(open_hour,element){
   if(element.open < 12) {
     open_hour = `${element.open}am`;
-} else if(element.open > 12) {
+} else {
   open_hour = `${element.open - 12}pm`; 
 }
   return open_hour;
@@ -163,7 +163,7 @@ function from24to12HoursOpen(open_hour,element){
 function from24to12HoursClose(close_hour,element){
   if(element.close < 12) {
     close_hour = `${element.close}am`;
-   } else if(element.close > 12) {        
+   } else {        
     close_hour = `${element.close - 12}pm`;
    }
    return close_hour
