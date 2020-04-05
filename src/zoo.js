@@ -71,9 +71,10 @@ const oldestFromFirstSpecies = id =>
   .find(anim => anim.id === id).responsibleFor[0]).residents
   .sort((r1, r2) => r2.age - r1.age)[0]);
 
-const increasePrices = (percentage) => {Object.keys(data.prices).forEach((e) => {
-    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
-  });
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((e) => {
+  (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+});
 };
 
 const findResponsibleForAnimals = (res) => {
