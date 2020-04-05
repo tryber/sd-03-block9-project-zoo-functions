@@ -158,7 +158,7 @@ function schedule(dayName) {
   }
   const daySelected = Object.keys(obj).find(element => element === dayName);
   const obj2 = { [daySelected]: obj[daySelected] };
-  return obj2;  
+  return obj2;
 }
 
 function oldestFromFirstSpecies(id) {
