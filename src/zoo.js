@@ -192,8 +192,8 @@ function employeeCoverage(idOrName) {
     const localizaId = employees.find(el => el.id === id);
     const localizaNome = employees.find(el => el.firstName === id);
     const localizaSobrenome = employees.find(el => el.lastName === id);
-    const animalsId = null;
-    const nomeFunc = null;
+    let animalsId = null;
+    let nomeFunc = null;
 
     if (localizaId !== undefined) {
       animalsId = localizaId.responsibleFor;
