@@ -8,7 +8,11 @@ eslint no-unused-vars: [
   }
 ]
 */
-const data = require("./data");
+const data = require('./data');
+
+/* Caso receba nenhum parâmetro, necessário retornar um array vazio
+Ao receber como parâmetro um único id, retorna os animais com este id
+Ao receber mais de um id, retorna os animais que têm um desses ids */
 
 function animalsByIds(...ids) {
   if (ids) {
@@ -16,6 +20,9 @@ function animalsByIds(...ids) {
   }
   return [];
 }
+
+/* Ao passar o nome de uma espécie e uma idade, testa se todos os animais
+desta espécie possuem a idade mínima especificada */
 
 function animalsOlderThan(animal, age) {
   const findSpecie = data.animals.find(({ name }) => name === animal);
@@ -29,19 +36,18 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   if (employeeName) {
     return data.employees.find(
-      ({ firstName, lastName }) =>
-       firstName === employeeName || lastName === employeeName
+      ({ firstName, lastName }) => firstName === employeeName || lastName === employeeName,
     );
   }
   return {};
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
-  // seu código aqui
+
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
