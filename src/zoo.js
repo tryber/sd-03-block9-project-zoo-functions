@@ -69,17 +69,33 @@ const entryCalculator = (entrants) => {
 };
 // console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 
-const animalMap = (options) => {
-  // const { includeNames = false, sorted = false, sex = '' } = options;
-  // return {
-  //   NE: animalsArr.filter(element => element.location === 'NE').map(element => element.name),
-  //   NW: animalsArr.filter(element => element.location === 'NW').map(element => element.name),
-  //   SE: animalsArr.filter(element => element.location === 'SE').map(element => element.name),
-  //   SW: animalsArr.filter(element => element.location === 'SW').map(element => element.name),
-  // };
+const getingAnimals = (me) => {
+
+};
+
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  if (!includeNames) {
+    return animalsArr.reduce((acc, element) => {
+      acc[element.location] = animalsArr.filter(el => el.location === element.location)
+        .map(e => e.name);
+      return acc;
+    }, {});
+  }
+  return animalsArr.reduce((acc, ele) => {
+    acc[ele.location] = animalsArr.filter(e => e.location === ele.location).reduce((acc1, el) => {
+      acc1[el.name] = el.residents;
+      console.log(acc1);
+      if (sex) acc1[el.name].filter(e => e.sex === sex);
+      acc1[el.name].map(e => e.name);
+      if (sorted) acc1[el.name].sort();
+      return acc1;
+    }, []);
+    return acc;
+  }, {});
 };
 // console.log(animalMap());
-// console.log(animalMap({ includeNames: true, sex: 'female' }));
+console.log(animalMap({ includeNames: true, sex: 'female' }));
 
 const schedule = (dayName) => {
   const sched = {};
@@ -136,7 +152,7 @@ const employeeCoverage = (idOrName) => {
   });
   return obj1;
 };
-console.log(employeeCoverage());
+// console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
