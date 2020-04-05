@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees } = data;
+const { animals, employees, prices } = data;
 
 const animalsByIds = (...ids) => animals.filter(animal => ids.find(id => id === animal.id));
 
@@ -36,6 +36,8 @@ const createEmployee = (personalInfo, associatedWith) => ({
 
 const isManager = id => employees.some(element => element.managers.find(a => a === id));
 
+// console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
+
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
@@ -44,12 +46,17 @@ const animalCount = species => animals.find(element => element.name === species)
 
 // console.log(animalCount('lions'));
 
-// const entryCalculator = (entrants) => {
-//   // seu código aqui
-//   const visitantes = Object.values(entrants);
-//   const precoTotal = null;
-//   return visitantes;
-// };
+const entryCalculator = (entrants) => {
+  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
+  const visitantesArray = Object.entries(entrants);
+  const valorAdult = visitantesArray[0][1] * 49.99;
+  const valorChild = visitantesArray[1][1] * 20.99;
+  const valorSenior = visitantesArray[2][1] * 24.99;
+  const valorTotal = valorAdult + valorSenior + valorChild;
+  return valorTotal;
+};
+
+// console.log(entryCalculator({}));
 
 // console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 
@@ -62,34 +69,29 @@ const oldestFromFirstSpecies = (id) => {
     return 0;
   });
   return Object.values(animaisOrdem[0]);
-  // const arrayAnimalOlder = animaL.filter( older => older.age > 10);
   // return funcionario;
   // return animaL;
-  // return arrayAnimalOlder;
   // return animaisOrdem
-  // seu código aqui
 };
 
 // console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
-// const increasePrices = (percentage) => {
-//   // seu código aqui
-//   let newPrices = 0;
-//   for (p in prices.values) {
-//     newPrices = p * (percentage / 100);
-//   }
-//   return newPrices;
-// };
+const increasePrices = (percentage) => {
+  const arrayPrices = Object.entries(prices);
+  console.log('Array com preço atual:\n', arrayPrices);
+  const newArrayPrices = arrayPrices.map(([key, val]) => [key, Math.round(((val + ((val * percentage) / 100)) * 100)) / 100]);
+  console.log('Array com novos preços:\n', newArrayPrices);
 
-// console.log(increasePrices(30));
-
-function increasePrices(dayName) {
   // seu código aqui
-}
+  const obj = Object.fromEntries(newArrayPrices);
+ console.log('novos preços como objeto:');
 
-function entryCalculator(dayName) {
-  // seu código aqui
-}
+  return obj;
+};
+
+console.log(increasePrices(100));  // {'adult': x, 'Senior': x,}
+
+
 
 function schedule(dayName) {
   // seu código aqui
