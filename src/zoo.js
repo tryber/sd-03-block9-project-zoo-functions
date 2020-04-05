@@ -152,21 +152,13 @@ return objaux;
 }
 
 function from24to12HoursOpen(open_hour,element){
-  if(element.open < 12) {
-    open_hour = `${element.open}am`;
-} else {
-  open_hour = `${element.open - 12}pm`; 
-}
+  element.open < 12 ? open_hour = `${element.open}am` : open_hour = `${element.open - 12}pm`; 
   return open_hour;
 }
 
 function from24to12HoursClose(close_hour,element){
-  if(element.close < 12) {
-    close_hour = `${element.close}am`;
-   } else {        
-    close_hour = `${element.close - 12}pm`;
-   }
-   return close_hour
+  element.close < 12 ? close_hour = `${element.close}am` : close_hour = `${element.close - 12}pm`;
+  return close_hour
 }
 function oldestFromFirstSpecies(id) {
   // seu código aqui
