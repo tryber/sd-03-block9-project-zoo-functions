@@ -69,9 +69,9 @@ const entryCalculator = (entrants) => {
 };
 // console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 
-const getingAnimals = (me) => {
+// const getingAnimals = (me) => {
 
-};
+// };
 
 const animalMap = (options = {}) => {
   const { includeNames, sex, sorted } = options;
@@ -84,18 +84,15 @@ const animalMap = (options = {}) => {
   }
   return animalsArr.reduce((acc, ele) => {
     acc[ele.location] = animalsArr.filter(e => e.location === ele.location).reduce((acc1, el) => {
-      acc1[el.name] = el.residents;
-      console.log(acc1);
-      if (sex) acc1[el.name].filter(e => e.sex === sex);
-      acc1[el.name].map(e => e.name);
-      if (sorted) acc1[el.name].sort();
+      acc1[el.name] = el.residents.map(e => e.name);
+      if (sex) acc1[el.name] = el.residents.filter(e => e.sex === sex).map(e => e.name);
       return acc1;
     }, []);
     return acc;
   }, {});
 };
 // console.log(animalMap());
-console.log(animalMap({ includeNames: true, sex: 'female' }));
+console.log(animalMap({ includeNames: true }).NE.lions);
 
 const schedule = (dayName) => {
   const sched = {};
