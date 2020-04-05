@@ -11,25 +11,32 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(...ids) {
-  return data.animals.filter(bicho => ids.find(id => id === bicho.id));
-}
+const animalsByIds = (...ids) =>
+  data.animals.filter(animal => ids.find(id => id === animal.id));
 
-function animalsOlderThan(animal, age) {
-  return data.animals.find(ano => ano.name === animal).residents.every(ano => ano.age > age)
-}
+const animalsOlderThan = (animal, age) =>
+  data.animals.find(a => a.name === animal).residents.every(a => a.age > age);
 
-function employeeByName(...employeeName) {
-  return data.employees.find(
+const employeeByName = employeeName =>
+  data.employees.find(
     ({ firstName, lastName }) => firstName === employeeName || lastName === employeeName,
-  ) || {};}
+  ) || {};
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => ({
+  ...personalInfo,
+  ...associatedWith,
+});
 
-function isManager(...id) {
-  id => data.employees.some(({ managers }) => managers.find(i => i === id));
+const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
+
+class Employee {
+  constructor(id, firstName, lastName, managers = [], responsibleFor = []) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.managers = managers;
+    this.responsibleFor = responsibleFor;
+  }
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
