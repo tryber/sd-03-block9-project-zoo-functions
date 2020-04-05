@@ -43,9 +43,14 @@ const isManager = id =>
   cuidador.managers.includes(id) === true,
   );
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+const addEmployee = (id, firstName, lastName, managers, responsibleFor) =>
+data.employees.push({
+  id,
+  firstName,
+  lastName,
+  managers: managers ? managers : [],
+  responsibleFor: responsibleFor ? responsibleFor : [],
+});
 
 function animalCount(species) {
   // seu código aqui
