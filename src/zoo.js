@@ -66,9 +66,10 @@ const schedule = (dayName) => {
   return cron;
 };
 
-const oldestFromFirstSpecies = (id) => {
-  // seu código aqui
-};
+const oldestFromFirstSpecies = id => 
+  Object.values(data.animals.find(elem => elem.id === data.employees
+  .find(anim => anim.id === id).responsibleFor[0]).residents
+  .sort((r1, r2) => r2.age - r1.age)[0]);
 
 const increasePrices = (percentage) => {
   // seu código aqui
