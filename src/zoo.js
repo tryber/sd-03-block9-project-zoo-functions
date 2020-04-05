@@ -45,9 +45,8 @@ function isManager(id) {
     data.employees.find(employe =>
       employe.managers.find(managers => managers === id),
     )
-  )
-  {
-      return true;
+  ) {
+    return true;
   }
   return false;
 }
