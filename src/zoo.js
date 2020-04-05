@@ -73,8 +73,8 @@ const oldestFromFirstSpecies = id =>
 
 const increasePrices = (percentage) => {
   Object.keys(data.prices).forEach((e) => {
-  (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
-});
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
 };
 
 const findResponsibleForAnimals = (res) => {
@@ -88,11 +88,12 @@ const employeeCoverage = (idOrName) => {
   const emp = {};
   if (idOrName) {
     Object.assign(emp, findResponsibleForAnimals(data.employees.find(elem => ((
-    elem.id === idOrName) || (elem.firstName === idOrName) || (elem.lastName === idOrName)))
+    elem.id === idOrName) || (elem.firstName === idOrName) || (elem.lastName === idOrName))),
     ));
     return emp;
-  };
-  data.employees.forEach((elem) => {Object.assign(emp, findResponsibleForAnimals(elem));
+  }
+  data.employees.forEach((elem) => {
+    Object.assign(emp, findResponsibleForAnimals(elem));
   });
   return emp;
 };
