@@ -23,7 +23,11 @@ const animalsOlderThan = (animal, agep) => {
 };
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  if (!employeeName) return {};
+  return data.employees.find(
+    (employee) =>
+      employee.firstName === employeeName || employee.lastName === employeeName,
+  );
 }
 
 function createEmployee(personalInfo, associatedWith) {
@@ -81,5 +85,3 @@ module.exports = {
   increasePrices,
   createEmployee,
 };
-
-console.log(animalsOlderThan('otters', 7));
