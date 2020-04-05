@@ -90,15 +90,15 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 function animalCount(species) {
   // seu código aqui.
   if (!species) {
-   let object2 = {} ;
-   data.animals.forEach(element => {
-     object2[element.name]= element.residents.length; 
-    });
+    const object2 = {};
+    data.animals.forEach((element) => {
+      object2[element.name] = element.residents.length;
+   });
     return object2;
-    }  
-    let especie = data.animals.find(element => element.name === species)
-    return especie.residents.length;
   }
+  const especie = data.animals.find(element => element.name === species);
+  return especie.residents.length;
+}
 
 console.log(animalCount('lions'));
 function entryCalculator(entrants) {
