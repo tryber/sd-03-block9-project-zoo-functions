@@ -66,7 +66,7 @@ const schedule = (dayName) => {
   return cron;
 };
 
-const oldestFromFirstSpecies = id => 
+const oldestFromFirstSpecies = id =>
   Object.values(data.animals.find(elem => elem.id === data.employees
   .find(anim => anim.id === id).responsibleFor[0]).residents
   .sort((r1, r2) => r2.age - r1.age)[0]);
@@ -90,7 +90,7 @@ const employeeCoverage = (idOrName) => {
     elem.id === idOrName) || (elem.firstName === idOrName) || (elem.lastName === idOrName)))
     ));
     return emp;
-  }
+  };
   data.employees.forEach((elem) => {Object.assign(emp, findResponsibleForAnimals(elem));
   });
   return emp;
