@@ -21,7 +21,8 @@ function animalsByIds(...ids) {
   return data.animals.filter(animal => ids.find(id => id === animal.id));
 }
 
-// 2. Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta espécie possuem a idade mínima especificada
+// 2. Ao passar o nome de uma espécie e uma idade, testa se todos os animais desta espécie possuem
+// a idade mínima especificada
 
 function animalsOlderThan(animal, age) {
   return data.animals.find(grp => grp.name === animal).residents.every(res => res.age >= age);
@@ -40,7 +41,8 @@ function employeeByName(employeeName) {
 }
 //  console.log(employeeByName('Ola'));
 
-// 4. Cria um novo colaborador a partir de objetos contendo informações pessoais, gerentes e animais gerenciados
+// 4. Cria um novo colaborador a partir de objetos contendo informações pessoais, gerentes e
+//animais gerenciados
 
 function createEmployee(personalInfo, associatedWith) {
   const { id, firstName, lastName } = personalInfo;
@@ -133,7 +135,8 @@ function schedule(dayName) {
 }
 // console.log(schedule());
 
-// 11. Passado o id de um funcionário, encontra a primeira espécie de animal gerenciado pelo funcionário, e retorna um array com nome, sexo e idade do animal mais velho dessa espécie
+// 11. Passado o id de um funcionário, encontra a primeira espécie de animal gerenciado pelo
+// funcionário, e retorna um array com nome, sexo e idade do animal mais velho dessa espécie
 
 function oldestFromFirstSpecies(id) {
   const idFunc = data.employees.find(emp => emp.id === id);
@@ -143,16 +146,18 @@ function oldestFromFirstSpecies(id) {
 }
 // console.log(oldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
-// 12. Implemente a função increasePrices: Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
+// 12. Implemente a função increasePrices: Ao passar uma porcentagem, incrementa todos os preços,
+// arrendondados em duas casas decimais
 
 const novoPreco = (antigo, porcent) => {
-  return (antigo * (1 + (porcent / 100))).toFixed(2); };
+  return (antigo * (1 + (porcent / 100))).toFixed(2);
+};
 
 function increasePrices(percentage) {
   Object.keys(data.prices).forEach((pessoa) => {
     data.prices[pessoa] = novoPreco(data.prices[pessoa], percentage);
     // console.log(data.prices[pessoa]);
-  })
+  });
 }
 
 /* 13. Implemente a função employeeCoverage:
