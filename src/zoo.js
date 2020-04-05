@@ -177,7 +177,7 @@ function employeeCoverage(idOrName) {
     objectResult[key] = responsavelPorAnimalFunction(responsavelPorAnimal);
   }
   if (idOrName === undefined) return objectResult;
-  const filtrandofunc = data.employees.filter((funcionario) => funcionario.id === idOrName
+  const filtrandofunc = data.employees.filter(funcionario => funcionario.id === idOrName
   || funcionario.firstName === idOrName
   || funcionario.lastName === idOrName);
   const filtrandofuncName = {};
