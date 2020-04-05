@@ -29,16 +29,6 @@ const createEmployee = (personalInfo, associatedWith) => ({
 
 const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
 
-class Employee {
-  constructor(id, firstName, lastName, managers = [], responsibleFor = []) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.managers = managers;
-    this.responsibleFor = responsibleFor;
-  }
-}
-
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
