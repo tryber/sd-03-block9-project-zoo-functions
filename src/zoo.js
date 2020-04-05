@@ -71,12 +71,29 @@ const oldestFromFirstSpecies = id =>
   .find(anim => anim.id === id).responsibleFor[0]).residents
   .sort((r1, r2) => r2.age - r1.age)[0]);
 
-const increasePrices = (percentage) => {
-  // seu código aqui
+const increasePrices = (percentage) => {Object.keys(data.prices).forEach((e) => {
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
+};
+
+const findResponsibleForAnimals = (res) => {
+  const who = {};
+  who[`${res.firstName} ${res.lastName}`] = res.responsibleFor.map(id => data.animals
+  .find(animal => animal.id === id).name);
+  return who;
 };
 
 const employeeCoverage = (idOrName) => {
-  // seu código aqui
+  const emp = {};
+  if (idOrName) {
+    Object.assign(emp, findResponsibleForAnimals(data.employees.find(elem => ((
+    elem.id === idOrName) || (elem.firstName === idOrName) || (elem.lastName === idOrName)))
+    ));
+    return emp;
+  }
+  data.employees.forEach((elem) => {Object.assign(emp, findResponsibleForAnimals(elem));
+  });
+  return emp;
 };
 
 module.exports = {
