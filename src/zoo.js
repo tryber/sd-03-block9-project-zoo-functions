@@ -52,35 +52,61 @@ function animalMap(options) {
   // seu código aqui
 }
 
-const makeDay = (day) => {
-  function legibleHour(hour) {
-    if (hour < 12) return `${hour}am`;
-    if (hour === 12) return '12pm';
-    return `${hour - 12}pm`;
-  }
-  if (data.hours[day].open === data.hours[day].close) return 'CLOSED';
-  return `Open from ${legibleHour(data.hours[day].open)} until ${legibleHour(
-    data.hours[day].close,
-  )}`;
-};
 
 const schedule = (dayName) => {
+
+  const makeDay = (day) => {
+    function legibleHour(hour) {
+      if (hour < 12) return `${hour}am`;
+      if (hour === 12) return '12pm';
+      return `${hour - 12}pm`;
+    }
+
+    if (data.hours[day].open === data.hours[day].close) return 'CLOSED';
+    return `Open from ${legibleHour(data.hours[day].open)} until ${legibleHour(
+      data.hours[day].close,
+    )}`;
+  };
+
   if (dayName) return { [dayName]: makeDay(dayName) };
   return Object.keys(data.hours)
   .reduce((scheduleObject, day) => ({ ...scheduleObject, ...{ [day]: makeDay(day) } }), {});
 };
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+const oldestFromFirstSpecies = id => Object.values(data.animals
+.find(e => e.id === data.employees
+.find(animal => animal.id === id).responsibleFor[0]).residents
+.sort((a, b) => b.age - a.age)[0]);
 
 function increasePrices(percentage) {
   // seu código aqui
 }
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
-}
+const employeeCoverage = (idOrName) => {
+  const obj = {};
+
+  const findResponsibleForAnimals = (e) => {
+    const asw = {};
+    asw[`${e.firstName} ${e.lastName}`] = e.responsibleFor
+    .map(id => data.animals
+    .find(animal => animal.id === id).name);
+    return asw;
+  };
+
+  if (idOrName) {
+    Object.assign(obj, findResponsibleForAnimals(data.employees
+    .find(e => ((
+      e.id === idOrName)
+      || (e.firstName === idOrName)
+      || (e.lastName === idOrName)))));
+    return obj;
+  }
+  data.employees.forEach((e) => {
+    Object.assign(obj, findResponsibleForAnimals(e));
+  });
+  return obj;
+};
+
 
 module.exports = {
   entryCalculator,
