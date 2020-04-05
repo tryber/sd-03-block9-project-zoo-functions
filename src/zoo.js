@@ -52,7 +52,7 @@ function animalMap(options) {
   // seu código aqui
 }
 
-const makeDay = day => {
+const makeDay = (day) => {
   function legibleHour(hour) {
     if (hour < 12) return `${hour}am`;
     if (hour === 12) return '12pm';
@@ -64,7 +64,7 @@ const makeDay = day => {
   )}`;
 };
 
-const schedule = dayName => {
+const schedule = (dayName) => {
   if (dayName) return { [dayName]: makeDay(dayName) };
   return Object.keys(data.hours)
   .reduce((scheduleObject, day) => ({ ...scheduleObject, ...{ [day]: makeDay(day) } }), {});
