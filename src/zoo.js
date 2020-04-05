@@ -141,25 +141,25 @@ function percoreObjeto(object, objaux) {
     closeHour = from24to12HoursClose(closeHour, element);
     if (daysOfWeek[i] === undefined) {
       return '';
-    } 
-  objaux[daysOfWeek[i]] = `Open from ${openHour} until ${closeHour}`;
-        i += 1;
-  return objaux
-  })
-return objaux;
+    }
+    objaux[daysOfWeek[i]] = `Open from ${openHour} until ${closeHour}`;
+    i += 1;
+    return objaux;
+  });
+  return objaux;
 }
 
 function schedule(dayName) {
   // seu código aqui
   const obj = {};
-  percoreObjeto(data.hours,obj);
-  if (!dayName){
+  percoreObjeto(data.hours, obj);
+  if (!dayName) {
     return obj;
-  } else {
-    const daySelected = Object.keys(obj).find(element => element === dayName);
-    let obj2 = {[daySelected] : obj[daySelected] } ;
-    return obj2;
-  }
+  } 
+  const daySelected = Object.keys(obj).find(element => element === dayName);
+  const obj2 = { [daySelected]: obj[daySelected] };
+  return obj2;
+  
 }
 
 function oldestFromFirstSpecies(id) {
