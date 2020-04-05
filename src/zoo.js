@@ -117,14 +117,14 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function from24to12HoursOpen(open_hour, element) {
-  element.open < 12 ? open_hour = `${element.open}am` : open_hour = `${element.open - 12}pm`;
-  return open_hour;
+function from24to12HoursOpen(openHour, element) {
+  openHour = element.open < 12 ? `${element.open}am` : `${element.open - 12}pm`;
+  return openHour;
 }
 
-function from24to12HoursClose(close_hour, element) {
-  element.close > 12 ? close_hour = `${element.close - 12}pm` : close_hour = `${element.close}am`;
-  return close_hour;
+function from24to12HoursClose(closeHour, element) {
+  closeHour = element.close > 12 ? `${element.close - 12}pm` : `${element.close}am`;
+  return closeHour;
 }
 
 function percoreObjeto(object, objaux) {
