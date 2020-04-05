@@ -42,7 +42,7 @@ function employeeByName(employeeName) {
 //  console.log(employeeByName('Ola'));
 
 // 4. Cria um novo colaborador a partir de objetos contendo informações pessoais, gerentes e
-//animais gerenciados
+// animais gerenciados
 
 function createEmployee(personalInfo, associatedWith) {
   const { id, firstName, lastName } = personalInfo;
@@ -149,9 +149,7 @@ function oldestFromFirstSpecies(id) {
 // 12. Implemente a função increasePrices: Ao passar uma porcentagem, incrementa todos os preços,
 // arrendondados em duas casas decimais
 
-const novoPreco = (antigo, porcent) => {
-  return (antigo * (1 + (porcent / 100))).toFixed(2);
-};
+const novoPreco = (antigo, porcent) => (antigo * (1 + (porcent / 100))).toFixed(2);
 
 function increasePrices(percentage) {
   Object.keys(data.prices).forEach((pessoa) => {
