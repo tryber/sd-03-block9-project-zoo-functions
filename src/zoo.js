@@ -22,7 +22,7 @@ const animalsOlderThan = (animal, agep) =>
 const employeeByName = (employeeName) => {
   if (!employeeName) return {};
   return data.employees.find(
-    (employee) => employee.firstName === employeeName || employee.lastName === employeeName,
+    employee => employee.firstName === employeeName || employee.lastName === employeeName,
   );
 };
 
@@ -30,7 +30,7 @@ const createEmployee = (personalInfo, associatedWith) => {
   return { ...personalInfo, ...associatedWith };
 };
 
-const isManager = (id) => Boolean(data.employees.find(({ managers }) => managers.includes(id)));
+const isManager = id => Boolean(data.employees.find(({ managers }) => managers.includes(id)));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
