@@ -52,22 +52,20 @@ function animalMap(options) {
   // seu código aqui
 }
 
+const makeDay = (day) => {
+  function legibleHour(hour) {
+    if (hour < 12) return `${hour}am`;
+    if (hour === 12) return '12pm';
+    return `${hour - 12}pm`;
+  }
+
+  if (data.hours[day].open === data.hours[day].close) return 'CLOSED';
+  return `Open from ${legibleHour(data.hours[day].open)} until ${legibleHour(
+    data.hours[day].close,
+  )}`;
+};
 
 const schedule = (dayName) => {
-
-  const makeDay = (day) => {
-    function legibleHour(hour) {
-      if (hour < 12) return `${hour}am`;
-      if (hour === 12) return '12pm';
-      return `${hour - 12}pm`;
-    }
-
-    if (data.hours[day].open === data.hours[day].close) return 'CLOSED';
-    return `Open from ${legibleHour(data.hours[day].open)} until ${legibleHour(
-      data.hours[day].close,
-    )}`;
-  };
-
   if (dayName) return { [dayName]: makeDay(dayName) };
   return Object.keys(data.hours)
   .reduce((scheduleObject, day) => ({ ...scheduleObject, ...{ [day]: makeDay(day) } }), {});
