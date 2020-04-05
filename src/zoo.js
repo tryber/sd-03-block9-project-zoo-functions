@@ -97,13 +97,13 @@ function firstAnimalEmploye(id) {
   return data.animals.find(
     animal =>
       animal.id ===
-      data.employees.find(employe => employe.id === id).responsibleFor[0]
+      data.employees.find(employe => employe.id === id).responsibleFor[0],
   ).residents;
 }
 function characteristicsAnimalEmploye(firstAnimal) {
   const olde = Math.max.apply(
     null,
-    firstAnimal.map(animal => animal.age)
+    firstAnimal.map(animal => animal.age),
   );
   return Object.values(firstAnimal.find(animal => animal.age === olde));
 }
