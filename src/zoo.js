@@ -74,7 +74,7 @@ const entryCalculator = (entrants) => {
 // };
 
 const animalMap = (options = {}) => {
-  const { includeNames, sex, sorted } = options;
+  const { includeNames, sex } = options;
   if (!includeNames) {
     return animalsArr.reduce((acc, element) => {
       acc[element.location] = animalsArr.filter(el => el.location === element.location)
