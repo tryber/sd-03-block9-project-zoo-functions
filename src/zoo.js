@@ -95,8 +95,8 @@ function schedule(...dayName) {
     array = Object.keys(data.hours);
   } else array = dayName;
   return array.reduce((accumulator, currentValue) => {
-    if (data.hours[currentValue].open === 0 && data.hours[currentValue].close === 0 ) {
-        accumulator[currentValue] = 'CLOSED';
+    if (data.hours[currentValue].open === 0 && data.hours[currentValue].close === 0) {
+      accumulator[currentValue] = 'CLOSED';
     } else accumulator[currentValue] = `Open from ${data.hours[currentValue].open}am until ${data.hours[currentValue].close - 12}pm`;
     return accumulator;
   }, {});
