@@ -152,12 +152,12 @@ function increasePrices(percentage) {
 
 const forFunctions = (idAnimals) => {
   const filtro = [];
-  idAnimals.forEach(element => {
+  idAnimals.forEach((element) => {
     const animal = animals.find(el => el.id === element);
     filtro.push(animal);
   });
   return filtro.map(el => el.name);
-}
+};
 const returnById = (id) => {
   const localizaId = employees.find(el => el.id === id);
   const localizaNome = employees.find(el => el.firstName === id);
@@ -173,10 +173,11 @@ const returnById = (id) => {
   } else {
     idAnimals = localizaSobrenome.responsibleFor;
     nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
-  }
+  };
   const resposta = { [`${nomeFunc}`]: forFunctions(idAnimals) };
   return resposta;
-}
+};
+
 const returnResumo = () => {
   const resumo = employees.reduce((acc, cur) => {
     const idAnimals = cur.responsibleFor;
@@ -185,7 +186,7 @@ const returnResumo = () => {
     return acc;
   }, {});
   return resumo;
-}
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
@@ -193,7 +194,7 @@ function employeeCoverage(idOrName) {
     return returnResumo();
   };
   return returnById(idOrName);
-}
+};
 
 module.exports = {
   entryCalculator,
