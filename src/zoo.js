@@ -115,7 +115,7 @@ function increasePrices(percentage) {
   return Object.keys(data.prices).forEach(
     price =>
       (data.prices[price] =
-        Math.round(data.prices[price] * (percentage / 100 + 1) * 100) / 100)
+        Math.round(data.prices[price] * ((percentage / 100) + 1) * 100) / 100),
   );
 }
 
