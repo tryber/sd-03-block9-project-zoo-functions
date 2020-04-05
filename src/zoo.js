@@ -157,7 +157,7 @@ function from24to12HoursOpen(open_hour,element){
 }
 
 function from24to12HoursClose(close_hour,element){
-  element.close < 12 ? close_hour = `${element.close}am` : close_hour = `${element.close - 12}pm`;
+  element.close > 12 ? close_hour = `${element.close - 12}pm` : close_hour = `${element.close}am`;
   return close_hour
 }
 function oldestFromFirstSpecies(id) {
