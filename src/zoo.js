@@ -49,8 +49,21 @@ const animalMap = (options) => {
   // seu código aqui
 };
 
+const cronLeg = (day) => {
+  if (day === 'Monday') {
+    return 'CLOSED'
+  }
+  return `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+}
+
 const schedule = (dayName) => {
-  // seu código aqui
+  const cron = {};
+  if (dayName) {
+    cron[dayName] = cronLeg(dayName);
+    return cron;
+  }
+  Object.keys(data.hours).forEach((element) => { cron[element] = cronLeg(element); });
+  return cron;
 };
 
 const oldestFromFirstSpecies = (id) => {
