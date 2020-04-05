@@ -117,33 +117,35 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function from24to12HoursOpen(open_hour, element){
+function from24to12HoursOpen(open_hour, element) {
   element.open < 12 ? open_hour = `${element.open}am` : open_hour = `${element.open - 12}pm`;
   return open_hour;
 }
 
-function from24to12HoursClose(close_hour, element){
+function from24to12HoursClose(close_hour, element) {
   element.close > 12 ? close_hour = `${element.close - 12}pm` : close_hour = `${element.close}am`;
-  return close_hour
+  return close_hour;
 }
 
-function percoreObjeto(object,objaux){
+function percoreObjeto(object, objaux) {
   const daysOfWeek = Object.keys(data.hours);
   let i = 0;
-  let open_hour;
-  let close_hour;
-  Object.values(object).forEach(element => { 
-    if(element.open == 0 && element.close == 0){
+  let openHour;
+  let closeHour;
+  Object.values(object).forEach((element) => {
+    if (element.open === 0 && element.close === 0) {
       objaux[daysOfWeek[i]] = 'CLOSED';
-      i++;  
-    } 
-      open_hour = from24to12HoursOpen(open_hour, element);
-      close_hour = from24to12HoursClose(close_hour,element); 
-      if(daysOfWeek[i] === undefined) {
-      }
-      else {
-      objaux[daysOfWeek[i]] = `Open from ${open_hour} until ${close_hour}`
-      i++;}
+      i += i;
+    }
+    openHour = from24to12HoursOpen(openHour, element);
+    closeHour = from24to12HoursClose(closeHour, element);
+    if (daysOfWeek[i] === undefined) {
+      return '';
+    }
+    else {
+        objaux[daysOfWeek[i]] = `Open from ${openHour} until ${closeHour}`;
+        i += i;
+        }
 })
 return objaux;
 }
