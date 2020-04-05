@@ -26,12 +26,12 @@ const employeeByName = (employeeName) => {
   );
 };
 
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+const createEmployee = (personalInfo, associatedWith) => {
+  return { ...personalInfo, ...associatedWith };
 }
 
-function isManager(id) {
-  // seu código aqui
+const isManager = (id) => {
+  return Boolean(data.employees.find(({ managers }) => managers.includes(id)));
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
