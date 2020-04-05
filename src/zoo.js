@@ -168,21 +168,19 @@ function responsavelPorAnimalFunction(array) {
 function employeeCoverage(idOrName) {
   // seu código aqui
   const objectResult = {};
-  const funcionarios = data.employees;
+  const fc = data.employees;
   let key;
   let responsavelPorAnimal;
-  for (let i = 0; i < funcionarios.length; i += 1) {
-    key = `${funcionarios[i].firstName} ${funcionarios[i].lastName}`;
-    responsavelPorAnimal = funcionarios[i].responsibleFor;
+  for (let i = 0; i < fc.length; i += 1) {
+    key = `${fc[i].firstName} ${fc[i].lastName}`;
+    responsavelPorAnimal = fc[i].responsibleFor;
     objectResult[key] = responsavelPorAnimalFunction(responsavelPorAnimal);
   }
   if (idOrName === undefined) return objectResult;
-  const filtrandofunc = data.employees.filter((funcionario) => {
-    return funcionario.id === idOrName || funcionario.firstName === idOrName || funcionario.lastName === idOrName;
-  });
-  const filtrandofuncName = {};
-  filtrandofuncName[`${filtrandofunc[0].firstName} ${filtrandofunc[0].lastName}`] = responsavelPorAnimalFunction(filtrandofunc[0].responsibleFor);
-  return filtrandofuncName;
+  const fF = fc.filter(i => i.id === idOrName || i.firstName === idOrName || i.lastName === idOrName);
+  const fFName = {};
+  fFName[`${fF[0].firstName} ${fF[0].lastName}`] = responsavelPorAnimalFunction(fF[0].responsibleFor);
+  return fFName;
 }
 
 module.exports = {
