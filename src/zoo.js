@@ -44,13 +44,13 @@ const isManager = id =>
   );
 
 const addEmployee = (id, firstName, lastName, managers, responsibleFor) =>
-data.employees.push({
-  id,
-  firstName,
-  lastName,
-  managers: managers ? managers : [],
-  responsibleFor: responsibleFor ? responsibleFor : [],
-});
+  data.employees.push({
+    id,
+    firstName,
+    lastName,
+    managers: managers || [],
+    responsibleFor: responsibleFor || [],
+  });
 
 function animalCount(species) {
   // seu código aqui
