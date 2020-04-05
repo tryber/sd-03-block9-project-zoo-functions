@@ -195,7 +195,7 @@ function employeeCoverage(idOrName) {
     return returnResumo();
   };
   return returnById(idOrName);
-};
+}
 
 module.exports = {
   entryCalculator,
