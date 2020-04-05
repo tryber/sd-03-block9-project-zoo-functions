@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, hours, prices, } = data;
+const { animals, employees, prices } = data;
 
 const animalsByIds = (...ids) => animals.filter(animal => ids.find(id => id === animal.id));
 
@@ -21,7 +21,7 @@ const animalsOlderThan = (animal, age) => {
   return searchAge;
 };
 
-const employeeByName = employeeName => {
+const employeeByName = (employeeName) => {
   if (employeeName) {
     return employees.find(element => element.firstName === employeeName
       || element.lastName === employeeName);
@@ -42,45 +42,51 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
 }
 
-const animalCount = species => {
-  if (species) {
-    return animals.find(element => element.name === species).residents.length;
-  }
+const animalCount = (species) => {
+  if (species) return animals.find(element => element.name === species).residents.length;
 };
 
 // console.log(animalCount('lions'));
 
-const entryCalculator = entrants => {
-  if (entrants === null || {}) {
-    return 0;
-  }
+const entryCalculator = (entrants) => {
   // seu código aqui
+  const visitantes = Object.values(entrants);
+  const precoTotal = null;
+  return visitantes;
 };
 
-// console.log(entryCalculator());
+ // console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 
-const oldestFromFirstSpecies = id => {
-  const funcionario = employees.find( fun => fun.id === id).responsibleFor[0];
-  const animaL = animals.find( codigo => codigo.id === funcionario).residents;
-  const animaisOrdem = animaL.sort( (a, b) =>{
+const oldestFromFirstSpecies = (id) => {
+  const funcionario = employees.find(fun => fun.id === id).responsibleFor[0];
+  const animaL = animals.find(codigo => codigo.id === funcionario).residents;
+  const animaisOrdem = animaL.sort((a, b) => {
     if (a.age < b.age) return 1;
     if (a.age > b.age) return -1;
-    else return 0;
+    return 0;
   });
   return Object.values(animaisOrdem[0]);
-  //const arrayAnimalOlder = animaL.filter( older => older.age > 10);
-  //return funcionario;
-  //return animaL;
-  //return arrayAnimalOlder;
-  //return animaisOrdem
+  // const arrayAnimalOlder = animaL.filter( older => older.age > 10);
+  // return funcionario;
+  // return animaL;
+  // return arrayAnimalOlder;
+  // return animaisOrdem
   // seu código aqui
 };
 
-//console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
+// console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
-const increasePrices = percentage => {
+const increasePrices = (percentage) => {
   // seu código aqui
+  let newPrices = 0;
+  for (p in prices.values) {
+    newPrices = p * (percentage / 100);
+  }
+  return newPrices;
 };
+
+console.log(increasePrices(30));
+
 
 function schedule(dayName) {
   // seu código aqui
