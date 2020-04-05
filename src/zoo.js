@@ -78,12 +78,7 @@ function entryCalculator(entrants) {
       if (entry[0] === 'Adult') {
         return entry[1] * 49.99;
       }
-      if (entry[0] === 'Child') {
-        return entry[1] * 20.99;
-      }
-      if (entry[0] === 'Senior') {
-        return entry[1] * 24.99;
-      }
+      return undefined;
     })
     .reduce((accumulator, currentValue) => accumulator + currentValue);
 }
