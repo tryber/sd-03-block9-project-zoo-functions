@@ -38,10 +38,10 @@ const employeeByName = (employeeName) => (
 const createEmployee = (personalInfo, associatedWith) => 
   Object.assign(personalInfo, associatedWith);
 
-
-function isManager(id) {
-  // seu código aqui
-}
+const isManager = (id) =>
+  data.employees.some((cuidador) => 
+  cuidador.managers.includes(id) === true
+  );
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
