@@ -47,7 +47,7 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  return employees.some(element =>
+  return data.employees.some(element =>
     element.managers.find(manId => manId === id),
   );
 }
