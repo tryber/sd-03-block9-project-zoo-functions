@@ -78,18 +78,18 @@ const oldestFromFirstSpecies = (id) => {
 
 const increasePrices = (percentage) => {
   const arrayPrices = Object.entries(prices);
-  console.log('Array com preço atual:\n', arrayPrices);
+//  console.log('Array com preço atual:\n', arrayPrices);
   const newArrayPrices = arrayPrices.map(([key, val]) => [key, Math.round(((val + ((val * percentage) / 100)) * 100)) / 100]);
-  console.log('Array com novos preços:\n', newArrayPrices);
+//  console.log('Array com novos preços:\n', newArrayPrices);
 
   // seu código aqui
   const obj = Object.fromEntries(newArrayPrices);
- console.log('novos preços como objeto:');
+// console.log('novos preços como objeto:');
 
   return obj;
 };
 
-console.log(increasePrices(100));  // {'adult': x, 'Senior': x,}
+// console.log(increasePrices(100));  // {'adult': x, 'Senior': x,}
 
 
 
