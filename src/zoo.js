@@ -17,15 +17,12 @@ const animalsByIds = (...ids) => {
 };
 
 const animalsOlderThan = (animal, agep) =>
-  data.animals
-    .find(({ name }) => name === animal)
-    .residents.every(({ age }) => age > agep);
+  data.animals.find(({ name }) => name === animal).residents.every(({ age }) => age > agep);
 
 const employeeByName = (employeeName) => {
   if (!employeeName) return {};
   return data.employees.find(
-    (employee) =>
-      employee.firstName === employeeName || employee.lastName === employeeName,
+    (employee) => employee.firstName === employeeName || employee.lastName === employeeName,
   );
 };
 
