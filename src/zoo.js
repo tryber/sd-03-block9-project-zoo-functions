@@ -149,13 +149,13 @@ function oldestFromFirstSpecies(id) {
 // 12. Implemente a função increasePrices: Ao passar uma porcentagem, incrementa todos os preços,
 // arrendondados em duas casas decimais
 
-const novoPreco = (antigo, porcent) => (antigo * (1 + (porcent / 100))).toFixed(2);
+const novoPreco = (antigo, pct) => Math.round(antigo * (1 + (pct / 100)) * 100) / 100;
 
 function increasePrices(percentage) {
   Object.keys(data.prices).forEach((pessoa) => {
     data.prices[pessoa] = novoPreco(data.prices[pessoa], percentage);
-    // console.log(data.prices[pessoa]);
   });
+  console.log(data.prices);
 }
 
 /* 13. Implemente a função employeeCoverage:
