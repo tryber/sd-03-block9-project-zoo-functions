@@ -141,11 +141,11 @@ function percoreObjeto(object, objaux) {
     closeHour = from24to12HoursClose(closeHour, element);
     if (daysOfWeek[i] === undefined) {
       return '';
-    }
-    else {
-        objaux[daysOfWeek[i]] = `Open from ${openHour} until ${closeHour}`;
-        i += 1;}
-})
+    } 
+  objaux[daysOfWeek[i]] = `Open from ${openHour} until ${closeHour}`;
+        i += 1;
+  return objaux
+  })
 return objaux;
 }
 
