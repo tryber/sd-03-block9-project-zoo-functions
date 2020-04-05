@@ -150,67 +150,50 @@ function increasePrices(percentage) {
   return data.prices;
 }
 
-const total = () => {
-  const nome = employees.reduce((acc, cur) => {
-    const idAnimais = cur.responsibleFor;
-    const vazio = [];
-    idAnimais.forEach(element => {
-      const addanimal = animals.find(el => el.id === element);
-      vazio.push(addanimal);
-    });
-    const result = vazio.map(el => el.name);
-    const nomeFunc = `${cur.firstName} ${cur.lastName}`;
-    acc[nomeFunc] = result;
-    return acc;
-  }, {});
-  return nome;
-}
-
 const forFunctions = (idAnimals) => {
   const filtro = [];
   idAnimals.forEach(element => {
-  const animal = animals.find(el => el.id === element);
-  filtro.push(animal);
+    const animal = animals.find(el => el.id === element);
+    filtro.push(animal);
   });
   return filtro.map(el => el.name);
-  }
-  const returnById = (id) => {
+}
+const returnById = (id) => {
   const localizaId = employees.find(el => el.id === id);
   const localizaNome = employees.find(el => el.firstName === id);
   const localizaSobrenome = employees.find(el => el.lastName === id);
   let idAnimals = null;
   let nomeFunc = null;
   if (localizaId !== undefined) {
-  idAnimals = localizaId.responsibleFor;
-  nomeFunc = `${localizaId.firstName} ${localizaId.lastName}`;
+    idAnimals = localizaId.responsibleFor;
+    nomeFunc = `${localizaId.firstName} ${localizaId.lastName}`;
   } else if (localizaNome !== undefined) {
-  idAnimals = localizaNome.responsibleFor;
-  nomeFunc = `${localizaNome.firstName} ${localizaNome.lastName}`;
+    idAnimals = localizaNome.responsibleFor;
+    nomeFunc = `${localizaNome.firstName} ${localizaNome.lastName}`;
   } else {
-  idAnimals = localizaSobrenome.responsibleFor;
-  nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
+    idAnimals = localizaSobrenome.responsibleFor;
+    nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
   }
-  const resposta = {[`${nomeFunc}`]: forFunctions(idAnimals)};
+  const resposta = { [`${nomeFunc}`]: forFunctions(idAnimals) };
   return resposta;
-  }
-  const returnResumo = () => {
-  const resumo = employees.reduce((acc,cur) => {
-  const idAnimals = cur.responsibleFor;
-  const nomeFunc = `${cur.firstName} ${cur.lastName}`;
-  acc[nomeFunc] = forFunctions(idAnimals);
-  return acc;
+}
+const returnResumo = () => {
+  const resumo = employees.reduce((acc, cur) => {
+    const idAnimals = cur.responsibleFor;
+    const nomeFunc = `${cur.firstName} ${cur.lastName}`;
+    acc[nomeFunc] = forFunctions(idAnimals);
+    return acc;
   }, {});
   return resumo;
-  }
+}
 
 function employeeCoverage(idOrName) {
   // seu código aqui
   if (!idOrName) {
-    return total();
+    return returnResumo();
   };
   return returnById(idOrName);
 }
-console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'))
 
 module.exports = {
   entryCalculator,
