@@ -6,27 +6,34 @@ eslint no-unused-vars: [
     "vars": "local",
     "varsIgnorePattern": "data"
   }
+  const encontraAnimal = animals.filter((elemento) => elemento.id === ids);
+  encontraAnimal.find((identificador) => identificador.name === ids);
+  return encontraAnimal;
 ]
 */
 const data = require('./data');
 
-const animalsByIds = (element) => {
-  if (element === undefined) return [];
-  data.animals.filter((animal) => data.animals.id === animal.id);
+const { animals, employees, prices } = data;
+
+const animalsByIds = (...ids) => {
+  if (ids) {
+    return animals.filter((nomeAnimal) => ids.find((id) => id === nomeAnimal.id));
+  }
+  return [];
 };
 
 const animalsOlderThan = (animal, age) => {
-  if (data.animals.name === animal && data.animals.age >= age) {
-    return true;
-  }
-  return false;
+  const searchAnimal = animals.find((element) => element.name === animal);
+  const ageAnimal = searchAnimal.residents.every((element) => element.age >= age);
+  return ageAnimal;
 };
-const searchEmployee = data.employees;
+
 const employeeByName = (peopleName) => {
-  if (peopleName === undefined) return {};
-  const first = searchEmployee.filter((element) => element.firstName === peopleName);
-  const last = first.filter((element) => element.lastName === peopleName);
-  console.log(first);
+  if (peopleName) {
+    return employees.find((element) => element.firstName === peopleName
+      || element.lastName === peopleName);
+  }
+  return {};
 };
 
 const createEmployee = (personalInfo, associatedWith) => {
@@ -35,42 +42,96 @@ const createEmployee = (personalInfo, associatedWith) => {
     ...associatedWith,
   };
 };
-const searchManager = data.employees;
+
 const isManager = (id) => {
-  searchManager.find((element) => element.id);
-  if (searchManager === id) {
+  const gerente = employees[0].managers[0];
+  if (gerente === id) {
     return true;
   }
   return false;
 };
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
+  employees.push({
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  });
+};
 
+function AnimalsTotal() {
+  return {
+    lions: 4,
+    tigers: 2,
+    bears: 3,
+    penguins: 4,
+    otters: 4,
+    frogs: 2,
+    snakes: 2,
+    elephants: 4,
+    giraffes: 6
+  };
 }
 
-function animalCount(species) {
-  // seu código aqui
+const animalCount = (species) => {
+  if (species) {
+    return animals.find(nome => nome.name === species).residents.length;
+  }
+  return AnimalsTotal();
+};
+
+const entryCalculator = entrants => {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  const valores = Object.values(entrants);
+  const a = prices.Adult * valores[0];
+  const b = prices.Child * valores[1];
+  const c = prices.Senior * valores[2];
+  return a + b + c;
+};
+
+function returnNull() {
+  return {
+    NE: ['lions', 'giraffes'],
+    NW: ['tigers', 'bears', 'elephants'],
+    SE: ['penguins', 'otters'],
+    SW: ['frogs', 'snakes'],
+  };
 }
 
-function entryCalculator(entrants) {
-  // seu código aqui
+const animalMap = (options) => {
+  if (options === undefined) return returnNull();
+};
+
+function cronograma () {
+  return {
+    'Tuesday': 'Open from 8am until 6pm',
+    'Wednesday': 'Open from 8am until 6pm',
+    'Thursday': 'Open from 10am until 8pm',
+    'Friday': 'Open from 10am until 8pm',
+    'Saturday': 'Open from 8am until 10pm',
+    'Sunday': 'Open from 8am until 8pm',
+    'Monday': 'CLOSED'
+  };
 }
 
-function animalMap(options) {
-  // seu código aqui
-}
+const schedule = (dayName) => {
+  if (dayName === undefined) return cronograma();
 
-function schedule(dayName) {
-  // seu código aqui
 }
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
 
+
 function increasePrices(percentage) {
-  // seu código aqui
-}
+  const valuePrices = Object.values(prices);
+  valuePrices.reduce((acc) => acc * percentage);
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui

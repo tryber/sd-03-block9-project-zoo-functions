@@ -4,7 +4,6 @@ const zoo = require('../src/zoo');
 describe('entryCalculator', () => {
   it('test', () => {
     let actual;
-
     // returna 0 se nenhum argumento for passado
     actual = zoo.entryCalculator();
     assert.equal(actual, 0);
