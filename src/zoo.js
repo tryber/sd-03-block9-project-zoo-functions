@@ -192,8 +192,8 @@ function employeeCoverage(idOrName) {
     const localizaId = employees.find(el => el.id === id);
     const localizaNome = employees.find(el => el.firstName === id);
     const localizaSobrenome = employees.find(el => el.lastName === id);
-    let idAnimals = null;
-    let nomeFunc = null;
+    const animalsId = null;
+    const nomeFunc = null;
 
     if (localizaId !== undefined) {
       AnimalsId = localizaId.responsibleFor;
@@ -214,8 +214,7 @@ function employeeCoverage(idOrName) {
     const resultado = filtr.map(el => el.name);
     const resposta = { [`${nomeFunc}`]: resultado };
     return resposta;
-
-  }
+  };
 
   return returnById(idOrName);
 }
