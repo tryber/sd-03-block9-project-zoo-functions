@@ -89,21 +89,18 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  if (dayName === undefined)
-    return Object.keys(data.hours).reduce((accumulator, currentValue) => {
-      if (data.hours[currentValue].open === 0 &&data.hours[currentValue].close === 0)
-        accumulator[currentValue] = 'CLOSED';
+function schedule(...dayName) {
+  let array;
+  if(Object.keys(dayName).length === 0)
+  array =  Object.keys(data.hours);
+  else array = dayName;
+  return array.reduce((accumulator,currentValue) => {
+      if(data.hours[currentValue].open === 0 && data.hours[currentValue].close === 0 )
+      accumulator[currentValue] = 'CLOSED';
       else accumulator[currentValue] = `Open from ${data.hours[currentValue].open}am until ${data.hours[currentValue].close - 12}pm`;
-      return accumulator;
-    }, {});
-  const obj = {};
-  if (data.hours[dayName].open === 0 && data.hours[dayName].close === 0)
-    obj[dayName] = 'CLOSED';
-  else obj[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
-  return obj;
+return accumulator;
+  },{});
 }
-
 
 function firstAnimalEmploye(id) {
   return data.animals.find(
