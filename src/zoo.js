@@ -87,6 +87,7 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if (entrants === undefined) return 0;
   const arrayKeys = Object.keys(data.prices);
   const arrayPrices = [];
   for (let i = 0; i < arrayKeys.length; i += 1) {
