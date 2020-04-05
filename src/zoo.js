@@ -23,9 +23,9 @@ function animalsOlderThan(animal, age) {
         anima.name === animal &&
         anima.residents.find(resident => resident.age === age),
     )
-  ){
+  ) {
     return true;
-    }  return false;
+  }return false;
 }
 
 function employeeByName(employeeName) {
@@ -43,10 +43,10 @@ function createEmployee(personalInfo, associatedWith) {
 function isManager(id) {
   if (
     data.employees.find(employe =>
-      employe.managers.find(managers => managers === id)
+      employe.managers.find(managers => managers === id),
     )
   )
-    {return true;}
+    { return true; }
   return false;
 }
 
@@ -65,7 +65,8 @@ function animalCount(species) {
     return data.animals.reduce((accumulator, currentValue) => {
       accumulator[currentValue.name] = currentValue.residents.length;
       return accumulator;
-    }, {});}
+    }, {});
+  }
   return data.animals.find(animal => animal.name === species).residents.length;
 }
 
