@@ -25,7 +25,7 @@ function animalsOlderThan(animal, age) {
     )
   ) {
     return true;
-  }  return false;
+  } return false;
 }
 
 function employeeByName(employeeName) {
@@ -46,8 +46,9 @@ function isManager(id) {
       employe.managers.find(managers => managers === id),
     )
   )
-    {
-      return true; }
+  {
+      return true;
+  }
   return false;
 }
 
