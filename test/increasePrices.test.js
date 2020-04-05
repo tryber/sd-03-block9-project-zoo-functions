@@ -7,13 +7,13 @@ describe('increasePrices', () => {
   it('test', () => {
     let expected;
 
-    // data uma porcentagem, incrementa todos os preços, arrendondados em duas casas
+    // dada uma porcentagem, incrementa todos os preços, arrendondados em duas casas
     // decimais
     zoo.increasePrices(50);
     expected = {
-      'Adult': 74.99,
-      'Senior': 37.49,
-      'Child': 31.49
+      'Adult': 74.98,
+      'Senior': 37.48,
+      'Child': 31.48
     };
 
     assert.deepEqual(data.prices, expected);
