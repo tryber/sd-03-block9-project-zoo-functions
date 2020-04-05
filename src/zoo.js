@@ -169,53 +169,47 @@ function increasePrices(percentage) {
   return data.prices;
 }
 
+const forFunctions = (idAnimals) => {
+  const filtro = [];
+  idAnimals.forEach((element) => {
+    const animal = animals.find(el => el.id === element);
+    filtro.push(animal);
+  });
+  return filtro.map(el => el.name);
+};
+const returnById = (id) => {
+  const localizaId = employees.find(el => el.id === id);
+  const localizaNome = employees.find(el => el.firstName === id);
+  const localizaSobrenome = employees.find(el => el.lastName === id);
+  let idAnimals = null;
+  let nomeFunc = null;
+  if (localizaId !== undefined) {
+    idAnimals = localizaId.responsibleFor;
+    nomeFunc = `${localizaId.firstName} ${localizaId.lastName}`;
+  } else if (localizaNome !== undefined) {
+    idAnimals = localizaNome.responsibleFor;
+    nomeFunc = `${localizaNome.firstName} ${localizaNome.lastName}`;
+  } else {
+    idAnimals = localizaSobrenome.responsibleFor;
+    nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
+  }
+  const resposta = { [`${nomeFunc}`]: forFunctions(idAnimals) };
+  return resposta;
+};
+const returnResumo = () => {
+  const resumo = employees.reduce((acc, cur) => {
+    const idAnimals = cur.responsibleFor;
+    const nomeFunc = `${cur.firstName} ${cur.lastName}`;
+    acc[nomeFunc] = forFunctions(idAnimals);
+    return acc;
+  }, {});
+  return resumo;
+};
 function employeeCoverage(idOrName) {
   // seu código aqui
-
   if (!idOrName) {
-    const nome = employees.reduce((acc, cur) => {
-      const idAnimal = cur.responsibleFor;
-      const newArray = [];
-      idAnimal.forEach(elemento => {
-        const animal = animals.find(el => el.id === elemento);
-        newArray.push(animal);
-      });
-      const res = newArray.map(elemento => elemento.name);
-      const func = `${cur.firstName} ${cur.lastName}`;
-      acc[func] = res;
-      return acc;
-    }, {});
-    return nome;
+    return returnResumo();
   }
-
-  const returnById = (id) => {
-    const localizaId = employees.find(el => el.id === id);
-    const localizaNome = employees.find(el => el.firstName === id);
-    const localizaSobrenome = employees.find(el => el.lastName === id);
-    let animalsId = null;
-    let nomeFunc = null;
-
-    if (localizaId !== undefined) {
-      animalsId = localizaId.responsibleFor;
-      nomeFunc = `${localizaId.firstName} ${localizaId.lastName}`;
-    } else if (localizaNome !== undefined) {
-      animalsId = localizaNome.responsibleFor;
-      nomeFunc = `${localizaNome.firstName} ${localizaNome.lastName}`;
-    } else {
-      animalsId = localizaSobrenome.responsibleFor;
-      nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
-    }
-
-    const filtr = [];
-    animalsId.forEach(element => {
-      const animal = animals.find(el => el.id === element);
-      filtr.push(animal);
-    });
-    const resultado = filtr.map(el => el.name);
-    const resposta = { [`${nomeFunc}`]: resultado };
-    return resposta;
-  };
-
   return returnById(idOrName);
 }
 
