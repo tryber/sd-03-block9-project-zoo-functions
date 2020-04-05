@@ -173,7 +173,7 @@ const returnById = (id) => {
   } else {
     idAnimals = localizaSobrenome.responsibleFor;
     nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
-  }
+  };
 
   const resposta = { [`${nomeFunc}`]: forFunctions(idAnimals) };
   return resposta;
@@ -193,7 +193,7 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   if (!idOrName) {
     return returnResumo();
-  };
+  }
   return returnById(idOrName);
 }
 
