@@ -8,12 +8,12 @@ describe('animalsOlderThan', () => {
     // passados o nome de uma espécie e uma idade, testa se todos os animais desta
     // espécie possuem a idade mínima especificada
     actual = zoo.animalsOlderThan('otters', 7);
-    expected = false;
+    expected = true;
 
     assert.deepEqual(actual, expected);
 
     actual = zoo.animalsOlderThan('penguins', 10);
-    expected = true;
+    expected = false;
 
     assert.deepEqual(actual, expected);
   });

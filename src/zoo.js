@@ -24,8 +24,8 @@ function animalsOlderThan(animal, age) {
         anima.residents.find(resident => resident.age === age),
     )
   ) {
-    return true;
-  } return false;
+    return false;
+  } return true;
 }
 
 function employeeByName(employeeName) {
