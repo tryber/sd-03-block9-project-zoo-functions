@@ -117,17 +117,14 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
-  let obj = {};   
-  percoreObjeto(data.hours,obj);
-  if(!dayName){ 
-    return obj;
-  } else {
-    const daySelected = Object.keys(obj).find(element => element === dayName);
-    let obj2 = {[daySelected] : obj[daySelected] } ;
-    return obj2;
-  }  
+function from24to12HoursOpen(open_hour, element){
+  element.open < 12 ? open_hour = `${element.open}am` : open_hour = `${element.open - 12}pm`;
+  return open_hour;
+}
+
+function from24to12HoursClose(close_hour, element){
+  element.close > 12 ? close_hour = `${element.close - 12}pm` : close_hour = `${element.close}am`;
+  return close_hour
 }
 
 function percoreObjeto(object,objaux){
@@ -135,31 +132,35 @@ function percoreObjeto(object,objaux){
   let i = 0;
   let open_hour;
   let close_hour;
-  Object.values(object).forEach(element => {      
+  Object.values(object).forEach(element => { 
     if(element.open == 0 && element.close == 0){
       objaux[daysOfWeek[i]] = 'CLOSED';
-      i++;      
-   } 
-     open_hour = from24to12HoursOpen(open_hour, element);
-     close_hour = from24to12HoursClose(close_hour,element);    
-     if(daysOfWeek[i] === undefined) {
-     }
-     else { 
+      i++;  
+    } 
+      open_hour = from24to12HoursOpen(open_hour, element);
+      close_hour = from24to12HoursClose(close_hour,element); 
+      if(daysOfWeek[i] === undefined) {
+      }
+      else {
       objaux[daysOfWeek[i]] = `Open from ${open_hour} until ${close_hour}`
       i++;}
 })
 return objaux;
 }
 
-function from24to12HoursOpen(open_hour,element){
-  element.open < 12 ? open_hour = `${element.open}am` : open_hour = `${element.open - 12}pm`; 
-  return open_hour;
+function schedule(dayName) {
+  // seu código aqui
+  const obj = {};
+  percoreObjeto(data.hours,obj);
+  if (!dayName){
+    return obj;
+  } else {
+    const daySelected = Object.keys(obj).find(element => element === dayName);
+    let obj2 = {[daySelected] : obj[daySelected] } ;
+    return obj2;
+  }
 }
 
-function from24to12HoursClose(close_hour,element){
-  element.close > 12 ? close_hour = `${element.close - 12}pm` : close_hour = `${element.close}am`;
-  return close_hour
-}
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
