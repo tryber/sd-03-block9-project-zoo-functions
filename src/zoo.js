@@ -52,9 +52,18 @@ const addEmployee = (id, firstName, lastName, managers, responsibleFor) =>
     responsibleFor: responsibleFor || [],
   });
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount = (species) =>
+  species ?
+    data.animals.reduce(
+      (acc, animal) =>
+      animal.name === species ?
+      animal.residents.length : acc
+    , 0)
+    : data.animals.reduce(
+      (acc, qtdanimal) => {
+      acc[qtdanimal.name] = qtdanimal.residents.length;
+      return acc;
+  }, {});
 
 function entryCalculator(entrants) {
   // seu código aqui
