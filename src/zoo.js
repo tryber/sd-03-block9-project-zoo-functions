@@ -76,11 +76,9 @@ function entryCalculator(entrants) {
   return Object.entries(entrants).map((entry) => {
     if (entry[0] === 'Adult') {
       return entry[1] * 49.99;
-    }
-    else if (entry[0] === 'Child') {
+    } else if (entry[0] === 'Child') {
       return entry[1] * 20.99;
-    }
-    else if (entry[0] === 'Senior') {
+    } else if (entry[0] === 'Senior') {
       return entry[1] * 24.99;
     }
     return undefined;
