@@ -141,10 +141,10 @@ function percoreObjeto(object, objaux) {
     closeHour = from24to12HoursClose(closeHour, element);
     if (daysOfWeek[i] === undefined) {
       return '';
-    } 
-      objaux[daysOfWeek[i]] = `Open from ${openHour} until ${closeHour}`;
-      i += i;       
-  return objaux;
+    }
+    objaux[daysOfWeek[i]] = `Open from ${openHour} until ${closeHour}`;
+    i += i;
+    return objaux;
   });
 return objaux;
 }
@@ -155,11 +155,10 @@ function schedule(dayName) {
   percoreObjeto(data.hours, obj);
   if (!dayName) {
     return obj;
-  } 
+  }
   const daySelected = Object.keys(obj).find(element => element === dayName);
-  const obj2 = { [daySelected] : obj[daySelected]};
-  return obj2;
-  
+  const obj2 = { [daySelected]: obj[daySelected] };
+  return obj2;  
 }
 
 function oldestFromFirstSpecies(id) {
