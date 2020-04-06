@@ -93,35 +93,38 @@ const sortAnimals = residents => residents.map(resident => resident.name).sort()
 const sexAnimals = (residents, sex) =>
   residents.filter(resident => resident.sex === sex).map(resident => resident.name);
 
-const addAnimals = (animalsLocation, includeNames, sorted, sex) => {
+const addNames = (animalsLocation, sorted, sex) => {
   animals.forEach(({ name, location, residents }) => {
     const animalObj = {};
-    if (includeNames && sorted) {
+    if (sorted) {
       animalObj[name] = sortAnimals(residents);
       animalsLocation[location].push(animalObj);
-    } else if (includeNames && sex) {
+    } else if (sex) {
       animalObj[name] = sexAnimals(residents, sex);
       animalsLocation[location].push(animalObj);
-    } else if (includeNames && !sorted && !sex){
+    } else {
       animalObj[name] = residents.map(resident => resident.name);
       animalsLocation[location].push(animalObj);
-    } else {
-      animalsLocation[location].push(name)
     }
   });
   return animalsLocation;
 };
+
+const addAnimals = animalsLocation => {
+  animals.forEach(({ name, location }) => animalsLocation[location].push(name));
+  return animalsLocation;
+}
 
 function animalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
   const animalsLocation = getLocations();
   if (includeNames) {
     if (sorted) {
-      return addAnimals(animalsLocation, includeNames, sorted);
+      return addNames(animalsLocation, sorted);
     } else if (sex) {
-      return addAnimals(animalsLocation, includeNames, false, sex);
+      return addNames(animalsLocation, false, sex);
     }
-    return addAnimals(animalsLocation, includeNames);
+    return addNames(animalsLocation);
   }
   return addAnimals(animalsLocation);
 }
