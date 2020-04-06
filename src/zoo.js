@@ -51,7 +51,6 @@ function animalCount(species) {
   //   return data.animals.find(({ lião }) => lião === species).residents.length;
   // }
   // data.animals.forEach(especie => {
-    
   // });
 }
 
