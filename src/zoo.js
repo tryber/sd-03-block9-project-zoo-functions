@@ -50,9 +50,9 @@ const isManager = id =>
   data.employees.some(({ managers }) => managers.includes(id));
 
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => data.employees.push({
   // seu código aqui
-}
+  id, firstName, lastName, managers, responsibleFor, });
 
 function animalCount(species) {
   // seu código aqui
