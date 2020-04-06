@@ -55,7 +55,8 @@ function animalCount(species) {
 
 function entryCalculator(entering) {
   return entering && Object.keys(entering).length > 0
-  ? Object.keys(entering).reduce((kind, quantity) => (kind + (data.prices[quantity] * entering[quantity])), 0)
+  ? Object.keys(entering)
+    .reduce((kind, quantity) => (kind + (data.prices[quantity] * entering[quantity])), 0)
   : 0;
 }
 
@@ -68,13 +69,13 @@ const readableCalendar = day => ((day === 'Monday')
   : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
 
 function schedule(day) {
-  const schedule = {};
+  const schedule1 = {};
   if (day) {
-    schedule[day] = readableCalendar(day);
-    return schedule;
+    schedule1[day] = readableCalendar(day);
+    return schedule1;
   }
-  Object.keys(data.hours).forEach((el) => { schedule[el] = readableCalendar(el); });
-  return schedule;
+  Object.keys(data.hours).forEach((el) => { schedule1[el] = readableCalendar(el); });
+  return schedule1;
 }
 
 function oldestFromFirstSpecies(id) {
