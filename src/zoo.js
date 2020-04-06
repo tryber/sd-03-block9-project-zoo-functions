@@ -16,27 +16,33 @@ function animalsByIds(...ids) {
 }
 
 function animalsOlderThan(animal, age) {
-  // seu código aqui
+  return data.animals.find(e => e.name === animal).residents.every(r => r.age === age)
 }
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  return (employeeName)? data.employees.find(e => e.firstName === employeeName || e.lastName === employeeName): {}
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  return {...personalInfo, ...associatedWith}
 }
 
 function isManager(id) {
-  // seu código aqui
+  return data.employees.some(e => e.managers.find(m => m == id));
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor =[]) {
+  return data.employees.push({id, firstName, lastName, managers, responsibleFor});
 }
 
 function animalCount(species) {
-  // seu código aqui
+  if (species){
+    return data.animals.find(e => e.name === species).residents.length
+  }
+  return data.animals.reduce((list, animal) => {
+    list[animal.name] = animal.residents.length; 
+    return list
+  }, {})
 }
 
 function entryCalculator(entrants) {
