@@ -93,26 +93,21 @@ const addAnimals = (animalsLocation, includeNames, sorted, sex) => {
     if (sorted && !sex) {
       animals.forEach(({ name, location, residents }) => {
         const animalObj = {};
-        animalObj[name] = residents.map(resident => resident.name).sort();
+        animalObj[name] = sortAnimals(residents);
         animalsLocation[location].push(animalObj);
       });
       return animalsLocation;
     } else if (sex && !sorted) {
       animals.forEach(({ name, location, residents }) => {
         const animalObj = {};
-        animalObj[name] = residents
-        .filter(resident => resident.sex === sex)
-        .map(resident => resident.name);
+        animalObj[name] = sexAnimals(residents, sex);
         animalsLocation[location].push(animalObj);
       });
       return animalsLocation;
     } else if (sorted && sex) {
       animals.forEach(({ name, location, residents }) => {
         const animalObj = {};
-        animalObj[name] = residents
-        .filter(resident => resident.sex === sex)
-        .map(resident => resident.name)
-        .sort();
+        animalObj[name] = sexSortAnimals(residents, sex);
         animalsLocation[location].push(animalObj);
       });
       return animalsLocation;
@@ -127,6 +122,14 @@ const addAnimals = (animalsLocation, includeNames, sorted, sex) => {
   animals.forEach(({ name, location }) => animalsLocation[location].push(name));
   return animalsLocation;
 };
+
+const sortAnimals = residents => residents.map(resident => resident.name).sort();
+
+const sexAnimals = (residents, sex) => 
+  residents.filter(resident => resident.sex === sex).map(resident => resident.name);
+
+const sexSortAnimals = (residents, sex) =>
+  residents.filter(resident => resident.sex === sex).map(resident => resident.name).sort();
 
 function animalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
