@@ -35,7 +35,7 @@ const employeeByName = (employeeName) => {
   return data.employees.find(
     employees =>
       employeeName === employees.firstName ||
-      employeeName === employees.lastName
+      employeeName === employees.lastName,
   );
 };
 
@@ -54,7 +54,7 @@ const addEmployee = (
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) =>
   data.employees.push({
     // seu código aqui
