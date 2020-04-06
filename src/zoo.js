@@ -17,9 +17,8 @@ const animalsByIds = (...ids) =>
 const animalsOlderThan = (pAnimal, pAge) =>
   data.animals.find(animal => animal.name === pAnimal).residents.every(a => a.age > pAge);
 
-const employeeByName = employeeByName =>
-  data.employees.find(el => el.firstName === employeeByName || el.lastName === employeeByName) || {};
-
+const employeeByName = employee =>
+  data.employees.find(el => el.firstName === employee || el.lastName === employee) || {};
 
 const createEmployee = (personalInfo, associatedWith) => ({
   ...personalInfo,
@@ -27,7 +26,7 @@ const createEmployee = (personalInfo, associatedWith) => ({
 });
 
 
-const isManager = (id) => data.employees.some(el => el.managers[0] === id);
+const isManager = id => data.employees.some(el => el.managers[0] === id);
 
 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
@@ -36,15 +35,15 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
 };
 
 const animalCount = (species) => {
-  const [...animal] = data.animals;
+  const [...animais] = data.animals;
   if (!species) {
-    const acumulador = animal.reduce((acc, animal) => {
+    const acumulador = animais.reduce((acc, animal) => {
       acc[animal.name] = animal.residents.length;
       return acc;
     }, {});
     return acumulador;
   }
-  const qtdAnimal = animal.filter(animal => animal.name === species);
+  const qtdAnimal = animais.filter(animal => animal.name === species);
   const totalQtd = qtdAnimal.map(animal => animal.residents.length);
   return totalQtd[0];
 };
