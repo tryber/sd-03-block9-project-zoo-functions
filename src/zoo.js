@@ -88,8 +88,30 @@ const getLocations = () => animals.map(({ location }) => location).reduce((acc, 
   return acc;
 }, {});
 
-const addAnimals = (animalsLocation, isObject) => {
-  if (isObject) {
+const addAnimals = (animalsLocation, includeNames, sorted, sex) => {
+  if (includeNames) {
+    if (sorted && !sex) {
+      animals.forEach(({ name, location, residents }) => {
+        const animalObj = {};
+        animalObj[name] = residents.map(resident => resident.name).sort();
+        animalsLocation[location].push(animalObj);
+      });
+      return animalsLocation;
+    } else if (sex && !sorted) {
+      animals.forEach(({ name, location, residents }) => {
+        const animalObj = {};
+        animalObj[name] = residents.filter(resident => resident.sex === sex).map(resident => resident.name);
+        animalsLocation[location].push(animalObj);
+      });
+      return animalsLocation;
+    } else if (sorted && sex) {
+      animals.forEach(({ name, location, residents }) => {
+        const animalObj = {};
+        animalObj[name] = residents.filter(resident => resident.sex === sex).map(resident => resident.name).sort();
+        animalsLocation[location].push(animalObj);
+      });
+      return animalsLocation;
+    }
     animals.forEach(({ name, location, residents }) => {
       const animalObj = {};
       animalObj[name] = residents.map(resident => resident.name);
@@ -102,11 +124,18 @@ const addAnimals = (animalsLocation, isObject) => {
 };
 
 function animalMap(options = {}) {
-  const { includeNames } = options;
+  const { includeNames, sorted, sex } = options;
   const animalsLocation = getLocations();
   if (includeNames) {
-    return addAnimals(animalsLocation, true);
-  }
+    if (sorted && !sex) {
+      return addAnimals(animalsLocation, includeNames, sorted);
+    } else if (sex && !sorted) {
+      return addAnimals(animalsLocation, includeNames, false , sex);
+    } else if (sorted && sex) {
+      return addAnimals(animalsLocation, includeNames, sorted, sex);
+    }
+    return addAnimals(animalsLocation, includeNames);
+  } 
   return addAnimals(animalsLocation);
 }
 
