@@ -132,13 +132,14 @@ function employeeCoverage(...idOrName) {
   let employees;
   if (idOrName.length === 0) {
     employees = data.employees;
-  } else employees = [data.employees.find(employe =>
+  } else { employees = [data.employees.find(employe =>
       (employe.id === idOrName[0]) || (employe.firstName === idOrName[0])
         || (employe.lastName === idOrName[0]))];
+  }
   return employees.reduce((accumulator, currentValue) => {
-      accumulator[`${currentValue.firstName} ${currentValue.lastName}`] = currentValue.responsibleFor.map(anim => data.animals.find(a => a.id === anim).name);
-      return accumulator;
-    }, {});
+    accumulator[`${currentValue.firstName} ${currentValue.lastName}`] = currentValue.responsibleFor.map(anim => data.animals.find(a => a.id === anim).name);
+    return accumulator;
+  }, {});
 }
 
 module.exports = {
