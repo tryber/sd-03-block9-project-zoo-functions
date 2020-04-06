@@ -186,9 +186,57 @@ const increasePrices = (percentage) => {
   return data.prices;
 };
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
-}
+const forFunctions = (idAnimals) => {
+  const filtro = [];
+  idAnimals.forEach((element) => {
+    const animal = animals.find(el => el.id === element);
+    filtro.push(animal);
+  });
+  return filtro.map(el => el.name);
+};
+
+const returnById = (id) => {
+  const localizaId = employees.find(el => el.id === id);
+  const localizaNome = employees.find(el => el.firstName === id);
+  const localizaSobrenome = employees.find(el => el.lastName === id);
+  let idAnimals = null;
+  let nomeFunc = null;
+
+  if (localizaId !== undefined) {
+    idAnimals = localizaId.responsibleFor;
+    nomeFunc = `${localizaId.firstName} ${localizaId.lastName}`;
+  } else if (localizaNome !== undefined) {
+    idAnimals = localizaNome.responsibleFor;
+    nomeFunc = `${localizaNome.firstName} ${localizaNome.lastName}`;
+  } else {
+    idAnimals = localizaSobrenome.responsibleFor;
+    nomeFunc = `${localizaSobrenome.firstName} ${localizaSobrenome.lastName}`;
+  }
+
+  const resposta = { [`${nomeFunc}`]: forFunctions(idAnimals) };
+  return resposta;
+};
+
+const returnResumo = () => {
+  const resumo = employees.reduce((acc, cur) => {
+    const idAnimals = cur.responsibleFor;
+    const nomeFunc = `${cur.firstName} ${cur.lastName}`;
+    acc[nomeFunc] = forFunctions(idAnimals);
+    return acc;
+  }, {});
+
+  return resumo;
+};
+
+const employeeCoverage = (idOrName) => {
+  if (!idOrName) {
+    return returnResumo();
+  }
+
+  return returnById(idOrName);
+};
+
+// console.log(employeeCoverage())
 
 module.exports = {
   entryCalculator,
