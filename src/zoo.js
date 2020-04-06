@@ -20,7 +20,7 @@ const employeeByName = employeeName => (employeeName === undefined ? {} : data.e
   .find(e => e.firstName === employeeName || e.lastName === employeeName));
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  return Object.assign(personalInfo, associatedWith);
 }
 
 function isManager(id) {
