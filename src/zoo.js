@@ -90,7 +90,7 @@ const getLocations = () => animals.map(({ location }) => location).reduce((acc, 
 
 const sortAnimals = residents => residents.map(resident => resident.name).sort();
 
-const sexAnimals = (residents, sex) => 
+const sexAnimals = (residents, sex) =>
   residents.filter(resident => resident.sex === sex).map(resident => resident.name);
 
 const addAnimals = (animalsLocation, includeNames, sorted, sex) => {
@@ -119,12 +119,10 @@ function animalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
   const animalsLocation = getLocations();
   if (includeNames) {
-    if (sorted && !sex) {
+    if (sorted) {
       return addAnimals(animalsLocation, includeNames, sorted);
-    } else if (sex && !sorted) {
+    } else if (sex) {
       return addAnimals(animalsLocation, includeNames, false, sex);
-    } else if (sorted && sex) {
-      return addAnimals(animalsLocation, includeNames, sorted, sex);
     }
     return addAnimals(animalsLocation, includeNames);
   }
