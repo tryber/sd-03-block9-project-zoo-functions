@@ -33,9 +33,9 @@ const employeeByName = (employeeName) => {
   // seu código aqui
   if (employeeName === undefined) return {};
   return data.employees.find(
-      employees =>
+    employees =>
       employeeName === employees.firstName ||
-      employeeName === employees.lastName,
+      employeeName === employees.lastName
   );
 };
 
@@ -49,10 +49,21 @@ const isManager = id =>
   // seu código aqui
   data.employees.some(({ managers }) => managers.includes(id));
 
-
-const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => data.employees.push({
-  // seu código aqui
-  id, firstName, lastName, managers, responsibleFor, });
+const addEmployee = (
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = []
+) =>
+  data.employees.push({
+    // seu código aqui
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  });
 
 function animalCount(species) {
   // seu código aqui
