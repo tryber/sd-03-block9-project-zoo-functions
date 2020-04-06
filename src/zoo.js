@@ -30,6 +30,7 @@ const addEmployee = (
   firstName = [],
   lastName = [],
   managers = [],
+  responsibleFor = [],
 ) => {
   const x = { id, firstName, lastName, managers, responsibleFor };
   return data.employees.push(x);
