@@ -36,17 +36,13 @@ const addEmployee = (
   return data.employees.push(x);
 };
 
-const animalCount(species) => {
-  if (species !== undefined) {
-    return data.animals.find(el => el.name === species).residents.length;
-  }
-  const result = {};
-  data.animals.forEach((e) => { result[e.name] = e.residents.length; });
-  return result;
-};
+function animalCount(species) {
+  // seu código aqui
+}
 
-const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
-)
+function entryCalculator(entrants) {
+  // seu código aqui
+}
 
 function animalMap(options) {
   // seu código aqui
