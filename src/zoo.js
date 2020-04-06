@@ -177,8 +177,28 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   // seu código aqui
+  let seniorPrices = (data.prices.Senior * percentage /100);
+  let childPrices = (data.prices.Child * percentage / 100);
+  let adultPrices = (data.prices.Adult * percentage /100); 
+  let adultPr = Number(adultPrices.toPrecision(4));
+  let childPr = Number(childPrices.toPrecision(4));
+  let seniorPr = Number(seniorPrices.toPrecision(4));
+  let adultData = Number(data.prices.Adult.toPrecision(4));
+  let childData = Number(data.prices.Child.toPrecision(4));
+  let seniorData = Number(data.prices.Senior.toPrecision(4));
+  let resultAdult  = adultPr;
+  let resultChild = childPr;
+  let resultSenior = seniorPr;
+  let a = Number(resultChild.toPrecision(4));
+  let b = Number(resultSenior.toPrecision(4));
+  let c = Number(resultAdult.toPrecision(4));
+  console.log(a ,b ,c, "valores originais");
+  data.prices['Child'] = a;
+  data.prices['Senior'] = b;
+  data.prices['Adult'] = c;
+  return data.prices;
 }
-
+console.log(increasePrices(50));
 function employeeCoverage(idOrName) {
   // seu código aqui
 }
