@@ -79,13 +79,16 @@ function animalCount(species) {
 // Retorna 0 se um objeto vazio for passado
 // Retorna o preço total a ser cobrado dado o número de adultos, crianças e idosos
 
-function entryCalculator(entrants) {
-  if (!entrants || Object.keys(entrants).length === 0) return 0;
-  return Object.entries(entrants).reduce(
-    (valor, entrant) => valor + entrant[1] * data.prices[entrant[0]],
-    0,
-  );
-}
+const entryCalculator = entrants => {
+  if (entrants && Object.keys(entrants).length > 0) {
+    return Object.keys(entrants).reduce(
+      (acc, person) => acc + data.prices[person] * entrants[person],
+      0,
+    );
+  }
+
+  return 0;
+};
 
 function animalMap(options) {
   // seu código aqui
@@ -95,21 +98,21 @@ function animalMap(options) {
 // Sem parâmetros, retorna um cronograma legível para humanos
 // Se um único dia for passado, retorna somente este dia em um formato legível para humanos
 
-const checkSchedule = day => {
+const checkSchedule = (day) => {
   if (day === 'Monday') {
     return 'CLOSED';
   }
   return `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
 };
 
-const schedule = dayName => {
+const schedule = (dayName) => {
   const cronograma = {};
   if (dayName) {
     cronograma[dayName] = checkSchedule(dayName);
     return cronograma;
   }
 
-  Object.keys(data.hours).forEach(day => {
+  Object.keys(data.hours).forEach((day) => {
     cronograma[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
     if (day === 'Monday') cronograma[day] = 'CLOSED';
   });
