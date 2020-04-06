@@ -26,9 +26,9 @@ function createEmployee(personalInfo, associatedWith) {
 const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
 
 const addEmployee = (
-  id = [],
-  firstName = [],
-  lastName = [],
+  id,
+  firstName,
+  lastName,
   managers = [],
   responsibleFor = [],
 ) => {
@@ -38,11 +38,11 @@ const addEmployee = (
 
 const animalCount = (species) => {
   if (species !== undefined) {
-    return data.animals.find(el => el.name === species).residents.length;
+    return data.animals.find(a => a.name === species).residents.length;
   }
-  const result = {};
-  data.animals.forEach((e) => { result[e.name] = e.residents.length; });
-  return result;
+  const obj = {};
+  data.animals.forEach((e) => { obj[e.name] = e.residents.length; });
+  return obj;
 };
 
 function entryCalculator(entrants) {
