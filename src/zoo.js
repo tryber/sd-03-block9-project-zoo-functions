@@ -78,8 +78,8 @@ const entryCalculator = (entrants) => {
   const keys = Object.keys(entrants);
   return keys.reduce(
     (acc, keyEntrants) => {
-    acc += entrants[keyEntrants] * data.prices[keyEntrants];
-    return acc;
+      acc += entrants[keyEntrants] * data.prices[keyEntrants];
+      return acc;
     },
     0,
   );
