@@ -132,7 +132,8 @@ function employeeCoverage(...idOrName) {
   let employees;
   if (idOrName.length === 0) {
     employees = data.employees;
-  } else { employees = [data.employees.find(employe =>
+  } else {
+    employees = [data.employees.find(employe =>
       (employe.id === idOrName[0]) || (employe.firstName === idOrName[0])
         || (employe.lastName === idOrName[0]))];
   }
