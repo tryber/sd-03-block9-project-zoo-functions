@@ -47,12 +47,17 @@ const addEmployee = (
 };
 
 function animalCount(species) {
-  // if (species) {
-  //   return data.animals.find(({ lião }) => lião === species).residents.length;
-  // }
-  // data.animals.forEach(especie => {
-  // });
+  if (species !== undefined) {
+    return data.animals.find(el => el.name === species).residents.length;
+  }
+  const obj = {};
+  // data.animals.forEach(par => par );
+  data.animals.forEach((par) => { obj[par.name] = par.residents.length; });
+  return obj;
 }
+
+console.log(animalCount('lions'));
+
 
 function entryCalculator(entrants) {
   // seu código aqui
