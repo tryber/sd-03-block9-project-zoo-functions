@@ -16,32 +16,35 @@ const animalsByIds = (...ids) => {
   if (ids === undefined) return [];
   const identifiedAnimals = [];
   // {id} é um object destructing;
-  const animalsData = animalsIds =>
+  const animalsData = (animalsIds) =>
     data.animals.find(({ id }) => animalsIds === id);
-  ids.forEach(id => identifiedAnimals.push(animalsData(id)));
+  ids.forEach((id) => identifiedAnimals.push(animalsData(id)));
 
   return identifiedAnimals;
-}
+};
 
 const animalsOlderThan = (animal, animalAge) => {
   // seu código aqui
   return data.animals
     .find(({ name }) => animal === name)
     .residents.every(({ age }) => age >= animalAge);
-}
+};
 
 const employeeByName = (employeeName) => {
   // seu código aqui
-  if (employeeName === undefined) return {} ;
-  return data.employees.find((employees) => employeeName === employees.firstName || employeeName === employees.lastName)
-
-}
+  if (employeeName === undefined) return {};
+  return data.employees.find(
+      employees =>
+      employeeName === employees.firstName ||
+      employeeName === employees.lastName
+  );
+};
 
 const createEmployee = (personalInfo, associatedWith) => ({
   // seu código aqui
-...personalInfo,
-...associatedWith,
-})
+  ...personalInfo,
+  ...associatedWith,
+});
 
 function isManager(id) {
   // seu código aqui
