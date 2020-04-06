@@ -110,10 +110,10 @@ const addNames = (animalsLocation, sorted, sex) => {
   return animalsLocation;
 };
 
-const addAnimals = animalsLocation => {
+const addAnimals = (animalsLocation) => {
   animals.forEach(({ name, location }) => animalsLocation[location].push(name));
   return animalsLocation;
-}
+};
 
 function animalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
