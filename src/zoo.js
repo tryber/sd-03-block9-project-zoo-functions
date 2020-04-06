@@ -166,12 +166,12 @@ function oldestFromFirstSpecies(id) {
   const firstSpecie = data.employees.find(element => element.id === id).responsibleFor[0];
   const oldestAnimalSpecie = data.animals.filter(element => element.id === firstSpecie);
   const animalsAge = [];
-  oldestAnimalSpecie[0].residents.forEach(element => {
+  oldestAnimalSpecie[0].residents.forEach((element) => {
     animalsAge.push(element.age);
   });
   let maxAge = 0;
   maxAge = Math.max(...animalsAge);
-  const result = oldestAnimalSpecie[0].residents.find((element) => element.age === maxAge);
+  const result = oldestAnimalSpecie[0].residents.find(element => element.age === maxAge);
   return Object.values(result);
 }
 
