@@ -36,13 +36,18 @@ const addEmployee = (
   return data.employees.push(x);
 };
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount(species) => {
+  if (species !== undefined) {
+    return data.animals.find(el => el.name === species).residents.length;
+  }
+  const result = {};
+  data.animals.forEach((e) => { result[e.name] = e.residents.length; });
+  return result;
+};
 
-function entryCalculator(entrants) {
-  // seu código aqui
-}
+const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
+  ? Object.keys(entrants).reduce((acc, ele) =>  (acc+(data.prices[ele]*entrants[ele])), 0)
+  : 0);
 
 function animalMap(options) {
   // seu código aqui
