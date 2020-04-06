@@ -76,11 +76,13 @@ const entryCalculator = (entrants) => {
     return 0;
   }
   const keys = Object.keys(entrants);
-  return keys.reduce((acc, keyEntrants) => 
-    acc += entrants[keyEntrants] * data.prices[keyEntrants]
-    ,0
+  return keys.reduce((acc, keyEntrants) => {
+    acc += entrants[keyEntrants] * data.prices[keyEntrants];
+    return acc;
+    },
+    0,
   );
-}
+};
 
 function animalMap(options) {
   // seu código aqui
