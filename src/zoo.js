@@ -36,9 +36,18 @@ const addEmployee = (
   return data.employees.push(x);
 };
 
-function animalCount(species) {
+//function animalCount(species) {
   // seu código aqui
-}
+//}
+
+const animalCount = (species) => {
+  if (species !== undefined) {
+    return dA.find(el => el.name === species).residents.length;
+  }
+  const result = {};
+  data.animals.forEach((e) => { result[e.name] = e.residents.length; });
+  return result;
+};
 
 function entryCalculator(entrants) {
   // seu código aqui
