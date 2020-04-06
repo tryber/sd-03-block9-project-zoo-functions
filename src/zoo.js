@@ -163,7 +163,17 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
-}
+  const firstSpecie = data.employees.find(element => element.id === id).responsibleFor[0];
+  const oldestAnimalSpecie = data.animals.filter(element => element.id == firstSpecie);
+  const animalsAge = [] ;
+  oldestAnimalSpecie[0].residents.forEach(element => {
+        animalsAge.push(element.age);
+  });
+  let maxAge = 0;
+  maxAge = Math.max.apply(Math, animalsAge);
+  let result = oldestAnimalSpecie[0].residents.find(element => element.age === maxAge);
+  return Object.values(result);
+} 
 
 function increasePrices(percentage) {
   // seu código aqui
