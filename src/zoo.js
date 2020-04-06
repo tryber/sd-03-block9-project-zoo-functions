@@ -79,7 +79,7 @@ function animalCount(species) {
 // Retorna 0 se um objeto vazio for passado
 // Retorna o preço total a ser cobrado dado o número de adultos, crianças e idosos
 
-const entryCalculator = entrants => {
+const entryCalculator = (entrants) => {
   if (entrants && Object.keys(entrants).length > 0) {
     return Object.keys(entrants).reduce(
       (acc, person) => acc + (data.prices[person] * entrants[person]),
@@ -120,13 +120,17 @@ const schedule = (dayName) => {
   return cronograma;
 };
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+const oldestFromFirstSpecies = id => Object.values(data.animals
+  .find(animal => animal.id === data.employees
+    .find(animal => animal.id === id).responsibleFor[0]).residents
+  .sort((n1, n2) => n2.age - n1.age)[0]);
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((person) => {
+    (data.prices[person] = Math.round(data.prices[person] * ((percentage / 100) + 1) * 100) / 100);
+  });
+};
+
 
 function employeeCoverage(idOrName) {
   // seu código aqui
