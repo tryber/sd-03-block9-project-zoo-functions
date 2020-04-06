@@ -5,7 +5,7 @@ describe('animalsByIds', () => {
   it('test', () => {
     let actual, expected;
 
-    // sem parâmetros, retorna um array vazio
+    // sem parâmetros, retorna um array vazio.
     actual = zoo.animalsByIds();
     expected = [];
 
