@@ -45,7 +45,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
     lastName,
     managers,
     responsibleFor,
-  })
+  });
 }
 
 const animalCount = species => animals.find(element => element.name === species).residents.length;
