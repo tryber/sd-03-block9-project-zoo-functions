@@ -42,12 +42,17 @@ const addEmployee = (
   managers = [],
   responsibleFor = [],
 ) => {
-  let x = { id, firstName, lastName, managers, responsibleFor };
+  const x = { id, firstName, lastName, managers, responsibleFor };
   return data.employees.push(x);
 };
 
 function animalCount(species) {
-  // seu código aqui
+  // if (species) {
+  //   return data.animals.find(({ lião }) => lião === species).residents.length;
+  // }
+  // data.animals.forEach(especie => {
+    
+  // });
 }
 
 function entryCalculator(entrants) {
