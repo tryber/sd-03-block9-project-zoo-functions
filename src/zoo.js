@@ -36,10 +36,6 @@ const addEmployee = (
   return data.employees.push(x);
 };
 
-//function animalCount(species) {
-  // seu código aqui
-//}
-
 const animalCount = (species) => {
   if (species !== undefined) {
     return data.animals.find(el => el.name === species).residents.length;
