@@ -45,8 +45,26 @@ const entryCalculator = (entrants) => {
   return 0;
 };
 
-const animalMap = (options) => {
-  // seu código aqui
+const resName = (animal, sorted, sex) => {
+  const res = {};
+  res[animal] = data.animals
+    .find(elem => elem.name === animal).residents;
+  if (sex) res[animal] = res[animal].filter(resident => resident.sex === sex);
+  res[animal] = res[animal].map(({ name }) => name);
+  if (sorted) res[animal].sort();
+  return res;
+};
+
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  const animMap = {};
+  data.animals.forEach((animal) => {
+    animMap[animal.location] = data.animals.filter(elem => elem.location === animal.location).map((elem) => {
+      if (!includeNames) return elem.name;
+      return resName(elem.name, sorted, sex);
+    });
+  });
+  return animMap;
 };
 
 const cronLeg = (day) => {
