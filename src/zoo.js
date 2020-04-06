@@ -46,7 +46,7 @@ const animalCount(species) => {
 };
 
 const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
-  ? Object.keys(entrants).reduce((acc, ele) =>  (acc+(data.prices[ele]*entrants[ele])), 0)
+  ? Object.keys(entrants).reduce((acc, ele) =>  (acc + (data.prices[ele] * entrants[ele])), 0)
   : 0);
 
 function animalMap(options) {
