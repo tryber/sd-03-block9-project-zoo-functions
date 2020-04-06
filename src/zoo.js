@@ -6,12 +6,14 @@ eslint no-unused-vars: [
     "vars": "local",
     "varsIgnorePattern": "data"
   }
-  const encontraAnimal = animals.filter((elemento) => elemento.id === ids);
-  encontraAnimal.find((identificador) => identificador.name === ids);
-  return encontraAnimal;
 ]
 */
+
 const data = require('./data');
+
+// const encontraAnimal = animals.filter((elemento) => elemento.id === ids);
+// encontraAnimal.find((identificador) => identificador.name === ids);
+// return encontraAnimal;
 
 const { animals, employees, prices } = data;
 
@@ -124,14 +126,24 @@ const schedule = (dayName) => {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const funcionario = employees.find(element => element.id === id).responsibleFor[0];
+  const animal = animals.find(elem => elem.id === funcionario).residents;
+  const idadeOrdenada = animal.sort((a, b) => {
+    if (a.age < b.age) return 1;
+    if (a.age > b.age) return -1;
+    return 0;
+  });
+  return Object.values(idadeOrdenada[0]);
 }
 
-
 function increasePrices(percentage) {
-  const valuePrices = Object.values(prices);
-  valuePrices.reduce((acc) => acc * percentage);
-};
+  const valuePrices = Object.entries(prices);
+  const newPrices = valuePrices.map(([chave, valor]) =>
+    [chave, Math.round(((valor + ((valor * percentage) / 100)) * 100)) / 100]);
+  const newObject = Object.fromEntries(newPrices);
+  return (newObject);
+}
+
 
 function employeeCoverage(idOrName) {
   // seu código aqui
