@@ -23,9 +23,7 @@ function createEmployee(personalInfo, associatedWith) {
   return Object.assign(personalInfo, associatedWith);
 }
 
-function isManager(id) {
-  // seu código aqui
-}
+const isManager = id => data.employees.some (({ managers }) => managers.find(i => 1 === id));
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
