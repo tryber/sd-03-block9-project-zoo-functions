@@ -42,7 +42,7 @@ const addEmployee = (
 
 const animalCount = (species) => {
   if (species !== undefined) {
-    return dA.find(el => el.name === species).residents.length;
+    return data.animals.find(el => el.name === species).residents.length;
   }
   const result = {};
   data.animals.forEach((e) => { result[e.name] = e.residents.length; });
