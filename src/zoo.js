@@ -16,12 +16,13 @@ const { animals } = data;
 const animalsByIds = (...ids) => {
   const vazio = [];
   if (ids) {
-    return animals.filter(comparar => ids.find(id => id === comparar.id));
+   return animals.filter(comparar => ids.find(ids => ids === comparar.id));
   }
   return vazio;
 };
 
 function animalsOlderThan(animal, age) {
+
   // seu código aqui
 }
 
@@ -37,8 +38,8 @@ function isManager(id) {
   // seu código aqui
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers=[], responsibleFor=[]) {
+  data.employees.push({id, firstName, lastName, managers, responsibleFor});
 }
 
 function animalCount(species) {
