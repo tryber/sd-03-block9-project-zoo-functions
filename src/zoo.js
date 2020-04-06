@@ -25,10 +25,10 @@ function createEmployee(personalInfo, associatedWith) {
 
 const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
 
-const addEmployee = {
-  id,
-  firstName,
-  lastName,
+const addEmployee = (
+  id = [],
+  firstName = [],
+  lastName = [],
   managers = [],
 ) => {
   const x = { id, firstName, lastName, managers, responsibleFor };
