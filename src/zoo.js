@@ -82,7 +82,7 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   if (!entrants || Object.keys(entrants).length === 0) return 0;
   return Object.entries(entrants).reduce(
-    (valor, entrant) => valor + (entrant[1] * data.prices[entrant[0]]),
+    (valor, entrant) => valor + entrant[1] * data.prices[entrant[0]],
     0,
   );
 }
@@ -95,11 +95,27 @@ function animalMap(options) {
 // Sem parâmetros, retorna um cronograma legível para humanos
 // Se um único dia for passado, retorna somente este dia em um formato legível para humanos
 
-function schedule(dayName) {}
-//   const teste = Object.entries(data.hours).find(element => element[0] === dayName)
-//   let frase = {}
-//   frase.dayName = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close}pm`
-//   return frase.dayName
+const checkSchedule = day => {
+  if (day === 'Monday') {
+    return 'CLOSED';
+  }
+  return `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+};
+
+const schedule = dayName => {
+  const cronograma = {};
+  if (dayName) {
+    cronograma[dayName] = checkSchedule(dayName);
+    return cronograma;
+  }
+
+  Object.keys(data.hours).forEach(day => {
+    cronograma[day] = `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+    if (day === 'Monday') cronograma[day] = 'CLOSED';
+  });
+
+  return cronograma;
+};
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
