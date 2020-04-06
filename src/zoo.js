@@ -19,31 +19,29 @@ const { animals, employees, prices } = data;
 
 const animalsByIds = (...ids) => {
   if (ids) {
-    return animals.filter((nomeAnimal) => ids.find((id) => id === nomeAnimal.id));
+    return animals.filter(nomeAnimal => ids.find(id => id === nomeAnimal.id));
   }
   return [];
 };
 
 const animalsOlderThan = (animal, age) => {
-  const searchAnimal = animals.find((element) => element.name === animal);
-  const ageAnimal = searchAnimal.residents.every((element) => element.age >= age);
+  const searchAnimal = animals.find(element => element.name === animal);
+  const ageAnimal = searchAnimal.residents.every(element => element.age >= age);
   return ageAnimal;
 };
 
 const employeeByName = (peopleName) => {
   if (peopleName) {
-    return employees.find((element) => element.firstName === peopleName
+    return employees.find(element => element.firstName === peopleName
       || element.lastName === peopleName);
   }
   return {};
 };
 
-const createEmployee = (personalInfo, associatedWith) => {
-  return {
-    ...personalInfo,
-    ...associatedWith,
-  };
-};
+const createEmployee = (personalInfo, associatedWith) => ({
+  ...personalInfo,
+  ...associatedWith,
+});
 
 const isManager = (id) => {
   const gerente = employees[0].managers[0];
@@ -73,7 +71,7 @@ function AnimalsTotal() {
     frogs: 2,
     snakes: 2,
     elephants: 4,
-    giraffes: 6
+    giraffes: 6,
   };
 }
 
@@ -84,7 +82,7 @@ const animalCount = (species) => {
   return AnimalsTotal();
 };
 
-const entryCalculator = entrants => {
+const entryCalculator = (entrants) => {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
@@ -104,26 +102,27 @@ function returnNull() {
   };
 }
 
+// if (options === undefined) return returnNull();
+
 const animalMap = (options) => {
-  if (options === undefined) return returnNull();
 };
 
-function cronograma () {
+function cronograma() {
   return {
-    'Tuesday': 'Open from 8am until 6pm',
-    'Wednesday': 'Open from 8am until 6pm',
-    'Thursday': 'Open from 10am until 8pm',
-    'Friday': 'Open from 10am until 8pm',
-    'Saturday': 'Open from 8am until 10pm',
-    'Sunday': 'Open from 8am until 8pm',
-    'Monday': 'CLOSED'
+    Tuesday: 'Open from 8am until 6pm',
+    Wednesday: 'Open from 8am until 6pm',
+    Thursday: 'Open from 10am until 8pm',
+    Friday: 'Open from 10am until 8pm',
+    Saturday: 'Open from 8am until 10pm',
+    Sunday: 'Open from 8am until 8pm',
+    Monday: 'CLOSED',
   };
 }
 
-const schedule = (dayName) => {
-  if (dayName === undefined) return cronograma();
+// if (dayName === undefined) return cronograma();
 
-}
+const schedule = (dayName) => {
+};
 
 function oldestFromFirstSpecies(id) {
   const funcionario = employees.find(element => element.id === id).responsibleFor[0];
@@ -143,7 +142,6 @@ function increasePrices(percentage) {
   const newObject = Object.fromEntries(newPrices);
   return (newObject);
 }
-
 
 function employeeCoverage(idOrName) {
   // seu código aqui
