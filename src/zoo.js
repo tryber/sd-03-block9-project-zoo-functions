@@ -93,31 +93,31 @@ const entryCalculator = (entrants) => {
   return a + b + c;
 };
 
-function returnNull() {
-  return {
-    NE: ['lions', 'giraffes'],
-    NW: ['tigers', 'bears', 'elephants'],
-    SE: ['penguins', 'otters'],
-    SW: ['frogs', 'snakes'],
-  };
-}
+// function returnNull() {
+//   return {
+//     NE: ['lions', 'giraffes'],
+//     NW: ['tigers', 'bears', 'elephants'],
+//     SE: ['penguins', 'otters'],
+//     SW: ['frogs', 'snakes'],
+//   };
+// }
 
 // if (options === undefined) return returnNull();
 
 const animalMap = (options) => {
 };
 
-function cronograma() {
-  return {
-    Tuesday: 'Open from 8am until 6pm',
-    Wednesday: 'Open from 8am until 6pm',
-    Thursday: 'Open from 10am until 8pm',
-    Friday: 'Open from 10am until 8pm',
-    Saturday: 'Open from 8am until 10pm',
-    Sunday: 'Open from 8am until 8pm',
-    Monday: 'CLOSED',
-  };
-}
+// function cronograma() {
+//   return {
+//     Tuesday: 'Open from 8am until 6pm',
+//     Wednesday: 'Open from 8am until 6pm',
+//     Thursday: 'Open from 10am until 8pm',
+//     Friday: 'Open from 10am until 8pm',
+//     Saturday: 'Open from 8am until 10pm',
+//     Sunday: 'Open from 8am until 8pm',
+//     Monday: 'CLOSED',
+//   };
+// }
 
 // if (dayName === undefined) return cronograma();
 
