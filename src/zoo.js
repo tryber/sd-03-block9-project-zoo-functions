@@ -47,7 +47,7 @@ function animalCount(species) {
   //
   if (species) {
     return data.animals.find(animal => animal.name === species).residents.length;
-}
+  }
   const quantityOnly = {};
   data.animals.forEach((animal) => { quantityOnly[animal.name] = animal.residents.length; });
   return quantityOnly;
@@ -55,7 +55,8 @@ function animalCount(species) {
 
 function entryCalculator(entering) {
   return entering && Object.keys(entering).length > 0
-  ? Object.keys(entering).reduce((kind, quantity) => (kind + (data.prices[quantity] * entering[quantity])), 0) : 0;
+  ? Object.keys(entering).reduce((kind, quantity) => (kind + (data.prices[quantity] * entering[quantity])), 0)
+  : 0;
 }
 
 function animalMap(options) {}
