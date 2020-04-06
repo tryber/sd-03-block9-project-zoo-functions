@@ -16,19 +16,19 @@ const animalsByIds = (...ids) => {
   if (ids === undefined) return [];
   const identifiedAnimals = [];
   // {id} é um object destructing;
-  const animalsData = (animalsIds) =>
+  const animalsData = animalsIds =>
     data.animals.find(({ id }) => animalsIds === id);
-  ids.forEach((id) => identifiedAnimals.push(animalsData(id)));
+  ids.forEach(id => identifiedAnimals.push(animalsData(id)));
 
   return identifiedAnimals;
 };
 
-const animalsOlderThan = (animal, animalAge) => {
+const animalsOlderThan = (animal, animalAge) =>
   // seu código aqui
-  return data.animals
+  data.animals
     .find(({ name }) => animal === name)
     .residents.every(({ age }) => age >= animalAge);
-};
+;
 
 const employeeByName = (employeeName) => {
   // seu código aqui
@@ -36,7 +36,7 @@ const employeeByName = (employeeName) => {
   return data.employees.find(
       employees =>
       employeeName === employees.firstName ||
-      employeeName === employees.lastName
+      employeeName === employees.lastName,
   );
 };
 
