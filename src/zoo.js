@@ -100,8 +100,7 @@ const addAnimals = (animalsLocation, includeNames, sorted, sex) => {
       if (sorted) {
         animalObj[name] = sortAnimals(residents);
         animalsLocation[location].push(animalObj);
-      }
-      else if (sex) {
+      } else if (sex) {
         animalObj[name] = sexAnimals(residents, sex);
         animalsLocation[location].push(animalObj);
       } else {
