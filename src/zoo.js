@@ -60,9 +60,9 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function hours(day) { 
+function hours(day) {
   (day === 'Monday') ? 'CLOSED'
-: `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`; 
+: `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
 }
 
 function schedule(dayName) {
