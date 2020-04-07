@@ -86,8 +86,6 @@ const increasePrices = (percentage) => Object.keys(data.prices).forEach((e) => {
   (data.prices[e] = Math.round(data.prices[e] * (percentage / 100 + 1) * 100) / 100);
 });
 
-
-
 function employeeCoverage(idOrName) {
   // seu código aquia
 }
