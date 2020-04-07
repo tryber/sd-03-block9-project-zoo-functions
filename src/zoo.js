@@ -133,7 +133,7 @@ const buscaIdDoAnimalGerenciado = (idFiltro) => {
   });
 
   return idDoAnimalGerenciado.responsibleFor[0];
-}
+};
 const filtrarAnimaisPorId = id => animals.find((animal) => {
   if (animal.id === id) return true;
   return false;
@@ -149,7 +149,7 @@ const filtrarAnimalMaisVelho = (especie) => {
     if (animal.age === animalMaisVelho) return true;
     return false;
   });
-}
+};
 function oldestFromFirstSpecies(id) {
   const arrayDeInfo = [];
   const idDoAnimalGerenciado = buscaIdDoAnimalGerenciado(id);
