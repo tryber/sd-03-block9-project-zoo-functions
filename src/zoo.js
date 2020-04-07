@@ -50,8 +50,8 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 const animalCount = (species) => {
   if (species) {
-  const quantSpecies = animals.find(element => element.name === species).residents.length;
-  return quantSpecies;
+    const quantSpecies = animals.find(element => element.name === species).residents.length;
+    return quantSpecies;
   }
 
   return Object.assign(animals.reduce((acc, el) => {
@@ -65,14 +65,14 @@ const animalCount = (species) => {
 const entryCalculator = (entrants) => {
   if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
   const visitantesArray = Object.entries(entrants);
-  const valorAdult = visitantesArray[0][1] * 49.99;
+  const valores = Object.values(entrants);
+  const valorAdult = prices.Adult * valores[0];
+  //const valorAdult = visitantesArray[0][1] * 49.99;
   const valorChild = visitantesArray[1][1] * 20.99;
   const valorSenior = visitantesArray[2][1] * 24.99;
   const valorTotal = valorAdult + valorSenior + valorChild;
   return valorTotal;
 };
-
-// console.log(entryCalculator({}));
 
 // console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 
@@ -85,23 +85,25 @@ const oldestFromFirstSpecies = (id) => {
     return 0;
   });
   return Object.values(animaisOrdem[0]);
-// return funcionario;
-// return animaL;
-// return animaisOrdem
 };
 
 // console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
 const increasePrices = (percentage) => {
-  const arrayPrices = Object.entries(prices);
-// console.log('Array com preço atual:\n', arrayPrices);
-  const newArrayPrices = arrayPrices.map(([key, val]) =>
-    [key, Math.round(((val + ((val * percentage) / 100)) * 100)) / 100]);
-// console.log('Array com novos preços:\n', newArrayPrices);
-  const obj = Object.fromEntries(newArrayPrices);
-// console.log('novos preços como objeto:');
-  return obj;
+  Object.keys(prices).reduce((objeto, pessoa ) => {
+    objeto[pessoa] = Math.round((objeto[pessoa] * (100 + percentage)).toFixed(2)) / 100;
+    return objeto;
+  }, prices);
 };
+
+//   const arrayPrices = Object.entries(prices);
+// // console.log('Array com preço atual:\n', arrayPrices);
+//   const newArrayPrices = arrayPrices.map(([key, val]) =>
+//     [key, Math.round(((val + ((val * percentage) / 100)) * 100)) / 100]);
+// // console.log('Array com novos preços:\n', newArrayPrices);
+//   const obj = Object.fromEntries(newArrayPrices);
+// // console.log('novos preços como objeto:');
+//   return obj;
 
 // console.log(increasePrices(50));
 // console.log('\n');
@@ -110,20 +112,21 @@ const increasePrices = (percentage) => {
 function schedule(dayName) {
   const objSchedule = {};
   if (dayName) {
-    objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close}pm`;
+    objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`;
 
     if (dayName === 'Monday') {
       objSchedule[dayName] = 'CLOSED';
     }
     return objSchedule;
   }
-
+  if (!dayName){
   Object.keys(hours).map((element) => {
-    objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close}pm`;
+    objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close - 12}pm`;
     if (element === 'Monday') objSchedule[element] = 'CLOSED';
-    return objSchedule;
   });
-}
+  return objSchedule;
+  }
+};
 
 // console.log(schedule());
 
