@@ -116,56 +116,42 @@ function animalMap(options) {
 
   const animalsByLocation = getLocations();
 
+  const animalsList = (array, opt) => {
+      return { [array.name]: array.residents.reduce((accumulator, elm, index) => {
+        if(opt.sorted) {
+          if(accumulator.length === 0) return [`${elm.name}`];
+          return (`${accumulator},${elm.name}`).split(',').sort();
+        } else if (!opt.sorted && !opt.sex) {
+            if(accumulator.length === 0) return [`${elm.name}`];
+            return (`${accumulator},${elm.name}`).split(',');
+        } else if (opt.sex) {
+            if (elm.sex === opt.sex) {
+              if(accumulator.length === 0) return [`${elm.name}`];
+              return (`${accumulator},${elm.name}`).split(',');
+          } else return accumulator;
+        }
+      }, []) };
+  };
+
   const animalMapByName = (object, sets) => {
     const key = Object.keys(object);
     for (let i = 0; i < key.length; i += 1) {
       data.animals.forEach((element) => {
         if (element.location === key[i]) {
-          if (sets.sorted) {
-            animalsByLocation[key[i]].push(
-              { [element.name]: element.residents.reduce((accumulator, elm, index) => {
-                if (index === 0) return [`${elm.name}`];
-                return (`${accumulator},${elm.name}`).split(',').sort();
-              }, []) });
-          } else {
-            animalsByLocation[key[i]].push(
-              { [element.name]: element.residents.reduce((accumulator, elm, index) => {
-                if (index === 0) return [`${elm.name}`];
-                return (`${accumulator},${elm.name}`).split(',');
-              }, []) });
+          if (typeof sets === 'undefined' || !sets.includeNames) {
+            if (typeof animalsByLocation[key[i]][0] === 'undefined') {
+              animalsByLocation[key[i]] = [`${element.name}`];
+            } else {
+              animalsByLocation[key[i]] = (`${animalsByLocation[key[i]]},${element.name}`).split(',');
+            }
           }
+          if (sets && sets.includeNames) animalsByLocation[key[i]].push(animalsList(element,sets));
         }
       });
     }
   };
 
-  const animalMapDefault = (object) => {
-    const key = Object.keys(object);
-    for (let i = 0; i < key.length; i += 1) {
-      data.animals.forEach((element) => {
-        if (element.location === key[i]) {
-          if (typeof animalsByLocation[key[i]][0] === 'undefined') {
-            animalsByLocation[key[i]] = [`${element.name}`];
-          } else {
-            animalsByLocation[key[i]] = (`${animalsByLocation[key[i]]},${element.name}`).split(',');
-          }
-        }
-      });
-    }
-  };
-
-  if (options) {
-    if (options.includeNames && !(options.sorted) && !(options.sex)) {
-      animalMapByName(animalsByLocation, options);
-      return animalsByLocation;
-    }
-
-    if (options.includeNames && options.sorted && !(options.sex)) {
-      animalMapByName(animalsByLocation, options);
-      return animalsByLocation;
-    }
-  }
-  animalMapDefault(animalsByLocation);
+  animalMapByName(animalsByLocation, options);
   return animalsByLocation;
 }
 
