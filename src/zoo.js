@@ -123,9 +123,16 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
-}
+const schedule = (dayName) => {
+  const cron = {};
+  if (dayName) {
+    cron[dayName] = cronLeg(dayName);
+    return cron;
+  }
+  Object.keys(data.hours).forEach((element) => { cron[element] = cronLeg(element); });
+  return cron;
+};
+
 const buscaIdDoAnimalGerenciado = (idFiltro) => {
   const idDoAnimalGerenciado = funcionarios.find((employees) => {
     if (employees.id === idFiltro) return true;
