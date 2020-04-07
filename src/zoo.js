@@ -11,71 +11,78 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, prices, hours } = data;
+const animalsByIds = (...ids) =>
+  data.animals.filter(a => ids.find(id => id === a.id));
 
-const animalsByIds = (...ids) => animals.filter(animal => ids.find(id => id === animal.id));
+const animalsOlderThan = (animal, age) =>
+  data.animals.find(a => a.name === animal).residents.every(a => a.age > age);
 
-const animalsOlderThan = (animal, age) => {
-  const findAnimal = animals.find(element => element.name === animal);
-  const searchAge = findAnimal.residents.every(element => element.age >= age);
-  return searchAge;
-};
-
-const employeeByName = (employeeName) => {
-  if (employeeName) {
-    return employees.find(element => element.firstName === employeeName
-      || element.lastName === employeeName);
-  }
-  return {};
-};
+const employeeByName = employeeName =>
+  data.employees.find(
+    ({ firstName, lastName }) => firstName === employeeName || lastName === employeeName,
+  ) || {};
 
 const createEmployee = (personalInfo, associatedWith) => ({
   ...personalInfo,
   ...associatedWith,
 });
 
-const isManager = id => employees.some(element => element.managers.find(a => a === id));
+const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
 
-function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  employees.push({
-    id,
-    firstName,
-    lastName,
-    managers,
-    responsibleFor,
-  });
+class Employee {
+  constructor(id, firstName, lastName, managers = [], responsibleFor = []) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.managers = managers;
+    this.responsibleFor = responsibleFor;
+  }
 }
 
-const animalCount = species => animals.find(element => element.name === species).residents.length;
+const addEmployee = (...args) => data.employees.push(new Employee(...args));
 
-const entryCalculator = (entrants) => {
-  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
-  const visitantesArray = Object.entries(entrants);
-  const valorAdult = visitantesArray[0][1] * 49.99;
-  const valorChild = visitantesArray[1][1] * 20.99;
-  const valorSenior = visitantesArray[2][1] * 24.99;
-  const valorTotal = valorAdult + valorSenior + valorChild;
-  return valorTotal;
+const animalCount = (species) => {
+  if (species) {
+    return data.animals.find(({ name }) => name === species).residents.length;
+  }
+  return data.animals.reduce((counter, animal) => {
+    counter[animal.name] = animal.residents.length;
+    return counter;
+  }, {});
 };
 
-const oldestFromFirstSpecies = (id) => {
-  const funcionario = employees.find(fun => fun.id === id).responsibleFor[0];
-  const animaL = animals.find(codigo => codigo.id === funcionario).residents;
-  const animaisOrdem = animaL.sort((a, b) => {
-    if (a.age < b.age) return 1;
-    if (a.age > b.age) return -1;
-    return 0;
-  });
-  return Object.values(animaisOrdem[0]);
-};
+const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
+  ? Object.keys(entrants)
+    .reduce((accumulator, entrant) => (accumulator + (data.prices[entrant] * entrants[entrant])), 0)
+  : 0
+);
 
-const increasePrices = (percentage) => {
-  const arrayPrices = Object.entries(prices);
-  const newArrayPrices = arrayPrices.map(([key, val]) =>
-    [key, Math.round(((val + ((val * percentage) / 100)) * 100)) / 100]);
-  const obj = Object.fromEntries(newArrayPrices);
+const getResidentsName = (animal, sorted, sex) => {
+  const obj = {};
+  obj[animal] = data.animals
+    .find(element => element.name === animal).residents;
+  if (sex) obj[animal] = obj[animal].filter(resident => resident.sex === sex);
+  obj[animal] = obj[animal].map(({ name }) => name);
+  if (sorted) obj[animal].sort();
   return obj;
 };
+
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  return data.animals.reduce((obj, { name, location }) => {
+    if (!obj[location]) obj[location] = [];
+    if (!includeNames) {
+      obj[location].push(name);
+    } else {
+      obj[location].push(getResidentsName(name, sorted, sex));
+    }
+    return obj;
+  }, {});
+};
+
+const legibleSchedule = day => ((day === 'Monday')
+  ? 'CLOSED'
+  : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
 
 const schedule = (dayName) => {
   const sch = {};
@@ -87,20 +94,18 @@ const schedule = (dayName) => {
   return sch;
 };
 
-function animalMap(options) {
-  // seu código aqui
-}
-module.exports = {
-  entryCalculator,
-  schedule,
-  animalCount,
-  animalMap,
-  animalsByIds,
-  employeeByName,
-  addEmployee,
-  isManager,
-  animalsOlderThan,
-  oldestFromFirstSpecies,
-  increasePrices,
-  createEmployee,
+const oldestFromFirstSpecies = id => Object.values(data.animals
+  .find(e => e.id === data.employees
+    .find(animal => animal.id === id).responsibleFor[0]).residents
+  .sort((a, b) => b.age - a.age)[0]);
+
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((e) => {
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
 };
+
+const findResponsibleForAnimals = (e) => {
+  const asw = {};
+  asw[`${e.firstName} ${e.lastName}`] = e.responsibleFor
+    
