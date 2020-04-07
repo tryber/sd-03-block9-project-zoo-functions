@@ -51,9 +51,20 @@ const createEmployee = (personalInfo, associatedWith) => ({
 const isManager = id => data.employees.some(({ managers }) => managers.find(e => e === id));
 // console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+
+// const data = require('./data');
+const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
+  const adicionafuncionario = {
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  };
+  data.employees.push(adicionafuncionario);
+  console.log(adicionafuncionario);
+};
+// addEmployee('5785478', 'Luiz', 'Silva', '5789575', '45589458');
 
 function animalCount(species) {
   // seu código aqui
