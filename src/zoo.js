@@ -63,8 +63,13 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
-}
+  if (Object.keys(data.hours).find(test => (test === dayName)) === 'Monday') {
+    o[dayName] = 'CLOSED';
+    return o;
+  }
+  o[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
+  return o;
+};
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
