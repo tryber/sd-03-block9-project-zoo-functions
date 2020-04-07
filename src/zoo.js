@@ -111,8 +111,24 @@ function animalMap(options) {
   return animalsByLocation;
 } */
 
+
+const assistSchedule = (day) => {
+  if (day === 'Monday') {
+    return 'CLOSED';
+  }
+  return `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+};
+
 function schedule(dayName) {
-  // seu código aqui
+  const scheduleObj = {};
+  if (dayName) {
+    scheduleObj[dayName] = assistSchedule(dayName);
+    return scheduleObj;
+  }
+  Object.keys(data.hours).forEach((day) => {
+    scheduleObj[day] = assistSchedule(day);
+  });
+  return scheduleObj;
 }
 
 function oldestFromFirstSpecies(id) {
