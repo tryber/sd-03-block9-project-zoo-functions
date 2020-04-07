@@ -15,6 +15,8 @@ const { animals, employees, prices, hours } = data;
 
 const animalsByIds = (...ids) => animals.filter(animal => ids.find(id => id === animal.id));
 
+// console.log(animalsByIds());
+
 const animalsOlderThan = (animal, age) => {
   const findAnimal = animals.find(element => element.name === animal);
   const searchAge = findAnimal.residents.every(element => element.age >= age);
@@ -75,28 +77,27 @@ const oldestFromFirstSpecies = (id) => {
     return 0;
   });
   return Object.values(animaisOrdem[0]);
-  // return funcionario;
-  // return animaL;
-  // return animaisOrdem
+// return funcionario;
+// return animaL;
+// return animaisOrdem
 };
 
 // console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
 const increasePrices = (percentage) => {
-  //prices.Adult = 98;
   const arrayPrices = Object.entries(prices);
- console.log('Array com preço atual:\n', arrayPrices);
+// console.log('Array com preço atual:\n', arrayPrices);
   const newArrayPrices = arrayPrices.map(([key, val]) =>
     [key, Math.round(((val + ((val * percentage) / 100)) * 100)) / 100]);
- console.log('Array com novos preços:\n', newArrayPrices);
+// console.log('Array com novos preços:\n', newArrayPrices);
   const obj = Object.fromEntries(newArrayPrices);
- console.log('novos preços como objeto:');
+// console.log('novos preços como objeto:');
   return obj;
 };
 
- //console.log(increasePrices(50));
- //console.log('\n');
- //console.log(increasePrices(30));
+// console.log(increasePrices(50));
+// console.log('\n');
+// console.log(increasePrices(30));
 
 function schedule(dayName) {
   const objSchedule = {};
@@ -104,13 +105,13 @@ function schedule(dayName) {
     objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close}pm`;
 
     if (dayName === 'Monday') {
-      objSchedule[dayName] = `CLOSED`;
+      objSchedule[dayName] = 'CLOSED';
     }
     return objSchedule;
   }
 
-  Object.keys(hours).map(element => {
-    objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close}pm`
+  Object.keys(hours).map((element) => {
+    objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close}pm`;
     if (element === 'Monday') objSchedule[element] = 'CLOSED';
   });
   return objSchedule;
