@@ -66,9 +66,9 @@ function hours(day) {
 }
 
 function schedule(dayName) {
-  let scheduleV = {};
+  const scheduleV = {};
   if (dayName) {
-    { scheduleV[dayName] = hours(dayName) };
+    { scheduleV[dayName] = hours(dayName); }
     return scheduleV;
   }
   Object.keys(data.hours).forEach((e) => { scheduleV[e] = hours(e); });
