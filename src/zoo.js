@@ -64,10 +64,8 @@ function schedule(dayName) {
   // seu código aqui
 }
 
-const oldestFromFirstSpecies = (id) => Object.values(data.animals
-  .find((e) => e.id === data.employees
-    .find((animal) => animal.id === id).responsibleFor[0]).residents
-  .sort((a, b) => b.age - a.age)[0]);
+const oldestFromFirstSpecies = (i) => Object.values(data.animals.find((e) => e.id === data.employees
+  .find((animal) => animal.id === i).responsibleFor[0]).residents.sort((a, b) => b.age - a.age)[0]);
 
 const increasePrices = (percentage) => {
   Object.keys(data.prices).forEach((e) => {
