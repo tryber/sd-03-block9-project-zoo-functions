@@ -93,7 +93,7 @@ function schedule(dayName) {
     if (element === 'Monday') objSchedule[element] = 'CLOSED';
     return objSchedule;
   });
-  return schedule
+  return schedule;
 }
 
 function animalMap(options) {
