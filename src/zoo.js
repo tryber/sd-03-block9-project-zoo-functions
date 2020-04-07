@@ -62,11 +62,7 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  percentage /= 100;
-  precos.Adult = Math.round(((precos.Adult + (precos.Adult * percentage)) * 100)) / 100;
-  precos.Child = Math.round(((precos.Child + (precos.Child * percentage)) * 100)) / 100;
-  precos.Senior = Math.round(((precos.Senior + (precos.Senior * percentage)) * 100)) / 100;
-  return undefined;
+  // seu código aqui
 }
 
 function employeeCoverage(idOrName) {
