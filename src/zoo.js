@@ -201,11 +201,35 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
-}
+  let result = {};
 
-// console.log(employeeCoverage());
-// console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
-// console.log(employeeCoverage('Stephanie'));
+  const employeeResponsabilities = ((personObject) => {
+    personObject.responsibleFor.forEach((number) => {
+      data.animals.forEach((specie) => {
+        if (specie.id === number) {
+          result[`${personObject.firstName} ${personObject.lastName}`].push(specie.name);
+        }
+      }, []);
+    });
+  });
+
+  if (idOrName) {
+    result = {};
+    const selected = data.employees.filter(employ =>
+    employ.id === idOrName ||
+    employ.firstName === idOrName ||
+    employ.lastName === idOrName);
+    result[`${selected[0].firstName} ${selected[0].lastName}`] = [];
+    employeeResponsabilities(selected[0]);
+  } else {
+    result = {};
+    data.employees.forEach((employee) => {
+      result[`${employee.firstName} ${employee.lastName}`] = [];
+      employeeResponsabilities(employee);
+    });
+  }
+  return result;
+}
 
 module.exports = {
   entryCalculator,
