@@ -11,9 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, prices } = data;
-
-// hours
+const { animals, employees, prices, hours } = data;
 
 const animalsByIds = (...ids) => {
   const idAnimals = [];
@@ -47,7 +45,6 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
     managers,
     responsibleFor,
   };
-  console.log(newPerson);
   employees.push(newPerson);
 };
 
@@ -75,13 +72,50 @@ const entryCalculator = (entrants) => {
   return 0;
 };
 
-function animalMap(options) {
-  // seu código aqui
+const getResidentsName = (animal, sorted, sex) => {
+  const obj = {};
+  obj[animal] = animals
+    .find(element => element.name === animal).residents;
+  if (sex) obj[animal] = obj[animal].filter(resident => resident.sex === sex);
+  obj[animal] = obj[animal].map(({ name }) => name);
+  if (sorted) obj[animal].sort();
+  return obj;
+};
+
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  return animals.reduce((obj, { name, location }) => {
+    if (!obj[location]) obj[location] = [];
+    if (!includeNames) {
+      obj[location].push(name);
+    } else {
+      obj[location].push(getResidentsName(name, sorted, sex));
+    }
+    return obj;
+  }, {});
+};
+
+// animalMap();
+
+const schedule = dayName => {
+
+  const calendar = {};
+  if (dayName) {
+    if (dayName === 'Monday') {
+      calendar[dayName] = 'CLOSED';
+      return calendar;
+    }
+    calendar[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`
+  } else {
+    for (days in hours) {
+      calendar[days] = `Open from ${hours[days].open}am until ${hours[days].close - 12}pm`
+    }
+    calendar['Monday'] = 'CLOSED';
+  }
+  return calendar;
 }
 
-function schedule(dayName) {
-  // seu código aqui
-}
+schedule('Tuesday');
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
