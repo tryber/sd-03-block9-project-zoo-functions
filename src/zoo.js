@@ -151,13 +151,15 @@ const employeeResponsability = ((personObject) => {
         answerObject[`${personObject.firstName} ${personObject.lastName}`].push(specie.name);
       }
     }, []);
-  })
-})
+  });
+});
 
 function employeeCoverage(idOrName) {
   if (idOrName) {
     answerObject = {};
-    const selected = employees.filter((employ) => employ.id === idOrName || employ.firstName === idOrName || employ.lastName === idOrName);
+    const selected = employees.filter((employ) => {
+      employ.id === idOrName || employ.firstName === idOrName || employ.lastName === idOrName
+      });
     answerObject[`${selected[0].firstName} ${selected[0].lastName}`] = [];
     employeeResponsability(selected[0]);
   } else {
@@ -165,7 +167,7 @@ function employeeCoverage(idOrName) {
     employees.forEach((employee) => {
       answerObject[`${employee.firstName} ${employee.lastName}`] = [];
       employeeResponsability(employee);
-    })
+    });
   }
   return answerObject;
 }
