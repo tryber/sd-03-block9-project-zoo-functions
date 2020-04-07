@@ -69,30 +69,36 @@ const entryCalculator = (entrants) => {
 };
 // console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
 
-// const getingAnimals = (me) => {
+const gettingAnimals = (sort, sex, animalName) => {
+  const object = {};
+  const locatedAnimal = animalsArr.find(element => element.name === animalName);
+  object[locatedAnimal.name] = locatedAnimal.residents;
+  if (sex) object[locatedAnimal.name] = object[locatedAnimal.name].filter(e => e.sex === sex);
+  object[locatedAnimal.name] = object[locatedAnimal.name].map(e => e.name);
+  if (sort) object[locatedAnimal.name] = object[locatedAnimal.name].sort();
+  return object;
+};
 
-// };
+// console.log(gettingAnimals(true, true, 'female'));
 
 const animalMap = (options = {}) => {
-  const { includeNames, sex } = options;
-  if (!includeNames) {
+  const { includeNames, sorted, sex } = options;
+  if (includeNames) {
     return animalsArr.reduce((acc, element) => {
-      acc[element.location] = animalsArr.filter(el => el.location === element.location)
-        .map(e => e.name);
+      if (!acc[element.location]) acc[element.location] = [];
+      acc[element.location].push(gettingAnimals(sorted, sex, element.name));
       return acc;
     }, {});
   }
-  return animalsArr.reduce((acc, ele) => {
-    acc[ele.location] = animalsArr.filter(e => e.location === ele.location).reduce((acc1, el) => {
-      acc1[el.name] = el.residents.map(e => e.name);
-      if (sex) acc1[el.name] = el.residents.filter(e => e.sex === sex).map(e => e.name);
-      return acc1;
-    }, []);
+  return animalsArr.reduce((acc, element) => {
+    acc[element.location] = animalsArr.filter(el => el.location === element.location)
+      .map(e => e.name);
     return acc;
   }, {});
 };
+
 // console.log(animalMap());
-console.log(animalMap({ includeNames: true }).NE.lions);
+// console.log(animalMap({ includeNames: true }));
 
 const schedule = (dayName) => {
   const sched = {};
