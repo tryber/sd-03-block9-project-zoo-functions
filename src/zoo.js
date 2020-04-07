@@ -134,12 +134,12 @@ const buscaIdDoAnimalGerenciado = (idFiltro) => {
 
   return idDoAnimalGerenciado.responsibleFor[0];
 }
-const filtrarAnimaisPorId = (id) => animals.find((animal) => {
-    if (animal.id === id) return true;
-    return false;
-  });
+const filtrarAnimaisPorId = id => animals.find((animal) => {
+  if (animal.id === id) return true;
+  return false;
+});
 const filtrarAnimalMaisVelho = (especie) => {
-  let animalMaisVelho = especie.residents.reduce((maisVelho, atual) => {
+  const animalMaisVelho = especie.residents.reduce((maisVelho, atual) => {
     if (maisVelho < atual.age) {
       maisVelho = atual.age;
     }
@@ -151,8 +151,8 @@ const filtrarAnimalMaisVelho = (especie) => {
   });
 }
 function oldestFromFirstSpecies(id) {
-  let arrayDeInfo = [];
-  const idDoAnimalGerenciado = buscaIdDoAnimalGerenciado(id); 
+  const arrayDeInfo = [];
+  const idDoAnimalGerenciado = buscaIdDoAnimalGerenciado(id);
   const animais = filtrarAnimaisPorId(idDoAnimalGerenciado);
   const animalMaisVelho = filtrarAnimalMaisVelho(animais);
   arrayDeInfo[0] = animalMaisVelho.name;
