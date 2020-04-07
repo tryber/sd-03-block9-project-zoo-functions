@@ -53,7 +53,7 @@ function entryCalculator(entrants) {
     const valores = [entrants, data.prices];
     const teste = valores.reduce((soma, item) => item.Adult * soma, 1) +
     valores.reduce((soma, item) => item.Child * soma, 1) +
-    valores.reduce((soma, item) => item.Senior * soma, 1)
+    valores.reduce((soma, item) => item.Senior * soma, 1);
     return teste;
   }
 }
