@@ -46,7 +46,7 @@ const animalCount = (species) => {
 };
 
 const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
-? Object.keys(entrants).reduce((acc, ele) => (acc + (data.prices[ele] * entrants[ele])), 0)
+? Object.keys(entrants).reduce((test, all) => (test + (data.prices[all] * entrants[all])), 0)
 : 0);
 
 function animalMap(options) {
@@ -62,7 +62,11 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  percentage /= 100;
+  precos.Adult = Math.round(((precos.Adult + (precos.Adult * percentage)) * 100)) / 100;
+  precos.Child = Math.round(((precos.Child + (precos.Child * percentage)) * 100)) / 100;
+  precos.Senior = Math.round(((precos.Senior + (precos.Senior * percentage)) * 100)) / 100;
+  return undefined;
 }
 
 function employeeCoverage(idOrName) {
