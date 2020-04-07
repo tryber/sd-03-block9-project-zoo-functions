@@ -76,16 +76,17 @@ const animalCount = (species) => {
   }, {});
 };
 
-const entryCalculator = entrants =>{
+const entryCalculator = (entrants) => {
   // seu código aqui
-  if (entrants && Object.keys(entrants).length > 0)
+  if (entrants && Object.keys(entrants).length > 0) {
     return Object.keys(entrants).reduce(
         (accumulator, entrant) =>
           accumulator + (data.prices[entrant] * entrants[entrant]),
         0,
       );
-    return 0;
-  };
+    }
+  return 0;
+};
 
 function animalMap(options) {
   // seu código aqui
