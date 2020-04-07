@@ -76,13 +76,13 @@ const animalCount = (species) => {
   }, {});
 };
 
-const entryCalculator =(entrants) =>
+const entryCalculator = entrants =>
   // seu código aqui
   (entrants && Object.keys(entrants).length > 0
     ? Object.keys(entrants).reduce(
         (accumulator, entrant) =>
-          accumulator + data.prices[entrant] * entrants[entrant],
-        0
+          accumulator + (data.prices[entrant] * entrants[entrant]),
+        0,
       )
     : 0
     );
