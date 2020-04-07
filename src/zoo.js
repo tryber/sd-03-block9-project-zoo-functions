@@ -16,9 +16,9 @@ const animalsByIds = (...ids) => {
   if (ids === undefined) return [];
   const identifiedAnimals = [];
   // {id} é um object destructing;
-  const animalsData = animalsIds =>
+  const animalsData = (animalsIds) =>
     data.animals.find(({ id }) => animalsIds === id);
-  ids.forEach(id => identifiedAnimals.push(animalsData(id)));
+  ids.forEach((id) => identifiedAnimals.push(animalsData(id)));
 
   return identifiedAnimals;
 };
@@ -33,9 +33,9 @@ const employeeByName = (employeeName) => {
   // seu código aqui
   if (employeeName === undefined) return {};
   return data.employees.find(
-    employees =>
+    (employees) =>
       employeeName === employees.firstName ||
-      employeeName === employees.lastName,
+      employeeName === employees.lastName
   );
 };
 
@@ -45,7 +45,7 @@ const createEmployee = (personalInfo, associatedWith) => ({
   ...associatedWith,
 });
 
-const isManager = id =>
+const isManager = (id) =>
   // seu código aqui
   data.employees.some(({ managers }) => managers.includes(id));
 
@@ -54,7 +54,7 @@ const addEmployee = (
   firstName,
   lastName,
   managers = [],
-  responsibleFor = [],
+  responsibleFor = []
 ) =>
   data.employees.push({
     // seu código aqui
@@ -76,17 +76,15 @@ const animalCount = (species) => {
   }, {});
 };
 
-const entryCalculator = entrants =>
+const entryCalculator = (entrants) =>
   // seu código aqui
-  (entrants && Object.keys(entrants).length > 0
+  entrants && Object.keys(entrants).length > 0
     ? Object.keys(entrants).reduce(
         (accumulator, entrant) =>
-          accumulator + (data.prices[entrant] * entrants[entrant]),
-        0,
+          accumulator + data.prices[entrant] * entrants[entrant],
+        0
       )
-    : 0
-    );
-
+    : 0;
 
 function animalMap(options) {
   // seu código aqui
@@ -100,14 +98,13 @@ function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
 
-const increasePrices = percentage =>
+const increasePrices = (percentage) =>
   // seu código aqui
-  Object.keys(data.prices).map((index) => {
-    return data.prices[index] =
-        Math.round(data.prices[index] * ((percentage / 100) + 1) * 100) / 100;
-  },
+  Object.keys(data.prices).map(
+    (index) =>
+      (data.prices[index] =
+        Math.round(data.prices[index] * (percentage / 100 + 1) * 100) / 100)
   );
-
 
 function employeeCoverage(idOrName) {
   // seu código aqui
