@@ -8,7 +8,7 @@ eslint no-unused-vars: [
   }
 ]
 */
-const data = require("./data");
+const data = require('./data');
 
 /* Caso receba nenhum parâmetro, necessário retornar um array vazio
 Ao receber como parâmetro um único id, retorna os animais com este id
@@ -16,7 +16,7 @@ Ao receber mais de um id, retorna os animais que têm um desses ids */
 
 function animalsByIds(...ids) {
   if (ids) {
-    return data.animals.filter((animal) => ids.find((id) => id === animal.id));
+    return data.animals.filter(animal => ids.find(id => id === animal.id));
   }
   return [];
 }
@@ -37,7 +37,7 @@ function employeeByName(employeeName) {
   if (employeeName) {
     return data.employees.find(
       ({ firstName, lastName }) =>
-        firstName === employeeName || lastName === employeeName
+        firstName === employeeName || lastName === employeeName,
     );
   }
   return {};
@@ -49,7 +49,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   return data.employees.some((element) =>
-    element.managers.find((manId) => manId === id)
+    element.managers.find(manId => manId === id),
   );
 }
 
@@ -58,7 +58,7 @@ function addEmployee(
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) {
   return data.employees.push({
     id,
@@ -71,7 +71,7 @@ function addEmployee(
 
 function animalCount(species) {
   if (species) {
-    const findSpecie = data.animals.find((element) => element.name === species);
+    const findSpecie = data.animals.find(element => element.name === species);
     const speciePop = findSpecie.residents.length;
     return speciePop;
   }
