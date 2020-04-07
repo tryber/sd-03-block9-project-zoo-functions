@@ -133,13 +133,13 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   const findEmployee = data.employees.find(element => element.id === id);
-  console.log(findEmployee);
+  // console.log(findEmployee);
   const firstAnimalRespID = findEmployee.responsibleFor[0];
-  console.log(firstAnimalRespID);
+  // console.log(firstAnimalRespID);
   const findAnimalById = data.animals.find(element => element.id === firstAnimalRespID);
-  console.log(findAnimalById);
+  // console.log(findAnimalById);
   const residentsFound = findAnimalById.residents;
-  console.log(residentsFound)
+  // console.log(residentsFound);
   const sortedResidents = residentsFound.sort((a, b) => {
     if (a.age < b.age) {
       return 1;
