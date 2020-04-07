@@ -108,12 +108,12 @@ function entryCalculator(entrants) {
 
 function animalMap(options) {
   // seu código aqui
-  const getLocations = () => {
-    return data.animals.map(element => element.location).reduce((accumulator, location) => {
+  const getLocations = () => 
+    data.animals.map(element => element.location).reduce((accumulator, location) => {
       if (typeof accumulator[location] === 'undefined') accumulator[location] = [];
       return accumulator;
     }, {});
-  };
+  
 
   const animalsByLocation = getLocations();
 
@@ -147,8 +147,7 @@ function animalMap(options) {
         if (element.location === key[i]) {
           if (typeof animalsByLocation[key[i]][0] === 'undefined') {
             animalsByLocation[key[i]] = [`${element.name}`];
-          }
-          else {
+          } else {
             animalsByLocation[key[i]] = (`${animalsByLocation[key[i]]},${element.name}`).split(',');
           }
         }
