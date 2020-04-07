@@ -122,17 +122,17 @@ const schedule = (dayName) => {
 const oldestFromFirstSpecies = (id) => {
   let higherAge = 0;
   let older = {};
-  const choosen = employees.filter(one => one.id === id)
+  const choosen = employees.filter(one => one.id === id);
   const animalId = (choosen[0].responsibleFor)[0];
-  const animalsList = animals.filter(two => two.id === animalId)
+  const animalsList = animals.filter(two => two.id === animalId);
   const residents = animalsList[0].residents;
-  residents.forEach(individual => {
+  residents.forEach((individual) => {
     if (individual.age > higherAge) {
       older = individual;
       higherAge = individual.age;
     }
-  })
-  const {name, sex, age} = older;
+  });
+  const { name, sex, age } = older;
   return [name, sex, age];
 };
 
