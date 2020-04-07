@@ -12,7 +12,7 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 const animalsByIds = (...ids) =>
-  data.animals.filter(a => ids.find(id => id === a.id));
+  data.animals.filter(animal => ids.find(id => id === animal.id));
 
 const animalsOlderThan = (animal, age) =>
   data.animals.find(a => a.name === animal).residents.every(a => a.age > age);
@@ -67,19 +67,6 @@ const getResidentsName = (animal, sorted, sex) => {
   return obj;
 };
 
-const animalMap = (options = {}) => {
-  const { includeNames, sex, sorted } = options;
-  return data.animals.reduce((obj, { name, location }) => {
-    if (!obj[location]) obj[location] = [];
-    if (!includeNames) {
-      obj[location].push(name);
-    } else {
-      obj[location].push(getResidentsName(name, sorted, sex));
-    }
-    return obj;
-  }, {});
-};
-
 const legibleSchedule = day => ((day === 'Monday')
   ? 'CLOSED'
   : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
@@ -108,4 +95,39 @@ const increasePrices = (percentage) => {
 const findResponsibleForAnimals = (e) => {
   const asw = {};
   asw[`${e.firstName} ${e.lastName}`] = e.responsibleFor
-    
+    .map(id => data.animals
+      .find(animal => animal.id === id).name);
+  return asw;
+};
+
+const employeeCoverage = (idOrName) => {
+  const obj = {};
+  if (idOrName) {
+    Object.assign(obj, findResponsibleForAnimals(data.employees
+      .find(e => ((
+        e.id === idOrName)
+        || (e.firstName === idOrName)
+        || (e.lastName === idOrName)))));
+    return obj;
+  }
+  data.employees.forEach((e) => {
+    Object.assign(obj, findResponsibleForAnimals(e));
+  });
+  return obj;
+};
+
+module.exports = {
+  entryCalculator,
+  schedule,
+  animalCount,
+  animalMap,
+  animalsByIds,
+  employeeByName,
+  employeeCoverage,
+  addEmployee,
+  isManager,
+  animalsOlderThan,
+  oldestFromFirstSpecies,
+  increasePrices,
+  createEmployee,
+};
