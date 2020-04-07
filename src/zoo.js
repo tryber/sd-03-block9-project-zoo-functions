@@ -21,7 +21,7 @@ const employeeByName = eName => (eName === undefined ? {} : data.employees
   .find(e => e.firstName === eName || e.lastName === eName));
 
 const createEmployee = (personalInfo, associatedWith) => {
-  Object.assign(personalInfo, associatedWith);
+  return Object.assign(personalInfo, associatedWith);
 };
 
 const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
