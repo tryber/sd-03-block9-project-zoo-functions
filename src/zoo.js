@@ -108,7 +108,76 @@ function entryCalculator(entrants) {
 
 function animalMap(options) {
   // seu código aqui
+  const getLocations = () => {
+    return data.animals.map(element => element.location).reduce((accumulator, location) => {
+    if (typeof accumulator[location] === 'undefined') accumulator[location] = [];
+    return accumulator;
+    },{});
+  };
+
+  const animalsByLocation = getLocations();
+
+  const animalMapByName = (object, sets) => {
+    let key = Object.keys(object);
+    for (let i = 0; i < key.length; i += 1) {
+      data.animals.forEach((element) => {
+        if (element.location === key[i]) {
+          if (sets.sorted) {
+            animalsByLocation[key[i]].push( 
+              {[element.name]:element.residents.reduce((accumulator, element, index) => {
+                if (index === 0) return accumulator = [`${element.name}`];
+                else return accumulator = (`${accumulator},${element.name}`).split(',').sort();
+              },[])});
+          } else {
+            animalsByLocation[key[i]].push( 
+              {[element.name]:element.residents.reduce((accumulator, element, index) => {
+                if (index === 0) return accumulator = [`${element.name}`];
+                else return accumulator = (`${accumulator},${element.name}`).split(',');
+              },[])});
+          }
+        }
+      });
+    }
+  };
+
+  const animalMapDefault = (object) => {
+    let key = Object.keys(object);
+    for (let i = 0; i < key.length; i += 1) {
+      data.animals.forEach((element) => {
+        if (element.location === key[i]) {
+          if (typeof animalsByLocation[key[i]][0] === 'undefined') {
+            animalsByLocation[key[i]] = [`${element.name}`];
+          }
+          else {
+            animalsByLocation[key[i]] = (`${animalsByLocation[key[i]]},${element.name}`).split(',');
+          }
+        }
+      });
+    }
+  };
+
+  if (options) {
+    if(options.includeNames && !(options.sorted) && !(options.sex)) {
+    animalMapByName(animalsByLocation, options);
+    return animalsByLocation;
+    }
+
+    if(options.includeNames && options.sorted && !(options.sex)) {
+      animalMapByName(animalsByLocation, options);
+      return animalsByLocation;
+    }
+  }
+  animalMapDefault(animalsByLocation);
+  return animalsByLocation;
 }
+
+let options;
+//console.log(animalMap());
+
+//options = { includeNames: true };
+options = { includeNames: true, sorted: true }
+console.log(animalMap(options));
+
 
 function schedule(dayName) {
   // seu código aqui
@@ -181,6 +250,12 @@ function increasePrices(percentage) {
 function employeeCoverage(idOrName) {
   // seu código aqui
 }
+
+//console.log(employeeCoverage());
+//console.log(employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
+//console.log(employeeCoverage('Stephanie'));
+
+
 
 module.exports = {
   entryCalculator,
