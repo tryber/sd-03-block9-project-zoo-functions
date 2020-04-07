@@ -117,9 +117,32 @@ const increasePrices = percentage =>
         Math.round(data.prices[index] * ((percentage / 100) + 1) * 100) / 100),
   );
 
-function employeeCoverage(idOrName) {
+const employeeCoverage = idOrName => {
   // seu código aqui
-}
+  const identifyEmployee = idOrName =>
+    data.employees.find(
+      employee =>
+        employee.id === idOrName ||
+        employee.firstName === idOrName ||
+        employee.lastName === idOrName,
+    );
+  const identifyAnimals = id =>
+    animalsByIds(...id).reduce(
+      (accumulator, animal) => accumulator.concat(animal.name),
+      [],
+    );
+  const coveredAnimals = idOrName => ({
+    [`${identifyEmployee(idOrName).firstName} ${
+      identifyEmployee(idOrName).lastName
+    }`]: identifyAnimals(identifyEmployee(idOrName).responsibleFor),
+  });
+  if (idOrName === undefined) return data.employees.reduce(
+      (accumulator, element) => Object.assign(accumulator, coveredAnimals(element.id)),
+      {},
+    );
+
+  return coveredAnimals(idOrName);
+};
 
 module.exports = {
   entryCalculator,
