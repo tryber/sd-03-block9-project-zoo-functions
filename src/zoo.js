@@ -75,13 +75,16 @@ function schedule(dayName) {
   // bla
 }
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+const oldestFromFirstSpecies = (id) => {
+  const emp = data.employees.find(n => n.id === id).responsibleFor[0];
+  return Object.values(
+    data.animals.find(m => m.id === emp).residents.sort((a, b) => b.age - a.age)[0],
+  );
+};
 
 const increasePrices = percentage =>
   Object.keys(data.prices).forEach((e) => {
-    data.prices[e] = Math.round(data.prices[e] * (percentage / 100 + 1) * 100) / 100;
+    data.prices[e] = Math.round(data.prices[e] * ((percentage / 100 + 1) * 100) / 100);
   });
 
 
