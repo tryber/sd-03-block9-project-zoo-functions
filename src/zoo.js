@@ -126,9 +126,9 @@ function animalMap(options) {
 
 function schedule(dayName) {
   const horaDoDia = {};
-  if (dayName === 'Monday') return {'Monday': "CLOSED"}
   const funcionamento = Object.values(horarios.Tuesday);
   horaDoDia[dayName] = `Open from ${funcionamento[0]}am until ${funcionamento[1] - 12}pm`;
+  if (dayName === 'Monday') return { Monday: 'CLOSED' };
   return horaDoDia;
 }
 const buscaIdDoAnimalGerenciado = (idFiltro) => {
