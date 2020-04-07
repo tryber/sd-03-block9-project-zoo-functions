@@ -157,7 +157,7 @@ const employeeResponsability = ((personObject) => {
 function employeeCoverage(idOrName) {
   if (idOrName) {
     answerObject = {};
-    const selected = [];
+    let selected = [];
     selected = employees.filter(employ => employ.id === idOrName);
     selected = employees.filter(employ => employ.firstName === idOrName);
     selected = employees.filter(employ => employ.lastName === idOrName);
