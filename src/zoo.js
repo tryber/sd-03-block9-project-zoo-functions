@@ -60,11 +60,11 @@ function entryCalculator(entrants) {
     return 0;
   }
   {
-    const valores = [entrants, data.prices];
-    const result = valores.reduce((result, item) => item.Adult * result, 1) +
-      valores.reduce((result, item) => item.Child * result, 1) +
-      valores.reduce((result, item) => item.Senior * result, 1);
-    return result;
+    return (
+    [entrants, data.prices].reduce((soma, item) => item.Adult * soma, 1) + 
+    [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) + 
+    [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1) 
+    ); 
   }
 }
 
