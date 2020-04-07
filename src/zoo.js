@@ -83,7 +83,7 @@ function schedule(dayName) {
     objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close}pm`;
 
     if (dayName === 'Monday') {
-     objSchedule[dayName] = 'CLOSED';
+      objSchedule[dayName] = 'CLOSED';
     }
     return objSchedule;
   }
@@ -93,6 +93,7 @@ function schedule(dayName) {
     if (element === 'Monday') objSchedule[element] = 'CLOSED';
     return objSchedule;
   });
+  return schedule
 }
 
 function animalMap(options) {
