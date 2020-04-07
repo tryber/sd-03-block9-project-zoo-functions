@@ -51,7 +51,8 @@ function animalCount(species) {
 function entryCalculator(entrants) {
   if (entrants && Object.keys(entrants).length > 0) {
     return Object.keys(entrants).reduce((sum, entrant) => {
-    (sum + (data.prices[entrant] * entrants[entrant]))}, 0);
+      return (sum + (data.prices[entrant] * entrants[entrant])); 
+    }, 0);
   }
   return 0;
 }
@@ -69,20 +70,20 @@ function schedule(dayName) {
     scheduleV = { dayName: hours(dayName) };
     return scheduleV;
   }
-  Object.keys(data.hours).forEach((e) => { scheduleV[e] = hours(e) });
+  Object.keys(data.hours).forEach((e) => { scheduleV[e] = hours(e); });
   return scheduleV;
 }
 
 function oldestFromFirstSpecies(id) {
   const species = data.animals.find(f =>
-  f.id === data.employees.find(e => e.id === id).responsibleFor[0])
+  f.id === data.employees.find(e => e.id === id).responsibleFor[0]);
   species.residents.sort((a, b) => b.age - a.age);
   return [species.residents[0].name, species.residents[0].sex, species.residents[0].age];
 }
 
 function increasePrices(percentage) {
   Object.keys(data.prices).forEach((e) => {
-  data.prices[e] = Math.round(data.prices[e] * (1 + (percentage / 100)) * 100) / 100
+    data.prices[e] = Math.round(data.prices[e] * (1 + (percentage / 100)) * 100) / 100;
   });
 }
 
