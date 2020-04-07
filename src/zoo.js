@@ -36,7 +36,7 @@ const createEmployee = (personalInfo, associatedWith) => ({
 
 const isManager = id => employees.some(element => element.managers.find(a => a === id));
 
-function addEmployee(id, firstName, lastName, managers = [],  responsibleFor = []) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   employees.push({
     id,
     firstName,
@@ -83,7 +83,7 @@ function schedule(dayName) {
     objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close}pm`;
 
     if (dayName === 'Monday') {
-      objSchedule[dayName] = 'CLOSED';
+     objSchedule[dayName] = 'CLOSED';
     }
     return objSchedule;
   }
@@ -105,7 +105,6 @@ module.exports = {
   animalMap,
   animalsByIds,
   employeeByName,
-  employeeCoverage,
   addEmployee,
   isManager,
   animalsOlderThan,
