@@ -50,7 +50,7 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   if (entrants && Object.keys(entrants).length > 0) {
-    return Object.keys(entrants).reduce((sum, entrant) => 
+    return Object.keys(entrants).reduce((sum, entrant) =>
     (sum + (data.prices[entrant] * entrants[entrant])), 0);
   }
   return 0;
@@ -60,8 +60,10 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function hours (day) {(day === 'Monday') ? 'CLOSED'
-: `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;}
+function hours(day) { 
+  (day === 'Monday') ? 'CLOSED'
+: `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`; 
+}
 
 function schedule(dayName) {
   let scheduleV = {};
