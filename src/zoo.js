@@ -75,7 +75,7 @@ const animalMap = (options = {}) => {
     }
     return object;
   }, {});
-}
+};
 
 const readableCalendar = day => ((day === 'Monday')
   ? 'CLOSED'
