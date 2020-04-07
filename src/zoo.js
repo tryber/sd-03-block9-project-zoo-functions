@@ -57,7 +57,7 @@ const animalCount = (species) => {
   return Object.assign(animals.reduce((acc, el) => {
     acc[el.name] = el.residents.length;
     return acc;
-    }, {}));
+  }, {}));
 };
 
 // console.log(animalCount());
@@ -67,7 +67,7 @@ const entryCalculator = (entrants) => {
   const visitantesArray = Object.entries(entrants);
   const valores = Object.values(entrants);
   const valorAdult = prices.Adult * valores[0];
-  //const valorAdult = visitantesArray[0][1] * 49.99;
+// const valorAdult = visitantesArray[0][1] * 49.99;
   const valorChild = visitantesArray[1][1] * 20.99;
   const valorSenior = visitantesArray[2][1] * 24.99;
   const valorTotal = valorAdult + valorSenior + valorChild;
@@ -90,7 +90,7 @@ const oldestFromFirstSpecies = (id) => {
 // console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
 const increasePrices = (percentage) => {
-  Object.keys(prices).reduce((objeto, pessoa ) => {
+  Object.keys(prices).reduce((objeto, pessoa) => {
     objeto[pessoa] = Math.round((objeto[pessoa] * (100 + percentage)).toFixed(2)) / 100;
     return objeto;
   }, prices);
@@ -119,14 +119,14 @@ function schedule(dayName) {
     }
     return objSchedule;
   }
-  if (!dayName){
-  Object.keys(hours).map((element) => {
-    objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close - 12}pm`;
+  if (!dayName) {
+    Object.keys(hours).map((element) => {
+      objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close - 12}pm`;
     if (element === 'Monday') objSchedule[element] = 'CLOSED';
   });
-  return objSchedule;
+    return objSchedule;
   }
-};
+}
 
 // console.log(schedule());
 
