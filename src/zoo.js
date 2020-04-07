@@ -11,7 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const { animals, employees, prices } = data;
+const { animals, employees, prices, hours } = data;
 
 const animalsByIds = (...ids) => animals.filter(animal => ids.find(id => id === animal.id));
 
@@ -83,24 +83,40 @@ const oldestFromFirstSpecies = (id) => {
 // console.log(oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
 
 const increasePrices = (percentage) => {
+  //prices.Adult = 98;
   const arrayPrices = Object.entries(prices);
-//  console.log('Array com preço atual:\n', arrayPrices);
+ console.log('Array com preço atual:\n', arrayPrices);
   const newArrayPrices = arrayPrices.map(([key, val]) =>
     [key, Math.round(((val + ((val * percentage) / 100)) * 100)) / 100]);
-//  console.log('Array com novos preços:\n', newArrayPrices);
-
-  // seu código aqui
+ console.log('Array com novos preços:\n', newArrayPrices);
   const obj = Object.fromEntries(newArrayPrices);
-// console.log('novos preços como objeto:');
-
+ console.log('novos preços como objeto:');
   return obj;
 };
 
-// console.log(increasePrices(100));  // {'adult': x, 'Senior': x,}
+ //console.log(increasePrices(50));
+ //console.log('\n');
+ //console.log(increasePrices(30));
 
 function schedule(dayName) {
-  // seu código aqui
+  const objSchedule = {};
+  if (dayName) {
+    objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close}pm`;
+
+    if (dayName === 'Monday') {
+      objSchedule[dayName] = `CLOSED`;
+    }
+    return objSchedule;
+  }
+
+  Object.keys(hours).map(element => {
+    objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close}pm`
+    if (element === 'Monday') objSchedule[element] = 'CLOSED';
+  });
+  return objSchedule;
 }
+
+// console.log(schedule());
 
 function animalMap(options) {
   // seu código aqui
