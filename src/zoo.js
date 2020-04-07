@@ -51,7 +51,7 @@ function animalCount(species) {
     return data.animals.find(el => el.name === species).residents.length;
   }
   const obj = {};
-  data.animals.forEach(par => { obj[par.name] = par.residents.length; });
+  data.animals.forEach(par => {(obj)[par.name] = par.residents.length; });
   return obj;
 }
 
@@ -59,13 +59,12 @@ function entryCalculator(entrants) {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
-  {
-    return (
-    [entrants, data.prices].reduce((soma, item) => item.Adult * soma, 1) + 
-    [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) + 
-    [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1) 
-    ); 
-  }
+
+  return (
+    [entrants, data.prices].reduce((soma, item) => item.Adult * soma, 1) +
+    [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) +
+    [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1)
+  );
 }
 
 function animalMap(options) {
