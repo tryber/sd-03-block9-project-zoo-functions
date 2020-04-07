@@ -39,12 +39,6 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 
 function animalCount(species) {
-  // return
-  // const reduceAnimals = (acc, species) => {
-  //   if (species) return ` ${species.name} ${acc}`;
-  //     return data.animals.every(
-  //       animal => animal.find(animal => animal.name === species).residents.lenght);
-  //
   if (species) {
     return data.animals.find(animal => animal.name === species).residents.length;
   }
@@ -60,9 +54,28 @@ function entryCalculator(entering) {
   : 0;
 }
 
-function animalMap(options) {}
+const animalMap = (options = {}) => {
+  const { sex, sorted, includeNames } = options;
+  return data.animals.reduce((object, { name, location }) => {
+    if (!object[location]) object[location] = [];
+    if (!includeNames) {
+      object[location].push(name);
+    } else {
+      object[location].push(residents(name, sorted, sex));
+    }
+    return object;
+  }, {});
+};
 
-  // seu código aqui
+function residents(animal, sorted, sex) {
+  const object = {};
+    object[animal] = data.animals
+      .find(element => element.name === animal).residents;
+    if (sex) object[animal] = object[animal].filter(resident => resident.sex === sex);
+    object[animal] = object[animal].map(({ name }) => name);
+    if (sorted) object[animal].sort();
+    return object;
+  };
 
 const readableCalendar = day => ((day === 'Monday')
   ? 'CLOSED'
@@ -91,9 +104,27 @@ function increasePrices(percentage) {
   });
 }
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
-}
+const employeeCoverage = (idName) => {
+  const object = {};
+  if (idName) {
+    Object.assign(object, responsible(data.employees
+      .find(element => ((
+        element.id === idName) || (element.firstName === idName) || (element.lastName === idName)))));
+    return object;
+  }
+  data.employees.forEach((i) => {
+    Object.assign(object, responsible(i));
+  });
+  return object;
+};
+
+const responsible = (name) => {
+  const complete = {};
+  complete[`${name.firstName} ${name.lastName}`] = name.responsibleFor
+    .map(id => data.animals
+      .find(animal => animal.id === id).name);
+  return complete;
+};
 
 module.exports = {
   entryCalculator,
