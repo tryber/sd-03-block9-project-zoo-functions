@@ -108,74 +108,27 @@ function entryCalculator(entrants) {
 
 function animalMap(options = {}) {
   // seu código aqui
+  const getResidentsName = (animal, sorted, sex) => {
+    const residentsList = {};
+    residentsList[animal] = data.animals
+      .find(element => element.name === animal).residents;
+    if (sex) residentsList[animal] = residentsList[animal].filter(resident => resident.sex === sex);
+    residentsList[animal] = residentsList[animal].map(({ name }) => name);
+    if (sorted) residentsList[animal].sort();
+    return residentsList;
+  };
+
   const { includeNames, sex, sorted } = options;
 
-  const getResidentsName = (animal, sorted, sex) => {
-    const obj = {};
-    obj[animal] = data.animals
-      .find(element => element.name === animal).residents;
-    if (sex) obj[animal] = obj[animal].filter(resident => resident.sex === sex);
-    obj[animal] = obj[animal].map(({ name }) => name);
-    if (sorted) obj[animal].sort();
-      return obj;
-  };
-
-  return data.animals.reduce((obj, { name, location }) => {
-    if (!obj[location]) obj[location] = [];
+  return data.animals.reduce((acc, { name, location }) => {
+    if (!acc[location]) acc[location] = [];
     if (!includeNames) {
-      obj[location].push(name);
+      acc[location].push(name);
     } else {
-      obj[location].push(getResidentsName(name, sorted, sex));
+      acc[location].push(getResidentsName(name, sorted, sex));
     }
-    return obj;
-    }, {});
-
-/*
-const getLocations = () =>
-    data.animals.map(element => element.location).reduce((accumulator, location) => {
-      if (typeof accumulator[location] === 'undefined') accumulator[location] = [];
-      return accumulator;
-    }, {});
-
-  const animalsByLocation = getLocations();
-
-  const animalsList = (array, opt) =>
-      ({ [array.name]: array.residents.reduce((accumulator, elm) => {
-        if(opt.sorted) {
-          if(accumulator.length === 0) return [`${elm.name}`];
-          return (`${accumulator},${elm.name}`).split(',').sort();
-        } else if (!opt.sorted && !opt.sex)
-            if(accumulator.length === 0) return [`${elm.name}`];
-            return (`${accumulator},${elm.name}`).split(',');
-        } else if (opt.sex) {
-            if (elm.sex === opt.sex) {
-              if(accumulator.length === 0) return [`${elm.name}`];
-              return (`${accumulator},${elm.name}`).split(',');
-          } else return accumulator;
-        }
-      }, []) })
-
-  const animalMapByName = (object, sets) => {
-    const key = Object.keys(object);
-    for (let i = 0; i < key.length; i += 1) {
-      data.animals.forEach((element) => {
-        if (element.location === key[i]) {
-          if (typeof sets === 'undefined' || !sets.includeNames) {
-            if (typeof animalsByLocation[key[i]][0] === 'undefined') {
-              animalsByLocation[key[i]] = [`${element.name}`];
-            } else {
-              animalsByLocation[key[i]] = (`${animalsByLocation[key[i]]},${element.name}`).split(',');
-            }
-          }
-          if (sets && sets.includeNames) animalsByLocation[key[i]].push(animalsList(element,sets));
-        }
-      });
-    }
-  };
-
-  animalMapByName(animalsByLocation, options);
-  return animalsByLocation;
-*/
+    return acc;
+  }, {});
 }
 
 function schedule(dayName) {
