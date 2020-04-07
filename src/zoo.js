@@ -72,7 +72,7 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  // bla
 }
 
 function oldestFromFirstSpecies(id) {
@@ -80,11 +80,16 @@ function oldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  const cliente = [data.prices.Adult, data.prices.Senior, data.prices.Child];
+  const valores = Object.keys(data.prices);
+  cliente.forEach((e, i) => {
+    data.prices[valores[i]] = (Math.round((e * (1 + (percentage / 100))) * 100)) / 100;
+  });
+  return data.prices;
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  // seu código aquia
 }
 
 module.exports = {
