@@ -54,6 +54,16 @@ function entryCalculator(entering) {
   : 0;
 }
 
+function residents(animal, sorted, sex) {
+  const object = {};
+  object[animal] = data.animals
+      .find(element => element.name === animal).residents;
+  if (sex) object[animal] = object[animal].filter(resident => resident.sex === sex);
+  object[animal] = object[animal].map(({ name }) => name);
+  if (sorted) object[animal].sort();
+  return object;
+}
+
 const animalMap = (options = {}) => {
   const { sex, sorted, includeNames } = options;
   return data.animals.reduce((object, { name, location }) => {
@@ -65,17 +75,7 @@ const animalMap = (options = {}) => {
     }
     return object;
   }, {});
-};
-
-function residents(animal, sorted, sex) {
-  const object = {};
-    object[animal] = data.animals
-      .find(element => element.name === animal).residents;
-    if (sex) object[animal] = object[animal].filter(resident => resident.sex === sex);
-    object[animal] = object[animal].map(({ name }) => name);
-    if (sorted) object[animal].sort();
-    return object;
-  };
+}
 
 const readableCalendar = day => ((day === 'Monday')
   ? 'CLOSED'
@@ -104,26 +104,27 @@ function increasePrices(percentage) {
   });
 }
 
-const employeeCoverage = (idName) => {
-  const object = {};
-  if (idName) {
-    Object.assign(object, responsible(data.employees
-      .find(element => ((
-        element.id === idName) || (element.firstName === idName) || (element.lastName === idName)))));
-    return object;
-  }
-  data.employees.forEach((i) => {
-    Object.assign(object, responsible(i));
-  });
-  return object;
-};
-
 const responsible = (name) => {
   const complete = {};
   complete[`${name.firstName} ${name.lastName}`] = name.responsibleFor
     .map(id => data.animals
       .find(animal => animal.id === id).name);
   return complete;
+};
+
+const employeeCoverage = (idName) => {
+  const object = {};
+  if (idName) {
+    Object.assign(object, responsible(data.employees
+      .find(element => ((
+        element.id === idName)
+        || (element.firstName === idName) || (element.lastName === idName)))));
+    return object;
+  }
+  data.employees.forEach((i) => {
+    Object.assign(object, responsible(i));
+  });
+  return object;
 };
 
 module.exports = {
