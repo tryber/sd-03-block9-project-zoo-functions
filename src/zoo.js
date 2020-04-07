@@ -57,16 +57,6 @@ const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 
   : 0
 );
 
-const getResidentsName = (animal, sorted, sex) => {
-  const obj = {};
-  obj[animal] = data.animals
-    .find(element => element.name === animal).residents;
-  if (sex) obj[animal] = obj[animal].filter(resident => resident.sex === sex);
-  obj[animal] = obj[animal].map(({ name }) => name);
-  if (sorted) obj[animal].sort();
-  return obj;
-};
-
 const legibleSchedule = day => ((day === 'Monday')
   ? 'CLOSED'
   : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
@@ -120,7 +110,6 @@ module.exports = {
   entryCalculator,
   schedule,
   animalCount,
-  animalMap,
   animalsByIds,
   employeeByName,
   employeeCoverage,
