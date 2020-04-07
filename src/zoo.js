@@ -29,50 +29,78 @@ const createEmployee = (personalInfo, associatedWith) => ({
 
 const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+class Employee {
+  constructor(id, firstName, lastName, managers = [], responsibleFor = []) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.managers = managers;
+    this.responsibleFor = responsibleFor;
+  }
 }
 
-function animalCount(species) {
-  // seu código aqui
-}
+const addEmployee = (...args) => data.employees.push(new Employee(...args));
 
-function entryCalculator(entrants) {
-  // seu código aqui
-}
+const animalCount = (species) => {
+  if (species) {
+    return data.animals.find(({ name }) => name === species).residents.length;
+  }
+  return data.animals.reduce((counter, animal) => {
+    counter[animal.name] = animal.residents.length;
+    return counter;
+  }, {});
+};
 
-function animalMap(options) {
-  // seu código aqui
-}
+const entryCalculator = entrants => (entrants && Object.keys(entrants).length > 0
+  ? Object.keys(entrants)
+    .reduce((accumulator, entrant) => (accumulator + (data.prices[entrant] * entrants[entrant])), 0)
+  : 0
+);
 
-function schedule(dayName) {
-  // seu código aqui
-}
+const getResidentsName = (animal, sorted, sex) => {
+  const obj = {};
+  obj[animal] = data.animals
+    .find(element => element.name === animal).residents;
+  if (sex) obj[animal] = obj[animal].filter(resident => resident.sex === sex);
+  obj[animal] = obj[animal].map(({ name }) => name);
+  if (sorted) obj[animal].sort();
+  return obj;
+};
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  return data.animals.reduce((obj, { name, location }) => {
+    if (!obj[location]) obj[location] = [];
+    if (!includeNames) {
+      obj[location].push(name);
+    } else {
+      obj[location].push(getResidentsName(name, sorted, sex));
+    }
+    return obj;
+  }, {});
+};
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const legibleSchedule = day => ((day === 'Monday')
+  ? 'CLOSED'
+  : `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`);
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
-}
+const schedule = (dayName) => {
+  const sch = {};
+  if (dayName) {
+    sch[dayName] = legibleSchedule(dayName);
+    return sch;
+  }
+  Object.keys(data.hours).forEach((e) => { sch[e] = legibleSchedule(e); });
+  return sch;
+};
 
-module.exports = {
-  entryCalculator,
-  schedule,
-  animalCount,
-  animalMap,
-  animalsByIds,
-  employeeByName,
-  employeeCoverage,
-  addEmployee,
-  isManager,
-  animalsOlderThan,
-  oldestFromFirstSpecies,
-  increasePrices,
-  createEmployee,
+const oldestFromFirstSpecies = id => Object.values(data.animals
+  .find(e => e.id === data.employees
+    .find(animal => animal.id === id).responsibleFor[0]).residents
+  .sort((a, b) => b.age - a.age)[0]);
+
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((e) => {
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
 };
