@@ -77,24 +77,15 @@ const increasePrices = (percentage) => {
   return obj;
 };
 
-function schedule(dayName) {
-  const objSchedule = {};
+const schedule = (dayName) => {
+  const sch = {};
   if (dayName) {
-    objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close}pm`;
-
-    if (dayName === 'Monday') {
-      objSchedule[dayName] = 'CLOSED';
-    }
-    return objSchedule;
+    sch[dayName] = legibleSchedule(dayName);
+    return sch;
   }
-
-  Object.keys(hours).map((element) => {
-    objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close}pm`;
-    if (element === 'Monday') objSchedule[element] = 'CLOSED';
-    return objSchedule;
-  });
-  return schedule;
-}
+  Object.keys(data.hours).forEach((e) => { sch[e] = legibleSchedule(e); });
+  return sch;
+};
 
 function animalMap(options) {
   // seu código aqui
