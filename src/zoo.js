@@ -82,9 +82,14 @@ const oldestFromFirstSpecies = (id) => {
   );
 };
 
-const increasePrices = percentage => {Object.keys(data.prices).forEach(e => 
-  (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
-});
+function increasePrices(percentage) {
+  const client = [data.prices.Adult, data.prices.Senior, data.prices.Child];
+  const val = Object.keys(data.prices);
+  client.forEach((a, b) => {
+    data.prices[val[b]] = (Math.round((a * (1 + (percentage / 100))) * 100)) / 100;
+  });
+  return data.prices;
+}
 
 function employeeCoverage(idOrName) {
   // seu código aquia
