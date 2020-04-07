@@ -157,8 +157,11 @@ const employeeResponsability = ((personObject) => {
 function employeeCoverage(idOrName) {
   if (idOrName) {
     answerObject = {};
-    let s = [];
-     s = employees.filter(employ => employ.id === idOrName || employ.firstName === idOrName || employ.lastName === idOrName);
+    const selected = employees.map(employ => {
+      if (employ.id === idOrName || employ.firstName === idOrName || employ.lastName === idOrName) {
+        return employee;
+      }
+    });
     answerObject[`${selected[0].firstName} ${selected[0].lastName}`] = [];
     employeeResponsability(selected[0]);
   } else {
