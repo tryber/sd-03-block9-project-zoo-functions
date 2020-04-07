@@ -8,7 +8,7 @@ eslint no-unused-vars: [
   }
 ]
 */
-const data = require('./data');
+const data = require("./data");
 
 /* Caso receba nenhum parâmetro, necessário retornar um array vazio
 Ao receber como parâmetro um único id, retorna os animais com este id
@@ -16,7 +16,7 @@ Ao receber mais de um id, retorna os animais que têm um desses ids */
 
 function animalsByIds(...ids) {
   if (ids) {
-    return data.animals.filter(animal => ids.find(id => id === animal.id));
+    return data.animals.filter((animal) => ids.find((id) => id === animal.id));
   }
   return [];
 }
@@ -36,7 +36,8 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   if (employeeName) {
     return data.employees.find(
-      ({ firstName, lastName }) => firstName === employeeName || lastName === employeeName,
+      ({ firstName, lastName }) =>
+        firstName === employeeName || lastName === employeeName
     );
   }
   return {};
@@ -47,12 +48,18 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  return data.employees.some(element =>
-    element.managers.find(manId => manId === id),
+  return data.employees.some((element) =>
+    element.managers.find((manId) => manId === id)
   );
 }
 
-function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+function addEmployee(
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = []
+) {
   return data.employees.push({
     id,
     firstName,
@@ -64,7 +71,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 
 function animalCount(species) {
   if (species) {
-    const findSpecie = data.animals.find(element => element.name === species);
+    const findSpecie = data.animals.find((element) => element.name === species);
     const speciePop = findSpecie.residents.length;
     return speciePop;
   }
@@ -79,8 +86,17 @@ function animalCount(species) {
 // console.log(animalCount());
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (entrants === 0
+    || entrants === null
+    || entrants === Object.keys(entrants).length === 0
+    || entrants === undefined) {
+    return 0;
+  }
+  const { Adult, Senior, Child } = entrants;
+  return (Adult * data.prices.Adult) + (Senior * data.prices.Senior) + (Child * data.prices.Child);
 }
+
+// console.log(entryCalculator({'Adult' : 2, 'Senior': 1, 'Child': 3}));
 
 function animalMap(options) {
   // const animalsByLocation = getLocation();
