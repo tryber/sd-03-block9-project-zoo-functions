@@ -76,15 +76,16 @@ const animalCount = (species) => {
   }, {});
 };
 
-const entryCalculator = entrants =>
+const entryCalculator = entrants =>{
   // seu código aqui
-  (entrants && Object.keys(entrants).length > 0)
-    ? Object.keys(entrants).reduce(
+  if (entrants && Object.keys(entrants).length > 0)
+    return Object.keys(entrants).reduce(
         (accumulator, entrant) =>
           accumulator + (data.prices[entrant] * entrants[entrant]),
         0,
-      )
-    : 0;
+      );
+    return 0;
+  };
 
 function animalMap(options) {
   // seu código aqui
@@ -103,7 +104,7 @@ const increasePrices = percentage =>
   Object.keys(data.prices).map(
     index =>
       (data.prices[index] =
-        Math.round(data.prices[index] * ((percentage / 100) + 1) * 100) / 100)
+        Math.round(data.prices[index] * ((percentage / 100) + 1) * 100) / 100),
   );
 
 function employeeCoverage(idOrName) {
