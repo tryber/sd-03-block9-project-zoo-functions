@@ -65,12 +65,14 @@ const addEmployee = (
     responsibleFor,
   });
 
-const animalCount = species => {
+const animalCount = (species) => {
   // seu código aqui
-if (species) {return data.animals.find(({ name }) => name === species).residents.length;}
-return data.animals.reduce((counter, animal) => { counter[animal.name] = animal.residents.length;
-return counter;
-},{})
+  if (species) { return data.animals.find(({ name }) => name === species).residents.length;
+}
+  return data.animals.reduce((counter, animal) => {
+    counter[animal.name] = animal.residents.length;
+  return counter;
+}, {});
 };
 
 function entryCalculator(entrants) {
