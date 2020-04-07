@@ -19,7 +19,7 @@ describe('employeeCoverage', () => {
       'Emery Elser': ['elephants', 'bears', 'lions']
     };
 
-    assert.deepEqual(actual, expected);
+   assert.deepEqual(actual, expected);
 
     // com o id de um funcionário, retorna os animais pelos quais o funcionário é
     // responsável

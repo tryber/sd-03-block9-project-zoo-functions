@@ -11,6 +11,7 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
+const horarios = data.hours;
 const animals = data.animals;
 const funcionarios = data.employees;
 const precos = data.prices;
@@ -124,7 +125,11 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  const horaDoDia = {};
+  if (dayName === 'Monday') return {'Monday': "CLOSED"}
+  const funcionamento = Object.values(horarios.Tuesday);
+  horaDoDia[dayName] = `Open from ${funcionamento[0]}am until ${funcionamento[1] - 12}pm`;
+  return horaDoDia;
 }
 const buscaIdDoAnimalGerenciado = (idFiltro) => {
   const idDoAnimalGerenciado = funcionarios.find((employees) => {
@@ -167,7 +172,6 @@ function increasePrices(percentage) {
   precos.Senior = Math.round(((precos.Senior + (precos.Senior * percentage)) * 100)) / 100;
   return undefined;
 }
-
 function employeeCoverage(idOrName) {
 
 }
