@@ -46,7 +46,7 @@ const animalCount = (species) => {
 };
 
 function entryCalculator(entrants) {
-  if (entrants === undefined || Object.keys(entrants).length ===0) {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
   {
