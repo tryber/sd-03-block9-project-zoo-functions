@@ -38,7 +38,7 @@ const createEmployee = (personalInfo, associatedWith) => ({
 
 const isManager = id => employees.some(element => element.managers.find(a => a === id));
 
-// console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
+ //console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   employees.push({
@@ -113,8 +113,8 @@ function schedule(dayName) {
   Object.keys(hours).map((element) => {
     objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close}pm`;
     if (element === 'Monday') objSchedule[element] = 'CLOSED';
+    return objSchedule;
   });
-  return objSchedule;
 }
 
 // console.log(schedule());
