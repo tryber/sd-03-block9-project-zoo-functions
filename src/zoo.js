@@ -51,17 +51,23 @@ function animalCount(species) {
     return data.animals.find(el => el.name === species).residents.length;
   }
   const obj = {};
-  // data.animals.forEach(par => par );
-  data.animals.forEach((par) => { obj[par.name] = par.residents.length; });
+  data.animals.forEach(par => { obj[par.name] = par.residents.length; });
   return obj;
 }
 
-console.log(animalCount('lions'));
-
-
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  };
+  { const valores = [entrants, data.prices]
+    const soma = valores.reduce((soma,item) => item.Adult * soma,1) + 
+    valores.reduce((soma,item) => item.Child * soma,1) + 
+    valores.reduce((soma,item) => item.Senior * soma,1) 
+    return soma }
 }
+
+console.log(entryCalculator({ 'Adult': 2, 'Child': 3, 'Senior': 1 }));
+
 
 function animalMap(options) {
   // seu código aqui
