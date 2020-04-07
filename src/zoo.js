@@ -101,12 +101,12 @@ let calendar = {};
 
 const returnCalendar = (dia) => {
   calendar[dia] = `Open from ${hours[dia].open}am until ${hours[dia].close - 12}pm`;
-}
+};
 
 const schedule = (dayName) => {
   if (dayName === 'Monday') {
     calendar = {};
-    return {'Monday': 'CLOSED'};
+    return { Monday: 'CLOSED' };
   }
   if (dayName) {
     calendar = {};
