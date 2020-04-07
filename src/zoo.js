@@ -21,8 +21,7 @@ const employeeByName = employeeName =>
     e => e.firstName === employeeName || e.lastName === employeeName,
   ) || {};
 
-  const createEmployee = (personalInfo, associatedWith) =>
-  ({
+const createEmployee = (personalInfo, associatedWith) => ({
     ...personalInfo,
     ...associatedWith,
   });
