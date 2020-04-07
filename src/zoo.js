@@ -106,9 +106,32 @@ function entryCalculator(entrants) {
   return result;
 }
 
-function animalMap(options) {
+function animalMap(options = {}) {
   // seu código aqui
-  const getLocations = () =>
+  const { includeNames, sex, sorted } = options;
+
+  const getResidentsName = (animal, sorted, sex) => {
+    const obj = {};
+    obj[animal] = data.animals
+      .find(element => element.name === animal).residents;
+    if (sex) obj[animal] = obj[animal].filter(resident => resident.sex === sex);
+    obj[animal] = obj[animal].map(({ name }) => name);
+    if (sorted) obj[animal].sort();
+      return obj;
+  };
+
+  return data.animals.reduce((obj, { name, location }) => {
+    if (!obj[location]) obj[location] = [];
+    if (!includeNames) {
+      obj[location].push(name);
+    } else {
+      obj[location].push(getResidentsName(name, sorted, sex));
+    }
+    return obj;
+    }, {});
+
+/*
+const getLocations = () =>
     data.animals.map(element => element.location).reduce((accumulator, location) => {
       if (typeof accumulator[location] === 'undefined') accumulator[location] = [];
       return accumulator;
@@ -116,12 +139,12 @@ function animalMap(options) {
 
   const animalsByLocation = getLocations();
 
-  const animalsList = (array, opt) => {
-      return { [array.name]: array.residents.reduce((accumulator, elm, index) => {
+  const animalsList = (array, opt) =>
+      ({ [array.name]: array.residents.reduce((accumulator, elm) => {
         if(opt.sorted) {
           if(accumulator.length === 0) return [`${elm.name}`];
           return (`${accumulator},${elm.name}`).split(',').sort();
-        } else if (!opt.sorted && !opt.sex) {
+        } else if (!opt.sorted && !opt.sex)
             if(accumulator.length === 0) return [`${elm.name}`];
             return (`${accumulator},${elm.name}`).split(',');
         } else if (opt.sex) {
@@ -130,8 +153,7 @@ function animalMap(options) {
               return (`${accumulator},${elm.name}`).split(',');
           } else return accumulator;
         }
-      }, []) };
-  };
+      }, []) })
 
   const animalMapByName = (object, sets) => {
     const key = Object.keys(object);
@@ -153,6 +175,7 @@ function animalMap(options) {
 
   animalMapByName(animalsByLocation, options);
   return animalsByLocation;
+*/
 }
 
 function schedule(dayName) {
