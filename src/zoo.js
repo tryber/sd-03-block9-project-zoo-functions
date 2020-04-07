@@ -49,8 +49,9 @@ function animalCount(species) {
 }
 
 function entryCalculator(entrants) {
-  if(entrants && Object.keys(entrants).length > 0){
-    return Object.keys(entrants).reduce((sum, entrant) => (sum +(data.prices[entrant] * entrants[entrant])), 0)
+  if (entrants && Object.keys(entrants).length > 0) {
+    return Object.keys(entrants).reduce((sum, entrant) => {
+    (sum + (data.prices[entrant] * entrants[entrant]))}, 0);
   }
   return 0;
 }
@@ -59,30 +60,31 @@ function animalMap(options) {
   // seu código aqui
 }
 
-const hours = (day) => (day === 'Monday')? 'CLOSED'
-: `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`
+const hours = day => (day === 'Monday') ? 'CLOSED'
+: `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
 
 function schedule(dayName) {
-  const schedule = {}
-  if (dayName){
-    schedule = {dayName: hours(dayName)}
-    return schedule;
+  let scheduleV = {};
+  if (dayName) {
+    scheduleV = { dayName: hours(dayName) };
+    return scheduleV;
   }
-  Object.keys(data.hours).forEach(e => { schedule[e] = hours(e) })
-  return schedule;
+  Object.keys(data.hours).forEach((e) => { scheduleV[e] = hours(e) });
+  return scheduleV;
 }
 
 function oldestFromFirstSpecies(id) {
-  const species = data.animals.find(e =>
-  e.id === data.employees.find(e => e.id === id).responsibleFor[0])
+  const species = data.animals.find(f =>
+  f.id === data.employees.find(e => e.id === id).responsibleFor[0])
   species.residents.sort((a, b) => b.age - a.age);
   return [species.residents[0].name, species.residents[0].sex, species.residents[0].age];
 }
 
 function increasePrices(percentage) {
-Object.keys(data.prices).forEach(e => {
-data.prices[e] = Math.round(data.prices[e] * (1 + (percentage / 100)) * 100) / 100});
-};
+  Object.keys(data.prices).forEach((e) => {
+  data.prices[e] = Math.round(data.prices[e] * (1 + (percentage / 100)) * 100) / 100
+  });
+}
 
 
 const summary = (e) => {
@@ -92,7 +94,7 @@ const summary = (e) => {
   return obj;
 };
 
-function employeeCoverage (idOrName) {
+function employeeCoverage(idOrName) {
   const coverage = {};
   if (idOrName) {
     const findEmployee = data.employees.find(e => e.id === idOrName
@@ -103,7 +105,7 @@ function employeeCoverage (idOrName) {
     Object.assign(coverage, summary(employee));
   });
   return coverage;
-};
+}
 
 
 module.exports = {
