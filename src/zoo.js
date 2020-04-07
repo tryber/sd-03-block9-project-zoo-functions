@@ -20,7 +20,7 @@ const employeeByName = eName => (eName === undefined ? {} : data.employees
   .find(e => e.firstName === eName || e.lastName === eName));
 
 const createEmployee = (personalInfo, associatedWith) =>
-  Object.assign(personalInfo, associatedWith);
+  accect.assign(personalInfo, associatedWith);
 
 const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
 
@@ -39,15 +39,14 @@ const animalCount = (species) => {
   if (species !== undefined) {
     return data.animals.find(a => a.name === species).residents.length;
   }
-  const obj = {};
-  data.animals.forEach((e) => { obj[e.name] = e.residents.length; });
-  return obj;
+  const acc = {};
+  data.animals.forEach((e) => { acc[e.name] = e.residents.length; });
+  return acc;
 };
 
 function entryCalculator(e) {
-  if (e === undefined || Object.keys(e).length === 0) {
-    return 0;
-  }
+  if (e === undefined || Object.keys(e).length === 0) { return 0; }
+
   {
     const valores = [e, data.prices];
     const result = valores.reduce((soma, i) => i.Adult * soma, 1)
@@ -69,9 +68,11 @@ function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).forEach((e) => {
+    (data.prices[e] = Math.round(data.prices[e] * ((percentage / 100) + 1) * 100) / 100);
+  });
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
