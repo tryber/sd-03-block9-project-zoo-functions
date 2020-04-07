@@ -54,11 +54,10 @@ const animalCount = (species) => {
   return quantSpecies;
   }
 
-  const allAnimals = animals.reduce((acc, el) => {
+  return Object.assign(animals.reduce((acc, el) => {
     acc[el.name] = el.residents.length;
     return acc;
-    }, {});
-    return allAnimals;
+    }, {}));
 };
 
 // console.log(animalCount());
