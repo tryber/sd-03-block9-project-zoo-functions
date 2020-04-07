@@ -108,12 +108,11 @@ function entryCalculator(entrants) {
 
 function animalMap(options) {
   // seu código aqui
-  const getLocations = () => 
+  const getLocations = () =>
     data.animals.map(element => element.location).reduce((accumulator, location) => {
       if (typeof accumulator[location] === 'undefined') accumulator[location] = [];
       return accumulator;
     }, {});
-  
 
   const animalsByLocation = getLocations();
 
