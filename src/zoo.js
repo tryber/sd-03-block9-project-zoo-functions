@@ -84,7 +84,7 @@ const entryCalculator = (entrants) => {
           accumulator + (data.prices[entrant] * entrants[entrant]),
         0,
       );
-    }
+  }
   return 0;
 };
 
