@@ -56,16 +56,13 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 function animalCount(species) {
   // seu código aqui
   if (species) {
-    // se houver parâmetro retorna a quantidade de animais daquela especie
     const foundSpecies = data.animals.find(a => a.name === species);
     return foundSpecies.residents.length;
-  } else {
-    // se não houver parâmetro retorna todos os animais e suas quantidades
-    return data.animals.reduce((accumulator, index) => {
-      accumulator[index.name] = index.residents.length;
-      return accumulator;
-    }, {});
   }
+  return data.animals.reduce((accumulator, index) => {
+    accumulator[index.name] = index.residents.length;
+    return accumulator;
+  }, {});
 }
 
 function entryCalculator(entrants) {
