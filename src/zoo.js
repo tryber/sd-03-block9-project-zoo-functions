@@ -61,9 +61,9 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 // Com o nome de uma espécie de animal, retorna somente a quantidade
 function animalCount(species) {
   if (species) {
-    return animals.find(animal => animal.name === species).residents.length;
+    return data.animals.find(animal => animal.name === species).residents.length;
   }
-  return Object.assign(animals.reduce((animal, qtde) => {
+  return Object.assign(data.animals.reduce((animal, qtde) => {
     animal[qtde.name] = qtde.residents.length;
     return animal;
   }, {}));
