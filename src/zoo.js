@@ -137,17 +137,17 @@ function animalMap(options) {
 function employeeCoverage(idOrName) {
   const obj = {};
   if (idOrName) {
-    const emplName = employees.find(list =>
+    const emplName1 = employees.find(list =>
       list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
 
     if (employees.some(list =>
       list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName)) {
-      const listRespAnim = emplName.responsibleFor.reduce((acc, el) => {
+      const listRespAnim1 = emplName1.responsibleFor.reduce((acc, el) => {
         acc.push(animals.find(list => list.id === el).name);
         return acc;
       }, []);
 
-      obj[`${emplName.firstName} ${emplName.lastName}`] = listRespAnim;
+      obj[`${emplName1.firstName} ${emplName1.lastName}`] = listRespAnim1;
       return obj;
     }
   }
@@ -161,10 +161,11 @@ function employeeCoverage(idOrName) {
       return obj;
     });
   }
+
   return obj;
 }
 
-// console.log(employeeCoverage());
+ console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
