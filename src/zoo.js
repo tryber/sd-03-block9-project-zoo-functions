@@ -41,7 +41,7 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   // seu código aqui
-  return data.employees.filter(coisa => coisa.managers === []);
+  return data.employees.some(coisa => coisa.managers[0] === id || coisa.managers[1] === id);
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
