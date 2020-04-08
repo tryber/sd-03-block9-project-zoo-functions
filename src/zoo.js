@@ -17,12 +17,13 @@ const animalsByIds = (...ids) => animalsArr.filter(element =>
 const animalsOlderThan = (animal, age) =>
   data.animals.find(elemento => elemento.name === animal).residents.every(elemento => elemento.age > age);
 
-function employeeByName(employeeName) {
-  if (employeeName === undefined) return {};
-  const funcD = data.employees;
-  const funcR = funcD.filter(fc => fc.firstName === employeeName || fc.lastName === employeeName);
-  return funcR[0];
-}
+const employeeByName = (employeeName) => {
+  if (employeeName) {
+    return employees.find(element => element.firstName === employeeName
+    || element.lastName === employeeName);
+  }
+  return {};
+  };
 
 function createEmployee({ id, firstName, lastName }, { managers, responsibleFor }) {
   const result = {
@@ -43,33 +44,43 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   return data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
-function animalCount = species => {
+const animalCount = (species) => {
   if (species) {
-    const quantEspecies = animals.find(element => element.name === species).residents.length;
+    const quantSpecies = animals.find(element => element.name === species).residents.length;
     return quantSpecies;
   }
-  const allOfThem = animal.reduce((acc, el) => {
 
-  })
+  return Object.assign(animals.reduce((acc, el) => {
+    acc[el.name] = el.residents.length;
+    return acc;
+  }, {}));
+};
 
 
-function entryCalculator = (entrants) {
-  if (entrants === undefined || )
-}
+const entryCalculator = (entrants) => {
+  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
+  const visitantesArray = Object.entries(entrants);
+  const valores = Object.values(entrants);
+  const valorAdult = prices.Adult * valores[0];
+  const valorChild = visitantesArray[1][1] * 20.99;
+  const valorSenior = visitantesArray[2][1] * 24.99;
+  const valorTotal = valorAdult + valorSenior + valorChild;
+  return valorTotal;
+};
 
 function animalMap(options) { // complexo
   // seu código aqui
 }
 
 function schedule(dayName) {
-  let scheduleV = {};
+  let agenda = {};
   if (dayName) {
-    scheduleV = { dayName: hours(dayName) };
-    return scheduleV;
+    agenda = { dayName: hours(dayName) };
+    return agenda;
   }
-  Object.keys(data.hours).forEach((e) => { scheduleV[e] = hours(e); });
-  return scheduleV;
-}
+  Object.keys(data.hours).forEach((e) => { agenda[e] = hours(e); });
+  return agenda;
+  }
 
 const oldestFromFirstSpecies = (id) => {
   const funcionario = employees.find(fun => fun.id === id).responsibleFor[0];
@@ -89,8 +100,8 @@ const increasePrices = percentage => {
   }, data.prices);
 };cd
 
-function employeeCoverage = (idOrName) => { 
-  const empregado = employees.map
+function employeeCoverage(idOrName) {
+  // seu código aqui
 }
 
 module.exports = {
