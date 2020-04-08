@@ -105,6 +105,21 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
+  const find1 = dado => data.employees.find(ani => ani.firstName === dado);
+  const findid = dado => data.employees.find(ani => ani.id === dado);
+  const find2 = dado => data.employees.find(ani => ani.lastName === dado);
+  const func = find1(idOrName) || findid(idOrName) || find2(idOrName);
+  const opa = al => data.animals.find(ani => ani.id === al).name;
+  if (!idOrName) {
+    let arr = [];
+    data.employees.forEach(a => arr.push([a.firstName+' '+a.lastName, a.responsibleFor]));
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i][1] = arr[i][1].map(opa);
+    }
+    return Object.fromEntries(arr);
+  }
+  const nome = func.firstName + ' ' + func.lastName;
+  return Object.fromEntries([[nome, func.responsibleFor.map(opa)]]);
 }
 
 module.exports = {
