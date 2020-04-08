@@ -122,6 +122,7 @@ function schedule(dayName) {
     Object.keys(hours).map((element) => {
       objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close - 12}pm`;
       if (element === 'Monday') objSchedule[element] = 'CLOSED';
+      return objSchedule;
     });
   }
   return objSchedule;
