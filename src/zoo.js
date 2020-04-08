@@ -9,6 +9,7 @@ eslint no-unused-vars: [
 ]
 */
 const data = require('./data');
+
 const { employees, animals, prices, hours } = data;
 const animalsByIds = (...ids) => {
   let animaisId = [];
@@ -28,9 +29,10 @@ const animalsOlderThan = (animal, age) => {
 
 const employeeByName = (employeeName) => {
   if (employeeName === undefined) return {};
-  return employees.find(element => {
-    element.firstName === employeeName || element.lastName === employeeName;
+  const employee = employees.find(element => {
+  element.firstName === employeeName || element.lastName === employeeName;
   });
+  return employee;
 };
 
 const createEmployee = (personalInfo, associatedWith) => {
@@ -78,14 +80,8 @@ const entryCalculator = (entrants) => {
   return (adulto + senior + child);
 };
 
-// const animalMap = (options) => {
-//   return animals.map(({ location }) => {
-//     location.reduce((accumulator, location) => {
-//       if (accumulator === undefined) accumulator[location] = [];
-//       return accumulator
-//     }, {});
-//   });
-// }
+const animalMap = (options) => {
+};
 
 const schedule = (dayName) => {
   const object = {};
