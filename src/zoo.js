@@ -70,8 +70,14 @@ function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
 
+// 12- Implemente a função increasePrices:
+// Ao passar uma porcentagem, incrementa todos os preços, arrendondados em
+// duas casas decimais
 function increasePrices(percentage) {
   // seu código aqui
+    return Object.keys(data.prices).forEach((price) => {
+      (data.prices[price] = Math.round(data.prices[price] * (1 + percentage/100)));
+   });
 }
 
 function employeeCoverage(idOrName) {
