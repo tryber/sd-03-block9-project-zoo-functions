@@ -94,18 +94,18 @@ function animalMap(options) {
 }
 
 const schedule = (dayName) => {
-}
+};
 
-function oldestFromFirstSpecies(id) {
+const oldestFromFirstSpecies = (id) => {
   const idEmployee = data.employees.find(employee => id === employee.id);
   const firstAnimal = idEmployee.responsibleFor[0];
   const objAnimal = data.animals.find(animal => firstAnimal === animal.id);
   const oldestAnimal = objAnimal.residents.reduce(
-    (acc, resident, i) => resident.age > acc.age ? resident : acc,
-    {age: 0}
+    (acc, resident, i) => (resident.age > acc.age ? resident : acc),
+    { age: 0 },
   );
   return Object.values(oldestAnimal);
-}
+};
 
 function increasePrices(percentage) {
   // seu código aqui
