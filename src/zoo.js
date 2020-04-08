@@ -25,13 +25,27 @@ Object.assign({}, personalInfo, associatedWith);
 
 const isManager = id => data.employees.some(e => e.managers.find(i => i === id));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  const addEmployee = {
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  };
+
+  data.employees.push(addEmployee);
 }
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount = (species) => {
+  const animals = {};
+  data.animals.forEach((e) => { animals[e.name] = e.residents.length; });
+  if (species != undefined) {
+    return animals[species];
+  }
+  return animals;
+};
+
 
 function entryCalculator(entrants) {
   // seu código aqui
