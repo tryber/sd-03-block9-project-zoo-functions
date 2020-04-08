@@ -78,27 +78,77 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 
 function animalCount(species) {
-  // seu código aqui
+  const animals = data.animals;
+
+  if(!species){
+    const todosAnimais = {};    
+    animals.forEach(animal => todosAnimais[animal.name] = animal.residents.length);
+    return todosAnimais;
+  }else{
+    const animal = animals.find(element => element.name === species);    
+    return animal.residents.length;
+  }
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  const prices = data.prices;
+  const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
+
+  if (entrants && Object.keys(entrants).length > 0) {
+    const { Adult, Child, Senior } = entrants;
+    return (Adult * adultPrice) + (Child * childPrice) + (Senior * seniorPrice);
+  }
+
+  return 0;
 }
 
 function animalMap(options) {
   // seu código aqui
 }
 
+const pickDay = (day) => {
+  const hours = data.hours;
+  if (day === 'Monday') {
+    return 'CLOSED';
+  }
+  return `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+};
+
 function schedule(dayName) {
-  // seu código aqui
+  const hours = data.hours;
+  const dayObject = {};
+  if (dayName) {
+    dayObject[dayName] = pickDay(dayName);
+    return dayObject;
+  }
+  Object.keys(hours).forEach((day) => {
+    dayObject[day] = pickDay(day);
+  });
+  return dayObject;
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const animals = data.animals;
+  const employees = data.employees;
+  const pessoa = employees.find(employee => employee.id === id);
+
+  const responsible = animals
+    .find(animal => animal.id === pessoa.responsibleFor[0])
+    .residents.sort((a, b) => b.age - a.age);
+
+  return [responsible[0].name, responsible[0].sex, responsible[0].age];
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  const prices = data.prices;
+
+  const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
+  
+  prices.Adult = Math.round(adultPrice * (1 + (percentage / 100)) * 100) / 100;
+  prices.Senior = Math.round(seniorPrice * (1 + (percentage / 100)) * 100) / 100;
+  prices.Child = Math.round(childPrice * (1 + (percentage / 100)) * 100) / 100;
+
+  return prices;
 }
 
 function employeeCoverage(idOrName) {
