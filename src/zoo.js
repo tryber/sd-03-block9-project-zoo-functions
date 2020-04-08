@@ -74,9 +74,6 @@ function isManager(id){
   return result;
 };
 
-//console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
-
-
 const addEmployee = (
   id,
   firstName,
@@ -84,8 +81,8 @@ const addEmployee = (
   managers = [],
   responsibleFor = [],
 ) => {
-  const x = { id, firstName, lastName, managers, responsibleFor };
-  return data.employees.push(x);
+  const el = { id, firstName, lastName, managers, responsibleFor };
+  return data.employees.push(el);
 }
 
 function animalCount(species) {
