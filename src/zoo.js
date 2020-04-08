@@ -107,7 +107,31 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aquia
+  const obj = {};
+  if (idOrName) {
+    const emplName = data.employees.find(list =>
+      list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
+    if (emplName) {
+      const listRespAnim = emplName.responsibleFor.reduce((acc, el) => {
+        acc.push(data.animals.find(list => list.id === el).name);
+        return acc;
+      }, []);
+      obj[`${emplName.firstName} ${emplName.lastName}`] = listRespAnim;
+      return obj;
+    }
+  }
+  if (!idOrName) {
+    data.employees.map((element) => {
+      const animaRespList = element.responsibleFor.reduce((account, list) => {
+        const anotherElem = data.animals.find(finder => finder.id === list).name;
+        account.push(anotherElem);
+        return account;
+      }, []);
+      obj[`${element.firstName} ${element.lastName}`] = animaRespList;
+      return obj;
+    });
+  }
+  return obj;
 }
 
 module.exports = {
