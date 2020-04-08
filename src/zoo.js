@@ -43,9 +43,14 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
   employees.push({ id, firstName, lastName, managers, responsibleFor });
 };
 
-function animalCount(species) {
-  // seu código aqui
-}
+const animalCount = species => {
+  if (species) {
+    return animals.find(({ name }) => name === species).residents.length;
+  }
+  let quant = {};
+  animals.map((all) => { quant[all.name] = all.residents.length });
+  return quant;
+};
 
 const entryCalculator = (entrants) => {
   if (entrants && Object.keys(entrants).length > 0) {
