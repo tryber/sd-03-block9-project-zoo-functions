@@ -9,67 +9,67 @@ function byLocationNoOption(element, locations) {
       locations.SW.push(element.name);
     } else if (element.location === 'SE') {
       locations.SE.push(element.name);
-    }
-  
+    }  
   }
-   function byLocationWithName(element, locations) {
+
+    function byLocationWithName(element, locations) {
     animalsNE = [];
     animalsSE = [];
     animalsNW = [];
     animalsSW = [];
     Object.entries(element.residents).forEach(element4 => {
-       if (element.location === 'NE') {
+        if (element.location === 'NE') {
         animalsNE.push(element4[1].name);
-     } else if (element.location === 'NW') {
+     }  else if (element.location === 'NW') {
         animalsNW.push(element4[1].name);
-     } else if (element.location === 'SW') {
-      animalsSW.push(element4[1].name); 
-     } else if (element.location === 'SE') {
+     }  else if (element.location === 'SW') {
+      animalsSW.push(element4[1].name);
+     }  else if (element.location === 'SE') {
       animalsSE.push(element4[1].name);
-     }    
+      }
     });
     isNotSorted(element,locations);
   };
-  
+
   function byLocationWithNameSorted(element, locations) {
     animalsNE = [];
     animalsSE = [];
     animalsNW = [];
     animalsSW = [];
     Object.entries(element.residents).forEach(element4 => {
-       if (element.location === 'NE') {
+        if (element.location === 'NE') {
         animalsNE.push(element4[1].name);
-     } else if (element.location === 'NW') {
+     }  else if (element.location === 'NW') {
         animalsNW.push(element4[1].name);
-     } else if (element.location === 'SW') {
-      animalsSW.push(element4[1].name); 
-     } else if (element.location === 'SE') {
+     }  else if (element.location === 'SW') {
+      animalsSW.push(element4[1].name);
+     }  else if (element.location === 'SE') {
       animalsSE.push(element4[1].name);
-     }    
+      }
     });
     isSorted(element,locations);
   };
-  
+
   function byLocationFilterSex(element, locations, sex) {
     animalsNE = [];
     animalsSE = [];
     animalsNW = [];
     animalsSW = [];
-     const sexFiltered = Object.entries(element.residents).filter(elementsex => elementsex[1].sex == sex);
-     Object.entries(sexFiltered).forEach(element4 => {
-       if (element.location === 'NE') {
+      const sexFiltered = Object.entries(element.residents).filter(elementsex => elementsex[1].sex == sex);
+      Object.entries(sexFiltered).forEach(element4 => {
+        if (element.location === 'NE') {
         animalsNE.push(element4[1][1].name);
-     } else if (element.location === 'NW') {
+     }  else if (element.location === 'NW') {
         animalsNW.push(element4[1][1].name);
-     } else if (element.location === 'SW') {
-      animalsSW.push(element4[1][1].name); 
-     } else if (element.location === 'SE') {
+     }  else if (element.location === 'SW') {
+      animalsSW.push(element4[1][1].name);
+     }  else if (element.location === 'SE') {
       animalsSE.push(element4[1][1].name);
-     }    
+      }
     });
     isNotSorted(element,locations);
   };
-  
+
   function byLocationFilterSexOnly(element, locations, sex) {
     animalsNE = [];
     animalsSE = [];
