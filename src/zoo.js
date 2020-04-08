@@ -26,7 +26,7 @@ Object.assign({}, personalInfo, associatedWith);
 const isManager = id => data.employees.some(e => e.managers.find(i => i === id));
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  return data.employees.push({ id, firstName, lastName, managers, responsibleFor })
+  return data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 const animalCount = (species) => {
@@ -47,7 +47,7 @@ function entryCalculator(entrants) {
   const { Adult: aQtd, Child: cQtd, Senior: sQtd } = entrants;
   const total = (aQtd * Adult) + (cQtd * Child) + (sQtd * Senior);
   return total;
-};
+}
 
 function animalMap(options) {
   // seu código aqui
@@ -66,7 +66,7 @@ function oldestFromFirstSpecies(id) {
 
 function increasePrices(percentage) {
   Object.keys(data.prices).forEach((value) => {
-    (data.prices[value] = Math.round(data.prices[value] * (1 + (percentage / 100)) * 100) / 100); // https://metring.com.br/arredondar-numero-em-javascript
+    (data.prices[value] = Math.round(data.prices[value] * (1 + (percentage / 100)) * 100) / 100);
   });
 }
 
