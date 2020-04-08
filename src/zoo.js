@@ -56,8 +56,17 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   return data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
+// 7- Implemente a função animalCount:
+// Sem parâmetros, returna animais e suas quantidades
+// Com o nome de uma espécie de animal, retorna somente a quantidade
 function animalCount(species) {
-  // seu código aqui
+  if (species) {
+    return animals.find(animal => animal.name === species).residents.length;
+  }
+  return Object.assign(animals.reduce((animal, qtde) => {
+    animal[qtde.name] = qtde.residents.length;
+    return animal;
+  }, {}));
 }
 
 // 8- Implemente a função entryCalculator:
