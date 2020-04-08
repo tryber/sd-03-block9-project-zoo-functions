@@ -108,8 +108,8 @@ const oldestFromFirstSpecies = (id) => {
 };
 
 const increasePrices = (percentage) => {
-  Object.entries(data.prices).forEach(entry => {
-    calculated = entry[1] / 100 * percentage + entry[1];
+  Object.entries(data.prices).forEach((entry) => {
+    const calculated = ((entry[1] / 100) * percentage) + entry[1];
     data.prices[entry[0]] = Math.round(calculated * 100) / 100;
   });
 };
@@ -117,8 +117,8 @@ const increasePrices = (percentage) => {
 const findEmployeeAnimals = (objEmployee) => {
   const nameEmployee = `${objEmployee.firstName} ${objEmployee.lastName}`;
   const responsibleForIds = objEmployee.responsibleFor;
-  const nameAnimals = responsibleForIds.map((animalId) =>
-    data.animals.find(animal => animal.id === animalId).name
+  const nameAnimals = responsibleForIds.map(animalId =>
+    data.animals.find(animal => animal.id === animalId).name,
   );
   return { [nameEmployee]: nameAnimals };
 };
@@ -128,13 +128,13 @@ const employeeCoverage = (idOrName) => {
     return data.employees.reduce(
       (acc, employee) => ({ ...acc, ...findEmployeeAnimals(employee) }),
       {},
-    )
+    );
   }
 
-  const objEmployee = 
-    data.employees.find(employee => idOrName === employee.id)
-    || data.employees.find(employee => idOrName === employee.firstName)
-    || data.employees.find(employee => idOrName === employee.lastName);
+  const objEmployee =
+  data.employees.find(employee => idOrName === employee.id)
+  || data.employees.find(employee => idOrName === employee.firstName)
+  || data.employees.find(employee => idOrName === employee.lastName);
   return findEmployeeAnimals(objEmployee);
 };
 
