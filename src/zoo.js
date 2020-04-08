@@ -23,7 +23,7 @@ const animalsByIds = (...ids) => {
 
 const animalsOlderThan = (animal, age) =>
   animals
-  .find(animals => animals.name === animal)
+  .find(animais => animais.name === animal)
   .residents.every(minima => minima.age >= age);
   // seu código aqui
 
