@@ -26,7 +26,7 @@ const animalsOlderThan = (animal, age) => {
 };
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  // seu código aqu
 }
 
 function createEmployee(personalInfo, associatedWith) {
