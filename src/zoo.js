@@ -38,7 +38,6 @@ const animalCount = (species) => {
   return animals;
 };
 
-
 function entryCalculator(entrants) {
   const { Adult, Senior, Child } = data.prices;
   if (entrants === undefined || Object.keys(entrants).length === 0) {
@@ -53,15 +52,22 @@ function animalMap(options) {
   // seu código aqui
 }
 
+const hour = (day) => {
+  if (day === 'Monday') {
+    return 'CLOSED';
+  }
+  return `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+};
+
 const schedule = (dayName) => {
   const newShedule = {};
   if (dayName) {
-    newShedule[dayName] = hours(dayName);
+    newShedule[dayName] = hour(dayName);
     return newShedule;
   }
-  Object.keys(data.hours).forEach((e) => { newShedule[e] = hours(e); });
+  Object.keys(data.hour).forEach((e) => { newShedule[e] = hour(e); });
   return newShedule;
-}
+};
 
 function oldestFromFirstSpecies(id) {
   return Object.values(data.animals
