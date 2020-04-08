@@ -86,15 +86,25 @@ const entryCalculator = (entrants) => {
 };
 
 function animalMap(options) {
-  // seu código aqui
+  // - Sem parâmetros, retorna animais categorizados por localização
+  // - Com opções especificadas, retorna nomes de animais
+  // - Com opções especificadas, retorna nomes de animais ordenados
+  // - Com opções especificadas, retorna somente nomes de animais macho/fêmea
+  // - Só retorna informações específicas de gênero se `includeNames` for setado
 }
 
-function schedule(dayName) {
-  // seu código aqui
+const schedule = (dayName) => {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const idEmployee = data.employees.find(employee => id === employee.id);
+  const firstAnimal = idEmployee.responsibleFor[0];
+  const objAnimal = data.animals.find(animal => firstAnimal === animal.id);
+  const oldestAnimal = objAnimal.residents.reduce(
+    (acc, resident, i) => resident.age > acc.age ? resident : acc,
+    {age: 0}
+  );
+  return Object.values(oldestAnimal);
 }
 
 function increasePrices(percentage) {
