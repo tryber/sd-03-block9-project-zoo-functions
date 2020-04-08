@@ -71,8 +71,23 @@ function animalMap(options) {
   // seu código aqui
 }
 
+
 function schedule(dayName) {
-  // bla
+  const aux = Object.entries(data.hours);
+  const test = aux.reduce((acc, [day, { open, close }]) => {
+    if (open === 0 && close === 0) {
+      acc[day] = 'CLOSED';
+    } else {
+      acc[day] = `Open from ${open}am until ${close - 12}pm`;
+    }
+    return acc;
+  }, {});
+  if (dayName) {
+    const unica = {};
+    unica[dayName] = test[dayName];
+    return unica;
+  }
+  return test;
 }
 
 const oldestFromFirstSpecies = (id) => {
