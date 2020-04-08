@@ -40,7 +40,7 @@ function isManager(id) {
 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
   data.employees.push({ id, firstName, lastName, managers, responsibleFor });
-}
+};
 
 function animalCount(species) {
   // seu código aqui
@@ -53,10 +53,9 @@ const entryCalculator = (entrants) => {
     const b = prices.Child * Child;
     const c = prices.Senior * Senior;
     return a + b + c;
-  }
+  };
   return 0;
-
-}
+};
 
 function animalMap(options) {
   // seu código aqui
