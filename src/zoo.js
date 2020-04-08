@@ -68,7 +68,7 @@ function isManager(id) {
     }
   });
   let boolean = false;
-  let result = arr.some(function (el) {
+  const result = arr.some(function (el) {
     if (el === id) {
       boolean = true;
     }
