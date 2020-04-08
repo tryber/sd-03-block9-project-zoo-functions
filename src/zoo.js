@@ -69,7 +69,7 @@ function entryCalculator(entrants) {
 
 function animalMap(options = {}) {
   // seu código aqui
-const getName = (animal, sorted, sex) => {
+  const getName = (animal, sorted, sex) => {
   const List = {};
   List[animal] = data.animals
     .find(element => element.name === animal).residents;
@@ -79,9 +79,8 @@ const getName = (animal, sorted, sex) => {
   return List;
 };
 
-const { includeNames, sex, sorted } = options;
-
-return data.animals.reduce((acc, { name, location }) => {
+  const { includeNames, sex, sorted } = options;
+  return data.animals.reduce((acc, { name, location }) => {
   if (!acc[location]) acc[location] = [];
   if (!includeNames) {
     acc[location].push(name);
