@@ -203,16 +203,10 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   const result = {};
 
-  const employeeResponsabilities = ((personObject) => {
-    console.log(personObject);
-    personObject.responsibleFor.forEach((number) => {
-      data.animals.forEach((specie) => {
-        if (specie.id === number) {
-          result[`${personObject.firstName} ${personObject.lastName}`].push(specie.name);
-        }
-      }, []);
-    });
-  });
+  const employeeResponsabilities = (employee) => {
+    result[`${employee.firstName} ${employee.lastName}`] = employee
+      .responsibleFor.map(element => data.animals.find(animal => animal.id === element).name);
+  };
 
   const employeeSelect = () => {
     const selected = data.employees.filter(employ => employ.id === idOrName
