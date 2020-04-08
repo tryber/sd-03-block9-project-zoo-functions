@@ -42,11 +42,18 @@ const isManager = (id) => {
   return !!manager;
 };
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+const addEmployee = (id, firstName, lastName, managers, responsibleFor) => {
+  const newEmployee = {
+    id: id,
+    firstName: firstName,
+    lastName: lastName,
+    managers: managers || [],
+    responsibleFor: responsibleFor || []
+  }
+  return data.employees.push(newEmployee);
+};
 
-function animalCount(species) {
+const animalCount = (species) => {
   // seu código aqui
 }
 
