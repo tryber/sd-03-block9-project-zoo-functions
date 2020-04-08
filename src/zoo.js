@@ -42,11 +42,9 @@ function employeeByName(employeeName) {
     return {};
   }
 
-  const employee = employees.find((element) => {
-    if (employeeName === element.firstName || employeeName === element.lastName) {
-      return element;
-    }
-  });
+  const employee = employees.find((element) => 
+    employeeName === element.firstName || employeeName === element.lastName)
+
   return employee;
 }
 
@@ -85,7 +83,7 @@ function animalCount(species) {
   }
 
   const animal = animals.find(element => element.name === species);
-  return animal.residents.length;  
+  return animal.residents.length;
 }
 
 function entryCalculator(entrants) {
