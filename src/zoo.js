@@ -74,22 +74,22 @@ function animalMap(options) {
 }
 
 const anyDay = (day) => {
-    if (day === 'Monday') {
-      return 'CLOSED';
-    }
-    return `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
+  if (day === 'Monday') {
+    return 'CLOSED';
+  }
+  return `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
 };
 
 const schedule = (dayName) => {
-    const obj = {};
-    if (dayName) {
-      obj[dayName] = anyDay(dayName);
-      return obj;
-    }
-    Object.keys(hours).forEach((day) => {
-      obj[day] = anyDay(day);
-    });
+  const obj = {};
+  if (dayName) {
+    obj[dayName] = anyDay(dayName);
     return obj;
+  }
+  Object.keys(hours).forEach((day) => {
+    obj[day] = anyDay(day);
+  });
+  return obj;
 };
 
 const oldestFromFirstSpecies = id =>
