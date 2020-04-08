@@ -73,6 +73,7 @@ function animalMap(options) {
 
 function schedule(dayName) {
   const objlist = {};
+  const objlist2 = {};
   if (dayName) {
     objlist[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
     if (dayName === 'Monday') {
@@ -81,8 +82,8 @@ function schedule(dayName) {
   }
   if (!dayName) {
     Object.keys(data.hours).map((list) => {
-      const objlist2 = {};
-      objlist2[list] = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`;
+      const arr = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`;
+      objlist2[list] = arr;
       if (list === 'Monday') objlist2[list] = 'CLOSED';
       return objlist2;
     });
@@ -124,11 +125,11 @@ function employeeCoverage(idOrName) {
   }
   if (!idOrName) {
     data.employees.map((element) => {
-      const listRespAnim2 = element.responsibleFor.reduce((acc, el) => {
-        acc.push(data.animals.find(finder => finder.id === el).name);
+      const animaRespList = element.responsibleFor.reduce((account, list) => {
+        account.push(data.animals.find(finder => finder.id === list).name);
         return acc;
       }, []);
-      obj[`${element.firstName} ${element.lastName}`] = listRespAnim2;
+      obj[`${element.firstName} ${element.lastName}`] = animaRespList;
       return obj;
     });
   }
