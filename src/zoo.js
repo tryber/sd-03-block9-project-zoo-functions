@@ -12,7 +12,7 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 
-const { animals: animals, employees: funcionarios, prices: precos, hours: horarios } = data; 
+const { animals, employees: funcionarios, prices: precos, hours: horarios } = data;
 function animalsByIds(...ids) {
   let animaisFiltradosPorId = [];
   ids.forEach((id) => {
@@ -128,7 +128,7 @@ function animalMap(options) {
 const dias = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
 const funcionamento = (day) => {
   let index = 0;
-  for (let i = 0; i < dias.length; i++) {
+  for (let i = 0; i < dias.length; i +=1) {
     if (dias[i] === day) {
       index = i;
     }
@@ -136,7 +136,7 @@ const funcionamento = (day) => {
   const valores = Object.values(horarios)[index];
   if (day === 'Monday') return 'CLOSED';
   const mensagem = `Open from ${valores.open}am until ${valores.close - 12}pm`;
-  return mensagem; 
+  return mensagem;
 }
 
 function schedule(dayName) {
@@ -148,7 +148,7 @@ function schedule(dayName) {
   for (let i = 0; i < dias.length; i += 1) {
     funcionamentoObject[dias[i]] = funcionamento(dias[i]);
   }
-  return funcionamentoObject;  
+  return funcionamentoObject;
 }
 const buscaIdDoAnimalGerenciado = (idFiltro) => {
   const idDoAnimalGerenciado = funcionarios.find((employees) => {
@@ -192,9 +192,7 @@ function increasePrices(percentage) {
   return undefined;
 }
 function employeeCoverage(idOrName) {
-  const funcionario = employeeByName(idOrName);
-  const array = funcionario.responsibleFor;
-  return ;
+  //nada
 }
 
 module.exports = {
