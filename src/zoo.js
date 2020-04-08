@@ -11,7 +11,6 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 let animalsFind = {};
-let animalsFind2 = {};
 function animalsByIds(...ids) {
   // seu código aqui
   if (ids.length === 0) {
@@ -190,13 +189,13 @@ const respId = element.responsibleFor;
 let animalsList = [];
 respId.forEach(element2 => {   
   animalsById = data.animals.filter(element3 => element3.id === element2);
-  animalsList.push(animalsById[0].name);  
+  animalsList.push(animalsById[0].name);
 });
 animalsFind[element.firstName + " "+ element.lastName] = animalsList;
 return animalsFind ;
 }
 
-function responsibleForId(byId){
+/* function responsibleForId(byId){
   const respId = byId.responsibleFor;
   let animalsList = [];
   respId.forEach(element2 => {   
@@ -205,12 +204,12 @@ function responsibleForId(byId){
   });
   animalsFind2[byId.firstName + " "+ byId.lastName] = animalsList;
   return animalsFind2;
-}
+} */
 
 function employeeCoverage(idOrName) {
   // seu código aqui
   animalsFind = {};
-  animalsFind2 = {};
+ /*  animalsFind2 = {}; */
   if (!idOrName) {
   let result =  data.employees.map(element => responsibleFor(element));
   console.log(result[0]);
@@ -218,7 +217,7 @@ function employeeCoverage(idOrName) {
   }else if (idOrName) { 
  const employeeByName = data.employees.find(element4 => element4.id == idOrName 
     || element4.firstName == idOrName || element4.lastName == idOrName);
-    let result = responsibleForId(employeeByName);
+    let result = responsibleFor(employeeByName);
   return result;
  }
 }
