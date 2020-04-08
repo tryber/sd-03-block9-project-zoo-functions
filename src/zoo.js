@@ -184,16 +184,16 @@ function increasePrices(percentage) {
   data.prices = { Adult: adultPrices, Child: childPrices, Senior: seniorPrices };
 }
 
-  const responsibleFor = (element) => {
-  const respId = element.responsibleFor;
-  const animalsList = [];
-  respId.forEach((element2) => {
-  const animalsById = data.animals.filter(element3 => element3.id === element2);
-  animalsList.push(animalsById[0].name);
-});
-  animalsFind[`${element.firstName} ${element.lastName}`] = animalsList;
-  return animalsFind;
-};
+const responsibleFor = (element) => {
+    const respId = element.responsibleFor;
+    const animalsList = [];
+    respId.forEach((element2) => {
+    const animalsById = data.animals.filter(element3 => element3.id === element2);
+    animalsList.push(animalsById[0].name);
+  });
+    animalsFind[`${element.firstName} ${element.lastName}`] = animalsList;
+    return animalsFind;
+  };
 
 /* function responsibleForId(byId){
   const respId = byId.responsibleFor;
@@ -210,9 +210,9 @@ function employeeCoverage(idOrName) {
   // seu código aqui
   animalsFind = {};
   if (!idOrName) {
-    const result =  data.employees.map(element => responsibleFor(element));
+    const result = data.employees.map(element => responsibleFor(element));
     console.log(result[0]);
-  return result[0];
+    return result[0];
   } else if (idOrName) {
     const employeeByName2 = data.employees.find(element4 => element4.id === idOrName
     || element4.firstName === idOrName || element4.lastName === idOrName);
@@ -221,7 +221,7 @@ function employeeCoverage(idOrName) {
   }
   return 0;
 }
-//employeeCoverage('Spry');
+// employeeCoverage('Spry');
 module.exports = {
   entryCalculator,
   schedule,
