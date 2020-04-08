@@ -20,32 +20,32 @@ const animalsByIds = (...ids) => {
 const animalsOlderThan = (animal, idade) => {
   const verifica = animals.filter(({ name }) => animal.includes(name));
   return verifica[0].residents[0].age > idade;
-}
+};
 
 const employeeByName = (employeeName) => {
   if (typeof employeeName === 'undefined') return {};
   return employees.find((elemento =>
     elemento.firstName === employeeName || elemento.lastName === employeeName));
-}
+};
 
 const createEmployee = (personalInfo, associatedWith) => {
   const alterado = Object.assign(personalInfo, associatedWith);
   return alterado;
-}
+};
 
 const isManager = (id) => {
   for (let i = 0; i < employees.length; i = i + 1) {
     if (employees[i].managers.includes(id)) {
       return true;
-    };
+    }
   }
   return false;
-}
+};
 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
-  let objeto = { id, firstName, lastName, managers, responsibleFor };
+  const objeto = { id, firstName, lastName, managers, responsibleFor };
   employees.push(objeto);
-}
+};
 
 const animalCount = (species) => {
   if (species === undefined) {
@@ -55,7 +55,7 @@ const animalCount = (species) => {
     }, {});
     console.log(novaLista);
     return novaLista;
-  };
+  }
   const animal = animals.find(({ name }) => name === species);
   return animal.residents.length;
 };
@@ -65,36 +65,34 @@ const entryCalculator = (entrants) => {
     return 0;
   } else if (Object.keys(entrants).length === 0) {
     return 0;
-  };
+  }
   const adulto = prices.Adult * entrants.Adult;
   const crianca = prices.Child * entrants.Child;
   const idoso = prices.Senior * entrants.Senior;
-  let soma = adulto + crianca + idoso;
+  const soma = adulto + crianca + idoso;
   return soma;
 };
 
 function animalMap(options) {
   // seu código aqui
-};
+}
 
 function schedule(dayName) {
   const horarios = {};
+  function getTime(key) {
+    if (hours[key].open === 0 && hours[key].close === 0) {
+      return 'CLOSED';
+    } else {
+      return `Open from ${hours[key].open}am until ${hours[key].close - 12}pm`;
+    };
+  }
   if (dayName === undefined) {
     Object.keys(hours).forEach((key) => {
-      horarios[key] = getTime(key)
-    });
-  } else {
-    horarios[dayName] = getTime(dayName)
-  };
-  return horarios;
-};
-function getTime(key) {
-  if (hours[key].open === 0 && hours[key].close === 0) {
-    return 'CLOSED';
-  } else {
-    return `Open from ${hours[key].open}am until ${hours[key].close - 12}pm`;
-  };
-};
+      horarios[key] = getTime(key);
+    })
+  }
+  return horarios
+}
 
 function oldestFromFirstSpecies(id) {
   const func = employees.find((elemento) => elemento.id === id);
@@ -112,7 +110,7 @@ function increasePrices(percentage) {
     acc[atual] = Math.round((acc[atual] * (100 + percentage)).toFixed(2)) / 100;
     return acc;
   }, prices);
-};
+}
 
 function employeeCoverage(idOrName) {
   // seu código aqui
