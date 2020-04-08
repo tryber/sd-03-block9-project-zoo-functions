@@ -21,12 +21,11 @@ const animalsByIds = (...ids) => {
   return vazio;
 };
 
-const animalsOlderThan = (animal, age) => {
-  return animals
+const animalsOlderThan = (animal, age) =>
+  animals
   .find(animals => animals.name === animal)
-  .residents.every(idade => idade.age >= age);
+  .residents.every(minima => minima.age >= age);
   // seu código aqui
-};
 
 function employeeByName(employeeName) {
   // seu código aqui
