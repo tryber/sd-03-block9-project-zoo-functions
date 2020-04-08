@@ -73,14 +73,14 @@ function animalMap(options) {
   // seu código aqui
 }
 
-  const anyDay = (day) => {
+const anyDay = (day) => {
     if (day === 'Monday') {
       return 'CLOSED';
     }
     return `Open from ${hours[day].open}am until ${hours[day].close - 12}pm`;
-  };
-  
-  const schedule = (dayName) => {
+};
+
+const schedule = (dayName) => {
     const obj = {};
     if (dayName) {
       obj[dayName] = anyDay(dayName);
