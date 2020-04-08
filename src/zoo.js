@@ -102,10 +102,18 @@ function schedule(dayName) {
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
+  return Object.values(data.animals
+    .find(a => a.id === data.employees
+    .find(animal => animal.id === id).responsibleFor[0]).residents
+    .sort((a, b) => b.age - a.age)[0]);
 }
 
 function increasePrices(percentage) {
   // seu código aqui
+  return Object.keys(data.prices).forEach((a) => {
+    (data.prices[a] =
+      Math.round(data.prices[a] * ((percentage / 100) + 1) * 100) / 100);
+  });
 }
 
 function employeeCoverage(idOrName) {
