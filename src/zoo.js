@@ -60,7 +60,7 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(day) {
+function schedule(d) {
   const aux = Object.entries(data.hours);
   const test = aux.reduce((acc, [day, { open, close }]) => {
     if (open === 0 && close === 0) {
@@ -70,10 +70,10 @@ function schedule(day) {
     }
     return acc;
   }, {});
-  if (day) {
-    const ar = {};
-    ar[day] = test[day];
-    return ar;
+  if (d) {
+    const result = {};
+    result[d] = test[d];
+    return result;
   }
   return test;
 }
