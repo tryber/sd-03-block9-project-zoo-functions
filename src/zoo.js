@@ -141,16 +141,77 @@ function byLocationNoOption(element, locations) {
     animalsSE.push(element4[1].name);
    }    
   });
-  if (element.location === 'NE') {    
-  locations.NE.push({[element.name] : animalsNE});
-  }else if (element.location === 'NW') {
-    locations.NW.push({[element.name] : animalsNW});
- } else if (element.location === 'SW') {
-  locations.SW.push({[element.name] :  animalsSW});
- } else if (element.location === 'SE') {
-  locations.SE.push({[element.name] : animalsSE});
- } 
+  isNotSorted(element,locations);
 };
+
+function byLocationWithNameSorted(element, locations) {
+  animalsNE = [];
+  animalsSE = [];
+  animalsNW = [];
+  animalsSW = [];
+  Object.entries(element.residents).forEach(element4 => {
+     if (element.location === 'NE') {
+      animalsNE.push(element4[1].name);
+   } else if (element.location === 'NW') {
+      animalsNW.push(element4[1].name);
+   } else if (element.location === 'SW') {
+    animalsSW.push(element4[1].name); 
+   } else if (element.location === 'SE') {
+    animalsSE.push(element4[1].name);
+   }    
+  });
+  isSorted(element,locations);
+};
+
+function byLocationFilterSex(element, locations, sex) {
+  animalsNE = [];
+  animalsSE = [];
+  animalsNW = [];
+  animalsSW = [];
+   const sexFiltered = Object.entries(element.residents).filter(elementsex => elementsex[1].sex == sex);
+   Object.entries(sexFiltered).forEach(element4 => {
+     if (element.location === 'NE') {
+      animalsNE.push(element4[1][1].name);
+   } else if (element.location === 'NW') {
+      animalsNW.push(element4[1][1].name);
+   } else if (element.location === 'SW') {
+    animalsSW.push(element4[1][1].name); 
+   } else if (element.location === 'SE') {
+    animalsSE.push(element4[1][1].name);
+   }    
+  });
+  isNotSorted(element,locations);
+};
+
+function isNotSorted(element, locations) {
+  if (element.location === 'NE') {
+    locations.NE.push({ [element.name]: animalsNE });
+  }
+  else if (element.location === 'NW') {
+    locations.NW.push({ [element.name]: animalsNW });
+  }
+  else if (element.location === 'SW') {
+    locations.SW.push({ [element.name]: animalsSW });
+  }
+  else if (element.location === 'SE') {
+    locations.SE.push({ [element.name]: animalsSE });
+  }
+}
+
+function isSorted(element, locations) {
+  if (element.location === 'NE') {
+    locations.NE.push({ [element.name]: animalsNE.sort() });
+  }
+  else if (element.location === 'NW') {
+    locations.NW.push({ [element.name]: animalsNW.sort() });
+  }
+  else if (element.location === 'SW') {
+    locations.SW.push({ [element.name]: animalsSW.sort() });
+  }
+  else if (element.location === 'SE') {
+    locations.SE.push({ [element.name]: animalsSE.sort() });
+  }
+}
 
 function animalMap(options) {
   // seu código aqui
@@ -160,19 +221,26 @@ function animalMap(options) {
     SE: [],
     SW: [],
   };
-  if (!options) {
+  if (!options || options === undefined || options === null) {
     data.animals.map(element => byLocationNoOption(element, locations));
-    return locations;
-  } else if (options.includeNames === true) {
-    data.animals.map(element => byLocationWithName(element, locations));
-    console.log(locations);
-    return locations;
-  } else if (options.sex) {
+    
+  } else if (options && options.includeNames === true) {    
+    if (options.sorted === true) {
+      data.animals.map(element => byLocationWithNameSorted(element, locations));
       
+    } else if (options.sex) { 
+      data.animals.map(element => byLocationFilterSex(element, locations,options.sex));
+      console.log(locations);
+    }
+    else {
+      data.animals.map(element => byLocationWithName(element, locations));      
+    }     
+  }  else if (options.sex) {
+    
   }
+  return locations;
 }
-
-animalMap({ includeNames: true });
+animalMap({ sex: 'female' });
 function from24to12HoursOpen(openHour, element) {
   openHour = element.open < 12 ? `${element.open}am` : `${element.open - 12}pm`;
   return openHour;
