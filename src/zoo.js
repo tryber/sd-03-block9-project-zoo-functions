@@ -117,6 +117,7 @@ const increasePrices = percentage =>
   );
 
 // funções auxiliares de employeeCoverage
+// identifica o empregado a partir da id ou nome
 const identifyEmployee = idOrName =>
   data.employees.find(
     employee =>
@@ -125,12 +126,15 @@ const identifyEmployee = idOrName =>
       employee.lastName === idOrName,
   );
 
+// identifica o tipo de animal por id do animal
 const identifyAnimals = id =>
   animalsByIds(...id).reduce(
     (accumulator, animal) => accumulator.concat(animal.name),
     [],
   );
 
+/** retorna objeto composto pelo empregado identificado e qual tipo de animal
+ *  ele é responsável */
 const coveredAnimals = idOrName => ({
   [`${identifyEmployee(idOrName).firstName} ${
     identifyEmployee(idOrName).lastName
