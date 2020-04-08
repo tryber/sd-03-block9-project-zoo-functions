@@ -10,6 +10,8 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const [...animals] = data.animals;
+const [...employees] = data.employees;
 
 function animalsByIds(...ids) {
   if (ids.length === 0) {
@@ -21,7 +23,7 @@ function animalsByIds(...ids) {
     resposta.push(animalsID);
   }
   return resposta;
-}
+};
 
 var boolean = true;
 function animalsOlderThan(animal, age) {
@@ -31,7 +33,7 @@ function animalsOlderThan(animal, age) {
         if(el2.age > age){
           boolean = true;
         }else{
-          boolean = false;     
+          boolean = false;
         }
       })
     }
@@ -47,18 +49,18 @@ function employeeByName(employeeName) {
     }
   })
   return result;
-}	
+};
 
 function createEmployee(personalInfo, associatedWith) {
   return Object.assign(personalInfo, associatedWith);
-}	
+};
 
 function isManager(id){
   let [...managers] = employees.map(el => el.managers);
   let arr = [];
   managers.forEach(function(el){
     if(el.length > 0){
-      el.forEach(function(el2){    
+      el.forEach(function(el2){
         arr.push(el2);
       });
     };
@@ -90,7 +92,7 @@ function animalCount(species) {
   const obj = {};
   data.animals.forEach((e) => { obj[e.name] = e.residents.length; });
   return obj;
-}	
+};
 
 function entryCalculator(entrants) {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
@@ -102,7 +104,7 @@ function entryCalculator(entrants) {
     [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) +
     [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1)
   );
-}	
+};
 
 function animalMap(options) {
   // seu código aqui
@@ -124,14 +126,14 @@ function schedule(dayName) {
     return unica;
   }
   return result;
-}	
+};
 
 const oldestFromFirstSpecies = (id) => {
   const emp = data.employees.find(n => n.id === id).responsibleFor[0];
   return Object.values(
     data.animals.find(m => m.id === emp).residents.sort((a, b) => b.age - a.age)[0],
     );
-  };
+};
 
   function increasePrices(percentage) {
     const cliente = [data.prices.Adult, data.prices.Senior, data.prices.Child];
@@ -140,11 +142,11 @@ const oldestFromFirstSpecies = (id) => {
       data.prices[valores[i]] = (Math.round((e * (1 + (percentage / 100))) * 100)) / 100;
     });
     return data.prices;
-  }	
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
-}
+};
 
 module.exports = {
   entryCalculator,
