@@ -164,7 +164,7 @@ function employeeCoverage(idOrName) {
   return obj;
 }
 
- console.log(employeeCoverage('Burl'));
+// console.log(employeeCoverage('Burl'));
 
 module.exports = {
   entryCalculator,
