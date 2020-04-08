@@ -19,7 +19,7 @@ function animalsByIds(...ids) {
   }
   const result = [];
   ids.forEach(idt => result.push(data.animals.find(element => element.id === idt)));
-    // ids.forEach(idt => result.push(data.animals.find(({ element }) => element === idt)));
+  // ids.forEach(idt => result.push(data.animals.find(({ element }) => element === idt)));
   return result;
 }
 function animalsOlderThan(animal, age) {
@@ -43,7 +43,7 @@ function employeeByName(employeeName) {
     return {};
   }
   employeeSelected = data.employees.filter(
-  element => element.firstName === employeeName || element.lastName === employeeName);
+    element => element.firstName === employeeName || element.lastName === employeeName);
   return employeeSelected[0];
 }
 
@@ -113,11 +113,66 @@ function entryCalculator(entrants) {
     (data.prices.Child * entrants.Child);
   return total;
 }
+function byLocationNoOption(element, locations) {
+  if (element.location === 'NE') {
+    locations.NE.push(element.name);
+  } else if (element.location === 'NW') {
+    locations.NW.push(element.name);
+  } else if (element.location === 'SW') {
+    locations.SW.push(element.name);
+  } else if (element.location === 'SE') {
+    locations.SE.push(element.name);
+  }
+
+}
+ function byLocationWithName(element, locations) {
+  animalsNE = [];
+  animalsSE = [];
+  animalsNW = [];
+  animalsSW = [];
+  Object.entries(element.residents).forEach(element4 => {
+     if (element.location === 'NE') {
+      animalsNE.push(element4[1].name);
+   } else if (element.location === 'NW') {
+      animalsNW.push(element4[1].name);
+   } else if (element.location === 'SW') {
+    animalsSW.push(element4[1].name); 
+   } else if (element.location === 'SE') {
+    animalsSE.push(element4[1].name);
+   }    
+  });
+  if (element.location === 'NE') {    
+  locations.NE.push({[element.name] : animalsNE});
+  }else if (element.location === 'NW') {
+    locations.NW.push({[element.name] : animalsNW});
+ } else if (element.location === 'SW') {
+  locations.SW.push({[element.name] :  animalsSW});
+ } else if (element.location === 'SE') {
+  locations.SE.push({[element.name] : animalsSE});
+ } 
+};
 
 function animalMap(options) {
   // seu código aqui
+  const locations = {
+    NE: [],
+    NW: [],
+    SE: [],
+    SW: [],
+  };
+  if (!options) {
+    data.animals.map(element => byLocationNoOption(element, locations));
+    return locations;
+  } else if (options.includeNames === true) {
+    data.animals.map(element => byLocationWithName(element, locations));
+    console.log(locations);
+    return locations;
+  } else if (options.sex) {
+      
+  }
 }
 
+animalMap({ includeNames: true });
 function from24to12HoursOpen(openHour, element) {
   openHour = element.open < 12 ? `${element.open}am` : `${element.open - 12}pm`;
   return openHour;
@@ -215,7 +270,7 @@ function employeeCoverage(idOrName) {
     return result[0];
   } else if (idOrName) {
     const employeeByName2 = data.employees.find(element4 => element4.id === idOrName
-    || element4.firstName === idOrName || element4.lastName === idOrName);
+      || element4.firstName === idOrName || element4.lastName === idOrName);
     const result = responsibleFor(employeeByName2);
     return result;
   }
