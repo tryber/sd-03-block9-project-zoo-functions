@@ -24,7 +24,7 @@ function employeeByName(employeeName) {
     return {};
   }
   const employee = data.employees.find(
-    nome => nome.firstName === employeeName || nome.lastName === employeeName
+    nome => nome.firstName === employeeName || nome.lastName === employeeName,
   );
   return employee;
 }
@@ -40,7 +40,7 @@ const addEmployee = (
   firstName,
   lastName,
   managers = [],
-  responsibleFor = []
+  responsibleFor = [],
 ) => {
   const x = { id, firstName, lastName, managers, responsibleFor };
   return data.employees.push(x);
@@ -48,10 +48,10 @@ const addEmployee = (
 
 function animalCount(species) {
   if (species !== undefined) {
-    return data.animals.find((ani) => ani.name === species).residents.length;
+    return data.animals.find(ani => ani.name === species).residents.length;
   }
   const obj = {};
-  data.animals.forEach((impar) => {
+  data.animals.forEach(impar => {
     obj[impar.name] = impar.residents.length;
   });
   return obj;
@@ -61,11 +61,11 @@ function entryCalculator(entrants) {
   if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
-    return (
-      [entrants, data.prices].reduce((soma, item) => item.Adult * soma, 1) +
-      [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) +
-      [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1)
-    );
+  return (
+    [entrants, data.prices].reduce((soma, item) => item.Adult * soma, 1) +
+    [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) +
+    [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1)
+  );
 }
 
 function animalMap(options) {
@@ -73,8 +73,12 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
+  if (dayName === undefined){
+    data.hours.forEach(Object.keys)
+  }
 }
+console.log(data.hours.forEach(element => element.Object.keys));
+
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
