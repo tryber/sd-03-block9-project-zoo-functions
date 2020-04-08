@@ -51,7 +51,7 @@ function animalCount(species) {
     return data.animals.find(ani => ani.name === species).residents.length;
   }
   const obj = {};
-  data.animals.forEach(impar => {
+  data.animals.forEach((impar) => {
     obj[impar.name] = impar.residents.length;
   });
   return obj;
@@ -73,10 +73,7 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  if (dayName === undefined){
-    data.hours.forEach(Object.keys)
-  }
-  console.log(data.hours.forEach(element => element.Object.keys));
+
 }
 
 
