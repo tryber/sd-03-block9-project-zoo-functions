@@ -27,9 +27,13 @@ const animalsOlderThan = (animal, age) =>
   .residents.every(minima => minima.age >= age);
   // seu código aqui
 
-function employeeByName(employeeName) {
-  // seu código aqui
-}
+const employeeByName = (employeeName) => {
+  if (employeeName === undefined) {
+    return {};
+  }
+  return employees.find(({ firstName, lastName }) =>
+    firstName === employeeName || lastName === employeeName);
+};
 
 function createEmployee(personalInfo, associatedWith) {
   return { ...personalInfo, ...associatedWith };
@@ -78,9 +82,12 @@ const oldestFromFirstSpecies = id =>
       .find(allow => allow.id === id).responsibleFor[0]).residents
     .sort((comp, atual) => atual.age - comp.age)[0]);
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const increasePrices = percentage => {
+  prices.Adult = Math.ceil(prices.Adult * (100 + percentage)) / 100;
+  prices.Child = Math.ceil(prices.Child * (100 + percentage)) / 100;
+  prices.Senior = Math.ceil(prices.Senior * (100 + percentage)) / 100;
+  return prices;
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
