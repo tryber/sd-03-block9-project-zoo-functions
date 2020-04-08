@@ -90,10 +90,10 @@ function oldestFromFirstSpecies(id) {
   const finder = dado => data.employees.find(animal => animal.id === dado);
   const spec = finder(id).responsibleFor[0];
   const findid = dado => data.animals.find(animal => animal.id === dado);
-  const arr = findid(spec).residents.sort((a,b) => a.age - b.age);
+  const arr = findid(spec).residents.sort((a, b) => a.age - b.age);
   return Object.values(arr[arr.length - 1]);
 }
-console.log(data.employees[0].responsibleFor[0])
+
 function increasePrices(percentage) {
   // seu código aqui
 }
