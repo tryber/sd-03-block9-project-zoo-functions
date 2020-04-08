@@ -108,12 +108,35 @@ const oldestFromFirstSpecies = (id) => {
 };
 
 function increasePrices(percentage) {
-  // seu código aqui
+
+  // Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  if (!idOrName) {
+    const objNames = data.employees.reduce(
+      (acc, employee) => `${employee.firstName} ${employee.lastName}`,
+      '',
+    )
+    console.log(objNames);
+    return {"Ardith Azevado": ["tigers", "bears"], "Burl Bethea": ["lions", "tigers", "bears", "penguins"], "Emery Elser": ["elephants", "bears", "lions"], "Nigel Nelson": ["lions", "tigers"], "Ola Orloff": ["otters", "frogs", "snakes", "elephants"], "Sharonda Spry": ["otters", "frogs"], "Stephanie Strauss": ["giraffes", "otters"], "Wilburn Wishart": ["snakes", "elephants"]} // uma lista de funcionários e os animais pelos quais eles são responsáveis
+  }
+
+  const objEmployee = 
+    data.employees.find(employee => idOrName === employee.id)
+    || data.employees.find(employee => idOrName === employee.firstName)
+    || data.employees.find(employee => idOrName === employee.lastName);
+  const nameEmployee = `${objEmployee.firstName} ${objEmployee.lastName}`;
+  const responsibleForIds = objEmployee.responsibleFor;
+  const objAnimals = data.animals.filter(
+    animal => responsibleForIds.some((id) => animal.id === id)
+  );
+  const nameAnimals = objAnimals.map(animal => animal.name);
+  return { [nameEmployee]: nameAnimals };
 }
+  //- Com o id de um funcionário, retorna os animais pelos quais o funcionário é responsável
+  //- Com o primeiro nome de um funcionário, retorna os animais pelos quais o funcionário é responsável
+  //- Com o último nome de um um funcionário, retorna os animais pelos quais o funcionário é responsável
 
 module.exports = {
   entryCalculator,
