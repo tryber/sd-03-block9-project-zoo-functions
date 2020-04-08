@@ -126,8 +126,9 @@ function employeeCoverage(idOrName) {
   if (!idOrName) {
     data.employees.map((element) => {
       const animaRespList = element.responsibleFor.reduce((account, list) => {
-        account.push(data.animals.find(finder => finder.id === list).name);
-        return acc;
+        const anotherElem = data.animals.find(finder => finder.id === list).name;
+        account.push(anotherElem);
+        return account;
       }, []);
       obj[`${element.firstName} ${element.lastName}`] = animaRespList;
       return obj;
