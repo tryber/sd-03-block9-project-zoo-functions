@@ -48,7 +48,9 @@ const animalCount = (species) => {
     return animals.find(({ name }) => name === species).residents.length;
   }
   const quant = {};
-  animals.map((all) => { quant[all.name] = all.residents.length })
+  animals.map((all) => {
+    quant[all.name] = all.residents.length
+  });
   return quant;
 };
 
