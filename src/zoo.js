@@ -8,10 +8,8 @@ eslint no-unused-vars: [
   }
 ]
 */
-
 const data = require('./data');
 const { employees, animals, prices, hours } = data;
-
 const animalsByIds = (...ids) => {
   let animaisId = [];
   ids.forEach((id) => {
@@ -21,21 +19,23 @@ const animalsByIds = (...ids) => {
     })];
   });
   return animaisId;
-}
+};
 
 const animalsOlderThan = (animal, age) => {
   const verifica = animals.filter(({ name }) => animal.includes(name));
   return verifica[0].residents[0].age > age;
-}
+};
 
 const employeeByName = (employeeName) => {
   if (employeeName === undefined) return {};
-  return employees.find(element => element.firstName === employeeName || element.lastName === employeeName);
-}
+  return employees.find(element => {
+    element.firstName === employeeName || element.lastName === employeeName;
+  });
+};
 
 const createEmployee = (personalInfo, associatedWith) => {
   return { ...personalInfo, ...associatedWith };
-}
+};
 
 const isManager = (id) => {
   const gerente = employees[0].managers[0];
@@ -43,7 +43,7 @@ const isManager = (id) => {
     return true;
   }
   return false;
-}
+};
 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
   const newEmployee = ({
@@ -51,11 +51,11 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
     firstName,
     lastName,
     managers,
-    responsibleFor
+    responsibleFor,
   });
   employees.push(newEmployee);
   return newEmployee;
-}
+};
 
 const animalCount = (species) => {
   if (species) {
@@ -65,10 +65,10 @@ const animalCount = (species) => {
     nome[quantidade.name] = quantidade.residents.length;
     return nome;
   }, {}));
-}
+};
 
 const entryCalculator = (entrants) => {
-  if (entrants === undefined || Object.keys(entrants).length == 0) {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
     return 0;
   }
   const valores = Object.values(entrants);
@@ -76,16 +76,16 @@ const entryCalculator = (entrants) => {
   const child = prices.Child * valores[1];
   const senior = prices.Senior * valores[2];
   return (adulto + senior + child);
-}
+};
 
-const animalMap = (options) => {
-  return animals.map(({ location }) => {
-    location.reduce((accumulator, location) => {
-      if (accumulator === undefined) accumulator[location] = [];
-      return accumulator
-    }, {});
-  });
-}
+// const animalMap = (options) => {
+//   return animals.map(({ location }) => {
+//     location.reduce((accumulator, location) => {
+//       if (accumulator === undefined) accumulator[location] = [];
+//       return accumulator
+//     }, {});
+//   });
+// }
 
 const schedule = (dayName) => {
   const object = {};
@@ -98,14 +98,14 @@ const schedule = (dayName) => {
       }
       return object;
     });
-  };
+  }
 
   if (dayName) {
     object[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`;
 
     if (dayName === 'Monday') {
-      object[dayName] = 'CLOSED'
-    };
+      object[dayName] = 'CLOSED';
+    }
   }
   return object;
 };
@@ -118,9 +118,9 @@ const oldestFromFirstSpecies = (id) => {
     if (a.age < b.age) return 1;
     if (a.age > b.age) return -1;
     return 0;
-  })
+  });
   return Object.values(animalOrder[0]);
-}
+};
 
 const increasePrices = (percentage) => {
   Object.keys(prices).reduce((objeto, pessoa) => {
