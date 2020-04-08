@@ -26,7 +26,7 @@ const animalsOlderThan = (animal, age) => {
 };
 
 const employeeByName = (employeeName) => {
-  if (employeeName === undefined) return [];
+  if (employeeName === undefined) return {};
   const employeeSearch =
     data.employees.find(item => item.firstName === employeeName || item.lastName === employeeName);
   return employeeSearch;
