@@ -11,12 +11,11 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const animalsByIds = (...ids) => animalsArr.filter(element => 
+const animalsByIds = (...ids) => animalsArr.filter(element =>
   ids.find(id => id === element.id));
 
 const animalsOlderThan = (animal, age) =>
-  data.animals.find(el => el.name === animal).residents.every(el => el.age > age);
-}
+  data.animals.find(elemento => elemento.name === animal).residents.every(elemento => elemento.age > age);
 
 function employeeByName(employeeName) {
   if (employeeName === undefined) return {};
@@ -72,7 +71,7 @@ function schedule(dayName) {
   return scheduleV;
 }
 
-cons oldestFromFirstSpecies = (id) => {
+const oldestFromFirstSpecies = (id) => {
   const funcionario = employees.find(fun => fun.id === id).responsibleFor[0];
   const animal = animals.find(codigo => codigo.id === funcionario).residents;
   const animaisOrdem = animal.sort((a,b) => {
@@ -88,10 +87,10 @@ const increasePrices = percentage => {
     objeto[pessoa] = Math.round((objeto[pessoa] * (100 + percentage)).toFixed(2)) / 100;
     return objeto;
   }, data.prices);
-};
+};cd
 
-function employeeCoverage(idOrName) { // bem complexo
-  // seu código aqui
+function employeeCoverage = (idOrName) => { 
+  const empregado = employees.map
 }
 
 module.exports = {
