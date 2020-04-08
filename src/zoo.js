@@ -67,13 +67,14 @@ function isManager(id) {
       });
     }
   });
-  let result = false;
+  let boolean = false
   result = arr.some(function (el) {
     if (el === id) {
-      return true;
+      boolean = true;
     }
+    return boolean;
   });
-  return result;
+  return boolean;
 }
 
 const addEmployee = (
