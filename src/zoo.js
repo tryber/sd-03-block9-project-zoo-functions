@@ -52,7 +52,7 @@ function addEmployee(id, firstName, lastName, managers, responsibleFor) {
 function animalCount(species) {
   // seu código aqui
   if (!species) {
-    let mapper = data.animals.map(ani => [ani.name, ani.residents.length]);
+    const mapper = data.animals.map(ani => [ani.name, ani.residents.length]);
     return Object.fromEntries(mapper);
   }
   const finder = dado => data.animals.find(ani => ani.name === dado);
@@ -61,6 +61,9 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
+  if (!entrants || Object.keys(entrants).length === 0) return 0;
+const {Adult, Child, Senior} = {...entrants};
+return data.prices.Adult*Adult + data.prices.Child*Child + data.prices.Senior*Senior;
 }
 
 function animalMap(options) {
