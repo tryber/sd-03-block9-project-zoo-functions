@@ -36,20 +36,27 @@ function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
   const { managers, responsibleFor } = associatedWith;
   const { firstName, id, lastName } = personalInfo;
-  data.employees.push({ firstName, id, lastName, managers, responsibleFor });
-  return data.employees[data.employees.length - 1];
+  return { firstName, id, lastName, managers, responsibleFor };
 }
 
 function isManager(id) {
   // seu código aqui
+  return data.employees.filter(coisa => coisa.managers === []);
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
+  data.employees.push({ firstName, id, lastName, managers, responsibleFor });
 }
 
 function animalCount(species) {
   // seu código aqui
+  if (!species) {
+    let mapper = data.animals.map(ani => [ani.name, ani.residents.length]);
+    return Object.fromEntries(mapper);
+  }
+  const finder = dado => data.animals.find(ani => ani.name === dado);
+  return finder(species).residents.length;
 }
 
 function entryCalculator(entrants) {
