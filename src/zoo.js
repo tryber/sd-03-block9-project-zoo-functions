@@ -10,44 +10,46 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+
 const [...animals] = data.animals;
 const [...employees] = data.employees;
 
 function animalsByIds(...ids) {
   if (ids.length === 0) {
     return ids;
-  }
+  };
   const resposta = [];
   for (let i = 0; i < ids.length; i += 1) {
     const animalsID = animals.find(element => element.id === ids[i]);
     resposta.push(animalsID);
-  }
+  };
   return resposta;
 };
 
-var boolean = true;
+
 function animalsOlderThan(animal, age) {
+  let boolean = true;
   animals.forEach(function(el) {
-    if (el.name == animal){
-      el.residents.forEach(function(el2){
-        if(el2.age > age){
+    if (el.name === animal) {
+      el.residents.forEach(function(el2) {
+        if (el2.age > age) {
           boolean = true;
-        }else{
+        }else {
           boolean = false;
-        }
-      })
-    }
+        };
+      });
+    };
   });
   return boolean;
 };
 
 function employeeByName(employeeName) {
-  var result = {};
-  employees.forEach(function(el){
-    if(el.firstName == employeeName || el.lastName == employeeName){
+  let result = {};
+  employees.forEach(function(el) {
+    if (el.firstName == employeeName || el.lastName == employeeName) {
       result = el;
-    }
-  })
+    };
+  });
   return result;
 };
 
@@ -55,21 +57,21 @@ function createEmployee(personalInfo, associatedWith) {
   return Object.assign(personalInfo, associatedWith);
 };
 
-function isManager(id){
-  let [...managers] = employees.map(el => el.managers);
-  let arr = [];
-  managers.forEach(function(el){
-    if(el.length > 0){
-      el.forEach(function(el2){
+function isManager(id) {
+  const [...managers] = employees.map(el => el.managers);
+  const arr = [];
+  managers.forEach(function(el) {
+    if (el.length > 0) {
+      el.forEach(function(el2) {
         arr.push(el2);
       });
     };
   });
   let result = false;
-  result = arr.some(function(el){
-    if(el == id){
+  result = arr.some(function(el) {
+    if (el == id) {
       return true;
-    }
+    };
   });
   return result;
 };
@@ -83,7 +85,7 @@ const addEmployee = (
 ) => {
   const x = { id, firstName, lastName, managers, responsibleFor };
   return data.employees.push(x);
-}
+};
 
 function animalCount(species) {
   if (species !== undefined) {
@@ -124,7 +126,7 @@ function schedule(dayName) {
     const unica = {};
     unica[dayName] = result[dayName];
     return unica;
-  }
+  };
   return result;
 };
 
