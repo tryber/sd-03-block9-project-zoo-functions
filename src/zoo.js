@@ -35,10 +35,9 @@ function createEmployee(personalInfo, associatedWith) {
   return { ...personalInfo, ...associatedWith };
 }
 
-const isManager = (id) => 
-  employees
+const isManager = id => employees
   .some(({ managers }) => managers
-    .some(managerId => managerId === id));
+    .some(idManager => idManager === id));
 
 const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []) => {
   employees.push({ id, firstName, lastName, managers, responsibleFor });
