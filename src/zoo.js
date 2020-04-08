@@ -44,12 +44,12 @@ const isManager = (id) => {
 
 const addEmployee = (id, firstName, lastName, managers, responsibleFor) => {
   const newEmployee = {
-    id: id,
-    firstName: firstName,
-    lastName: lastName,
+    id,
+    firstName,
+    lastName,
     managers: managers || [],
-    responsibleFor: responsibleFor || []
-  }
+    responsibleFor: responsibleFor || [],
+  };
   return data.employees.push(newEmployee);
 };
 
