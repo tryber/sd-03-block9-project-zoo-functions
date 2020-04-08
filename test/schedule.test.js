@@ -33,6 +33,6 @@ describe('schedule', () => {
       'Tuesday': 'Open from 8am until 6pm'
     };
 
-    //assert.deepEqual(actual, expected);
+    assert.deepEqual(actual, expected);
   });
 });

@@ -15,7 +15,7 @@ const data = require('./data');
 // encontraAnimal.find((identificador) => identificador.name === ids);
 // return encontraAnimal;
 
-const { animals, employees, prices } = data;
+const { animals, employees, prices, hours } = data;
 
 const animalsByIds = (...ids) => {
   if (ids) {
@@ -107,21 +107,24 @@ const entryCalculator = (entrants) => {
 const animalMap = (options) => {
 };
 
-// function cronograma() {
-//   return {
-//     Tuesday: 'Open from 8am until 6pm',
-//     Wednesday: 'Open from 8am until 6pm',
-//     Thursday: 'Open from 10am until 8pm',
-//     Friday: 'Open from 10am until 8pm',
-//     Saturday: 'Open from 8am until 10pm',
-//     Sunday: 'Open from 8am until 8pm',
-//     Monday: 'CLOSED',
-//   };
-// }
-
-// if (dayName === undefined) return cronograma();
-
 const schedule = (dayName) => {
+  const objSchedule = {};
+  if (dayName) {
+    objSchedule[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`;
+
+    if (dayName === 'Monday') {
+      objSchedule[dayName] = 'CLOSED';
+    }
+  }
+  if (!dayName) {
+    Object.keys(hours).map((element) => {
+      objSchedule[element] = `Open from ${hours[element].open}am until ${hours[element].close - 12}pm`;
+      if (element === 'Monday') objSchedule[element] = 'CLOSED';
+      return objSchedule;
+    });
+    return objSchedule;
+  }
+  return objSchedule;
 };
 
 function oldestFromFirstSpecies(id) {
