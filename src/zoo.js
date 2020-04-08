@@ -77,10 +77,17 @@ function animalMap(options) { // complexo
 function schedule(dayName) {
   let agenda = {};
   if (dayName) {
-    agenda = { dayName: hours(dayName) };
+    agenda[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`;
+    if (dayName == 'Monday') {
+      agenda[dayName] = 'CLOSED';
+    }
     return agenda;
   }
-  Object.keys(data.hours).forEach((e) => { agenda[e] = hours(e); });
+  Object.keys(hours).map((e) => {
+    agenda[e] = `Open from ${hours[e].open}am until ${hours[e].close - 12}pm`;
+    if (e == 'Monday') agenda[e] = 'CLOSED';
+      return agenda;
+  });
   return agenda;
 }
 
