@@ -66,9 +66,10 @@ function schedule(dayName) {
   // seu código aqui
 }
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+const oldestFromFirstSpecies = id => 
+  Object.values(animals.find(verify => verify.id === employees
+      .find(allow => allow.id === id).responsibleFor[0]).residents
+    .sort((comp, atual) => atual.age - comp.age)[0]);
 
 function increasePrices(percentage) {
   // seu código aqui
