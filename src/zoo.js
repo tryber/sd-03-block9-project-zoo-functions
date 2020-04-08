@@ -60,8 +60,18 @@ function animalCount(species) {
   // seu código aqui
 }
 
+// 8- Implemente a função entryCalculator:
+// Returna 0 se nenhum argumento for passado
+// Retorna 0 se um objeto vazio for passado
+// Retorna o preço total a ser cobrado dado o número de adultos, crianças e idosos
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (entrants && Object.keys(entrants).length > 0) {
+    return Object.keys(entrants).reduce(
+      (acc, price) => acc + (data.prices[price] * entrants[price]),
+      0,
+    );
+  }
+  return 0;
 }
 
 function animalMap(options) {
