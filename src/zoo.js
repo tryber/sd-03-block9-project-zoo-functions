@@ -50,8 +50,16 @@ const entryCalculator = (entrants) => {
   return 0;
 };
 
-function animalMap(options) {
-  // seu código aqui
+function animalMap(options = {}) {
+  const { includeNames = false, ...restOptions } = options;
+  const info = getLocation(data.animals);
+
+  data.animals.forEach(({ name, location, residents }) => {
+    if (includeNames === true) name = putNames(name, residents, restOptions);
+    info[location].push(name);
+  });
+
+  return info;
 }
 
 function schedule(dayName) {
