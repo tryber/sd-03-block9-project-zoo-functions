@@ -23,14 +23,14 @@ function animalsOlderThan(animal, age) {
 }
 
 function employeeByName(employeeName) {
-  const listEmp = data.employees.find(list => 
+  const listEmp = data.employees.find(list =>
     employeeName === list.firstName || employeeName === list.lastName);
   if (listEmp === undefined) return {};
   return listEmp;
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return {...personalInfo, ...associatedWith };
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
@@ -73,16 +73,17 @@ function animalMap(options) {
 
 function schedule(dayName) {
   const objlist = {};
+  const objlist2 = {};
   if (dayName) {
-    objlist[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`
+    objlist[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
     if (dayName === 'Monday') {
       objlist[dayName] = 'CLOSED';
     }
   }
   if (!dayName) {
     Object.keys(data.hours).map((list) => {
-      objlist2[list] = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`
-      if (list === 'Monday') objlist[list] = 'CLOSED';
+      objlist2[list] = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`;
+      if (list === 'Monday') objlist2[list] = 'CLOSED';
       return objlist2;
     });
   }
@@ -101,16 +102,17 @@ function oldestFromFirstSpecies(id) {
 }
 
 const increasePrices = (percentage) => {
-    Object.keys(data.prices).reduce((acc, el) => {
+   Object.keys(data.prices).reduce((acc, el) => {
       acc[el] = Math.round((acc[el] * (100 + percentage)).toFixed(2)) / 100;
       return acc;
     }, data.prices);
-  };
+};
 
 function employeeCoverage(idOrName) {
-  const obj = {}
+  const obj = {};
   if (idOrName) {
-    const emplName = data.employees.find(list => list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
+    const emplName = data.employees.find(list => 
+      list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
     if (emplName) {
       const listRespAnim = emplName.responsibleFor.reduce((acc, el) => {
         acc.push(data.animals.find(list => list.id === el).name);
@@ -127,9 +129,10 @@ function employeeCoverage(idOrName) {
         return acc;
       }, []);
       obj[`${element.firstName} ${element.lastName}`] = listRespAnim2;
+      return obj;
     });
-    return obj;
   }
+  return obj;
 }
 
 module.exports = {
