@@ -82,7 +82,7 @@ const oldestFromFirstSpecies = id =>
       .find(allow => allow.id === id).responsibleFor[0]).residents
     .sort((comp, atual) => atual.age - comp.age)[0]);
 
-const increasePrices = percentage => {
+const increasePrices = (percentage) => {
   prices.Adult = Math.ceil(prices.Adult * (100 + percentage)) / 100;
   prices.Child = Math.ceil(prices.Child * (100 + percentage)) / 100;
   prices.Senior = Math.ceil(prices.Senior * (100 + percentage)) / 100;
