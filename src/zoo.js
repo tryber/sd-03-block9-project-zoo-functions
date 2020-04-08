@@ -35,12 +35,13 @@ function employeeByName(employeeName) {
 // Cria um novo colaborador a partir de objetos contendo informações pessoais,
 // gerentes e animais gerenciados
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
   return { ...personalInfo, ...associatedWith };
 }
 
+// 5- Implemente a função isManager:
+// Testa se o id passado é de um gerente
 function isManager(id) {
-  // seu código aqui
+  return data.employees.some(manager => manager.managers.find(i => i === id));
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
