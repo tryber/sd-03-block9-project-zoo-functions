@@ -153,7 +153,7 @@ function employeeCoverage(idOrName) {
   if (!idOrName) {
     employees.map((element) => {
       const listRespAnim = element.responsibleFor.reduce((acc, el) => {
-        const outroElemento = animals.find((ele) =>  ele.id === el).name;
+        const outroElemento = animals.find(ele => ele.id === el).name;
         acc.push(outroElemento);
         return acc;
       }, []);
