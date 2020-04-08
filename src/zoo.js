@@ -23,16 +23,16 @@ function animalsOlderThan(especie, age) {
   const animals = data.animals;
   let bool = true;
 
-  animals.forEach(element => {
+  animals.forEach((element) => {
     if (element.name === especie) {
-      element.residents.forEach(arr => {
+      element.residents.forEach((arr) => {
         if (arr.age < age) {
           bool = false;
         }
-      });       
-    }        
-  }); 
-  return bool; 
+      });
+    }
+  });
+  return bool;
 }
 
 function employeeByName(employeeName) {
@@ -51,16 +51,16 @@ function employeeByName(employeeName) {
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return {...personalInfo, ...associatedWith};
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
   const employees = data.employees;
   let idManager = false;
 
-  employees.find(element => {
-    return element.managers.find(item => {
-      if (item === id){
+  employees.find((element) => {
+    return element.managers.find((item) => {
+      if (item === id) {
         idManager = true;
       }
     });
@@ -72,7 +72,7 @@ function isManager(id) {
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
   const employees = data.employees;
 
-  const newEmploy = {id, firstName, lastName, managers, responsibleFor};
+  const newEmploy = { id, firstName, lastName, managers, responsibleFor };
 
   employees.push(newEmploy);
 }
@@ -80,12 +80,14 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 function animalCount(species) {
   const animals = data.animals;
 
-  if(!species){
-    const todosAnimais = {};    
-    animals.forEach(animal => todosAnimais[animal.name] = animal.residents.length);
+  if(!species) {
+    const todosAnimais = {};
+    animals.forEach((animal) => {
+      todosAnimais[animal.name] = animal.residents.length;
+    });
     return todosAnimais;
   }else{
-    const animal = animals.find(element => element.name === species);    
+    const animal = animals.find(element => element.name === species);
     return animal.residents.length;
   }
 }
@@ -143,7 +145,6 @@ function increasePrices(percentage) {
   const prices = data.prices;
 
   const { Adult: adultPrice, Senior: seniorPrice, Child: childPrice } = prices;
-  
   prices.Adult = Math.round(adultPrice * (1 + (percentage / 100)) * 100) / 100;
   prices.Senior = Math.round(seniorPrice * (1 + (percentage / 100)) * 100) / 100;
   prices.Child = Math.round(childPrice * (1 + (percentage / 100)) * 100) / 100;
