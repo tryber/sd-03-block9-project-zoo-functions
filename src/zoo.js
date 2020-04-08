@@ -58,13 +58,11 @@ function isManager(id) {
   const employees = data.employees;
   let idManager = false;
 
-  employees.find((element) => {
-    return element.managers.find((item) => {
-      if (item === id) {
-        idManager = true;
-      }
-    });
-  });
+  employees.find((element) => element.managers.find((item) => {
+    if (item === id) {
+      idManager = true;
+    }
+  }));
 
   return idManager;
 }
@@ -80,13 +78,13 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 function animalCount(species) {
   const animals = data.animals;
 
-  if(!species) {
+  if (!species) {
     const todosAnimais = {};
     animals.forEach((animal) => {
       todosAnimais[animal.name] = animal.residents.length;
     });
     return todosAnimais;
-  }else{
+  } else {
     const animal = animals.find(element => element.name === species);
     return animal.residents.length;
   }
