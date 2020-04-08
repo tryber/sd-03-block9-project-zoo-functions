@@ -10,6 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+
 let animalsFind = {};
 function animalsByIds(...ids) {
   // seu código aqui
@@ -183,24 +184,23 @@ function increasePrices(percentage) {
   data.prices = { Adult: adultPrices, Child: childPrices, Senior: seniorPrices };
 }
 
-const responsibleFor = (element) => {
-const respId = element.responsibleFor;
-
-let animalsList = [];
-respId.forEach(element2 => {   
-  animalsById = data.animals.filter(element3 => element3.id === element2);
+  const responsibleFor = (element) => {
+  const respId = element.responsibleFor;
+  const animalsList = [];
+  respId.forEach((element2) => {
+  const animalsById = data.animals.filter(element3 => element3.id === element2);
   animalsList.push(animalsById[0].name);
 });
-animalsFind[element.firstName + " "+ element.lastName] = animalsList;
-return animalsFind ;
-}
+  animalsFind[`${element.firstName} ${element.lastName}`] = animalsList;
+  return animalsFind;
+};
 
 /* function responsibleForId(byId){
   const respId = byId.responsibleFor;
   let animalsList = [];
-  respId.forEach(element2 => {   
+  respId.forEach(element2 => {
     animalsById = data.animals.filter(element3 => element3.id === element2);
-    animalsList.push(animalsById[0].name);  
+    animalsList.push(animalsById[0].name);
   });
   animalsFind2[byId.firstName + " "+ byId.lastName] = animalsList;
   return animalsFind2;
@@ -209,19 +209,19 @@ return animalsFind ;
 function employeeCoverage(idOrName) {
   // seu código aqui
   animalsFind = {};
- /*  animalsFind2 = {}; */
   if (!idOrName) {
-  let result =  data.employees.map(element => responsibleFor(element));
-  console.log(result[0]);
+    const result =  data.employees.map(element => responsibleFor(element));
+    console.log(result[0]);
   return result[0];
-  }else if (idOrName) { 
- const employeeByName = data.employees.find(element4 => element4.id == idOrName 
-    || element4.firstName == idOrName || element4.lastName == idOrName);
-    let result = responsibleFor(employeeByName);
-  return result;
- }
+  } else if (idOrName) {
+    const employeeByName2 = data.employees.find(element4 => element4.id === idOrName
+    || element4.firstName === idOrName || element4.lastName === idOrName);
+    const result = responsibleFor(employeeByName2);
+    return result;
+  }
+  return 0;
 }
- employeeCoverage('Spry');
+//employeeCoverage('Spry');
 module.exports = {
   entryCalculator,
   schedule,
