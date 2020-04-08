@@ -10,6 +10,7 @@ eslint no-unused-vars: [
 */
 
 const data = require('./data');
+const funcs = require('../src/functions');
 
 let animalsFind = {};
 function animalsByIds(...ids) {
@@ -113,140 +114,6 @@ function entryCalculator(entrants) {
     (data.prices.Child * entrants.Child);
   return total;
 }
-function byLocationNoOption(element, locations) {
-  if (element.location === 'NE') {
-    locations.NE.push(element.name);
-  } else if (element.location === 'NW') {
-    locations.NW.push(element.name);
-  } else if (element.location === 'SW') {
-    locations.SW.push(element.name);
-  } else if (element.location === 'SE') {
-    locations.SE.push(element.name);
-  }
-
-}
- function byLocationWithName(element, locations) {
-  animalsNE = [];
-  animalsSE = [];
-  animalsNW = [];
-  animalsSW = [];
-  Object.entries(element.residents).forEach(element4 => {
-     if (element.location === 'NE') {
-      animalsNE.push(element4[1].name);
-   } else if (element.location === 'NW') {
-      animalsNW.push(element4[1].name);
-   } else if (element.location === 'SW') {
-    animalsSW.push(element4[1].name); 
-   } else if (element.location === 'SE') {
-    animalsSE.push(element4[1].name);
-   }    
-  });
-  isNotSorted(element,locations);
-};
-
-function byLocationWithNameSorted(element, locations) {
-  animalsNE = [];
-  animalsSE = [];
-  animalsNW = [];
-  animalsSW = [];
-  Object.entries(element.residents).forEach(element4 => {
-     if (element.location === 'NE') {
-      animalsNE.push(element4[1].name);
-   } else if (element.location === 'NW') {
-      animalsNW.push(element4[1].name);
-   } else if (element.location === 'SW') {
-    animalsSW.push(element4[1].name); 
-   } else if (element.location === 'SE') {
-    animalsSE.push(element4[1].name);
-   }    
-  });
-  isSorted(element,locations);
-};
-
-function byLocationFilterSex(element, locations, sex) {
-  animalsNE = [];
-  animalsSE = [];
-  animalsNW = [];
-  animalsSW = [];
-   const sexFiltered = Object.entries(element.residents).filter(elementsex => elementsex[1].sex == sex);
-   Object.entries(sexFiltered).forEach(element4 => {
-     if (element.location === 'NE') {
-      animalsNE.push(element4[1][1].name);
-   } else if (element.location === 'NW') {
-      animalsNW.push(element4[1][1].name);
-   } else if (element.location === 'SW') {
-    animalsSW.push(element4[1][1].name); 
-   } else if (element.location === 'SE') {
-    animalsSE.push(element4[1][1].name);
-   }    
-  });
-  isNotSorted(element,locations);
-};
-
-function byLocationFilterSexOnly(element, locations, sex) {
-  animalsNE = [];
-  animalsSE = [];
-  animalsNW = [];
-  animalsSW = [];
-   const sexFiltered = Object.entries(element.residents).filter(elementsex => elementsex[1].sex == sex);
-   Object.entries(sexFiltered).forEach(element4 => {
-     if (element.location === 'NE') {
-      animalsNE.push(element4[1][1].name);
-   } else if (element.location === 'NW') {
-      animalsNW.push(element4[1][1].name);
-   } else if (element.location === 'SW') {
-    animalsSW.push(element4[1][1].name); 
-   } else if (element.location === 'SE') {
-    animalsSE.push(element4[1][1].name);
-   }    
-  });
-  isNotSortedOnlyName(element,locations);
-};
-
-function isNotSortedOnlyName(element, locations) {
-  if (element.location === 'NE') {
-    locations.NE.push([element.name]);
-  }
-  else if (element.location === 'NW') {
-    locations.NW.push([element.name]);
-  }
-  else if (element.location === 'SW') {
-    locations.SW.push([element.name]);
-  }
-  else if (element.location === 'SE') {
-    locations.SE.push([element.name]);
-  }
-}
-
-function isNotSorted(element, locations) {
-  if (element.location === 'NE') {
-    locations.NE.push({ [element.name]: animalsNE });
-  }
-  else if (element.location === 'NW') {
-    locations.NW.push({ [element.name]: animalsNW });
-  }
-  else if (element.location === 'SW') {
-    locations.SW.push({ [element.name]: animalsSW });
-  }
-  else if (element.location === 'SE') {
-    locations.SE.push({ [element.name]: animalsSE });
-  }
-}
-
-function isSorted(element, locations) {
-  if (element.location === 'NE') {
-    locations.NE.push({ [element.name]: animalsNE.sort() });
-  }
-  else if (element.location === 'NW') {
-    locations.NW.push({ [element.name]: animalsNW.sort() });
-  }
-  else if (element.location === 'SW') {
-    locations.SW.push({ [element.name]: animalsSW.sort() });
-  }
-  else if (element.location === 'SE') {
-    locations.SE.push({ [element.name]: animalsSE.sort() });
-  }
-}
 
 function animalMap(options) {
   // seu código aqui
@@ -257,21 +124,21 @@ function animalMap(options) {
     SW: [],
   };
   if (!options || options === undefined || options === null) {
-    data.animals.map(element => byLocationNoOption(element, locations));
+    data.animals.map(element => funcs.byLocationNoOption(element, locations));
     
   } else if (options && options.includeNames === true) {    
     if (options.sorted === true) {
-      data.animals.map(element => byLocationWithNameSorted(element, locations));
+      data.animals.map(element => funcs.byLocationWithNameSorted(element, locations));
       
     } else if (options.sex) { 
-      data.animals.map(element => byLocationFilterSex(element, locations,options.sex));
+      data.animals.map(element => funcs.byLocationFilterSex(element, locations,options.sex));
       console.log(locations);
     }
     else {
-      data.animals.map(element => byLocationWithName(element, locations));      
+      data.animals.map(element => funcs.byLocationWithName(element, locations));      
     }     
   }  else if (options.sex) {
-    data.animals.map(element => byLocationFilterSexOnly(element, locations,options.sex));
+    data.animals.map(element => funcs.byLocationFilterSexOnly(element, locations,options.sex));
     console.log(locations);
   }
   return locations;
@@ -310,7 +177,6 @@ function percoreObjeto(object, objaux) {
 }
 
 function schedule(dayName) {
-  // seu código aqui
   const obj = {};
   percoreObjeto(data.hours, obj);
   if (!dayName) {
@@ -322,7 +188,6 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
   const firstSpecie = data.employees.find(element => element.id === id).responsibleFor[0];
   const oldestAnimalSpecie = data.animals.filter(element => element.id === firstSpecie);
   const animalsAge = [];
@@ -353,17 +218,6 @@ const responsibleFor = (element) => {
   animalsFind[`${element.firstName} ${element.lastName}`] = animalsList;
   return animalsFind;
 };
-
-/* function responsibleForId(byId){
-  const respId = byId.responsibleFor;
-  let animalsList = [];
-  respId.forEach(element2 => {
-    animalsById = data.animals.filter(element3 => element3.id === element2);
-    animalsList.push(animalsById[0].name);
-  });
-  animalsFind2[byId.firstName + " "+ byId.lastName] = animalsList;
-  return animalsFind2;
-} */
 
 function employeeCoverage(idOrName) {
   // seu código aqui
