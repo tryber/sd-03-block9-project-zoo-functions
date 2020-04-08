@@ -14,9 +14,9 @@ const data = require('./data');
 const animalsByIds = (...ids) => {
   if (ids === undefined) return [];
   const group =
-    data.animals.filter(idItem => ids.includes(idItem.id))
-    return group;
-}
+    data.animals.filter(idItem => ids.includes(idItem.id));
+  return group;
+};
 
 const animalsOlderThan = (animal, age) => {
   const checkAnimals =
