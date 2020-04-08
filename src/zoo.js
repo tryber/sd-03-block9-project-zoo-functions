@@ -75,18 +75,18 @@ function animalMap(options) { // complexo
 }
 
 function schedule(dayName) {
-  let agenda = {};
+  const agenda = {};
   if (dayName) {
     agenda[dayName] = `Open from ${hours[dayName].open}am until ${hours[dayName].close - 12}pm`;
-    if (dayName == 'Monday') {
+    if (dayName === 'Monday') {
       agenda[dayName] = 'CLOSED';
     }
     return agenda;
   }
   Object.keys(hours).map((e) => {
     agenda[e] = `Open from ${hours[e].open}am until ${hours[e].close - 12}pm`;
-    if (e == 'Monday') agenda[e] = 'CLOSED';
-      return agenda;
+    if (e === 'Monday') agenda[e] = 'CLOSED';
+    return agenda;
   });
   return agenda;
 }
