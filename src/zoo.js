@@ -72,8 +72,14 @@ function schedule(dayName) {
   // seu código aqui
 }
 
+// 11- Implemente a função oldestFromFirstSpecies:
+// Passado o id de um funcionário, encontra a primeira espécie de animal gerenciado pelo
+// funcionário, e retorna um array com nome, sexo e idade do animal mais velho dessa espécie
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  return Object.values(data.animals
+    .find(employee => employee.id === data.employees
+      .find(animal => animal.id === id).responsibleFor[0]).residents
+    .sort((a, b) => a.age - b.age)[0]);
 }
 
 // 12- Implemente a função increasePrices:
