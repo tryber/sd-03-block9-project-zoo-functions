@@ -81,7 +81,8 @@ function schedule(dayName) {
   }
   if (!dayName) {
     Object.keys(data.hours).map((list) => {
-      const objlist2[list] = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`;
+      const objlist2 = {};
+      objlist2[list] = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`;
       if (list === 'Monday') objlist2[list] = 'CLOSED';
       return objlist2;
     });
