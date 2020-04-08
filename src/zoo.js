@@ -47,6 +47,7 @@ function isManager(id) {
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
   data.employees.push({ firstName, id, lastName, managers, responsibleFor });
+  return data.employees;
 }
 
 function animalCount(species) {
@@ -72,8 +73,18 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
+  const fun = ar => {
+    return (ar[1].open === ar[1].close) ? `CLOSED` : `Open from ${ar[1].open}am until ${ar[1].close -12}pm`
+  };
+  const arr = Object.entries(data.hours);
+  if (!dayName) {
+    const obj = arr.map(ar => [ ar[0], fun(ar) ])
+    return Object.fromEntries(obj);
+  }
+  const ans = [[ dayName, fun(arr.find(ar => ar[0] === dayName)) ]];
+  return Object.fromEntries(ans);
 }
-
+console.log(Object.entries(data.hours)[0][0])
 function oldestFromFirstSpecies(id) {
   // seu código aqui
 }
