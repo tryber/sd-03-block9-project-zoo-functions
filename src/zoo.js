@@ -15,8 +15,7 @@ const data = require('./data');
 // Caso receba nenhum parâmetro, necessário retornar um array vazio
 // Ao receber como parâmetro um único id, retorna os animais com este id
 // Ao receber mais de um id, retorna os animais que têm um desses ids
-function animalsByIds(ids) {
-  ids = ...ids
+function animalsByIds(...ids) {
   return data.animals.filter(animal => ids.find(id => id === animal.id));
 }
 
