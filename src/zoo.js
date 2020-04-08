@@ -68,7 +68,7 @@ function schedule(dayName) {
     if (open === 0 && close === 0) {
       acc[day] = 'CLOSED';
     } else {
-      acc[day] = `Open from ${open} am until ${close - 12} pm`;
+      acc[day] = `Open from ${open}am until ${close - 12}pm`;
     }
     return acc;
   }, {});
