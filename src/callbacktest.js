@@ -14,5 +14,6 @@
 //   }, delay());
 // };
 
-// getUser(userFullName); // deve imprimir "Hello! My name is Ivan Ivanovich" depois de um certo tempo
+// getUser(userFullName); // deve imprimir "Hello! My name is 
+// Ivan Ivanovich" depois de um certo tempo
 // getUser(userNationality); // deve imprimir "Ivan is Russian" depois de um certo tempo

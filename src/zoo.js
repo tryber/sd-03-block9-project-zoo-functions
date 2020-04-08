@@ -31,7 +31,7 @@ function animalsOlderThan(animal, age) {
   let boolean = true;
   animals.forEach(function (el) {
     if (el.name === animal) {
-      el.residents.forEach(function(el2) {
+      el.residents.forEach(function (el2) {
         if (el2.age > age) {
           boolean = true;
         } else {
@@ -138,12 +138,12 @@ const oldestFromFirstSpecies = (id) => {
 };
 
 function increasePrices(percentage) {
-    const cliente = [data.prices.Adult, data.prices.Senior, data.prices.Child];
-    const valores = Object.keys(data.prices);
-    cliente.forEach((e, i) => {
-      data.prices[valores[i]] = (Math.round((e * (1 + (percentage / 100))) * 100)) / 100;
-    });
-    return data.prices;
+  const cliente = [data.prices.Adult, data.prices.Senior, data.prices.Child];
+  const valores = Object.keys(data.prices);
+  cliente.forEach((e, i) => {
+    data.prices[valores[i]] = (Math.round((e * (1 + (percentage / 100))) * 100)) / 100;
+  });
+  return data.prices;
 }
 
 function employeeCoverage(idOrName) {
