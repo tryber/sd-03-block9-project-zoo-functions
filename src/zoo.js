@@ -70,15 +70,15 @@ function schedule(dayName) {
     } else {
       acc[day] = `Open from ${open} am until ${close - 12} pm`;
     }
-    return console.log(acc), acc;
+    return acc;
   }, {});
   if (dayName) {
     const unica = {};
     unica[dayName] = test[dayName];
-    return console.log(unica);
+    return unica;
   }
+  return test;
 }
-schedule('Monday');
 
 const oldestFromFirstSpecies = (id) => {
   const emp = data.employees.find(n => n.id === id).responsibleFor[0];
