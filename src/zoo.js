@@ -213,15 +213,20 @@ function employeeCoverage(idOrName) {
     });
   });
 
-  if (idOrName) {
+  const employeeSelect = () => {
     result = {};
     const selected = data.employees.filter(employ =>
-    employ.id === idOrName ||
-    employ.firstName === idOrName ||
+    employ.id === idOrName || employ.firstName === idOrName ||
     employ.lastName === idOrName);
     result[`${selected[0].firstName} ${selected[0].lastName}`] = [];
     employeeResponsabilities(selected[0]);
-  } else {
+  }
+
+  if (idOrName) {
+    employeeSelect(); 
+  } 
+  
+  if (!idOrName) {
     result = {};
     data.employees.forEach((employee) => {
       result[`${employee.firstName} ${employee.lastName}`] = [];
