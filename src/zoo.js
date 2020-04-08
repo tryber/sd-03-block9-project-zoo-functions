@@ -36,7 +36,7 @@ const employeeByName = (employeeName) => {
 
 function createEmployee(personalInfo, associatedWith) {
   return { ...personalInfo, ...associatedWith };
-};
+}
 
 const isManager = (id) => {
   const gerente = employees[0].managers[0];
