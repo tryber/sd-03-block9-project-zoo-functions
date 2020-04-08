@@ -73,7 +73,6 @@ function animalMap(options) {
 
 function schedule(dayName) {
   const objlist = {};
-  const objlist2 = {};
   if (dayName) {
     objlist[dayName] = `Open from ${data.hours[dayName].open}am until ${data.hours[dayName].close - 12}pm`;
     if (dayName === 'Monday') {
@@ -82,7 +81,7 @@ function schedule(dayName) {
   }
   if (!dayName) {
     Object.keys(data.hours).map((list) => {
-      objlist2[list] = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`;
+      const objlist2[list] = `Open from ${data.hours[list].open}am until ${data.hours[list].close - 12}pm`;
       if (list === 'Monday') objlist2[list] = 'CLOSED';
       return objlist2;
     });
@@ -103,9 +102,9 @@ function oldestFromFirstSpecies(id) {
 
 const increasePrices = (percentage) => {
   Object.keys(data.prices).reduce((acc, el) => {
-   acc[el] = Math.round((acc[el] * (100 + percentage)).toFixed(2)) / 100;
+    acc[el] = Math.round((acc[el] * (100 + percentage)).toFixed(2)) / 100;
     return acc;
-   }, data.prices);
+  }, data.prices);
 };
 
 function employeeCoverage(idOrName) {
@@ -125,7 +124,7 @@ function employeeCoverage(idOrName) {
   if (!idOrName) {
     data.employees.map((element) => {
       const listRespAnim2 = element.responsibleFor.reduce((acc, el) => {
-        acc.push(data.animals.find(list => list.id === el).name);
+        acc.push(data.animals.find(finder => finder.id === el).name);
         return acc;
       }, []);
       obj[`${element.firstName} ${element.lastName}`] = listRespAnim2;
