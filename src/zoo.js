@@ -11,56 +11,127 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
-}
+const animalsByIds = (...ids) =>
+  data.animals.filter(animal => ids.find(id => id === animal.id));
 
-function animalsOlderThan(animal, age) {
-  // seu código aqui
-}
+const animalsOlderThan = (animal, age) =>
+  data.animals
+    .find(animalz => animalz.name === animal)
+    .residents.every(idade => idade.age >= age);
 
 function employeeByName(employeeName) {
-  // seu código aqui
+  if (employeeName === undefined) {
+    return {};
+  }
+  const employee = data.employees.find(
+    nome => nome.firstName === employeeName || nome.lastName === employeeName,
+);
+  return employee;
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
+  return Object.assign(personalInfo, associatedWith);
 }
 
-function isManager(id) {
-  // seu código aqui
-}
+const isManager = id => data.employees.some(({ managers }) => managers.find(i => i === id));
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
-  // seu código aqui
-}
+const addEmployee = (
+  id,
+  firstName,
+  lastName,
+  managers = [],
+  responsibleFor = [],
+) => {
+  const x = { id, firstName, lastName, managers, responsibleFor };
+  return data.employees.push(x);
+};
 
 function animalCount(species) {
-  // seu código aqui
+  if (species !== undefined) {
+    return data.animals.find(el => el.name === species).residents.length;
+  }
+  const obj = {};
+  data.animals.forEach((e) => { obj[e.name] = e.residents.length; });
+  return obj;
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+
+  return (
+    [entrants, data.prices].reduce((soma, item) => item.Adult * soma, 1) +
+    [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) +
+    [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1)
+  );
 }
 
 function animalMap(options) {
   // seu código aqui
 }
 
+
 function schedule(dayName) {
-  // seu código aqui
+  const aux = Object.entries(data.hours);
+  const test = aux.reduce((acc, [day, { open, close }]) => {
+    if (open === 0 && close === 0) {
+      acc[day] = 'CLOSED';
+    } else {
+      acc[day] = `Open from ${open}am until ${close - 12}pm`;
+    }
+    return acc;
+  }, {});
+  if (dayName) {
+    const unica = {};
+    unica[dayName] = test[dayName];
+    return unica;
+  }
+  return test;
 }
 
-function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+const oldestFromFirstSpecies = (id) => {
+  const emp = data.employees.find(n => n.id === id).responsibleFor[0];
+  return Object.values(
+    data.animals.find(m => m.id === emp).residents.sort((a, b) => b.age - a.age)[0],
+  );
+};
 
 function increasePrices(percentage) {
-  // seu código aqui
+  const client = [data.prices.Adult, data.prices.Senior, data.prices.Child];
+  const val = Object.keys(data.prices);
+  client.forEach((a, b) => {
+    data.prices[val[b]] = (Math.round((a * (1 + (percentage / 100))) * 100)) / 100;
+  });
+  return data.prices;
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  const obj = {};
+  if (idOrName) {
+    const emplName = data.employees.find(list =>
+      list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
+    if (emplName) {
+      const listRespAnim = emplName.responsibleFor.reduce((acc, el) => {
+        acc.push(data.animals.find(list => list.id === el).name);
+        return acc;
+      }, []);
+      obj[`${emplName.firstName} ${emplName.lastName}`] = listRespAnim;
+      return obj;
+    }
+  }
+  if (!idOrName) {
+    data.employees.map((element) => {
+      const animaRespList = element.responsibleFor.reduce((account, list) => {
+        const anotherElem = data.animals.find(finder => finder.id === list).name;
+        account.push(anotherElem);
+        return account;
+      }, []);
+      obj[`${element.firstName} ${element.lastName}`] = animaRespList;
+      return obj;
+    });
+  }
+  return obj;
 }
 
 module.exports = {
