@@ -29,7 +29,7 @@ const animalsOlderThan = (animal, animalAge) =>
     .find(({ name }) => animal === name)
     .residents.every(({ age }) => age >= animalAge);
 
-const employeeByName = (employeeName) => {
+const employeeByName = employeeName => {
   // seu código aqui
   if (employeeName === undefined) return {};
   return data.employees.find(
@@ -65,7 +65,7 @@ const addEmployee = (
     responsibleFor,
   });
 
-const animalCount = (species) => {
+const animalCount = species => {
   // seu código aqui
   if (species) {
     return data.animals.find(({ name }) => name === species).residents.length;
@@ -76,14 +76,14 @@ const animalCount = (species) => {
   }, {});
 };
 
-const entryCalculator = (entrants) => {
+const entryCalculator = entrants => {
   // seu código aqui
   if (entrants && Object.keys(entrants).length > 0) {
     return Object.keys(entrants).reduce(
-        (accumulator, entrant) =>
-          accumulator + (data.prices[entrant] * entrants[entrant]),
-        0,
-      );
+      (accumulator, entrant) =>
+        accumulator + data.prices[entrant] * entrants[entrant],
+      0,
+    );
   }
   return 0;
 };
@@ -108,39 +108,44 @@ const oldestFromFirstSpecies = id =>
       .residents.sort((a, b) => b.age - a.age)[0],
   );
 
-
 const increasePrices = percentage =>
   // seu código aqui
   Object.keys(data.prices).map(
     index =>
       (data.prices[index] =
-        Math.round(data.prices[index] * ((percentage / 100) + 1) * 100) / 100),
+        Math.round(data.prices[index] * (percentage / 100 + 1) * 100) / 100),
   );
 
-const employeeCoverage = idOrName => {
+// funções auxiliares de employeeCoverage
+const identifyEmployee = idOrName =>
+  data.employees.find(
+    employee =>
+      employee.id === idOrName ||
+      employee.firstName === idOrName ||
+      employee.lastName === idOrName,
+  );
+
+const identifyAnimals = id =>
+  animalsByIds(...id).reduce(
+    (accumulator, animal) => accumulator.concat(animal.name),
+    [],
+  );
+
+const coveredAnimals = idOrName => ({
+  [`${identifyEmployee(idOrName).firstName} ${
+    identifyEmployee(idOrName).lastName
+  }`]: identifyAnimals(identifyEmployee(idOrName).responsibleFor),
+});
+
+const employeeCoverage = (idOrName) => {
   // seu código aqui
-  const identifyEmployee = idOrName =>
-    data.employees.find(
-      employee =>
-        employee.id === idOrName ||
-        employee.firstName === idOrName ||
-        employee.lastName === idOrName,
-    );
-  const identifyAnimals = id =>
-    animalsByIds(...id).reduce(
-      (accumulator, animal) => accumulator.concat(animal.name),
-      [],
-    );
-  const coveredAnimals = idOrName => ({
-    [`${identifyEmployee(idOrName).firstName} ${
-      identifyEmployee(idOrName).lastName
-    }`]: identifyAnimals(identifyEmployee(idOrName).responsibleFor),
-  });
-  if (idOrName === undefined) return data.employees.reduce(
-      (accumulator, element) => Object.assign(accumulator, coveredAnimals(element.id)),
+  if (idOrName === undefined) {
+    return data.employees.reduce(
+      (accumulator, employee) =>
+        Object.assign(accumulator, coveredAnimals(employee.id)),
       {},
     );
-
+  }
   return coveredAnimals(idOrName);
 };
 
