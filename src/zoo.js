@@ -11,11 +11,13 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const animalsByIds = (...ids) => animalsArr.filter(element =>
+const { animals, employees, hours, prices } = data;
+
+const animalsByIds = (...ids) => animals.filter(element =>
   ids.find(id => id === element.id));
 
 const animalsOlderThan = (animal, age) =>
-  data.animals.find(elemento => elemento.name === animal).residents.every(elemento => elemento.age > age);
+  data.animals.find(el => el.name === animal).residents.every(el => el.age >= age);
 
 const employeeByName = (employeeName) => {
   if (employeeName) {
@@ -98,7 +100,7 @@ const increasePrices = percentage => {
     objeto[pessoa] = Math.round((objeto[pessoa] * (100 + percentage)).toFixed(2)) / 100;
     return objeto;
   }, data.prices);
-};cd
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
