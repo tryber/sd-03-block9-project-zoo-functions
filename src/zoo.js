@@ -139,9 +139,7 @@ function employeeCoverage(idOrName) {
   if (idOrName) {
     const emplName1 = employees.find(element =>
       element.id === idOrName || element.firstName === idOrName || element.lastName === idOrName);
-
-    if (employees.some(list =>
-      list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName)) {
+    if (emplName1) {
       const listRespAnim1 = emplName1.responsibleFor.reduce((acc, el) => {
         acc.push(animals.find(list => list.id === el).name);
         return acc;
@@ -151,6 +149,7 @@ function employeeCoverage(idOrName) {
       return obj;
     }
   }
+
   if (!idOrName) {
     employees.map((element) => {
       const listRespAnim = element.responsibleFor.reduce((acc, el) => {
@@ -165,7 +164,7 @@ function employeeCoverage(idOrName) {
   return obj;
 }
 
-// console.log(employeeCoverage());
+ console.log(employeeCoverage('Burl'));
 
 module.exports = {
   entryCalculator,
