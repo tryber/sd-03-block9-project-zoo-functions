@@ -185,15 +185,15 @@ function increasePrices(percentage) {
 }
 
 const responsibleFor = (element) => {
-    const respId = element.responsibleFor;
-    const animalsList = [];
-    respId.forEach((element2) => {
-    const animalsById = data.animals.filter(element3 => element3.id === element2);
-    animalsList.push(animalsById[0].name);
-  });
-    animalsFind[`${element.firstName} ${element.lastName}`] = animalsList;
-    return animalsFind;
-  };
+  const respId = element.responsibleFor;
+  const animalsList = [];
+  respId.forEach((element2) => {
+      const animalsById = data.animals.filter(element3 => element3.id === element2);
+      animalsList.push(animalsById[0].name);
+    });
+  animalsFind[`${element.firstName} ${element.lastName}`] = animalsList;
+  return animalsFind;
+};
 
 /* function responsibleForId(byId){
   const respId = byId.responsibleFor;
