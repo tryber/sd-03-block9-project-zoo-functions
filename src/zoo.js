@@ -26,7 +26,7 @@ Object.assign({}, personalInfo, associatedWith);
 const isManager = id => data.employees.some(e => e.managers.find(i => i === id));
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  return data.employees.push({ id, firstName, lastName, managers, responsibleFor })
+  return data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
 const animalCount = (species) => {
