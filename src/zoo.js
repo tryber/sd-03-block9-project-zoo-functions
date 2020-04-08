@@ -79,14 +79,13 @@ function oldestFromFirstSpecies(id) {
   return Object.values(data.animals
     .find(employee => employee.id === data.employees
       .find(animal => animal.id === id).responsibleFor[0]).residents
-    .sort((a, b) => a.age - b.age)[0]);
+    .sort((a, b) => b.age - a.age)[0]);
 }
 
 // 12- Implemente a função increasePrices:
 // Ao passar uma porcentagem, incrementa todos os preços, arrendondados em
 // duas casas decimais
 function increasePrices(percentage) {
-  // seu código aqui
   return Object.keys(data.prices).forEach((price) => {
     (data.prices[price] = Math.round(data.prices[price] * (1 + (percentage / 100)) * 100) / 100);
   });
