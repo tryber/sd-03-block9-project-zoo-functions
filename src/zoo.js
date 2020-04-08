@@ -123,27 +123,32 @@ function animalMap(options) {
     SE: [],
     SW: [],
   };
-  if (!options || options === undefined || options === null) {
-    data.animals.map(element => funcs.byLocationNoOption(element, locations));
-    
-  } else if (options && options.includeNames === true) {    
-    if (options.sorted === true) {
-      data.animals.map(element => funcs.byLocationWithNameSorted(element, locations));
-      
-    } else if (options.sex) { 
-      data.animals.map(element => funcs.byLocationFilterSex(element, locations,options.sex));
-      console.log(locations);
-    }
-    else {
-      data.animals.map(element => funcs.byLocationWithName(element, locations));      
-    }     
-  }  else if (options.sex) {
-    data.animals.map(element => funcs.byLocationFilterSexOnly(element, locations,options.sex));
-    console.log(locations);
-  }
+  CheckIF(options, locations);
   return locations;
 }
 animalMap({ sex: 'female' });
+function CheckIF(options, locations) {
+  if (!options || options === undefined || options === null) {
+    data.animals.map(element => funcs.byLocationNoOption(element, locations));
+  }
+  else if (options && options.includeNames === true) {
+    if (options.sorted === true) {
+      data.animals.map(element => funcs.byLocationWithNameSorted(element, locations));
+    }
+    else if (options.sex) {
+      data.animals.map(element => funcs.byLocationFilterSex(element, locations, options.sex));
+      console.log(locations);
+    }
+    else {
+      data.animals.map(element => funcs.byLocationWithName(element, locations));
+    }
+  }
+  else if (options.sex) {
+    data.animals.map(element => funcs.byLocationFilterSexOnly(element, locations, options.sex));
+    console.log(locations);
+  }
+}
+
 function from24to12HoursOpen(openHour, element) {
   openHour = element.open < 12 ? `${element.open}am` : `${element.open - 12}pm`;
   return openHour;
