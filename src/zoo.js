@@ -52,7 +52,7 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function hours = (day) => {
+function hours(day) {
   if (day === 'Monday') {
     return 'CLOSED';
   }
