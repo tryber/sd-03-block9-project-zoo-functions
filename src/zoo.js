@@ -68,6 +68,15 @@ function animalMap(options) {
   // seu código aqui
 }
 
+// 10- Implemente a função schedule:
+// Sem parâmetros, retorna um cronograma legível para humanos
+// Se um único dia for passado, retorna somente este dia em um formato legível para humanos
+const checkSchedule = (day) => {
+  if (day === 'Monday') {
+    return 'CLOSED';
+  }
+  return `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
+};
 
 function schedule(dayName) {
   const cronograma = {};
@@ -80,13 +89,7 @@ function schedule(dayName) {
     if (day === 'Monday') cronograma[day] = 'CLOSED';
   });
   return cronograma;
-};
-const checkSchedule = (day) => {
-  if (day === 'Monday') {
-    return 'CLOSED';
-  }
-  return `Open from ${data.hours[day].open}am until ${data.hours[day].close - 12}pm`;
-};
+}
 
 // 11- Implemente a função oldestFromFirstSpecies:
 // Passado o id de um funcionário, encontra a primeira espécie de animal gerenciado pelo
