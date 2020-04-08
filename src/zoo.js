@@ -76,8 +76,8 @@ function schedule(dayName) {
   if (dayName === undefined){
     data.hours.forEach(Object.keys)
   }
+  console.log(data.hours.forEach(element => element.Object.keys));
 }
-console.log(data.hours.forEach(element => element.Object.keys));
 
 
 function oldestFromFirstSpecies(id) {
