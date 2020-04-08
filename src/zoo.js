@@ -32,7 +32,7 @@ function animalsOlderThan(animal, age) {
 // Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
 // Quando provido o último nome do funcionário, retorna o objeto do funcionário
 function employeeByName(employeeName) {
-  return data.employees.find(employee => 
+  return data.employees.find(employee =>
     employee.firstName === employeeName || employee.lastName === employeeName || {});
 }
 
