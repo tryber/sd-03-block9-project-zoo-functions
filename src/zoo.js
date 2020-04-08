@@ -67,10 +67,10 @@ function animalCount(species) {
 
 function entryCalculator(entrants) {
   // seu código aqui
-  if (!entrants || !Object.keys(entrants).length) {return 0;}
-  const Adults = entrants['Adult'];
-  const Seniors = entrants['Senior'];
-  const Children = entrants['Child'];
+  if (!entrants || !Object.keys(entrants).length) { return 0; }
+  const Adults = entrants.Adult;
+  const Seniors = entrants.Senior;
+  const Children = entrants.Child;
   return (Adults * 49.99) + (Seniors * 24.99) + (Children * 20.99);
 }
 
