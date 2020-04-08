@@ -158,11 +158,13 @@ function employeeCoverage(idOrName) {
         return acc;
       }, []);
       obj[`${element.firstName} ${element.lastName}`] = listRespAnim;
+      return obj;
     });
-    return obj;
   }
+  return obj;
 }
-// console.log(employeeCoverage());
+
+ console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
