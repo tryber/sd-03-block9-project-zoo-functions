@@ -56,15 +56,13 @@ function createEmployee(personalInfo, associatedWith) {
 
 function isManager(id) {
   const employees = data.employees;
-  let idManager = false;
+  // let idManager = false;
 
-  employees.find((element) => element.managers.find((item) => {
-    if (item === id) {
-      idManager = true;
-    }
-  }));
+  // employees.find(element => element.managers.find(item => item ? id : idManager = true));
 
-  return idManager;
+  // return idManager;
+
+  return employees.some(element => element.managers.find(managerId => managerId === id));
 }
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
