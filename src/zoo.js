@@ -5,105 +5,42 @@ eslint no-unused-vars: [
     "args": "none",
     "vars": "local",
     "varsIgnorePattern": "data"
-  }                                               const found = array1.find(element => element > 10);
-],
+  }
+]
 */
 
 const data = require('./data');
-const [...animals] = data.animals;
-const [...employees] = data.employees;
 
-function animalsByIds(...ids) {
-  if (ids.length === 0) {
-    return ids;
-  }
-  const resposta = [];
-  for (let i = 0; i < ids.length; i += 1) {
-    const animalsID = animals.find(element => element.id === ids[i]);
-    resposta.push(animalsID);
-  }
-  return resposta;
+function animalsByIds(ids) {
+  // seu código aqui
 }
-var boolean = true;
-function animalsOlderThan(animal, age) {
-  animals.forEach(function(el) {
-    if (el.name == animal){
-      el.residents.forEach(function(el2){
-        if(el2.age > age){
-          boolean = true;
-        }else{
-          boolean = false;     
-        }
-      })
-    }
-  });
-  return boolean;
-};
 
+function animalsOlderThan(animal, age) {
+  // seu código aqui
+}
 
 function employeeByName(employeeName) {
-  var result = {};
-  employees.forEach(function(el){
-    if(el.firstName == employeeName || el.lastName == employeeName){
-      result = el;
-    }
-  })
-  return result;
+  // seu código aqui
 }
 
 function createEmployee(personalInfo, associatedWith) {
-  return Object.assign(personalInfo, associatedWith);
+  // seu código aqui
 }
 
-function isManager(id){
-  let [...managers] = employees.map(el => el.managers);
-  let arr = [];
-  managers.forEach(function(el){
-    if(el.length > 0){
-      el.forEach(function(el2){    
-        arr.push(el2);
-      });
-    };
-  });
-  let result = false;
-  result = arr.some(function(el){
-    if(el == id){
-      return true;
-    }
-  });
-  return result;
-};
+function isManager(id) {
+  // seu código aqui
+}
 
-const addEmployee = (
-  id,
-  firstName,
-  lastName,
-  managers = [],
-  responsibleFor = [],
-) => {
-  const el = { id, firstName, lastName, managers, responsibleFor };
-  return data.employees.push(el);
+function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+  // seu código aqui
 }
 
 function animalCount(species) {
-  if (species !== undefined) {
-    return data.animals.find(el => el.name === species).residents.length;
-  }
-  const obj = {};
-  data.animals.forEach((e) => { obj[e.name] = e.residents.length; });
-  return obj;
+  // seu código aqui
 }
 
 function entryCalculator(entrants) {
-  if (entrants === undefined || Object.keys(entrants).length === 0) {
-    return 0;
-  }
-
-  return (
-    [entrants, data.prices].reduce((soma, item) => item.Adult * soma, 1) +
-    [entrants, data.prices].reduce((soma, item) => item.Child * soma, 1) +
-    [entrants, data.prices].reduce((soma, item) => item.Senior * soma, 1)
-  );
+  // seu código aqui
 }
 
 function animalMap(options) {
@@ -111,38 +48,16 @@ function animalMap(options) {
 }
 
 function schedule(dayName) {
-  const aux = Object.entries(data.hours);
-  const result = aux.reduce((acc, [day, { open, close }]) => {
-    if (open === 0 && close === 0) {
-      acc[day] = 'CLOSED';
-    } else {
-      acc[day] = `Open from ${open}am until ${close - 12}pm`;
-    }
-    return acc;
-  }, {});
-  if (dayName) {
-    const unica = {};
-    unica[dayName] = result[dayName];
-    return unica;
-  }
-  return result;
-}	
+  // seu código aqui
+}
 
-const oldestFromFirstSpecies = (id) => {
-  const emp = data.employees.find(n => n.id === id).responsibleFor[0];
-  return Object.values(
-    data.animals.find(m => m.id === emp).residents.sort((a, b) => b.age - a.age)[0],
-  );
-};
+function oldestFromFirstSpecies(id) {
+  // seu código aqui
+}
 
 function increasePrices(percentage) {
-  const cliente = [data.prices.Adult, data.prices.Senior, data.prices.Child];
-  const valores = Object.keys(data.prices);
-  cliente.forEach((e, i) => {
-    data.prices[valores[i]] = (Math.round((e * (1 + (percentage / 100))) * 100)) / 100;
-  });
-  return data.prices;
-}	
+  // seu código aqui
+}
 
 function employeeCoverage(idOrName) {
   // seu código aqui
