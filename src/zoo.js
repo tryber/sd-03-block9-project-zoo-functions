@@ -29,7 +29,7 @@ const animalsOlderThan = (animal, animalAge) =>
     .find(({ name }) => animal === name)
     .residents.every(({ age }) => age >= animalAge);
 
-const employeeByName = employeeName => {
+const employeeByName = (employeeName) => {
   // seu código aqui
   if (employeeName === undefined) return {};
   return data.employees.find(
@@ -65,7 +65,7 @@ const addEmployee = (
     responsibleFor,
   });
 
-const animalCount = species => {
+const animalCount = (species) => {
   // seu código aqui
   if (species) {
     return data.animals.find(({ name }) => name === species).residents.length;
@@ -76,12 +76,12 @@ const animalCount = species => {
   }, {});
 };
 
-const entryCalculator = entrants => {
+const entryCalculator = (entrants) => {
   // seu código aqui
   if (entrants && Object.keys(entrants).length > 0) {
     return Object.keys(entrants).reduce(
       (accumulator, entrant) =>
-        accumulator + data.prices[entrant] * entrants[entrant],
+        accumulator + (data.prices[entrant] * entrants[entrant]),
       0,
     );
   }
@@ -113,7 +113,7 @@ const increasePrices = percentage =>
   Object.keys(data.prices).map(
     index =>
       (data.prices[index] =
-        Math.round(data.prices[index] * (percentage / 100 + 1) * 100) / 100),
+        Math.round(data.prices[index] * ((percentage / 100) + 1) * 100) / 100),
   );
 
 // funções auxiliares de employeeCoverage
