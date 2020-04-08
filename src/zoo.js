@@ -40,7 +40,7 @@ const isManager = (id) => {
   const manager =
     data.employees.find(employee => employee.managers.includes(id));
   return !!manager;
-}
+};
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {
   // seu código aqui
