@@ -15,9 +15,7 @@ function animalsByIds(...ids) {
   // seu código
   const a = [];
   if (ids.length >= 1) {
-    for (let i = 0; i < ids.length; i += 1) {
-      a.push(data.animals.find(item => item.id === `${ids[i]}`));
-    }
+    ids.forEach(idAnim => a.push(data.animals.find(animal => animal.id === idAnim)));
     return a;
   }
   return [];
