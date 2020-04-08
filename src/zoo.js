@@ -82,10 +82,10 @@ function animalCount(species) {
       todosAnimais[animal.name] = animal.residents.length;
     });
     return todosAnimais;
-  } else {
-    const animal = animals.find(element => element.name === species);
-    return animal.residents.length;
   }
+
+  const animal = animals.find(element => element.name === species);
+  return animal.residents.length;  
 }
 
 function entryCalculator(entrants) {
