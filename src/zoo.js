@@ -27,8 +27,13 @@ function animalsOlderThan(animal, age) {
                       .residents.every(anima => anima.age >= age);
 }
 
+// 3- Implemente a função employeeByName:
+// Sem parâmetros, retorna um objeto vazio
+// Quando provido o primeiro nome do funcionário, retorna o objeto do funcionário
+// Quando provido o último nome do funcionário, retorna o objeto do funcionário
 function employeeByName(employeeName) {
-  // seu código aqui
+  return data.employees.find(employee => 
+    employee.firstName === employeeName || employee.lastName === employeeName || {});
 }
 
 // 4- Implemente a função createEmployee:
