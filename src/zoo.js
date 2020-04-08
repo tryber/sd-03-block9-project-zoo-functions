@@ -54,7 +54,7 @@ const addEmployee = (id, firstName, lastName, managers, responsibleFor) => {
 };
 
 const animalCount = (species) => {
-  // seu código aqui
+  // seu código aqu
 }
 
 function entryCalculator(entrants) {
