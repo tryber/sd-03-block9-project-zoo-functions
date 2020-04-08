@@ -214,24 +214,23 @@ function employeeCoverage(idOrName) {
   });
 
   const employeeSelect = () => {
-    result = {};
-    const selected = data.employees.filter(employ =>
-    employ.id === idOrName || employ.firstName === idOrName ||
-    employ.lastName === idOrName);
+    const selected = data.employees.filter(employ => employ.id === idOrName
+      || employ.firstName === idOrName || employ.lastName === idOrName);
     result[`${selected[0].firstName} ${selected[0].lastName}`] = [];
     employeeResponsabilities(selected[0]);
   }
 
-  if (idOrName) {
-    employeeSelect(); 
-  } 
-  
-  if (!idOrName) {
-    result = {};
+  const allEmployees = () => {
     data.employees.forEach((employee) => {
       result[`${employee.firstName} ${employee.lastName}`] = [];
       employeeResponsabilities(employee);
     });
+  };
+
+  if (idOrName) {
+    employeeSelect();
+  } else {
+    allEmployees ();
   }
   return result;
 }
