@@ -201,7 +201,7 @@ function increasePrices(percentage) {
 
 function employeeCoverage(idOrName) {
   // seu código aqui
-  let result = {};
+  const result = {};
 
   const employeeResponsabilities = ((personObject) => {
     personObject.responsibleFor.forEach((number) => {
@@ -218,7 +218,7 @@ function employeeCoverage(idOrName) {
       || employ.firstName === idOrName || employ.lastName === idOrName);
     result[`${selected[0].firstName} ${selected[0].lastName}`] = [];
     employeeResponsabilities(selected[0]);
-  }
+  };
 
   const allEmployees = () => {
     data.employees.forEach((employee) => {
@@ -230,7 +230,7 @@ function employeeCoverage(idOrName) {
   if (idOrName) {
     employeeSelect();
   } else {
-    allEmployees ();
+    allEmployees();
   }
   return result;
 }
