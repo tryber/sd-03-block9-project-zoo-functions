@@ -36,7 +36,7 @@ const animalCount = (species) => {
   if (species) {
     return data.animals.find(el => el.name === species).residents.length;
   }
-}
+};
 
 const entryCalculator = (entrants) => {
   if (entrants && Object.keys(entrants).length > 0) {
