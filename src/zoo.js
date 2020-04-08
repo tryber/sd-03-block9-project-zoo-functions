@@ -26,7 +26,7 @@ Object.assign({}, personalInfo, associatedWith);
 const isManager = id => data.employees.some(e => e.managers.find(i => i === id));
 
 function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
-  return data.employees.push({ id, firstName, lastName, managers, responsibleFor });
+  return data.employees.push({ id, firstName, lastName, managers, responsibleFor })
 }
 
 const animalCount = (species) => {
@@ -40,8 +40,14 @@ const animalCount = (species) => {
 
 
 function entryCalculator(entrants) {
-  // seu código aqui
-}
+  const { Adult, Senior, Child } = data.prices;
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  const { Adult: aQtd, Child: cQtd, Senior: sQtd } = entrants;
+  const total = (aQtd * Adult) + (cQtd * Child) + (sQtd * Senior);
+  return total;
+};
 
 function animalMap(options) {
   // seu código aqui
@@ -52,11 +58,16 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  return Object.values(data.animals
+    .find(e => e.id === data.employees
+      .find(animal => animal.id === id).responsibleFor[0]).residents
+        .sort((first, second) => second.age - first.age)[0]);
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  Object.keys(data.prices).forEach((value) => {
+    (data.prices[value] = Math.round(data.prices[value] * (1 + (percentage / 100)) * 100) / 100); // https://metring.com.br/arredondar-numero-em-javascript
+  });
 }
 
 function employeeCoverage(idOrName) {
