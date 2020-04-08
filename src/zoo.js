@@ -25,8 +25,11 @@ const animalsOlderThan = (animal, age) => {
   return checkAnimals;
 };
 
-function employeeByName(employeeName) {
-  // seu código aqu
+const employeeByName = (employeeName) => {
+  if (employeeName === undefined) return [];
+  const employeeSearch = 
+    data.employees.find(item => item.firstName === employeeName || item.lastName === employeeName);
+  return employeeSearch
 }
 
 function createEmployee(personalInfo, associatedWith) {
