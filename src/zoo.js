@@ -60,7 +60,7 @@ const animalCount = (species) => {
   }, {}));
 };
 
-// console.log(animalCount());
+// console.log(animalCount('giraffes'));
 
 const entryCalculator = (entrants) => {
   if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
@@ -128,15 +128,41 @@ function schedule(dayName) {
   return objSchedule;
 }
 
-// console.log(schedule());
+// console.log(schedule('Monday'));
 
 function animalMap(options) {
   // seu código aqui
 }
 
 function employeeCoverage(idOrName) {
-  // seu código aqui
+  const obj = {};
+  if (idOrName) {
+    const emplName = employees.find(list => list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
+    //console.log(emplName);
+
+    if (employees.some(list =>
+      list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName)) {
+      const listRespAnim = emplName.responsibleFor.reduce((acc, el) => {
+      acc.push(animals.find(list => list.id === el).name);
+      return acc;
+    }, []);
+
+    obj[`${emplName.firstName} ${emplName.lastName}`] = listRespAnim;
+    return obj;
+    }
+  }
+  if (!idOrName) {
+    employees.map(element => {
+      const listRespAnim = element.responsibleFor.reduce((acc, el) => {
+      acc.push(animals.find(list => list.id === el).name);
+      return acc;
+      }, []);
+      obj[`${element.firstName} ${element.lastName}`] = listRespAnim;
+    });
+    return obj;
+  }
 }
+// console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
