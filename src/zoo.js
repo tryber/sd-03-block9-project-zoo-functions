@@ -72,9 +72,10 @@ function schedule(dayName) {
     }
     return console.log(acc), acc;
   }, {});
-  if (dayName){ const unica = {}
-  unica[dayName] = test[dayName]
-  return console.log(unica);
+  if (dayName) {
+    const unica = {};
+    unica[dayName] = test[dayName];
+    return console.log(unica);
   }
 }
 schedule('Monday');
