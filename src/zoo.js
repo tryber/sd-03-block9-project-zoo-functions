@@ -33,7 +33,7 @@ const employeeByName = employeeName => data.employees.find(
   element => element.firstName === employeeName || element.lastName === employeeName) || {};
 
 const createEmployee = (personalInfo, associatedWith) => ({
-  ...personalInfo, ...associatedWith, });
+  ...personalInfo, ...associatedWith });
 
 const isManager = id =>
 data.employees.some(el => el.managers.find(a => a === id));
