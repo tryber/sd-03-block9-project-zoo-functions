@@ -25,7 +25,7 @@ const employeeByName = (employeeName) => {
     || element.lastName === employeeName);
   }
   return {};
-  };
+};
 
 function createEmployee({ id, firstName, lastName }, { managers, responsibleFor }) {
   const result = {
@@ -82,12 +82,12 @@ function schedule(dayName) {
   }
   Object.keys(data.hours).forEach((e) => { agenda[e] = hours(e); });
   return agenda;
-  }
+}
 
 const oldestFromFirstSpecies = (id) => {
   const funcionario = employees.find(fun => fun.id === id).responsibleFor[0];
   const animal = animals.find(codigo => codigo.id === funcionario).residents;
-  const animaisOrdem = animal.sort((a,b) => {
+  const animaisOrdem = animal.sort((a, b) => {
     if (a.age < b.age) return 1;
     if (a.age > b.age) return -1;
     return 0;
@@ -95,8 +95,8 @@ const oldestFromFirstSpecies = (id) => {
   return Object.values(animaisOrdem[0]);
 };
 
-const increasePrices = percentage => {
-  Object.keys(data.prices).reduce((objeto, pessoa ) => {
+const increasePrices = (percentage) => {
+  Object.keys(data.prices).reduce((objeto, pessoa) => {
     objeto[pessoa] = Math.round((objeto[pessoa] * (100 + percentage)).toFixed(2)) / 100;
     return objeto;
   }, data.prices);
