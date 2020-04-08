@@ -128,7 +128,7 @@ function animalMap(options) {
 const dias = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
 const funcionamento = (day) => {
   let index = 0;
-  for (let i = 0; i < dias.length; i +=1) {
+  for (let i = 0; i < dias.length; i += 1) {
     if (dias[i] === day) {
       index = i;
     }
@@ -137,7 +137,7 @@ const funcionamento = (day) => {
   if (day === 'Monday') return 'CLOSED';
   const mensagem = `Open from ${valores.open}am until ${valores.close - 12}pm`;
   return mensagem;
-}
+};
 
 function schedule(dayName) {
   const funcionamentoObject = {};
@@ -192,7 +192,7 @@ function increasePrices(percentage) {
   return undefined;
 }
 function employeeCoverage(idOrName) {
-  //nada
+  return idOrName;
 }
 
 module.exports = {
