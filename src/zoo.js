@@ -137,8 +137,8 @@ function animalMap(options) {
 function employeeCoverage(idOrName) {
   const obj = {};
   if (idOrName) {
-    const emplName1 = employees.find(list =>
-      list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
+    const emplName1 = employees.find(element =>
+      element.id === idOrName || element.firstName === idOrName || element.lastName === idOrName);
 
     if (employees.some(list =>
       list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName)) {
@@ -165,7 +165,7 @@ function employeeCoverage(idOrName) {
   return obj;
 }
 
- console.log(employeeCoverage());
+// console.log(employeeCoverage());
 
 module.exports = {
   entryCalculator,
