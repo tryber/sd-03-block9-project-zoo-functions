@@ -204,6 +204,7 @@ function employeeCoverage(idOrName) {
   const result = {};
 
   const employeeResponsabilities = ((personObject) => {
+    console.log(personObject);
     personObject.responsibleFor.forEach((number) => {
       data.animals.forEach((specie) => {
         if (specie.id === number) {
@@ -229,9 +230,10 @@ function employeeCoverage(idOrName) {
 
   if (idOrName) {
     employeeSelect();
-  } else {
-    allEmployees();
+    return result;
   }
+
+  allEmployees();
   return result;
 }
 
