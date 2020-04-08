@@ -11,10 +11,8 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-const horarios = data.hours;
-const animals = data.animals;
-const funcionarios = data.employees;
-const precos = data.prices;
+
+const { animals: animals, employees: funcionarios, prices: precos, hours: horarios } = data; 
 function animalsByIds(...ids) {
   let animaisFiltradosPorId = [];
   ids.forEach((id) => {
@@ -40,7 +38,10 @@ function animalsOlderThan(animal, age) {
 function employeeByName(employeeName) {
   if (employeeName === undefined) return {};
   const funcionarioFiltrado = funcionarios.filter((funcionario) => {
-    if (funcionario.firstName === employeeName || funcionario.lastName === employeeName) {
+    if (funcionario.firstName === employeeName
+    || funcionario.lastName === employeeName
+    || funcionario.id === employeeName
+    ) {
       return true;
     }
     return false;
@@ -124,12 +125,30 @@ function animalMap(options) {
   // seu código aqui
 }
 
+const dias = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
+const funcionamento = (day) => {
+  let index = 0;
+  for (let i = 0; i < dias.length; i++) {
+    if (dias[i] === day) {
+      index = i;
+    }
+  }
+  const valores = Object.values(horarios)[index];
+  if (day === 'Monday') return 'CLOSED';
+  const mensagem = `Open from ${valores.open}am until ${valores.close - 12}pm`;
+  return mensagem; 
+}
+
 function schedule(dayName) {
-  const horaDoDia = {};
-  const funcionamento = Object.values(horarios.Tuesday);
-  horaDoDia[dayName] = `Open from ${funcionamento[0]}am until ${funcionamento[1] - 12}pm`;
-  if (dayName === 'Monday') return { Monday: 'CLOSED' };
-  return horaDoDia;
+  const funcionamentoObject = {};
+  if (dayName) {
+    funcionamentoObject[dayName] = funcionamento(dayName);
+    return funcionamentoObject;
+  }
+  for (let i = 0; i < dias.length; i += 1) {
+    funcionamentoObject[dias[i]] = funcionamento(dias[i]);
+  }
+  return funcionamentoObject;  
 }
 const buscaIdDoAnimalGerenciado = (idFiltro) => {
   const idDoAnimalGerenciado = funcionarios.find((employees) => {
@@ -173,8 +192,11 @@ function increasePrices(percentage) {
   return undefined;
 }
 function employeeCoverage(idOrName) {
-
+  const funcionario = employeeByName(idOrName);
+  const array = funcionario.responsibleFor;
+  return ;
 }
+
 module.exports = {
   entryCalculator,
   schedule,

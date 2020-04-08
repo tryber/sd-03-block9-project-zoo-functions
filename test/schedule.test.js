@@ -17,7 +17,7 @@ describe('schedule', () => {
       'Monday': 'CLOSED'
     };
 
-    //assert.deepEqual(actual, expected);
+    assert.deepEqual(actual, expected);
 
     // se um único dia for passado, retorna somente este dia em um formato
     // legível para humanos
