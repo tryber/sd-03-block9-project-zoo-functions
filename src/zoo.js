@@ -75,9 +75,9 @@ function oldestFromFirstSpecies(id) {
 // duas casas decimais
 function increasePrices(percentage) {
   // seu código aqui
-    return Object.keys(data.prices).forEach((price) => {
-      (data.prices[price] = Math.round(data.prices[price] * (1 + percentage/100)));
-   });
+  return Object.keys(data.prices).forEach((price) => {
+    (data.prices[price] = Math.round(data.prices[price] * (1 + (percentage / 100))));
+  });
 }
 
 function employeeCoverage(idOrName) {
