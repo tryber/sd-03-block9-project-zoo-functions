@@ -38,7 +38,7 @@ describe('createEmployee', () => {
     };
 
     // cria um novo colaborador a partir de objetos contendo informações pessoais,
-    // gerentes e animais gerenciados
+    // gerentes e animais gerenciados.
     assert.deepEqual(zoo.createEmployee(personalInfo, associatedWith), expected);
   });
 });
