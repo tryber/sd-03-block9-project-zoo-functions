@@ -53,8 +53,14 @@ function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
+const schedule = (dayName) => {
+  const newShedule = {};
+  if (dayName) {
+    newShedule[dayName] = hours(dayName);
+    return newShedule;
+  }
+  Object.keys(data.hours).forEach((e) => { newShedule[e] = hours(e); });
+  return newShedule;
 }
 
 function oldestFromFirstSpecies(id) {
