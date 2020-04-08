@@ -102,17 +102,17 @@ function oldestFromFirstSpecies(id) {
 }
 
 const increasePrices = (percentage) => {
-   Object.keys(data.prices).reduce((acc, el) => {
-      acc[el] = Math.round((acc[el] * (100 + percentage)).toFixed(2)) / 100;
-      return acc;
-    }, data.prices);
+  Object.keys(data.prices).reduce((acc, el) => {
+   acc[el] = Math.round((acc[el] * (100 + percentage)).toFixed(2)) / 100;
+    return acc;
+   }, data.prices);
 };
 
 function employeeCoverage(idOrName) {
   const obj = {};
   if (idOrName) {
-    const emplName = data.employees.find(list => 
-      list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
+    const emplName = data.employees.find(list =>
+    list.id === idOrName || list.firstName === idOrName || list.lastName === idOrName);
     if (emplName) {
       const listRespAnim = emplName.responsibleFor.reduce((acc, el) => {
         acc.push(data.animals.find(list => list.id === el).name);
