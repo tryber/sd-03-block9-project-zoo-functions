@@ -43,12 +43,12 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
   employees.push({ id, firstName, lastName, managers, responsibleFor });
 };
 
-const animalCount = species => {
+const animalCount = (species) => {
   if (species) {
     return animals.find(({ name }) => name === species).residents.length;
   }
-  let quant = {};
-  animals.map((all) => { quant[all.name] = all.residents.length });
+  const quant = {};
+  animals.map((all) => { quant[all.name] = all.residents.length })
   return quant;
 };
 
