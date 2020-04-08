@@ -53,7 +53,7 @@ const entryCalculator = (entrants) => {
     const b = prices.Child * Child;
     const c = prices.Senior * Senior;
     return a + b + c;
-  };
+  }
   return 0;
 };
 
