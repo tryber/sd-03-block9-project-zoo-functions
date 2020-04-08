@@ -32,17 +32,27 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
   data.employees.push({ id, firstName, lastName, managers, responsibleFor });
 }
 
-function animalCount(species) {
-  // seu código aqui
+const animalCount = (species) => {
+  if (species) {
+    return data.animals.find(el => el.name === species).residents.length;
+  }
 }
 
 function entryCalculator(entrants) {
   // seu código aqui
 }
 
-function animalMap(options) {
-  // seu código aqui
-}
+const animalMap = (options = {}) => {
+  const { includeNames, sex, sorted } = options;
+  const obj = {};
+  data.animals.forEach((animal) => {
+    obj[animal.location] = data.animals.filter(el => el.location === animal.location).map((el) => {
+      if (!includeNames) return el.name;
+      return residName(el.name, sorted, sex);
+    });
+  });
+  return obj;
+};
 
 function schedule(dayName) {
   // seu código aqui
