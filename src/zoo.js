@@ -73,8 +73,8 @@ function animalMap(options) {
 
 function schedule(dayName) {
   // seu código aqui
-  const fun = (ar) => { return (ar[1].open === ar[1].close) ? 'CLOSED' :
-              `Open from ${ar[1].open}am until ${ar[1].close - 12}pm`;
+  const fun = (ar) => {
+    return (ar[1].open === ar[1].close) ? 'CLOSED' : `Open from ${ar[1].open}am until ${ar[1].close - 12}pm`;
   };
   const arr = Object.entries(data.hours);
   if (!dayName) {
