@@ -111,14 +111,14 @@ function employeeCoverage(idOrName) {
   const func = find1(idOrName) || findid(idOrName) || find2(idOrName);
   const opa = al => data.animals.find(ani => ani.id === al).name;
   if (!idOrName) {
-    let arr = [];
-    data.employees.forEach(a => arr.push([a.firstName+' '+a.lastName, a.responsibleFor]));
+    const arr = [];
+    data.employees.forEach(a => arr.push([`${a.firstName} ${a.lastName}`, a.responsibleFor]));
     for (let i = 0; i < arr.length; i += 1) {
       arr[i][1] = arr[i][1].map(opa);
     }
     return Object.fromEntries(arr);
   }
-  const nome = func.firstName + ' ' + func.lastName;
+  const nome = `${func.firstName} ${func.lastName}`;
   return Object.fromEntries([[nome, func.responsibleFor.map(opa)]]);
 }
 
