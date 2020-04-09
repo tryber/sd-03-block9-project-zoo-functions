@@ -12,7 +12,7 @@ eslint no-unused-vars: [
 const data = require('./data');
 
 const animalsByIds = (...ids) => {
-  if (ids === undefined) return [];
+  if (!ids) return [];
   const group =
     data.animals.filter(idItem => ids.includes(idItem.id));
   return group;
@@ -26,7 +26,7 @@ const animalsOlderThan = (animal, age) => {
 };
 
 const employeeByName = (employeeName) => {
-  if (employeeName === undefined) return {};
+  if (!employeeName) return {};
   const employeeSearch =
     data.employees.find(item => item.firstName === employeeName || item.lastName === employeeName);
   return employeeSearch;
@@ -49,12 +49,20 @@ const addEmployee = (id, firstName, lastName, managers, responsibleFor) => {
     lastName,
     managers: managers || [],
     responsibleFor: responsibleFor || [],
-  };
+  };forEachforEach
   return data.employees.push(newEmployee);
 };
 
 const animalCount = (species) => {
-  // seu código aqu
+  if (!species) {
+    const allSpecies = {};
+      data.animals.map(animal => allSpecies[animal.name] = animal.residents.length);
+    return allSpecies;
+  } else {
+    const oneSpecie =
+      data.animals.find(animal => animal.name.includes(species)).residents.length;
+    return oneSpecie;
+  }
 };
 
 function entryCalculator(entrants) {
