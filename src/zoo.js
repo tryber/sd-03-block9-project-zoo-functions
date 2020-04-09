@@ -66,17 +66,25 @@ const animalCount = (species) => {
   return oneSpecie;
 };
 
-function entryCalculator(entrants) {
-  // seu código aqui
-}
+const entryCalculator = (entrants) => {
+  if (!entrants || Object.keys(entrants) == 0) return 0;
+  const { Adult: aPrice, Senior: sPrice, Child: cPrice } = data.prices;
+  const { Adult, Senior, Child } = entrants;
+  return (aPrice * Adult) + (sPrice * Senior) + (cPrice * Child);
+};
 
 function animalMap(options) {
   // seu código aqui
 }
 
-function schedule(dayName) {
-  // seu código aqui
-}
+const schedule = (dayName) => {
+//   if (!dayName) {
+//     const allSchedule = {};
+//       data.hours.forEach((day) => {
+//         allSchedule[day] = `${Object.keys[0]}`
+//       })
+//   }
+};
 
 function oldestFromFirstSpecies(id) {
   // seu código aqui
