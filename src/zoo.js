@@ -9,8 +9,10 @@ function animalsByIds(...ids) {
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
+
   const result = data.animals.some((e) => {
-    if (e.name === animal) return e.residents.every((resident) => resident.age > age);
+    const olderThan = e.residents.every((resident) => resident.age > age);
+    return e.name === animal && olderThan;
   });
   return result;
 }
@@ -19,16 +21,13 @@ animalsOlderThan('penguins', 10);
 // Done
 function employeeByName(employeeName) {
   //
-  return employeeName === undefined ? {}
-    : data.employees.find((employe) => {
-      if (employe.firstName === employeeName) {
-        return employe;
-      }
-    }) || data.employees.find((employe) =>
-    employe.lastName === employeeName)
-
+  if (employeeName === undefined) return {};
+  return data.employees.find(
+    (employe) => employe.firstName === employeeName,
+  ) || data.employees.find(
+    (employe) => employe.lastName === employeeName,
+  );
 }
-
 function createEmployee(personalInfo, associatedWith) {
   const obj = { ...personalInfo, ...associatedWith };
 
@@ -65,7 +64,7 @@ function animalCount(species) {
     return sortByKey(animalList);
   }
   const search = data.animals.find((e) => e.name === species).residents.length;
-  if (species) { return search; }
+  return search;
 }
 
 
@@ -79,15 +78,48 @@ function entryCalculator(entrants) {
   const reduceSenior = values.reduce((acc, val) => (typeof val.Senior !== 'number' ? null : val.Senior * acc), 1);
   const price = reduceAdult + reduceChild + reduceSenior;
 
-  console.log('price ', price);
   return price;
 }
 console.log(entryCalculator({ Adult: 2 }));
 
 function animalMap(options) {
+  const getLocations = () => data.animals.map(({ location }) => location).reduce((acc, local) => {
+    if (acc[local] === undefined) acc[local] = [];
+    return acc;
+  }, {});
+  const searchBase = data.animals;
+  // if()
+  const local = getLocations();
+  console.log(local);
+  // if (options.sex) {
+  //   const filter = searchBase.filter((animal) => {
+  //     // const sex = animal.residents.forEach((resident) => resident.sex) === options.sex;
+  //     if (animal.residents.forEach((resident) => resident.sex) === options.sex) return animal;
+  //   });
+  //   console.log('filter:', filter);
+  // }
+  searchBase.forEach((animal) => {
+    if (!options) {
+      local[animal.location].push(animal.name);
+    } else {
+      if (options.includesNames === true) {
+        const residentsObj = {};
+        residentsObj[animal.name] = animal.residents.map((resident) => resident.name);
 
+
+        console.log('local ', local);
+        // console.log('local', local)
+        return local[animal.location].push(residentsObj);
+      }
+
+      if (!options) {
+        local[animal.location].push(animal.name);
+      }
+    }
+    return local;
+  });
 }
-
+animalMap({ includesNames: true, sex: 'female' });
 
 function schedule(dayName) {
   const entries = Object.entries(data.hours);
@@ -114,25 +146,21 @@ function oldestFromFirstSpecies(id) {
   if (!id) return null;
   const chosen = data.employees.find((employee) => employee.id === id);
   const { responsibleFor: [animalId] } = chosen;
-  const animal = data.animals.find((animal) => animal.id === animalId);
-  const result = animal.residents
-    .reduce((old, value) => {
-      const val = Object.values;
-      val(value)[2] > val(old)[2] ? old = val(value) : val(old);
-      return old;
-    });
+  const anima = data.animals.find((animal) => animal.id === animalId);
+  const val = Object.values;
+  const result = anima.residents
+    .reduce((old, value) => (val(value)[2] > val(old)[2] ? val(value) : val(old)));
   return result;
 }
 oldestFromFirstSpecies('4b40a139-d4dc-4f09-822d-ec25e819a5ad');
 
 function increasePrices(percentage) {
   // DONE
-  let result = data.prices;
-  result = Object.entries(data.prices).reduce((acc, value) => {
+  const result = Object.entries(data.prices).reduce((acc, value) => {
     acc[value[0]] = parseFloat(Math.ceil(value[1] * (percentage + 100))) / 100;
     return acc;
   }, {});
-  return result;
+  data.prices = result;
 }
 
 function employeeCoverage(idOrName) {
