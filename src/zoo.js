@@ -49,20 +49,19 @@ const addEmployee = (id, firstName, lastName, managers, responsibleFor) => {
     lastName,
     managers: managers || [],
     responsibleFor: responsibleFor || [],
-  };forEachforEach
+  };
   return data.employees.push(newEmployee);
 };
 
 const animalCount = (species) => {
   if (!species) {
     const allSpecies = {};
-      data.animals.map(animal => allSpecies[animal.name] = animal.residents.length);
+    data.animals.map(animal => allSpecies[animal.name] = animal.residents.length);
     return allSpecies;
-  } else {
-    const oneSpecie =
-      data.animals.find(animal => animal.name.includes(species)).residents.length;
-    return oneSpecie;
   }
+  const oneSpecie =
+    data.animals.find(animal => animal.name.includes(species)).residents.length;
+  return oneSpecie;
 };
 
 function entryCalculator(entrants) {
