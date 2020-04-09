@@ -56,8 +56,8 @@ const addEmployee = (id, firstName, lastName, managers, responsibleFor) => {
 const animalCount = (species) => {
   if (!species) {
     const allSpecies = {};
-    data.animals.map(animal => {
-      allSpecies[animal.name] = animal.residents.length
+    data.animals.map((animal) => {
+      allSpecies[animal.name] = animal.residents.length;
     });
     return allSpecies;
   }
