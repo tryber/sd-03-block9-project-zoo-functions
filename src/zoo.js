@@ -67,6 +67,7 @@ const animalCount = (species) => {
 };
 
 const entryCalculator = (entrants) => {
+  entrants = false;
   if (entrants || Object.keys(entrants).lenght > 0) {
     const { Adult: aPrice, Senior: sPrice, Child: cPrice } = data.prices;
     const { Adult, Senior, Child } = entrants;
@@ -74,9 +75,6 @@ const entryCalculator = (entrants) => {
   }
   return 0;
 };
-
-console.log(entryCalculator({}));
-
 
 function animalMap(options) {
   // seu código aqui
