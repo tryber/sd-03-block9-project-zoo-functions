@@ -67,7 +67,7 @@ const animalCount = (species) => {
 };
 
 const entryCalculator = (entrants) => {
-  if (!entrants || Object.keys(entrants) == 0) return 0;
+  if (!entrants || Object.keys(entrants) === 0) return 0;
   const { Adult: aPrice, Senior: sPrice, Child: cPrice } = data.prices;
   const { Adult, Senior, Child } = entrants;
   return (aPrice * Adult) + (sPrice * Senior) + (cPrice * Child);
