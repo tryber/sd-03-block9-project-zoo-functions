@@ -87,9 +87,9 @@ const generateSchedule = (open, close) => {
 const schedule = (dayName) => {
   const legibleSchedule = {};
   if (!dayName) {
-      Object.entries(data.hours).forEach(([day, value]) => {
-        legibleSchedule[day] = generateSchedule(value.open, value.close);
-      })
+    Object.entries(data.hours).forEach(([day, value]) => {
+    legibleSchedule[day] = generateSchedule(value.open, value.close);
+    });
   } else if (data.hours[dayName]) {
     const value = data.hours[dayName];
     legibleSchedule[dayName] = generateSchedule(value.open, value.close);
@@ -104,7 +104,7 @@ function oldestFromFirstSpecies(id) {
     data.animals.find(idAnimal => idAnimal.id === employeeAnimal)
                 .residents.sort((a, b) => b.age - a.age);
   return [oldest[0].name, oldest[0].sex, oldest[0].age];
-};
+}
 
 function increasePrices(percentage) {
   // seu código aqui
