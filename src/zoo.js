@@ -97,7 +97,7 @@ const schedule = (dayName) => {
   return legibleSchedule;
 };
 
-const oldestFromFirstSpecies = (id) =>{
+const oldestFromFirstSpecies = (id) => {
   const employeeAnimal =
     data.employees.find(item => item.id === id).responsibleFor[0];
   const oldest =
@@ -107,9 +107,9 @@ const oldestFromFirstSpecies = (id) =>{
 };
 
 const increasePrices = (percentage) => {
-  const value = Object.entries(data.prices)
+  const value = Object.entries(data.prices);
   value.forEach(([type, price]) => {
-    data.prices[type] = (Math.round((price * (percentage / 100 + 1) * 100))) / 100;
+    data.prices[type] = (Math.round((price * ((percentage / 100) + 1) * 100))) / 100;
   });
   return data.prices;
 };
