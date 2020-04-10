@@ -34,7 +34,7 @@ const employeeByName = (employeeName) => {
 
 function createEmployee(personalInfo, associatedWith) {
   return { ...personalInfo, ...associatedWith };
-};
+}
 
 const isManager = (id) => {
   const manager =
@@ -116,7 +116,9 @@ const increasePrices = (percentage) => {
 
 function employeeCoverage(idOrName) {
   // const employeeAnimal =
-  //   data.employees.find(item => item.id === idOrName|| item.firstName === idOrName || item.lastName === idOrName).responsibleFor;
+  //   data.employees.find(item => item.id === idOrName
+  // || item.firstName === idOrName 
+  // || item.lastName === idOrName).responsibleFor;
   //   console.log(employeeAnimal);
   // const animalsByName =
   //   data.animals.find((idAnimal) => idAnimal.id === employeeAnimal)
