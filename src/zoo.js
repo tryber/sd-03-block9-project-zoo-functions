@@ -3,15 +3,15 @@ const data = require('./data');
 
 function animalsByIds(...ids) {
   // seu código aqui
-  const result = ids.map((e) => (ids === [] ? [] : data.animals.find((animal) => animal.id === e)));
+  const result = ids.map(e => (ids === [] ? [] : data.animals.find(animal => animal.id === e)));
   return result;
 }
 
 function animalsOlderThan(animal, age) {
   // seu código aqui
 
-  const result = data.animals.some((e) => {
-    const olderThan = e.residents.every((resident) => resident.age > age);
+  const result = data.animals.some(e => {
+    const olderThan = e.residents.every(resident => resident.age > age);
     return e.name === animal && olderThan;
   });
   return result;
@@ -23,9 +23,9 @@ function employeeByName(employeeName) {
   //
   if (employeeName === undefined) return {};
   return data.employees.find(
-    (employe) => employe.firstName === employeeName,
+    employe => employe.firstName === employeeName,
   ) || data.employees.find(
-    (employe) => employe.lastName === employeeName,
+    employe => employe.lastName === employeeName,
   );
 }
 function createEmployee(personalInfo, associatedWith) {
@@ -52,7 +52,7 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 
 function animalCount(species) {
-  const sortByKey = (obj) => Object.keys(obj).sort().reduce((acc, key) => {
+  const sortByKey = obj => Object.keys(obj).sort().reduce((acc, key) => {
     acc[key] = obj[key];
     return acc;
   }, {});
@@ -63,7 +63,7 @@ function animalCount(species) {
     }, {});
     return sortByKey(animalList);
   }
-  const search = data.animals.find((e) => e.name === species).residents.length;
+  const search = data.animals.find(e => e.name === species).residents.length;
   return search;
 }
 
@@ -80,46 +80,53 @@ function entryCalculator(entrants) {
 
   return price;
 }
-console.log(entryCalculator({ Adult: 2 }));
 
 function animalMap(options) {
   const getLocations = () => data.animals.map(({ location }) => location).reduce((acc, local) => {
     if (acc[local] === undefined) acc[local] = [];
     return acc;
   }, {});
-  const searchBase = data.animals;
-  // if()
-  const local = getLocations();
-  console.log(local);
-  // if (options.sex) {
-  //   const filter = searchBase.filter((animal) => {
-  //     // const sex = animal.residents.forEach((resident) => resident.sex) === options.sex;
-  //     if (animal.residents.forEach((resident) => resident.sex) === options.sex) return animal;
-  //   });
-  //   console.log('filter:', filter);
-  // }
-  searchBase.forEach((animal) => {
-    if (!options) {
-      local[animal.location].push(animal.name);
-    } else {
-      if (options.includesNames === true) {
-        const residentsObj = {};
-        residentsObj[animal.name] = animal.residents.map((resident) => resident.name);
+  let local = getLocations();
+  let searchBase = data.animals;
+  let newLocal = local
 
+  data.animals.forEach(animal => {
+    if (!!options && typeof options.sex === 'string') {
 
-        console.log('local ', local);
-        // console.log('local', local)
-        return local[animal.location].push(residentsObj);
-      }
-
-      if (!options) {
-        local[animal.location].push(animal.name);
-      }
+      const filtered = animal.residents.filter(resident => resident.sex === options.sex)
+      //console.log('After filter', filtered)
+      animal.residents = filtered
     }
-    return local;
-  });
+  })
+  //console.log('searchBase',searchBase.map(animal=> animal.residents ));
+  searchBase.forEach(animal => {
+    console.log(newLocal);
+
+    if (!!options && options.includeNames === true) {
+      newLocal = local
+      const obj = {}
+      const namesMaped = animal.residents.map(resident => resident.name);
+      obj[animal.name] = options.sorted === true ? namesMaped.sort(): namesMaped
+      //console.log('Map:', namesMaped)
+      newLocal[animal.location].push(obj);
+      return newLocal
+    } else {
+      newLocal = local
+      newLocal[animal.location].push(animal.name)
+      return newLocal
+    }
+
+  })
+
+return newLocal
+
 }
-animalMap({ includesNames: true, sex: 'female' });
+
+
+// console.log('test: ', data.animals.forEach(
+//   function(animal) {
+//     console.log(animal.residents.filter(resident => resident.sex === 'male'));
+//      }))
 
 function schedule(dayName) {
   const entries = Object.entries(data.hours);

@@ -24,14 +24,14 @@
              if(options.sex === sex)
              console.log(searchBase);
              return name
-          })
-         }
-      let residentsList = animalsByLocation[animal.location].push(animal.name)
+            })
+          }
+          let residentsList = animalsByLocation[animal.location].push(animal.name)
          if(options.sorted === true){}
      return residentsList, console.log(residentsList);
 
 
-    })
+  })
   }
   mapByLocation()
   animalMap({ includesNames: true, sex: 'female' })
