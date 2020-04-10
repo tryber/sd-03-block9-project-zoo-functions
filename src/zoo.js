@@ -79,7 +79,7 @@ function animalMap(options) {
 
 const generateSchedule = (open, close) => {
   if (open && close) {
-    return `Open from ${open}am until ${close - 12}pm`
+    return `Open from ${open}am until ${close - 12}pm`;
   }
   return 'CLOSED';
 };
@@ -87,9 +87,9 @@ const generateSchedule = (open, close) => {
 const schedule = (dayName) => {
   const legibleSchedule = {};
   if (!dayName) {
-    for (const [day, value] of Object.entries(data.hours)) {
-      legibleSchedule[day] = generateSchedule(value.open, value.close);
-    }
+      Object.entries(data.hours).forEach(([day, value]) => {
+        legibleSchedule[day] = generateSchedule(value.open, value.close);
+      })
   } else if (data.hours[dayName]) {
     const value = data.hours[dayName];
     legibleSchedule[dayName] = generateSchedule(value.open, value.close);
@@ -98,8 +98,13 @@ const schedule = (dayName) => {
 };
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
-}
+  const employeeAnimal =
+    data.employees.find(item => item.id === id).responsibleFor[0];
+  const oldest =
+    data.animals.find(idAnimal => idAnimal.id === employeeAnimal)
+                .residents.sort((a, b) => b.age - a.age);
+  return [oldest[0].name, oldest[0].sex, oldest[0].age];
+};
 
 function increasePrices(percentage) {
   // seu código aqui
