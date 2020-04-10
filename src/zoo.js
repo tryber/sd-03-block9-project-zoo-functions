@@ -117,7 +117,7 @@ const increasePrices = (percentage) => {
 function employeeCoverage(idOrName) {
   // const employeeAnimal =
   //   data.employees.find(item => item.id === idOrName
-  // || item.firstName === idOrName 
+  // || item.firstName === idOrName
   // || item.lastName === idOrName).responsibleFor;
   //   console.log(employeeAnimal);
   // const animalsByName =
