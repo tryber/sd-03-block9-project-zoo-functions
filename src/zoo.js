@@ -77,10 +77,12 @@ function animalMap(options) {
   // seu código aqui
 }
 
+const generateSchedule = (open, close) => {
+  return open && close ? `Open from ${open}am until ${close - 12}pm` : 'CLOSED';
+}
+
 const schedule = (dayName) => {
-  const generateSchedule = (open, close) => 
-    open && close ? `Open from ${open}am until ${close-12}pm` : 'CLOSED';
-  const legibleSchedule = {}
+  const legibleSchedule = {};
   if (!dayName) {
     for (const [day, value] of Object.entries(data.hours)) {
         legibleSchedule[day] = generateSchedule(value.open, value.close);
