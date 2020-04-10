@@ -78,12 +78,18 @@ function animalMap(options) {
 }
 
 const schedule = (dayName) => {
-//   if (!dayName) {
-//     const allSchedule = {};
-//       data.hours.forEach((day) => {
-//         allSchedule[day] = `${Object.keys[0]}`
-//       })
-//   }
+  const generateSchedule = (open, close) => 
+    open && close ? `Open from ${open}am until ${close-12}pm` : 'CLOSED';
+  const legibleSchedule = {}
+  if (!dayName) {
+    for (const [day, value] of Object.entries(data.hours)) {
+        legibleSchedule[day] = generateSchedule(value.open, value.close);
+    }
+  } else if (data.hours[dayName]) {
+    const value = data.hours[dayName];
+    legibleSchedule[dayName] = generateSchedule(value.open, value.close);
+  }
+  return legibleSchedule;
 };
 
 function oldestFromFirstSpecies(id) {
