@@ -33,8 +33,8 @@ const employeeByName = (employeeName) => {
 };
 
 const createEmployee = (personalInfo, associatedWith) => {
-  return {...personalInfo, ...associatedWith}
-}
+  return { ...personalInfo, ...associatedWith };
+};
 
 const personalInfo = {
   id: '7ed1c9bb-8570-44f6-b718-0666b869573a',
