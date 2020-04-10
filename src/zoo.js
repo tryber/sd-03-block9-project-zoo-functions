@@ -10,7 +10,7 @@ function animalsByIds(...ids) {
 function animalsOlderThan(animal, age) {
   // seu código aqui
 
-  const result = data.animals.some(e => {
+  const result = data.animals.some((e) => {
     const olderThan = e.residents.every(resident => resident.age > age);
     return e.name === animal && olderThan;
   });
@@ -62,7 +62,7 @@ function animalCount(species) {
     }, {});
     return sortByKey(animalList);
   }
-  const search = data.animals.find((e) => e.name === species).residents.length;
+  const search = data.animals.find(e => e.name === species).residents.length;
   return search;
 }
 
@@ -73,13 +73,11 @@ function entryCalculator(entrants) {
 
   const entries = Object.entries(entrants);
   const sum = entries.reduce((acc, entry) => {
-    acc += data.prices[entry[0]] * entry[1], 0;
+    acc += data.prices[entry[0]] * entry[1];
     return acc;
-  })
+  }, 0);
   return sum;
-
 }
-
 
 function animalMap(options) {
   const getLocations = () => data.animals.map(({ location }) => location).reduce((acc, local) => {
@@ -95,9 +93,7 @@ function animalMap(options) {
       animal.residents = filtered;
     }
   });
-
   searchBase.forEach((animal) => {
-
     if (!!options && options.includeNames === true) {
       const obj = {};
       const namesMaped = animal.residents.map(resident => resident.name);
