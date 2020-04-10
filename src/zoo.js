@@ -97,18 +97,22 @@ const schedule = (dayName) => {
   return legibleSchedule;
 };
 
-function oldestFromFirstSpecies(id) {
+const oldestFromFirstSpecies = (id) =>{
   const employeeAnimal =
     data.employees.find(item => item.id === id).responsibleFor[0];
   const oldest =
     data.animals.find(idAnimal => idAnimal.id === employeeAnimal)
                 .residents.sort((a, b) => b.age - a.age);
   return [oldest[0].name, oldest[0].sex, oldest[0].age];
-}
+};
 
-function increasePrices(percentage) {
-  // seu código aqui
-}
+const increasePrices = (percentage) => {
+  const value = Object.entries(data.prices)
+  value.forEach(([type, price]) => {
+    data.prices[type] = (Math.round((price * (percentage / 100 + 1) * 100))) / 100;
+  });
+  return data.prices;
+};
 
 function employeeCoverage(idOrName) {
   // seu código aqui
