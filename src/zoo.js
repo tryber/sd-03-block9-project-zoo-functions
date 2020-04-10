@@ -36,7 +36,6 @@ function createEmployee(personalInfo, associatedWith) {
   return obj;
 }
 
-// createEmployee(personalInfo, associatedWith)
 function isManager(id) {
   // DONE
   const result = data.employees.some(e => e.managers.includes(id));
@@ -73,8 +72,11 @@ function entryCalculator(entrants) {
   if (typeof entrants !== 'object' || entrants === {}) { return 0; }
 
   const entries = Object.entries(entrants);
-  const sum = entries.reduce((acc, entry) => acc += data.prices[entry[0]] * entry[1], 0)
-  return sum
+  const sum = entries.reduce((acc, entry) => {
+    acc += data.prices[entry[0]] * entry[1], 0;
+    return acc;
+  })
+  return sum;
 
 }
 
@@ -86,37 +88,29 @@ function animalMap(options) {
   }, {});
   const local = getLocations();
   const searchBase = data.animals;
-  let newLocal = local;
 
-  data.animals.forEach(animal => {
+  data.animals.forEach((animal) => {
     if (!!options && typeof options.sex === 'string') {
-      const filtered = animal.residents.filter((resident) => resident.sex === options.sex);
+      const filtered = animal.residents.filter(resident => resident.sex === options.sex);
       animal.residents = filtered;
     }
   });
-  searchBase.forEach(animal => {
+
+  searchBase.forEach((animal) => {
 
     if (!!options && options.includeNames === true) {
-      newLocal = local;
       const obj = {};
       const namesMaped = animal.residents.map(resident => resident.name);
       obj[animal.name] = options.sorted === true ? namesMaped.sort() : namesMaped;
-      newLocal[animal.location].push(obj);
-      return newLocal;
+      local[animal.location].push(obj);
+      return local;
     }
-    newLocal = local;
-    newLocal[animal.location].push(animal.name);
-    return newLocal;
+    local[animal.location].push(animal.name);
+    return local;
   });
 
-  return newLocal;
+  return local;
 }
-
-
-// console.log('test: ', data.animals.forEach(
-//   function(animal) {
-//     console.log(animal.residents.filter(resident => resident.sex === 'male'));
-//      }))
 
 function schedule(dayName) {
   const entries = Object.entries(data.hours);
