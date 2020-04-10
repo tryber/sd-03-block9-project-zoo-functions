@@ -88,7 +88,7 @@ const schedule = (dayName) => {
   const legibleSchedule = {};
   if (!dayName) {
     Object.entries(data.hours).forEach(([day, value]) => {
-    legibleSchedule[day] = generateSchedule(value.open, value.close);
+      legibleSchedule[day] = generateSchedule(value.open, value.close);
     });
   } else if (data.hours[dayName]) {
     const value = data.hours[dayName];
