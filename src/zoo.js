@@ -39,7 +39,7 @@ function createEmployee(personalInfo, associatedWith) {
 // createEmployee(personalInfo, associatedWith)
 function isManager(id) {
   // DONE
-  const result = data.employees.some((e) => e.managers.includes(id));
+  const result = data.employees.some(e => e.managers.includes(id));
   return result;
 }
 
@@ -63,7 +63,7 @@ function animalCount(species) {
     }, {});
     return sortByKey(animalList);
   }
-  const search = data.animals.find(e => e.name === species).residents.length;
+  const search = data.animals.find((e) => e.name === species).residents.length;
   return search;
 }
 
@@ -72,54 +72,44 @@ function entryCalculator(entrants) {
   // seu código aqui
   if (typeof entrants !== 'object' || entrants === {}) { return 0; }
 
-  const values = [entrants, data.prices];
-  const reduceAdult = values.reduce((acc, val) => (typeof val.Adult !== 'number' ? null : val.Adult * acc), 1);
-  const reduceChild = values.reduce((acc, val) => (typeof val.Child !== 'number' ? null : val.Child * acc), 1);
-  const reduceSenior = values.reduce((acc, val) => (typeof val.Senior !== 'number' ? null : val.Senior * acc), 1);
-  const price = reduceAdult + reduceChild + reduceSenior;
+  const entries = Object.entries(entrants);
+  const sum = entries.reduce((acc, entry) => acc += data.prices[entry[0]] * entry[1], 0)
+  return sum
 
-  return price;
 }
+
 
 function animalMap(options) {
   const getLocations = () => data.animals.map(({ location }) => location).reduce((acc, local) => {
     if (acc[local] === undefined) acc[local] = [];
     return acc;
   }, {});
-  let local = getLocations();
-  let searchBase = data.animals;
-  let newLocal = local
+  const local = getLocations();
+  const searchBase = data.animals;
+  let newLocal = local;
 
   data.animals.forEach(animal => {
     if (!!options && typeof options.sex === 'string') {
-
-      const filtered = animal.residents.filter(resident => resident.sex === options.sex)
-      //console.log('After filter', filtered)
-      animal.residents = filtered
+      const filtered = animal.residents.filter((resident) => resident.sex === options.sex);
+      animal.residents = filtered;
     }
-  })
-  //console.log('searchBase',searchBase.map(animal=> animal.residents ));
+  });
   searchBase.forEach(animal => {
-    console.log(newLocal);
 
     if (!!options && options.includeNames === true) {
-      newLocal = local
-      const obj = {}
+      newLocal = local;
+      const obj = {};
       const namesMaped = animal.residents.map(resident => resident.name);
-      obj[animal.name] = options.sorted === true ? namesMaped.sort(): namesMaped
-      //console.log('Map:', namesMaped)
+      obj[animal.name] = options.sorted === true ? namesMaped.sort() : namesMaped;
       newLocal[animal.location].push(obj);
-      return newLocal
-    } else {
-      newLocal = local
-      newLocal[animal.location].push(animal.name)
-      return newLocal
+      return newLocal;
     }
+    newLocal = local;
+    newLocal[animal.location].push(animal.name);
+    return newLocal;
+  });
 
-  })
-
-return newLocal
-
+  return newLocal;
 }
 
 
@@ -151,9 +141,9 @@ schedule('Monday');
 function oldestFromFirstSpecies(id) {
   // DONE
   if (!id) return null;
-  const chosen = data.employees.find((employee) => employee.id === id);
+  const chosen = data.employees.find(employee => employee.id === id);
   const { responsibleFor: [animalId] } = chosen;
-  const anima = data.animals.find((animal) => animal.id === animalId);
+  const anima = data.animals.find(animal => animal.id === animalId);
   const val = Object.values;
   const result = anima.residents
     .reduce((old, value) => (val(value)[2] > val(old)[2] ? val(value) : val(old)));
@@ -175,7 +165,7 @@ function employeeCoverage(idOrName) {
   const coverageById = data.employees.reduce((acc, employee) => {
     const fullName = `${employee.firstName} ${employee.lastName}`;
     acc[fullName] = employee.responsibleFor.map((id, name) => {
-      name = data.animals.find((animal) => animal.id === id).name;
+      name = data.animals.find(animal => animal.id === id).name;
       return name;
     });
 
