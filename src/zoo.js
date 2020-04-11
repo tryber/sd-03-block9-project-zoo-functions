@@ -73,9 +73,23 @@ const entryCalculator = (entrants) => {
   return (aPrice * Adult) + (sPrice * Senior) + (cPrice * Child);
 };
 
-function animalMap(options) {
-  // seu código aqui
+function animalMap(options=false) {
+  const {includeNames, sorted, sex} = options
+  const animalsByLocation = {};
+    data.animals.map((animal) => {
+      if (!animalsByLocation[animal.location]){
+        animalsByLocation[animal.location] = []
+      }
+      const item = includeNames ? 
+        { [animal.name] : animal.residents.map((resident)=>resident.name) } 
+        : animal.name
+      animalsByLocation[animal.location].push(item);
+    });
+  return animalsByLocation
 }
+
+console.log(animalMap({includeNames:1}));
+
 
 const generateSchedule = (open, close) => {
   if (open && close) {
@@ -116,14 +130,15 @@ const increasePrices = (percentage) => {
 
 function employeeCoverage(idOrName) {
   // const employeeAnimal =
-  //   data.employees.find(item => item.id === idOrName
-  // || item.firstName === idOrName
-  // || item.lastName === idOrName).responsibleFor;
-  //   console.log(employeeAnimal);
-  // const animalsByName =
-  //   data.animals.find((idAnimal) => idAnimal.id === employeeAnimal)
-  //   console.log(animalsByName);
+  //   data.employees.find(item => item.id === idOrName).responsibleFor;
+  // if (!idOrName) {
+  //   const allAnimalsByEmployee = {};
+  //   data.employees.forEach((name) => {
+  //     allAnimalsByEmployee[`${employee.firstName} ${employee.lastName}`] = []
+  //   });
+  // }
 }
+
 
 module.exports = {
   entryCalculator,
