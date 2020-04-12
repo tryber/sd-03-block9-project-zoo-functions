@@ -141,12 +141,13 @@ function employeeResponsabilities(employee) {
     const responsibleFor = employee.responsibleFor.map((responsibleId) => {
       const animalsNames =
         data.animals.find(animal => animal.id === responsibleId).name;
-      return animalsNames; 
+      return animalsNames;
     });
     return {
       [`${employee.firstName} ${employee.lastName}`]: responsibleFor,
     };
   }
+  return 'No match'
 }
 
 function employeeCoverage(idOrName) {
