@@ -73,23 +73,31 @@ const entryCalculator = (entrants) => {
   return (aPrice * Adult) + (sPrice * Senior) + (cPrice * Child);
 };
 
-function animalMap(options=false) {
-  const {includeNames, sorted, sex} = options
+function animalMap(options = false) {
+  const { includeNames, sorted, sex } = options;
   const animalsByLocation = {};
-    data.animals.map((animal) => {
-      if (!animalsByLocation[animal.location]){
-        animalsByLocation[animal.location] = []
+  data.animals.forEach((animal) => {
+    if (!animalsByLocation[animal.location]) {
+      animalsByLocation[animal.location] = [];
+    }
+    let item;
+    if (includeNames) {
+      item = { [animal.name] : [] }
+      animal.residents.forEach((resident) => {
+        if(!sex || resident.sex == sex){
+          item[animal.name].push(resident.name)
+        }
+      })
+      if (sorted) {
+        item[animal.name].sort();
       }
-      const item = includeNames ? 
-        { [animal.name] : animal.residents.map((resident)=>resident.name) } 
-        : animal.name
-      animalsByLocation[animal.location].push(item);
-    });
-  return animalsByLocation
+    }else{
+      item = animal.name
+    }
+    animalsByLocation[animal.location].push(item);
+  });
+  return animalsByLocation;
 }
-
-console.log(animalMap({includeNames:1}));
-
 
 const generateSchedule = (open, close) => {
   if (open && close) {
@@ -138,7 +146,6 @@ function employeeCoverage(idOrName) {
   //   });
   // }
 }
-
 
 module.exports = {
   entryCalculator,
