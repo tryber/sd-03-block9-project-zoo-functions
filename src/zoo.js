@@ -82,17 +82,17 @@ function animalMap(options = false) {
     }
     let item;
     if (includeNames) {
-      item = { [animal.name] : [] }
+      item = { [animal.name]: [] };
       animal.residents.forEach((resident) => {
-        if(!sex || resident.sex == sex){
-          item[animal.name].push(resident.name)
+        if (!sex || resident.sex === sex) {
+          item[animal.name].push(resident.name);
         }
-      })
+      });
       if (sorted) {
         item[animal.name].sort();
       }
-    }else{
-      item = animal.name
+    } else {
+      item = animal.name;
     }
     animalsByLocation[animal.location].push(item);
   });
