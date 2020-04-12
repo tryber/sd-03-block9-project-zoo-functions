@@ -138,32 +138,33 @@ const increasePrices = (percentage) => {
 
 function employeeResponsabilities(employee) {
   if (employee) {
-    const responsibleFor = employee.responsibleFor.map(responsibleId => {
-      return data.animals.find(animal => animal.id === responsibleId ).name
-    })
+    const responsibleFor = employee.responsibleFor.map((responsibleId) => {
+      const animalsNames =
+        data.animals.find(animal => animal.id === responsibleId).name;
+      return animalsNames; 
+    });
     return {
-        [`${employee.firstName} ${employee.lastName}`]: responsibleFor
-    }
+      [`${employee.firstName} ${employee.lastName}`]: responsibleFor,
+    };
   }
-  return undefined
 }
 
 function employeeCoverage(idOrName) {
   if (!idOrName) {
-    let allEmployees = {}
-    data.employees.forEach( employee => {
-      allEmployees = { ...allEmployees, ...employeeResponsabilities(employee) }
-    })
-    return allEmployees
+    let allEmployees = {};
+    data.employees.forEach((employee) => {
+      allEmployees = { ...allEmployees, ...employeeResponsabilities(employee) };
+    });
+    return allEmployees;
   }
   const employee =
-    data.employees.find(item => 
+    data.employees.find(item =>
       item.id === idOrName
       || item.firstName === idOrName
-      || item.lastName === idOrName 
+      || item.lastName === idOrName,
     );
   if (employee) {
-    return employeeResponsabilities(employee)
+    return employeeResponsabilities(employee);
   }
 }
 
