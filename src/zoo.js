@@ -147,7 +147,7 @@ function employeeResponsabilities(employee) {
       [`${employee.firstName} ${employee.lastName}`]: responsibleFor,
     };
   }
-  return 'No match'
+  return 'No match';
 }
 
 function employeeCoverage(idOrName) {
@@ -167,6 +167,7 @@ function employeeCoverage(idOrName) {
   if (employee) {
     return employeeResponsabilities(employee);
   }
+  return 'No match';
 }
 
 module.exports = {
