@@ -9,19 +9,22 @@ eslint no-unused-vars: [
 ]
 */
 
+// const speciesFinder = data.animals.find(({ name }) => name === species);
+// return speciesFinder.residents.filter(({ age:a })=> a > age);
+
 const data = require('./data');
 
-// Caso receba nenhum parâmetro, necessário retornar um array vazio;
-// Ao receber como parâmetro um único id, retorna os animais com este id;
-// Ao receber mais de um id, retorna os animais que têm um desses ids.
-function animalsByIds(...ids) {  
-  if(!ids.length) return [];
+const animalsByIds = (...ids) => {
+  if (!ids.length) return [];
   return data.animals.filter(({ id }) => ids.includes(id));
-}
+};
 
-function animalsOlderThan(animal, age) {
-  // seu código aqui
-}
+const animalsOlderThan = (species, age) => {
+  const speciesFinder = data.animals.find(({ name }) => name === species);
+  const ageChecker = speciesFinder.residents.find(({ age:a })=> a < age);
+  if (ageChecker) return false;
+  return true
+};
 
 function employeeByName(employeeName) {
   // seu código aqui
