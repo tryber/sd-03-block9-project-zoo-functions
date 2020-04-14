@@ -21,9 +21,9 @@ const animalsByIds = (...ids) => {
 
 const animalsOlderThan = (species, age) => {
   const speciesFinder = data.animals.find(({ name }) => name === species);
-  const ageChecker = speciesFinder.residents.find(({ age:a })=> a < age);
+  const ageChecker = speciesFinder.residents.find(({ age: a }) => a < age);
   if (ageChecker) return false;
-  return true
+  return true;
 };
 
 function employeeByName(employeeName) {
