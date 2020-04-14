@@ -28,15 +28,11 @@ const animalsOlderThan = (species, age) => {
 
 const employeeByName = (employeeName) => {
   if (!employeeName) return {};
-  return data.employees.find(({ firstName, lastName }) => firstName == employeeName || lastName == employeeName);
-}
+  return data.employees.find(({ firstName, lastName }) =>
+    firstName === employeeName || lastName === employeeName);
+};
 
-console.log(employeeByName());
-
-
-function createEmployee(personalInfo, associatedWith) {
-  // seu código aqui
-}
+const createEmployee = (personalInfo, associatedWith) => ({ ...personalInfo, ...associatedWith });
 
 function isManager(id) {
   // seu código aqui
