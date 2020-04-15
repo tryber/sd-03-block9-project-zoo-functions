@@ -40,7 +40,7 @@ const addEmployee = (id, firstName, lastName, managers = [], responsibleFor = []
     responsibleFor,
   });
 
-function animalCount(species) {
+const animalCount = (species) => {
   const allAnimals = {};
   data.animals.forEach(({ name, residents }) => {
     allAnimals[name] = residents.length;
@@ -48,11 +48,20 @@ function animalCount(species) {
   if (!species) return allAnimals;
   const animalFinder = data.animals.find(({ name }) => name === species);
   return animalFinder.residents.length;
-}
+};
 
-function entryCalculator(entrants) {
-  
-}
+const entryCalculator = (entrants) => {
+  if (!entrants || !Object.keys(entrants).length) return 0;
+  const pricesEntries = Object.entries(data.prices);
+  const entrantsEntries = Object.entries(entrants);
+  let payment = 0;
+  entrantsEntries.forEach(([age, amount]) => {
+    pricesEntries.forEach(([category, price]) => {
+      if (category === age) payment += amount * price;
+    });
+  });
+  return payment;
+};
 
 function animalMap(options) {
   // seu código aqui
