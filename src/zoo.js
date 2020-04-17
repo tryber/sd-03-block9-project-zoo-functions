@@ -255,3 +255,4 @@ module.exports = {
   increasePrices,
   createEmployee,
 };
+console.log(2)
