@@ -63,9 +63,29 @@ const entryCalculator = (entrants) => {
   return payment;
 };
 
-function animalMap(options) {
-  // seu código aqui
-}
+const animalMap = (options = {}) => {
+  const getNames = (animal, sorted, sex) => {
+    const getResidents = {};
+    getResidents[animal] = data.animals.find(({ name }) => name === animal).residents;
+    if (sex) getResidents[animal] = getResidents[animal].filter(residents => residents.sex === sex);
+    getResidents[animal] = getResidents[animal].map(({ name }) => name);
+    if (sorted) getResidents[animal].sort();
+    return getResidents;
+  };
+
+  const { includeNames, sorted, sex } = options;
+  return data.animals.reduce((acc, { name, location }) => {
+    if (!acc[location]) acc[location] = [];
+    if (includeNames) {
+      acc[location].push(getNames(name, sorted, sex));
+    } else {
+      acc[location].push(name);
+    }
+    return acc;
+  }, {});
+};
+
+animalMap();
 
 function schedule(dayName) {
   // seu código aqui
