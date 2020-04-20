@@ -117,9 +117,26 @@ function oldestFromFirstSpecies(id) {
   return Object.values(older);
 }
 
-function increasePrices(percentage) {
-  // seu código aqui
+function round(value, precision) {
+  if (Number.isInteger(precision)) {
+    const shift = 10 ** precision;
+    // Limited preventing decimal issue
+    return (Math.round(value * (shift + 0.00000000000001)) / shift);
+  }
+  return Math.round(value);
 }
+
+function increasePrices(percentage) {
+  const incrementedValues = Object.values(data.prices).map((value) => {
+    const num = value + (value * (percentage / 100));
+    return round(num, 2);
+  });
+  incrementedValues.forEach((value, index) => {
+    data.prices[Object.keys(data.prices)[index]] = value;
+  });
+}
+
+console.log(data.prices[0]);
 
 function employeeCoverage(idOrName) {
   // seu código aqui
