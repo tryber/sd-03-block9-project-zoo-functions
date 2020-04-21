@@ -14,19 +14,19 @@ const data = require('./data');
 function animalsByIds(...ids) {
   if (!ids.length) return [];
   return data.animals.filter(({ id }) => ids.includes(id));
-};
+}
 
 function animalsOlderThan(species, age) {
   const speciesFinder = data.animals.find(({ name }) => name === species);
   return speciesFinder.residents.every(({ age: a }) => a > age);
-};
+}
 
 function employeeByName(employeeName) {
   if (!employeeName) return {};
-  return data.employees.find(({ firstName, lastName }) =>
+  return data.employees.find(({ firstName, lastName }) => (
     firstName === employeeName || lastName === employeeName
-  );
-};
+  ));
+}
 
 function createEmployee(personalInfo, associatedWith) {
   return { ...personalInfo, ...associatedWith };
@@ -77,7 +77,7 @@ function animalMap(options = {}) {
     getResidents[animal] = getResidents[animal].map(({ name }) => name);
     if (sorted) getResidents[animal].sort();
     return getResidents;
-  }
+  };
 
   const { includeNames, sorted, sex } = options;
   return data.animals.reduce((acc, { name, location }) => {
@@ -89,7 +89,7 @@ function animalMap(options = {}) {
     }
     return acc;
   }, {});
-};
+}
 
 function schedule(dayName) {
   const entries = Object.entries(data.hours);
