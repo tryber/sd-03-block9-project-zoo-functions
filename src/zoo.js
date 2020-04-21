@@ -137,14 +137,14 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-  const fetchAnimals = list => list.map(id =>
+  const fetchAnimals = list => list.map(id => (
     data.animals.find(animal => animal.id === id).name
-  );
+  ));
 
   if (idOrName) {
-    const fetchEmployee = data.employees.find(({ id, firstName, lastName }) =>
+    const fetchEmployee = data.employees.find(({ id, firstName, lastName }) => (
       id === idOrName || firstName === idOrName || lastName === idOrName
-    );
+    ));
     const { firstName, lastName, responsibleFor } = fetchEmployee;
     return { [`${firstName} ${lastName}`]: fetchAnimals(responsibleFor) };
   }
