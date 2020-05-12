@@ -45,7 +45,6 @@ function entryCalculator(entrants) {
   // seu código aqui
 }
 
-// seu código aqui
 function animalMap(options = {}) {
   const getNames = (animal, sorted, sex) => {
     const getResidents = {};
@@ -79,23 +78,31 @@ function increasePrices(percentage) {
   // seu código aqui
 }
 
-const employeeCoverage = (idOrName) => {
-  const myobject = {};
-  if (idOrName) {
-    Object.assign(myobject, employeeresponsible(data.employees
-      .find(el => (
-        (el.id === idOrName)
-        || (el.firstName === idOrName)
-        || (el.lastName === idOrName)
-      ))));
-    return myobject;
-  }
-  data.employees.forEach((e) => {
-    Object.assign(myobject, employeeresponsible(e));
-  });
+function employeeCoverage(idOrName) {
+  // seu código aqui
+  const coverageById = data.employees.reduce((acc, employee) => {
+    const fullName = `${employee.firstName} ${employee.lastName}`;
+    acc[fullName] = employee.responsibleFor.map((id, name) => {
+      name = data.animals.find(animal => animal.id === id).name;
+      return name;
+    });
 
-  return myobject;
+    return acc;
+  }, {});
+  const test = data.employees.reduce((acc, emplo) => {
+    if (idOrName === emplo.id || idOrName === emplo.firstName || idOrName === emplo.lastName) {
+      const newFullName = `${emplo.firstName} ${emplo.lastName}`;
+      acc[newFullName] = coverageById[newFullName];
+    }
+    return acc;
+  }, {});
+
+
+  if (idOrName) { return test; }
+  return coverageById;
 }
+
+employeeCoverage('4b40a139-d4dc-4f09-822d-ec25e819a5ad');
 
 module.exports = {
   entryCalculator,
