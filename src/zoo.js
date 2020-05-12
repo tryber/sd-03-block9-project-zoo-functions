@@ -11,8 +11,10 @@ eslint no-unused-vars: [
 
 const data = require('./data');
 
-function animalsByIds(ids) {
-  // seu código aqui
+// seu código aqui
+function animalsByIds(...ids) {
+  const result = ids.map(e => (ids === [] ? [] : data.animals.find(animal => animal.id === e)));
+  return result;
 }
 
 function animalsOlderThan(animal, age) {
@@ -77,8 +79,22 @@ function increasePrices(percentage) {
   // seu código aqui
 }
 
-function employeeCoverage(idOrName) {
-  // seu código aqui
+const employeeCoverage = (idOrName) => {
+  const myobject = {};
+  if (idOrName) {
+    Object.assign(myobject, employeeresponsible(data.employees
+      .find(el => (
+        (el.id === idOrName)
+        || (el.firstName === idOrName)
+        || (el.lastName === idOrName)
+      ))));
+    return myobject;
+  }
+  data.employees.forEach((e) => {
+    Object.assign(myobject, employeeresponsible(e));
+  });
+
+  return myobject;
 }
 
 module.exports = {
