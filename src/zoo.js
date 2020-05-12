@@ -49,11 +49,26 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 }
 
 function animalCount(species) {
-  // seu código aqui
+  const allAnimals = {};
+  data.animals.forEach(({ name, residents }) => {
+    allAnimals[name] = residents.length;
+  });
+  if (!species) return allAnimals;
+  const animalFinder = data.animals.find(({ name }) => name === species);
+  return animalFinder.residents.length;
 }
 
 function entryCalculator(entrants) {
-  // seu código aqui
+  if (!entrants || !Object.keys(entrants).length) return 0;
+  const pricesEntries = Object.entries(data.prices);
+  const entrantsEntries = Object.entries(entrants);
+  let payment = 0;
+  entrantsEntries.forEach(([age, amount]) => {
+    pricesEntries.forEach(([category, price]) => {
+      if (category === age) payment += amount * price;
+    });
+  });
+  return payment;
 }
 
 function animalMap(options = {}) {
@@ -82,7 +97,18 @@ function schedule(dayName) {
 }
 
 function oldestFromFirstSpecies(id) {
-  // seu código aqui
+  const employee = data.employees.find(({ id: i }) => i === id);
+  const firstAnimal = employee.responsibleFor[0];
+  const animal = data.animals.find(({ id: i }) => i === firstAnimal);
+  let older;
+  animal.residents.reduce((acc, resident) => {
+    if (resident.age > acc) {
+      acc = resident.age;
+      older = resident;
+    }
+    return acc;
+  }, 0);
+  return Object.values(older);
 }
 
 function increasePrices(percentage) {
