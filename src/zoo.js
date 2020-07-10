@@ -104,16 +104,20 @@ function entryCalculator(entrants) {
 
 /* 9. Implemente a função animalMap:
   Sem parâmetros, retorna animais categorizados por localização
-  Com opções especificadas, retorna nomes de animais
-  Com opções especificadas, retorna nomes de animais ordenados
-  Com opções especificadas, retorna somente nomes de animais macho/fêmea
+  Com opções especificadas { includeNames: true }, retorna nomes de animais
+  Com opções especificadas { includeNames: true, sorted: true }, retorna nomes de animais ordenados
+  Com opções especificadas { includeNames: true, sex: 'female' }, retorna somente nomes de animais macho/fêmea
   Só retorna informações específicas de gênero se includeNames for setado
  */
 
 function animalMap(options) {
-  // SKIPPED
+  //const { includeNames, sorted, sex } = options;
+  const animLocal = data.animals.reduce((animal, { name, location }) => {
+    
+  });
+  return animLocal;
 }
-
+console.log(animalMap());
 /* 10. Implemente a função schedule:
   Sem parâmetros, retorna um cronograma legível para humanos
   Se um único dia for passado, retorna somente este dia em um formato legível para humanos
