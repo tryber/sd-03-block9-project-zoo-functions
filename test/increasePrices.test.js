@@ -7,7 +7,7 @@ describe('increasePrices', () => {
   it('test', () => {
     let expected;
 
-    // data uma porcentagem, incrementa todos os preços, arrendondados em duas casas
+    // dada uma porcentagem, incrementa todos os preços, arrendondados em duas casas
     // decimais
     zoo.increasePrices(50);
     expected = {
